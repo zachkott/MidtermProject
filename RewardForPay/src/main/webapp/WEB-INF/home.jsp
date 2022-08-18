@@ -8,9 +8,9 @@
 </head>
 <body>
 
-
-
 <h1>Welcome to Reward For Pay</h1>
+${SMOKETEST}
+
 
 </body>
 </html>
