@@ -8,8 +8,8 @@
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-<h1>Welcome to Reward For Pay</h1>
-${SMOKETEST}
+<h1>This is the Login Page</h1>
+
 
 
 </body>
