@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name="point_redemption")
 public class PointRedemption {
@@ -28,6 +30,7 @@ public class PointRedemption {
 	private Employee employee;
 	
 	@Column(name="redeemed_date")
+	@CreationTimestamp
 	private LocalDateTime redeemedDate;
 	
 

@@ -51,4 +51,12 @@ class DepartmentTest {
 
 
 	}
+	
+	@Test
+	void test_Department_Company_ManyToOne_mapping() {
+		assertNotNull(department);
+		Company company = department.getCompanyId();
+		assertEquals(1, company.getId());
+
+	}
 }

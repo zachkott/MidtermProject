@@ -57,6 +57,20 @@ public class Employee {
 	
 	public Employee() {}
 
+	
+	
+	public List<Prize> getPrizes() {
+		return prizes;
+	}
+
+
+
+	public void setPrizes(List<Prize> prizes) {
+		this.prizes = prizes;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

@@ -1,6 +1,7 @@
 package com.skilldistillery.rewardforpay.entities;
 
 import java.time.LocalDateTime;
+
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -9,7 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
+@Table(name="point_award")
 public class PointAwarded {
 	
 	@Id  
@@ -18,6 +24,7 @@ public class PointAwarded {
 	
 	private int amount;
 	
+	@CreationTimestamp
 	private LocalDateTime issued;
 	
 	@ManyToOne
