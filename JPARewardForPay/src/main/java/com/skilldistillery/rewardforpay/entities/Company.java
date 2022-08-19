@@ -1,5 +1,6 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,30 +9,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Department {
-
+public class Company {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private  String name;
+	private String  name;
 	
-	@Column(name="manager_id")
-	private  int managerId;
-	
-	@ManyToOne
-	@JoinColumn(name="company_id")
-	private Company company;
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
 	
 	private String description;
 	
 	@Column(name="website_url")
 	private String websiteUrl;
 	
-	public Department() {}
+	@Column(name="logo_url")
+	private String logoUrl;
+	
+	@OneToMany(mappedBy="company")
+	private List<Department> departments;
+	
+	
+	public Company() {}
 
 	public int getId() {
 		return id;
@@ -49,20 +55,12 @@ public class Department {
 		this.name = name;
 	}
 
-	public int getManagerId() {
-		return managerId;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
-	}
-
-	public Company getCompanyId() {
-		return company;
-	}
-
-	public void setCompanyId(Company company) {
-		this.company = company;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getDescription() {
@@ -81,6 +79,22 @@ public class Department {
 		this.websiteUrl = websiteUrl;
 	}
 
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+
+	public List<Department> getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(List<Department> departments) {
+		this.departments = departments;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -94,26 +108,31 @@ public class Department {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Department other = (Department) obj;
+		Company other = (Company) obj;
 		return id == other.id;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Department [id=");
+		builder.append("Company [id=");
 		builder.append(id);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", managerId=");
-		builder.append(managerId);
+		builder.append(", address=");
+		builder.append(address);
 		builder.append(", description=");
 		builder.append(description);
 		builder.append(", websiteUrl=");
 		builder.append(websiteUrl);
+		builder.append(", logoUrl=");
+		builder.append(logoUrl);
+		builder.append(", departments=");
+		builder.append(departments);
 		builder.append("]");
 		return builder.toString();
 	}
 	
 	
+
 }
