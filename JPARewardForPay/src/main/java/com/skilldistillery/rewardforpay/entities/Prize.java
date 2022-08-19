@@ -1,6 +1,7 @@
 package com.skilldistillery.rewardforpay.entities;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -109,6 +110,23 @@ public class Prize {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Prize other = (Prize) obj;
+		return id == other.id;
 	}
 
 	@Override
