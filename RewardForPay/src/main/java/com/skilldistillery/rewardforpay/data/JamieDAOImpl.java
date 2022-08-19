@@ -30,13 +30,13 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User findUserByKeyword(String keyword) {
+	public List<User> findUserByKeyword(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User findAllUsers() {
+	public List<User> findAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -66,7 +66,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Employee findAllEmployees(int employeeId) {
+	public List<Employee> findAllEmployees(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -120,7 +120,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Prize findAllRequests(int employeeId) {
+	public List<Status> findAllRequests(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -162,7 +162,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Prize findAllPrizes(int prizeId) {
+	public List<Prize> findAllPrizes(int prizeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

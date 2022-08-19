@@ -14,18 +14,18 @@ public interface UserDAO {
 
 		//Login/credentialed user actions -Zach
 		User findById(int userId);
-		User findUserByKeyword(String keyword);
-		User findAllUsers();
+		List<User> findUserByKeyword(String keyword);
+		List<User> findAllUsers();
 		User createUser(User user);
 		User updateUser(int id, User user);
-		User deleteUser(int id);
+		User deleteUser(int id); //Inactivate user
 		
 		//Employee profile/actions -Daniel
 		Employee findEmployeeById(int employeeId);
-		Employee findAllEmployees(int employeeId);
+		List<Employee> findAllEmployees(int employeeId);
 		Employee createEmployee(Employee employee);
 		Employee updateEmployee(int id, Employee employee);
-		Employee deleteEmployee(int id);
+		Employee deleteEmployee(int id); //Inactivate employee
 		int findPointBalance(int employeeId);
 		PointRedemption createRedemption(int employeeId, int rewardId);
 		PointRedemption withdrawRedemption(int employeeId, int rewardId);
@@ -33,17 +33,17 @@ public interface UserDAO {
 		//Admin actions -Swarm
 		List<Status> pendingRequests(Status requestedStatus);
 		boolean updateStatus(int statusId);
-		Prize findAllRequests(int employeeId);
+		List<Status> findAllRequests(int employeeId);
 		boolean rejectAward(int id);
 		PointAwarded updateAward(int awardId, PointAwarded pointAward);
-		Prize deletePrize(int id);
+		Prize deletePrize(int id); //Inactivate prize
 		PointRedemption updateRedemption(int employeeId, int rewardId); //Update in case program throws error
-		PointRedemption deleteRedemption(int employeeId, int rewardId); //Inactivate
+		PointRedemption deleteRedemption(int employeeId, int rewardId); //Inactivate redemption
 		
 
 		//Reward items -Jamie
 		Prize findPrizeById(int prizeId);
-		Prize findAllPrizes(int prizeId);
+		List<Prize> findAllPrizes(int prizeId);
 		Prize createPrize(Prize prize);
 		Prize updatePrize(int id, Prize prize);
 		
