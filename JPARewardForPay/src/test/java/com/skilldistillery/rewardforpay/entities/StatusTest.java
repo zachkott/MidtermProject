@@ -53,4 +53,16 @@ class StatusTest {
 			assertEquals("Mouse Pad", status.getPrizes().get(0).getName());
 		}
 
+		@Test
+		void test_Status_to_Employees_mapping() {
+			assertNotNull(status);
+			assertEquals("Smith", status.getEmployees().get(0).getLastName());
+		}
+
+		@Test
+		void test_Status_to_PointsAwarded_mapping() {
+			assertNotNull(status);
+			assertEquals(200, status.getPointsAwarded().get(0).getAmount());
+		}
+
 }
