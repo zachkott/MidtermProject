@@ -44,6 +44,7 @@ public interface UserDAO {
 		//Reward items -Jamie
 		Prize findPrizeById(int prizeId);
 		List<Prize> findAllPrizes(int prizeId);
+		List<Prize> findPrizesByTier(int tierId);
 		Prize createPrize(Prize prize);
 		Prize updatePrize(int id, Prize prize);
 		

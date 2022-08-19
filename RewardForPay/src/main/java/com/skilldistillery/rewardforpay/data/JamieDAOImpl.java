@@ -1,8 +1,14 @@
 package com.skilldistillery.rewardforpay.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -13,6 +19,7 @@ import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
 import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
+import com.skilldistillery.rewardforpay.entities.Tier;
 import com.skilldistillery.rewardforpay.entities.User;
 
 
@@ -154,53 +161,95 @@ public class JamieDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/////Reward/Award actions
 	@Override
 	public Prize findPrizeById(int prizeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Prize.class, prizeId);
 	}
 
 	@Override
 	public List<Prize> findAllPrizes(int prizeId) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT p FROM Prize p ORDER BY p.name";
+		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
+		return prizes;
+	}
+
+	@Override
+	public List<Prize> findPrizesByTier(int tierId) {
+		String query = "SELECT p FROM Prize p ORDER BY p.tier, p.name";
+		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
+		List<Prize> prizeTier = new ArrayList<Prize>();
+		for (Prize p : prizes) {
+			if (p.getTier().getId() == tierId) {
+				prizeTier.add(p);
+			}
+		}
+		return prizeTier;
 	}
 
 	@Override
 	public Prize createPrize(Prize prize) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(prize);
+		return prize;
 	}
 
 	@Override
 	public Prize updatePrize(int id, Prize prize) {
-		// TODO Auto-generated method stub
-		return null;
+		Prize updated = em.find(Prize.class, id);
+		
+		updated.setName(prize.getName());
+		updated.setPoints(prize.getPoints());
+		updated.setDescription(prize.getDescription());
+		updated.setDescription(prize.getDescription());
+		updated.setImage(prize.getImage());
+		updated.setImage(prize.getImage());
+		updated.setTier(prize.getTier());
+		updated.setTier(prize.getTier());
+		updated.setStatus(prize.getStatus());
+		updated.setEmployees(prize.getEmployees());
+		
+		return prize;
 	}
 
 	@Override
 	public PointAwarded findAwardByID(int awardId) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(PointAwarded.class, awardId);
 	}
 
 	@Override
 	public List<PointAwarded> findAllAwards(int awardId) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT pa FROM PointAwarded pa ORDER BY pa.id";
+		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).getResultList();
+		return pointsAwarded;		
 	}
 
 	@Override
 	public PointAwarded createAward(PointAwarded pointAward) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(pointAward);
+		return pointAward;
 	}
 
 	@Override
 	public PointAwarded withdrawAward(int awardId) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT pa FROM PointAwarded pa WHERE pa.award_status_id = 2 ORDER BY pa.id";
+		PointAwarded toDelete = em.find(PointAwarded.class, awardId);
+		List<PointAwarded> withdrawAllowed = em.createQuery(query, PointAwarded.class).getResultList();
+		if (withdrawAllowed.contains(toDelete)) {
+			toDelete.setStatus(em.find(Status.class, 4));
+			em.persist(toDelete);
+		}
+		
+		return toDelete;
 	}
 
 }
