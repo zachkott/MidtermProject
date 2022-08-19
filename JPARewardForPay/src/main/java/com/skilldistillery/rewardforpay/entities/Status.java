@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -13,12 +11,11 @@ import javax.persistence.OneToMany;
 public class Status {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	
 	@OneToMany(mappedBy="status")
-	private List<Prize> prize;
+	private List<Prize> prizes;
 
 	
 	
@@ -34,12 +31,12 @@ public class Status {
 		this.id = id;
 	}
 
-	public List<Prize> getPrize() {
-		return prize;
+	public List<Prize> getPrizes() {
+		return prizes;
 	}
 
-	public void setPrize(List<Prize> prize) {
-		this.prize = prize;
+	public void setPrizes(List<Prize> prizes) {
+		this.prizes = prizes;
 	}
 	
 	public String getName() {
@@ -69,7 +66,7 @@ public class Status {
 
 	@Override
 	public String toString() {
-		return "Status [id=" + id + ", prize=" + prize + "]";
+		return "Status [id=" + id + "]";
 	}
 	
 	

@@ -1,8 +1,6 @@
 package com.skilldistillery.rewardforpay.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -50,7 +48,7 @@ class StatusTest {
 	@Test
 	void test_Status_to_Prize_mapping() {
 		assertNotNull(status);
-		assertEquals("MousePad", status.getPrize().get(0).getName());
+		assertEquals("MousePad", status.getPrizes().get(0).getName());
 	}
 
 }
