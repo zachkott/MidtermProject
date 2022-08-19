@@ -10,9 +10,9 @@ import com.skilldistillery.rewardforpay.entities.Status;
 import com.skilldistillery.rewardforpay.entities.User;
 
 
-interface UserDAO {
+public interface UserDAO {
 
-		//Login/credentialed user actions
+		//Login/credentialed user actions -Zach
 		User findById(int userId);
 		User findUserByKeyword(String keyword);
 		User findAllUsers();
@@ -20,7 +20,7 @@ interface UserDAO {
 		User updateUser(int id, User user);
 		User deleteUser(int id);
 		
-		//Employee profile/actions
+		//Employee profile/actions -Daniel
 		Employee findEmployeeById(int employeeId);
 		Employee findAllEmployees(int employeeId);
 		Employee createEmployee(Employee employee);
@@ -30,7 +30,7 @@ interface UserDAO {
 		PointRedemption createRedemption(int employeeId, int rewardId);
 		PointRedemption withdrawRedemption(int employeeId, int rewardId);
 		
-		//Admin actions
+		//Admin actions -Swarm
 		List<Status> pendingRequests(Status requestedStatus);
 		boolean updateStatus(int statusId);
 		Prize findAllRequests(int employeeId);
@@ -41,13 +41,13 @@ interface UserDAO {
 		PointRedemption deleteRedemption(int employeeId, int rewardId); //Inactivate
 		
 
-		//Reward items
+		//Reward items -Jamie
 		Prize findPrizeById(int prizeId);
 		Prize findAllPrizes(int prizeId);
 		Prize createPrize(Prize prize);
 		Prize updatePrize(int id, Prize prize);
 		
-		//Award submissions/points
+		//Award submissions/points -Jamie
 		PointAwarded findAwardByID(int awardId);
 		List<PointAwarded> findAllAwards(int awardId);
 		PointAwarded createAward(PointAwarded pointAward);
