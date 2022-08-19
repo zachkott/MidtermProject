@@ -18,12 +18,44 @@ public class Status {
 	
 	@OneToMany(mappedBy="status")
 	private List<Prize> prizes;
+	
+	@OneToMany(mappedBy="requestStatus")
+	private List<Employee> employees;
+	
+	@OneToMany(mappedBy="status")
+	private List<PointAwarded> pointsAwarded;
 
 	
 	
 	
 	public Status() {
 	}
+	
+	
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+
+
+
+	public List<PointAwarded> getPointsAwarded() {
+		return pointsAwarded;
+	}
+
+
+
+	public void setPointsAwarded(List<PointAwarded> pointsAwarded) {
+		this.pointsAwarded = pointsAwarded;
+	}
+
+
 
 	public int getId() {
 		return id;

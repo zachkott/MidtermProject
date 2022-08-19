@@ -11,7 +11,7 @@ import com.skilldistillery.rewardforpay.entities.User;
 
 @Service
 @Transactional
-public class UserDAOImpl implements UserDAO {
+public class ZachDAOImpl implements UserDAO {
 	
 	
 	@PersistenceContext
@@ -21,11 +21,5 @@ public class UserDAOImpl implements UserDAO {
 	public User findById(int userId) {
 		return em.find(User.class, userId);
 	}
-
-//	@Override
-//	public void User(int userId) {
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 }

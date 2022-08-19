@@ -35,10 +35,15 @@ public class PointAwarded {
 	@ManyToOne
 	@JoinColumn(name="requested_id")
 	private User user;
+
+	
+	
 	
 	public PointAwarded() {
 		super();
 	}
+	
+	
 
 	public int getId() {
 		return id;
