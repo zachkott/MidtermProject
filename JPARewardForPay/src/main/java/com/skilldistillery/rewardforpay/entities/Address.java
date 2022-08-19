@@ -1,5 +1,7 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -84,6 +86,23 @@ public class Address {
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", phone=" + phone + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		return id == other.id;
 	}
 	
 }

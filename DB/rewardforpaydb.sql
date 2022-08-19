@@ -169,11 +169,18 @@ CREATE TABLE IF NOT EXISTS `prize` (
   `tier_id` INT NOT NULL,
   `prize_url` VARCHAR(2000) NULL,
   `description` VARCHAR(45) NULL,
+  `request_status_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_reward_tier_idx` (`tier_id` ASC),
+  INDEX `fk_prize_request_status1_idx` (`request_status_id` ASC),
   CONSTRAINT `fk_reward_tier`
     FOREIGN KEY (`tier_id`)
     REFERENCES `tier` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prize_request_status1`
+    FOREIGN KEY (`request_status_id`)
+    REFERENCES `request_status` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -188,11 +195,9 @@ CREATE TABLE IF NOT EXISTS `point_redemption` (
   `reward_id` INT NOT NULL,
   `employee_id` INT NOT NULL,
   `redeemed_date` DATE NULL,
-  `request_status_id` INT NOT NULL,
   PRIMARY KEY (`reward_id`, `employee_id`),
   INDEX `fk_reward_has_employee_employee1_idx` (`employee_id` ASC),
   INDEX `fk_reward_has_employee_reward1_idx` (`reward_id` ASC),
-  INDEX `fk_point_redemption_request_status1_idx` (`request_status_id` ASC),
   CONSTRAINT `fk_reward_has_employee_reward1`
     FOREIGN KEY (`reward_id`)
     REFERENCES `prize` (`id`)
@@ -201,11 +206,6 @@ CREATE TABLE IF NOT EXISTS `point_redemption` (
   CONSTRAINT `fk_reward_has_employee_employee1`
     FOREIGN KEY (`employee_id`)
     REFERENCES `employee` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_point_redemption_request_status1`
-    FOREIGN KEY (`request_status_id`)
-    REFERENCES `request_status` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -452,9 +452,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`) VALUES (1, 'Mouse Pad', 50, 1, NULL, NULL);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`) VALUES (2, 'Coffee Maker', 125, 2, NULL, NULL);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`) VALUES (3, 'Trip to Mexico', 12000, 3, NULL, NULL);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (1, 'Mouse Pad', 50, 1, NULL, NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (2, 'Coffee Maker', 125, 2, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (3, 'Trip to Mexico', 12000, 3, NULL, NULL, 3);
 
 COMMIT;
 
@@ -464,7 +464,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `point_redemption` (`reward_id`, `employee_id`, `redeemed_date`, `request_status_id`) VALUES (1, 1, NULL, 1);
+INSERT INTO `point_redemption` (`reward_id`, `employee_id`, `redeemed_date`) VALUES (1, 1, NULL);
 
 COMMIT;
 
