@@ -20,7 +20,7 @@ public class Department {
 	private  String name;
 	
 	@Column(name="manager_id")
-	private  int managerId;
+	private  Integer managerId;
 	
 	@ManyToOne
 	@JoinColumn(name="company_id")
@@ -53,7 +53,7 @@ public class Department {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
 
