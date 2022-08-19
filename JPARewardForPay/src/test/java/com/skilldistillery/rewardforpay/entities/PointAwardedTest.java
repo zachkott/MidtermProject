@@ -52,7 +52,7 @@ class PointAwardedTest {
 	@Test
 	void  pointawarded_entity_status_mapping() {
 		assertNotNull(PointAwarded);
-		assertEquals(2,PointAwarded.getStatus().getId());
+		assertEquals(1,PointAwarded.getStatus().getId());
 	}
 	@Test
 	void  pointawarded_entity_employee_mapping() {
