@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `name` VARCHAR(45) NULL,
   `address_id` INT NOT NULL,
   `description` VARCHAR(200) NULL,
-  `webiste_url` VARCHAR(2000) NULL,
+  `website_url` VARCHAR(2000) NULL,
   `logo_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_company_address1_idx` (`address_id` ASC),
@@ -192,10 +192,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `point_redemption` ;
 
 CREATE TABLE IF NOT EXISTS `point_redemption` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `reward_id` INT NOT NULL,
   `employee_id` INT NOT NULL,
   `redeemed_date` DATE NULL,
-  PRIMARY KEY (`reward_id`, `employee_id`),
+  PRIMARY KEY (`id`, `reward_id`, `employee_id`),
   INDEX `fk_reward_has_employee_employee1_idx` (`employee_id` ASC),
   INDEX `fk_reward_has_employee_reward1_idx` (`reward_id` ASC),
   CONSTRAINT `fk_reward_has_employee_reward1`
@@ -392,7 +393,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `company` (`id`, `name`, `address_id`, `description`, `webiste_url`, `logo_url`) VALUES (1, 'Social Engineering', 5, 'Bringing together people, whether you like it or not.', NULL, NULL);
+INSERT INTO `company` (`id`, `name`, `address_id`, `description`, `website_url`, `logo_url`) VALUES (1, 'Social Engineering', 5, 'Bringing together people, whether you like it or not.', NULL, NULL);
 
 COMMIT;
 
@@ -464,7 +465,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `point_redemption` (`reward_id`, `employee_id`, `redeemed_date`) VALUES (1, 1, NULL);
+INSERT INTO `point_redemption` (`id`, `reward_id`, `employee_id`, `redeemed_date`) VALUES (1, 1, 1, NULL);
 
 COMMIT;
 
