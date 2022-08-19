@@ -50,7 +50,7 @@ class StatusTest {
 		@Test
 		void test_Status_to_Prize_mapping() {
 			assertNotNull(status);
-			assertEquals("MousePad", status.getPrizes().get(0).getName());
+			assertEquals("Mouse Pad", status.getPrizes().get(0).getName());
 		}
 
 }
