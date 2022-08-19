@@ -1,11 +1,16 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 @Entity
 public class User {
 	@Id
@@ -18,7 +23,14 @@ public class User {
 
 	private Boolean enabled;
 
-	private String role;
+	@ManyToMany
+	@JoinTable(name = "user_has_roles", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "film_id"))
+	private List<Role> roles;
+
+	@JoinColumn(name = "employee_id")
+	private Employee employeeId;
 
 	public User() {
 		super();
@@ -56,18 +68,20 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getRole() {
-		return role;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+	public Employee getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Employee employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	@Override
@@ -86,5 +100,25 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", enabled=");
+		builder.append(enabled);
+		builder.append(", employeeId=");
+		builder.append(employeeId);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
+
 
 }
