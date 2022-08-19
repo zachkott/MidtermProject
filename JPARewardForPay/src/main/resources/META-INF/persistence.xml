@@ -9,9 +9,16 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<class>com.skilldistillery.rewardforpay.entities.User</class>
-
-
-
+		<class>com.skilldistillery.rewardforpay.entities.UserRole</class>
+		<class>com.skilldistillery.rewardforpay.entities.Address</class>
+		<class>com.skilldistillery.rewardforpay.entities.Company</class>
+		<class>com.skilldistillery.rewardforpay.entities.Department</class>
+		<class>com.skilldistillery.rewardforpay.entities.Employee</class>
+		<class>com.skilldistillery.rewardforpay.entities.PointAwarded</class>
+		<class>com.skilldistillery.rewardforpay.entities.PointRedemption</class>
+		<class>com.skilldistillery.rewardforpay.entities.Prize</class>
+		<class>com.skilldistillery.rewardforpay.entities.Status</class>
+		<class>com.skilldistillery.rewardforpay.entities.Tier</class>
 
 
 		<properties>
