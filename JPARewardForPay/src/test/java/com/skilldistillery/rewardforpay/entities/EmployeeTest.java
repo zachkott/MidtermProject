@@ -30,7 +30,7 @@ class EmployeeTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		employee = em.find(Employee.class, 1);
+		employee = em.find(Employee.class, 3);
 	}
 
 	@AfterEach
@@ -43,10 +43,10 @@ class EmployeeTest {
 	@Test
 	void test_Employee_Entity_mapping() {
 		assertNotNull(employee);
-		assertEquals("Karen",employee.getFirstName());
-		assertEquals("Smith",employee.getLastName());
-		assertEquals(85000, employee.getSalary());
-		assertEquals("I'd like to speak with your manager.", employee.getDescription());
+		assertEquals("Ryan",employee.getFirstName());
+		assertEquals("Cosby",employee.getLastName());
+		assertEquals(110000, employee.getSalary());
+		assertEquals("Do you have those TPS reports?", employee.getDescription());
 
 
 	}

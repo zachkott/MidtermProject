@@ -38,11 +38,13 @@ public class Employee {
 	private Department department;
 
 	@Column(name="supervisor_id")
-	private int supervisorId;
+	private Integer supervisorId;
 
+	@Column(name="employee_photo")
 	private String employeePhoto;
 
-	private Date date;
+	
+	private Date birthday;
 
 	private String description;
 
@@ -107,7 +109,7 @@ public class Employee {
 		return supervisorId;
 	}
 
-	public void setSupervisorId(int supervisorId) {
+	public void setSupervisorId(Integer supervisorId) {
 		this.supervisorId = supervisorId;
 	}
 
@@ -119,12 +121,12 @@ public class Employee {
 		this.employeePhoto = employeePhoto;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	public String getDescription() {
@@ -154,14 +156,22 @@ public class Employee {
 		builder.append(lastName);
 		builder.append(", salary=");
 		builder.append(salary);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", department=");
+		builder.append(department);
 		builder.append(", supervisorId=");
 		builder.append(supervisorId);
 		builder.append(", employeePhoto=");
 		builder.append(employeePhoto);
-		builder.append(", date=");
-		builder.append(date);
+		builder.append(", birthday=");
+		builder.append(birthday);
 		builder.append(", description=");
 		builder.append(description);
+		builder.append(", requestStatus=");
+		builder.append(requestStatus);
+		builder.append(", prizes=");
+		builder.append(prizes);
 		builder.append("]");
 		return builder.toString();
 	}
