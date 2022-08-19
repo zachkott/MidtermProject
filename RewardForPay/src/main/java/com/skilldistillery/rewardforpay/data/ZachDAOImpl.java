@@ -35,7 +35,6 @@ public class ZachDAOImpl implements UserDAO {
 		
 		String jpql = "SELECT u FROM User u WHERE u.userName LIKE :keyword";
 		
-
 		
 		return em.createQuery(jpql, User.class).setParameter("keyword", keyword).getResultList();
 	}
@@ -59,6 +58,8 @@ public class ZachDAOImpl implements UserDAO {
 		
 		updatedUser.setUsername(user.getUsername());
 		updatedUser.setPassword(user.getPassword());
+		updatedUser.setEnabled(user.getEnabled());
+		updatedUser.setRoles(user.getRoles());
 		
 		
 		return updatedUser;
