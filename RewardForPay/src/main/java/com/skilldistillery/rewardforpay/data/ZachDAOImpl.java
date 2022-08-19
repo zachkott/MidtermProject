@@ -30,33 +30,47 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User findUserByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> findUserByKeyword(String keyword) {
+		keyword = "%" + keyword + "%";
+		
+		String jpql = "SELECT u FROM User u WHERE u.userName LIKE :keyword";
+		
+
+		
+		return em.createQuery(jpql, User.class).setParameter("keyword", keyword).getResultList();
 	}
 
 	@Override
-	public User findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> findAllUsers() {
+		String jpql =  "SELECT u FROM  User u";
+		return em.createQuery(jpql, User.class).getResultList();
 	}
 
 	@Override
 	public User createUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(user);
+		
+		return user;
 	}
 
 	@Override
 	public User updateUser(int id, User user) {
-		// TODO Auto-generated method stub
-		return null;
+		User updatedUser =em.find(User.class, id);
+		
+		updatedUser.setUsername(user.getUsername());
+		updatedUser.setPassword(user.getPassword());
+		
+		
+		return updatedUser;
 	}
 
 	@Override
 	public User deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		User userToBeDeleted =em.find(User.class, id);
+		
+		em.remove(userToBeDeleted);
+		
+		return userToBeDeleted;
 	}
 
 	@Override
@@ -66,7 +80,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Employee findAllEmployees(int employeeId) {
+	public List<Employee> findAllEmployees(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -120,7 +134,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Prize findAllRequests(int employeeId) {
+	public List<Status> findAllRequests(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -162,7 +176,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Prize findAllPrizes(int prizeId) {
+	public List<Prize> findAllPrizes(int prizeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
