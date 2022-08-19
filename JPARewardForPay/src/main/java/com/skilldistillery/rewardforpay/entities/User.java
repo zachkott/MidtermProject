@@ -3,6 +3,8 @@ package com.skilldistillery.rewardforpay.entities;
 import java.util.List;
 import java.util.Objects;
 
+import javax.management.relation.Role;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -29,6 +32,7 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "film_id"))
 	private List<Role> roles;
 
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "employee_id")
 	private Employee employeeId;
 

@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AddressTest {
+class PointAwardedTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Address Address;
+	private PointAwarded PointAwarded;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,21 +32,38 @@ class AddressTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		Address = em.find(Address.class, 1);
+		PointAwarded = em.find(PointAwarded.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		Address=null;
+		PointAwarded=null;
 		
 	}
 	
 
 	@Test
-	void address_entity_basic_mapping() {
-		assertNotNull(Address);
-		assertEquals("Portland",Address.getCity());
+	void  pointawarded_entity_basic_mapping() {
+		assertNotNull(PointAwarded);
+		assertEquals(200,PointAwarded.getAmount());
+	}
+	
+	@Test
+	void  pointawarded_entity_status_mapping() {
+		assertNotNull(PointAwarded);
+		assertEquals(2,PointAwarded.getStatus().getId());
+	}
+	@Test
+	void  pointawarded_entity_employee_mapping() {
+		assertNotNull(PointAwarded);
+		assertEquals(85000,PointAwarded.getEmployee().getSalary());
+	}
+	
+	@Test
+	void  pointawarded_entity_user_mapping() {
+		assertNotNull(PointAwarded);
+		assertEquals("ksmith",PointAwarded.getUser().getUsername());
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.skilldistillery.rewardforpay.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Employee {
@@ -25,9 +29,11 @@ public class Employee {
 
 	private double salary;
 
+	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
 
+	@ManyToOne
 	@JoinColumn(name="department_id")
 	private Department department;
 
@@ -40,8 +46,12 @@ public class Employee {
 
 	private String description;
 
+	@ManyToOne
 	@JoinColumn(name ="request_status_id")
 	private Status requestStatus;
+	
+	@ManyToMany(mappedBy="employees")
+	private List<Prize> prizes;
 	
 	public Employee() {}
 
