@@ -48,7 +48,7 @@ class PrizeTest {
 	@Test
 	void test_Prize_to_Tier_mapping() {
 		assertNotNull(prize);
-		assertEquals(1, prize.getTier());
+		assertEquals("Copper", prize.getTier().getName());
 	}
 
 	@Test
