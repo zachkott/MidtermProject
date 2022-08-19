@@ -49,4 +49,10 @@ class UserTest {
 		assertEquals("ksmith",user.getUsername());
 	}
 
+	@Test
+	void test_User_UserRole_mapping() {
+		assertNotNull(user);
+		assertEquals(1,user.getRoles().get(0).getId());
+
+	}
 }
