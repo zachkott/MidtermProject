@@ -49,4 +49,21 @@ class CompanyTest {
 
 
 	}
+	
+	@Test
+	public void test_Company_to_address_association() {
+		Address address = company.getAddress();
+		assertNotNull(address);
+		assertEquals("5934 Se Duke St", address.getStreet());
+		assertEquals("Portland", address.getCity());
+		assertEquals("Oregon", address.getState());
+		assertEquals("97206", address.getPostalCode());
+	}
+	
+	@Test
+	void test_Company_Department_OneToMany_mapping() {
+		assertNotNull(company);
+		assertNotNull(company.getDepartments());
+		assertTrue(company.getDepartments().size() >  0);
+	}
 }

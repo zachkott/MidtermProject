@@ -50,4 +50,29 @@ class EmployeeTest {
 
 
 	}
+	
+	@Test
+	public void test_employee_to_address_association() {
+		Address address = employee.getAddress();
+		assertNotNull(address);
+		assertEquals("1441 North Marine Drive", address.getStreet());
+		assertEquals("Portland", address.getCity());
+		assertEquals("Oregon", address.getState());
+		assertEquals("97217", address.getPostalCode());
+	}
+	
+	@Test
+	void test_Employee_status_ManyToOne_mapping() {
+		assertNotNull(employee);
+		Status status = employee.getRequestStatus();
+		assertEquals(1, status.getId());
+
+	}
+	
+//	@Test
+//	void test_Employee_Prize_ManyToMany_mapping() {
+//		assertNotNull(employee);
+//		assertNotNull(employee.getPrizes());
+//		assertTrue(employee.getPrizes().size() > 0);
+//	}
 }
