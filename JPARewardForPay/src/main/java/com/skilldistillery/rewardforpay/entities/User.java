@@ -3,7 +3,7 @@ package com.skilldistillery.rewardforpay.entities;
 import java.util.List;
 import java.util.Objects;
 
-import javax.management.relation.Role;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,12 +29,15 @@ public class User {
 	@ManyToMany
 	@JoinTable(name = "user_has_roles", 
 	joinColumns = @JoinColumn(name = "user_id"), 
-	inverseJoinColumns = @JoinColumn(name = "film_id"))
-	private List<Role> roles;
+	inverseJoinColumns = @JoinColumn(name = "user_role_id"))
+	private List<UserRole> roles;
 
 	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "employee_id")
 	private Employee employeeId;
+	
+	
+	
 
 	public User() {
 		super();
@@ -72,11 +75,11 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public List<Role> getRoles() {
+	public List<UserRole> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(List<UserRole> roles) {
 		this.roles = roles;
 	}
 
