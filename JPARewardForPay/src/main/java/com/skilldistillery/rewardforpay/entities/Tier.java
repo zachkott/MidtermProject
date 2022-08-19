@@ -19,7 +19,7 @@ public class Tier {
 	private int threshold;
 	
 	@OneToMany(mappedBy="tier")
-	private List<Prize> prize;
+	private List<Prize> prizes;
 
 	
 	
@@ -36,12 +36,12 @@ public class Tier {
 		this.id = id;
 	}
 
-	public List<Prize> getPrize() {
-		return prize;
+	public List<Prize> getPrizes() {
+		return prizes;
 	}
 
-	public void setPrize(List<Prize> prize) {
-		this.prize = prize;
+	public void setPrizes(List<Prize> prizes) {
+		this.prizes = prizes;
 	}
 	
 	public String getName() {
@@ -79,7 +79,7 @@ public class Tier {
 
 	@Override
 	public String toString() {
-		return "Tier [id=" + id + ", name=" + name + ", threshold=" + threshold + ", prize=" + prize.get(0).getName() + "]";
+		return "Tier [id=" + id + ", name=" + name + ", threshold=" + threshold + ", prize=" + prizes.get(0).getName() + "]";
 	}
 
 }

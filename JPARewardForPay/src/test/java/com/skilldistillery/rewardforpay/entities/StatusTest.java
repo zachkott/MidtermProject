@@ -17,11 +17,11 @@ import org.junit.jupiter.api.Test;
 class StatusTest {
 	static EntityManagerFactory emf;
 	EntityManager em;
-	private Actor actor;
+	private Status status;
 	
 	@BeforeAll
 	static void setUpTest() {
-		emf = Persistence.createEntityManagerFactory("VideoStore");
+		emf = Persistence.createEntityManagerFactory("JPARewardForPay");
 	}
 	
 	@AfterAll
@@ -32,27 +32,25 @@ class StatusTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		actor = em.find(Actor.class, 3);
+		status = em.find(Status.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		actor = null;
+		status = null;
 		em.close();
 	}
 
 	@Test
-	void test_Actor_creates_new_actor() {
-		assertNotNull(actor);
-		assertEquals("Ed", actor.getFirstName());
-		assertEquals("Chase", actor.getLastName());
+	void test_Status_creates_new_actor() {
+		assertNotNull(status);
+		assertEquals("Approved", status.getName());
 	}
 	
 	@Test
-	void test_Actor_to_Films_mapping() {
-		assertNotNull(actor);
-		assertNotNull(actor.getFilms());
-		assertEquals("ALONE TRIP", actor.getFilms().get(0).getTitle());
+	void test_Status_to_Prize_mapping() {
+		assertNotNull(status);
+		assertEquals("MousePad", status.getPrize().get(0).getName());
 	}
 
 }
