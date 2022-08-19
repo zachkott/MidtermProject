@@ -57,11 +57,11 @@ class PrizeTest {
 		assertNotNull("Approved", prize.getTier().getName());
 	}
 
-//	@Test
-//	void test_Prize_to_Employee_mapping() {
-//		assertNotNull(prize);
-//		assertEquals("Smith", prize.getEmployees().get(0).getLastName());
-//	}
+	@Test
+	void test_Prize_to_Employee_mapping() {
+		assertNotNull(prize);
+		assertEquals("Smith", prize.getEmployees().get(0).getLastName());
+	}
 
 
 }
