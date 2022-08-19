@@ -52,7 +52,7 @@ class PointRedemptionTest {
 	@Test
 	void  PointRedemption_entity_Reward_mapping() {
 		assertNotNull(PointRedemption);
-		assertEquals("MousePad",PointRedemption.getPrize().getName());
+		assertEquals("Mouse Pad",PointRedemption.getPrize().getName());
 	}
 	
 
