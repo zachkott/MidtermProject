@@ -433,6 +433,7 @@ INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`,
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (2, 'Bob', 'Dobbs', 65000, 2, 3, NULL, NULL, NULL, 'I\'m on break.', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (3, 'Ryan', 'Cosby', 110000, 3, 3, 1, NULL, NULL, 'Do you have those TPS reports?', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (4, 'Randy', 'Miller', 220000, 4, 2, NULL, NULL, NULL, 'Break time is over.', 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (5, 'Zach', 'Knott', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
 
 COMMIT;
 
