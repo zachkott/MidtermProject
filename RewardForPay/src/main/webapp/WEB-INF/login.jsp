@@ -10,6 +10,7 @@
 <%@ include file="nav.jsp" %>
 <h1>This is the Login Page</h1>
 <h2>Log In</h2>
+<h1>${NotFound}</h1>
 <form action="login.do" method="POST">
 	<%-- Error messages --%>
 	<input type="text" name="username">

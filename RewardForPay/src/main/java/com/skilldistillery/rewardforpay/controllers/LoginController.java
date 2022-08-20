@@ -25,21 +25,17 @@ public class LoginController {
 		}else {
 		return "login";
 		}
-		return "login";
 	}
 	@RequestMapping (path ="login.do",method = RequestMethod.POST) 
-	public String login(User user, HttpSession session) {
-		String password = 
-		user =userDao.findByUsername(user.getUsername());
-		if(user.getPassword())
-		user=dao.getUserByUserNameAndPassword(user.getUserName(), user.getPassword());
+	public String login(User user, HttpSession session, Model model) {
+		user=userDao.findByUsername(user.getUsername(), user.getPassword());
 		if(user == null) {
+			model.addAttribute("NotFound", "User not found. Please check username or password");
 			return "login";
 		}else {
 			session.setAttribute("loggedInUser", user);
 			return "account";
 		}
-		return "login";
 	}
 	@RequestMapping (path ="logout.do") 
 	public String logout(HttpSession session) {

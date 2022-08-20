@@ -34,10 +34,12 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User findByUsername(String username, String password) {
-		String exist = "SELECT u FROM User u WHERE u.username = :username";
-		User user = em.createQuery(exist, User.class).setParameter("username", username).getSingleResult();
-		
-		return user;
+		String exist = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
+		List<User> users = em.createQuery(exist, User.class).setParameter("username", username).setParameter("password", password).getResultList();
+		if(users.size()==0) {
+			return null;
+		}
+		return users.get(0);
 	}
 
 	@Override
