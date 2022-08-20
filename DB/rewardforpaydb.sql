@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `enabled` TINYINT NULL,
-  `employee_id` INT NOT NULL,
+  `employee_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_employee1_idx` (`employee_id` ASC),
   CONSTRAINT `fk_user_employee1`
