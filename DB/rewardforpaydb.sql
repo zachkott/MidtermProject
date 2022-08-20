@@ -419,6 +419,7 @@ USE `rewardforpaydb`;
 INSERT INTO `request_status` (`id`, `name`) VALUES (1, 'Approved');
 INSERT INTO `request_status` (`id`, `name`) VALUES (2, 'Pending');
 INSERT INTO `request_status` (`id`, `name`) VALUES (3, 'Declined');
+INSERT INTO `request_status` (`id`, `name`) VALUES (4, 'Withdrawn');
 
 COMMIT;
 
@@ -534,6 +535,7 @@ INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (1, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (2, 2);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (3, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (4, 1);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (1, 2);
 
 COMMIT;
 
