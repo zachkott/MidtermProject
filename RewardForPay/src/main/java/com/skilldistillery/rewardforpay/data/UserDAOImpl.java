@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public User findByUsername(String username) {
+	public User findByUsername(String username, String password) {
 		String exist = "SELECT u FROM User u WHERE u.username = :username";
 		User user = em.createQuery(exist, User.class).setParameter("username", username).getSingleResult();
 		

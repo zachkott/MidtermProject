@@ -17,27 +17,30 @@ public class LoginController {
 	@Autowired
 	private UserDAO userDao;
 
-//	@RequestMapping (path ="login.do",method = RequestMethod.GET) 
-//	public String goToLoginForm(HttpSession session) {
-//		User user = (User)session.getAttribute("loggedInUser");
-//		if(user!=null) {
-//			return "account";
-//		}else {
-//		return "login";
-//		}
-//		return "login";
-//	}
-//	@RequestMapping (path ="login.do",method = RequestMethod.POST) 
-//	public String login(User user, HttpSession session) {
-//		user=dao.getUserByUserNameAndPassword(user.getUserName(), user.getPassword());
-//		if(user == null) {
-//			return "login";
-//		}else {
-//			session.setAttribute("loggedInUser", user);
-//			return "account";
-//		}
-//		return "login";
-//	}
+	@RequestMapping (path ="login.do",method = RequestMethod.GET) 
+	public String goToLoginForm(HttpSession session) {
+		User user = (User)session.getAttribute("loggedInUser");
+		if(user!=null) {
+			return "account";
+		}else {
+		return "login";
+		}
+		return "login";
+	}
+	@RequestMapping (path ="login.do",method = RequestMethod.POST) 
+	public String login(User user, HttpSession session) {
+		String password = 
+		user =userDao.findByUsername(user.getUsername());
+		if(user.getPassword())
+		user=dao.getUserByUserNameAndPassword(user.getUserName(), user.getPassword());
+		if(user == null) {
+			return "login";
+		}else {
+			session.setAttribute("loggedInUser", user);
+			return "account";
+		}
+		return "login";
+	}
 	@RequestMapping (path ="logout.do") 
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedInUser");

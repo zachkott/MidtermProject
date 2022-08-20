@@ -253,7 +253,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User findByUsername(String username) {
+	public User findByUsername(String username, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}

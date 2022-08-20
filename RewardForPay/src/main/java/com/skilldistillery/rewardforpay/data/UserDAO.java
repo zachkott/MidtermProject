@@ -29,7 +29,7 @@ public interface UserDAO {
 		int findPointBalance(int employeeId);
 		PointRedemption createRedemption(PointRedemption pointRedemption);
 		PointRedemption withdrawRedemption(int employeeId, int rewardId);
-		User findByUsername(String username);
+		User findByUsername(String username, String password);
 		
 		//Admin actions -Swarm
 		List<Status> pendingRequests(Status requestedStatus);
