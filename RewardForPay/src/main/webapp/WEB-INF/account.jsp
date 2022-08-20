@@ -12,7 +12,8 @@
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <h2>Welcome, ${employee.firstName} ${employee.lastName}</h2>
+   <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
+   <h2>Welcome, ${sessionScope.loggedInUser.username} ${sessionScope.loggedInUser.password}</h2>
    		<br>
 
 				<h5>What would you like to do?</h5>

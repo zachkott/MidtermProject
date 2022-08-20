@@ -20,9 +20,8 @@ public class AccountController {
 	@RequestMapping(path = { "account.do" })
 	public String home(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
+		Employee employee = (Employee) session.getAttribute("userinfo");
 		if (user != null) {
-			Employee employee = user.getEmployeeId();
-			model.addAttribute("employee",employee);
 			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
 			return "account";
 		} else {

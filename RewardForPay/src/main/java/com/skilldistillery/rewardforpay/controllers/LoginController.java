@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.rewardforpay.data.UserDAO;
+import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
@@ -34,6 +35,9 @@ public class LoginController {
 			return "login";
 		}else {
 			session.setAttribute("loggedInUser", user);
+			Employee employee = user.getEmployeeId();
+			session.setAttribute("userinfo", employee);
+			
 			return "account";
 		}
 	}
