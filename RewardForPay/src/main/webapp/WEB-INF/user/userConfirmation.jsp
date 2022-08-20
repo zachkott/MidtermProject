@@ -14,7 +14,7 @@
 
 <body>
 <c:choose>
-		<c:when test="${newUser}">
+		<c:when test="${createdUser}">
 			<h1>Created User!</h1>
 		
 			

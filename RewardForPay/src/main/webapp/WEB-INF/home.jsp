@@ -14,7 +14,7 @@ ${SMOKETEST}
 
 <!-- Test for create user-->
 <li class="nav-item">
-        <form action="createUserAccountForm.do" method="GET">
+        <form action="createUserAccountForm.do">
 		<div class="form-group">
 			<input class="btn btn-success" type="submit" value="Create New Account" />
 		</div>

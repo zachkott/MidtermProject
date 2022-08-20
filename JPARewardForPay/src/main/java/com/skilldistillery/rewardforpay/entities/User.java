@@ -32,7 +32,7 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "user_role_id"))
 	private List<UserRole> roles;
 
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employeeId;
 	

@@ -20,6 +20,9 @@
 			<label for="password">Password:</label> 
 			<input type="text" name="password"required="true"> 
 			<br>
+			<label for="empId">Employee Id:</label> 
+			<input type="number" name="empId"required="true"> 
+			<br>
 
 
 			<input class="btn btn-success" type="submit" value="Submit">

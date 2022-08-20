@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.rewardforpay.data.UserDAO;
+import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
@@ -25,18 +27,20 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createUserAccountForm.do")
-	public String createUserForm() {
+	public String createUserForm(Model model) {
 		return "user/createUser";
 	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount(Model model, User user, RedirectAttributes redir) {
+	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir, @RequestParam  int empId) {
 		ModelAndView mv = new ModelAndView();
 		User newUser = userDao.createUser(user);
-		newUser.setEnabled(true);
+		Employee employee = userDao.findEmployeeById(empId);
+		newUser.setEmployeeId(employee);
+//		newUser.setEnabled(true);
 		boolean createdUser = newUser.getId() > 0 ? true : false;
-		redir.addFlashAttribute("user", user);
 		redir.addFlashAttribute("newUser", newUser);
+		redir.addFlashAttribute("createdUser", createdUser);
 		mv.setViewName("redirect:userWasCreated.do");
 		return mv;
 	}

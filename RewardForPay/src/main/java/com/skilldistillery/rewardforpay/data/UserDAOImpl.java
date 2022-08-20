@@ -56,8 +56,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(user);
+		
+		return user;
 	}
 
 	@Override
