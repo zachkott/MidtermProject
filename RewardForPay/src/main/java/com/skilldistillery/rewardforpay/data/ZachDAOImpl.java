@@ -224,4 +224,10 @@ public class ZachDAOImpl implements UserDAO {
 		return null;
 	}
 
+	@Override
+	public User findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -252,4 +252,10 @@ public class JamieDAOImpl implements UserDAO {
 		return toDelete;
 	}
 
+	@Override
+	public User findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

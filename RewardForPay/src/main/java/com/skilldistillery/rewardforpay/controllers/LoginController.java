@@ -17,18 +17,18 @@ public class LoginController {
 	@Autowired
 	private UserDAO userDao;
 
-	@RequestMapping (path ="login.do",method = RequestMethod.GET) 
-	public String goToLoginForm(HttpSession session) {
+//	@RequestMapping (path ="login.do",method = RequestMethod.GET) 
+//	public String goToLoginForm(HttpSession session) {
 //		User user = (User)session.getAttribute("loggedInUser");
 //		if(user!=null) {
 //			return "account";
 //		}else {
 //		return "login";
 //		}
-		return "login";
-	}
-	@RequestMapping (path ="login.do",method = RequestMethod.POST) 
-	public String login(User user, HttpSession session) {
+//		return "login";
+//	}
+//	@RequestMapping (path ="login.do",method = RequestMethod.POST) 
+//	public String login(User user, HttpSession session) {
 //		user=dao.getUserByUserNameAndPassword(user.getUserName(), user.getPassword());
 //		if(user == null) {
 //			return "login";
@@ -36,11 +36,11 @@ public class LoginController {
 //			session.setAttribute("loggedInUser", user);
 //			return "account";
 //		}
-		return "login";
-	}
+//		return "login";
+//	}
 	@RequestMapping (path ="logout.do") 
 	public String logout(HttpSession session) {
-//		session.removeAttribute("loggedInUser");
+		session.removeAttribute("loggedInUser");
 		return "logout";
 	}
 }

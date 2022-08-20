@@ -31,6 +31,14 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public User findByUsername(String username) {
+		String exist = "SELECT u FROM User u WHERE u.username = :username";
+		User user = em.createQuery(exist, User.class).setParameter("username", username).getSingleResult();
+		
+		return user;
+	}
 
 	@Override
 	public List<User> findUserByKeyword(String keyword) {

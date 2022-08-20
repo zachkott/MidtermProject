@@ -9,7 +9,12 @@
 <body>
 <%@ include file="nav.jsp" %>
 <h1>This is the Login Page</h1>
-
+<h2>Log In</h2>
+<form action="login.do" method="POST">
+	<%-- Error messages --%>
+	<input type="text" name="username">
+	<input type="password" name="password"/>
+	<input type="submit" value="Log In" > 
 
 
 </body>
