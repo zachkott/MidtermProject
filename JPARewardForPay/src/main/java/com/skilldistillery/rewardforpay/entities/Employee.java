@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -55,10 +56,25 @@ public class Employee {
 	@ManyToMany(mappedBy="employees")
 	private List<Prize> prizes;
 	
+	@OneToMany(mappedBy="employee")
+	private List<PointAwarded> pointsAwarded;
+	
 	public Employee() {}
 
 	
 	
+	public List<PointAwarded> getPointsAwarded() {
+		return pointsAwarded;
+	}
+
+
+
+	public void setPointsAwarded(List<PointAwarded> pointsAwarded) {
+		this.pointsAwarded = pointsAwarded;
+	}
+
+
+
 	public List<Prize> getPrizes() {
 		return prizes;
 	}
@@ -159,36 +175,16 @@ public class Employee {
 		this.requestStatus = requestStatus;
 	}
 
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Employee [id=");
-		builder.append(id);
-		builder.append(", firstName=");
-		builder.append(firstName);
-		builder.append(", lastName=");
-		builder.append(lastName);
-		builder.append(", salary=");
-		builder.append(salary);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append(", department=");
-		builder.append(department);
-		builder.append(", supervisorId=");
-		builder.append(supervisorId);
-		builder.append(", employeePhoto=");
-		builder.append(employeePhoto);
-		builder.append(", birthday=");
-		builder.append(birthday);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", requestStatus=");
-		builder.append(requestStatus);
-		builder.append(", prizes=");
-		builder.append(prizes);
-		builder.append("]");
-		return builder.toString();
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salary=" + salary
+				+ ", address=" + address + ", department=" + department + ", supervisorId=" + supervisorId
+				+ ", employeePhoto=" + employeePhoto + ", birthday=" + birthday + ", description=" + description
+				+ ", requestStatus=" + requestStatus + ", prizes=" + prizes + ", pointsAwarded=" + pointsAwarded + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {

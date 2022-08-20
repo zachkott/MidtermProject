@@ -69,6 +69,13 @@ class EmployeeTest {
 
 	}
 	
+	@Test
+	void test_Employee_PointAward_OneToMany_mapping() {
+		employee= em.find(Employee.class, 2);
+		assertNotNull(employee);
+		assertNotNull(employee.getPointsAwarded());
+		assertTrue(employee.getPointsAwarded().size() > 0);
+	}
 //	@Test
 //	void test_Employee_Prize_ManyToMany_mapping() {
 //		assertNotNull(employee);

@@ -27,7 +27,7 @@ public interface UserDAO {
 		Employee updateEmployee(int id, Employee employee);
 		Employee deleteEmployee(int id); //Inactivate employee
 		int findPointBalance(int employeeId);
-		PointRedemption createRedemption(int employeeId, int rewardId);
+		PointRedemption createRedemption(PointRedemption pointRedemption);
 		PointRedemption withdrawRedemption(int employeeId, int rewardId);
 		
 		//Admin actions -Swarm

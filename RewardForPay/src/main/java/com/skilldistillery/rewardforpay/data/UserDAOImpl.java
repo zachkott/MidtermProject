@@ -26,17 +26,18 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findById(int userId) {
-		return em.find(User.class, userId);
-	}
-
-	@Override
-	public User findUserByKeyword(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User findAllUsers() {
+	public List<User> findUserByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,49 +62,72 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public Employee findEmployeeById(int employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Employee.class, employeeId);
 	}
 
 	@Override
-	public Employee findAllEmployees(int employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> findAllEmployees(int employeeId) {
+		String query = "SELECT e FROM Employee e";
+		return em.createQuery(query, Employee.class).getResultList();
 	}
 
 	@Override
 	public Employee createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(employee);
+		return employee;
 	}
 
 	@Override
 	public Employee updateEmployee(int id, Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee updated = em.find(Employee.class, id);
+		updated.setFirstName(employee.getFirstName());
+		updated.setLastName(employee.getLastName());
+		updated.setSalary(employee.getSalary());
+		updated.setAddress(employee.getAddress());
+		updated.setDepartment(employee.getDepartment());
+		updated.setSupervisorId(employee.getSupervisorId());
+		updated.setEmployeePhoto(employee.getEmployeePhoto());
+		updated.setBirthday(employee.getBirthday());
+		updated.setDescription(employee.getDescription());
+		updated.setRequestStatus(employee.getRequestStatus());
+		updated.setPrizes(employee.getPrizes());
+		return employee;
 	}
 
 	@Override
 	public Employee deleteEmployee(int id) {
-		// TODO Auto-generated method stub
+		em.remove(em.find(Employee.class, id));
 		return null;
 	}
 
 	@Override
 	public int findPointBalance(int employeeId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int sum = 0;
+		String redeemedquery = "SELECT pr FROM PointRedemption pr WHERE pr.employee = :employeeId";
+		List<PointRedemption> redeemed = em.createQuery(redeemedquery, PointRedemption.class).setParameter("employeeId", employeeId).getResultList();
+		String awaredquery = "SELECT pa FROM PointAwarded pa WHERE pr.employee = :employeeId";
+		List<PointAwarded> awarded = em.createQuery(awaredquery, PointAwarded.class).setParameter("employeeId", employeeId).getResultList();
+		
+		for(PointAwarded each: awarded) {
+			sum +=each.getAmount();
+		}
+		if(redeemed.size()!=0) {
+			for(PointRedemption each: redeemed) {
+				sum -=each.getPrize().getPoints();
+			}
+		}
+		return sum;
 	}
 
 	@Override
-	public PointRedemption createRedemption(int employeeId, int rewardId) {
-		// TODO Auto-generated method stub
-		return null;
+	public PointRedemption createRedemption(PointRedemption redeemed) {
+		em.persist(redeemed);
+		return redeemed;
 	}
 
 	@Override
 	public PointRedemption withdrawRedemption(int employeeId, int rewardId) {
-		// TODO Auto-generated method stub
+		//This is hard to accomplish becasue it doesnt have a status field, prize does
 		return null;
 	}
 
@@ -120,7 +144,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Prize findAllRequests(int employeeId) {
+	public List<Status> findAllRequests(int employeeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -162,7 +186,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Prize findAllPrizes(int prizeId) {
+	public List<Prize> findAllPrizes(int prizeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Prize> findPrizesByTier(int tierId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -202,4 +232,6 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 }
