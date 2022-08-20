@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.rewardforpay.entities.Employee;
@@ -18,6 +19,7 @@ import com.skilldistillery.rewardforpay.entities.User;
 
 @Service
 @Transactional
+@Primary
 public class UserDAOImpl implements UserDAO {
 	
 	

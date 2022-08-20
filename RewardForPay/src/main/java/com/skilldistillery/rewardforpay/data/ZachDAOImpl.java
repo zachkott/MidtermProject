@@ -111,7 +111,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public PointRedemption createRedemption(int employeeId, int rewardId) {
+	public PointRedemption createRedemption(PointRedemption redeemed) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -214,6 +214,12 @@ public class ZachDAOImpl implements UserDAO {
 
 	@Override
 	public PointAwarded withdrawAward(int awardId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Prize> findPrizesByTier(int tierId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

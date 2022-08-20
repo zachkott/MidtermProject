@@ -103,7 +103,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public PointRedemption createRedemption(int employeeId, int rewardId) {
+	public PointRedemption createRedemption(PointRedemption redeemed) {
 		// TODO Auto-generated method stub
 		return null;
 	}
