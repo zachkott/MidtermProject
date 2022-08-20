@@ -31,15 +31,28 @@ public class UserController {
 		return "user/createUser";
 	}
 
+//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
+//	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir, @RequestParam  int employeeId) {
+//		ModelAndView mv = new ModelAndView();
+//		Employee empId = userDao.findEmployeeById(employeeId);
+//		user.setEmployeeId(empId);
+//		User newUser = userDao.createUser(user);
+////		newUser.setEnabled(true);
+//		boolean createdUser = newUser.getId() > 0 ? true : false;
+//		redir.addFlashAttribute("newUser", newUser);
+//		redir.addFlashAttribute("createdUser", createdUser);
+//		mv.setViewName("redirect:userWasCreated.do");
+//		return mv;
+//	}
+	
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir, @RequestParam  int empId) {
+	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
+		
 		User newUser = userDao.createUser(user);
-		Employee employee = userDao.findEmployeeById(empId);
-		newUser.setEmployeeId(employee);
-//		newUser.setEnabled(true);
+		newUser.setEnabled(true);
 		boolean createdUser = newUser.getId() > 0 ? true : false;
-		redir.addFlashAttribute("newUser", newUser);
+		redir.addFlashAttribute("user", newUser);
 		redir.addFlashAttribute("createdUser", createdUser);
 		mv.setViewName("redirect:userWasCreated.do");
 		return mv;
