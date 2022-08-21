@@ -14,6 +14,7 @@
 
 		<c:choose>
 		<c:when test="${! empty prizes}">
+		<h1>test</h1>
 			<div class="row row-cols-1 row-cols-md-3 g-${numOfPrizes}">
 				<c:forEach var="prize" items="${prizes}">
 			  <div class="col">
