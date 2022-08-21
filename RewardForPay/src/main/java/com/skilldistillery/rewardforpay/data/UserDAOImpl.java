@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
@@ -87,6 +88,11 @@ public class UserDAOImpl implements UserDAO {
 	public Employee createEmployee(Employee employee) {
 		em.persist(employee);
 		return employee;
+	}
+	@Override
+	public Address createAddress(Address address) {
+		em.persist(address);
+		return address;
 	}
 
 	@Override

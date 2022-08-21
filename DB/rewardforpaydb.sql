@@ -105,7 +105,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `employee` ;
 
 CREATE TABLE IF NOT EXISTS `employee` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `salary` DOUBLE NULL,
