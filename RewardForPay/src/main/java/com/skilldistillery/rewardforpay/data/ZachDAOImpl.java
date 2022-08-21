@@ -46,7 +46,9 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User createUser(User user) {
+	public User createUser(User user, int empId) {
+		Employee employee = em.find(Employee.class, empId);
+		user.setEmployee(employee);
 		em.persist(user);
 		
 		return user;

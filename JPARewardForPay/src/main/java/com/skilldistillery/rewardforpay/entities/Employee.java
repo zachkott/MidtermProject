@@ -28,7 +28,7 @@ public class Employee {
 	@Column(name = "last_name")
 	private String lastName;
 
-	private double salary;
+	private Double salary;
 
 	@OneToOne
 	@JoinColumn(name="address_id")
@@ -91,11 +91,11 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 

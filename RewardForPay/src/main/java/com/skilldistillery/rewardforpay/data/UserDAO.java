@@ -2,6 +2,10 @@ package com.skilldistillery.rewardforpay.data;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
@@ -9,14 +13,15 @@ import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
 import com.skilldistillery.rewardforpay.entities.User;
 
-
+@Service
+@Transactional
 public interface UserDAO {
 
 		//Login/credentialed user actions -Zach
 		User findById(int userId);
 		List<User> findUserByKeyword(String keyword);
 		List<User> findAllUsers();
-		User createUser(User user);
+		User createUser(User user, int empId);
 		User updateUser(int id, User user);
 		User deleteUser(int id); //Inactivate user
 		

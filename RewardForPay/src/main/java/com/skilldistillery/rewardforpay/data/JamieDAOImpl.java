@@ -42,7 +42,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User createUser(User user) {
+	public User createUser(User user, int empId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -250,4 +250,5 @@ public class JamieDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

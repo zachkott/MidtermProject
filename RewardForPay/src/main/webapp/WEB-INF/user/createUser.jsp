@@ -20,8 +20,8 @@
 			<label for="password">Password:</label> 
 			<input type="text" name="password"required="true"> 
 			<br>
-			<label for="employee">Employee Id:</label> 
-			<input type="number" name="employee"required="true"> 
+			<label for="empId">Employee Id:</label> 
+			<input type="number" name="empId"required="true"> 
 			<br>
 
 

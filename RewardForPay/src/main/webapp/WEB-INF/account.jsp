@@ -57,7 +57,7 @@
 						<h1><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h1><br>
 						<ul style="list-style-type: none">
 							<li><strong>Salary: </strong>${sessionScope.userinfo.salary}</li>
-							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.address}</li>
+							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.street}</li>
 							<li><strong>Department: </strong>${sessionScope.userinfo.department}</li>
 							<li>Birthday: <h4>${sessionScope.userinfo.birthday}</h4></li>
 							<li>Reward Balance: <h4>${sessionScope.rewardBalance}</h4></li> <!-- do the logic in controller and pass the attribute value -->
