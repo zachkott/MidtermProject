@@ -22,7 +22,7 @@ public interface UserDAO {
 		
 		//Employee profile/actions -Daniel
 		Employee findEmployeeById(int employeeId);
-		List<Employee> findAllEmployees(int employeeId);
+		List<Employee> findAllEmployees();
 		Employee createEmployee(Employee employee);
 		Employee updateEmployee(int id, Employee employee);
 		Employee deleteEmployee(int id); //Inactivate employee
@@ -34,7 +34,7 @@ public interface UserDAO {
 		//Admin actions -Swarm
 		List<Status> pendingRequests(Status requestedStatus);
 		boolean updateStatus(int statusId);
-		List<Status> findAllRequests(int employeeId);
+		List<Status> findAllRequests();
 		boolean rejectAward(int id);
 		PointAwarded updateAward(int awardId, PointAwarded pointAward);
 		Prize deletePrize(int id); //Inactivate prize
@@ -44,14 +44,14 @@ public interface UserDAO {
 
 		//Reward items -Jamie
 		Prize findPrizeById(int prizeId);
-		List<Prize> findAllPrizes(int prizeId);
+		List<Prize> findAllPrizes();
 		List<Prize> findPrizesByTier(int tierId);
 		Prize createPrize(Prize prize);
 		Prize updatePrize(int id, Prize prize);
 		
 		//Award submissions/points -Jamie
 		PointAwarded findAwardByID(int awardId);
-		List<PointAwarded> findAllAwards(int awardId);
+		List<PointAwarded> findAllAwards();
 		PointAwarded createAward(PointAwarded pointAward);
 		PointAwarded withdrawAward(int awardId);
 		

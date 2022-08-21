@@ -79,7 +79,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Employee> findAllEmployees(int employeeId) {
+	public List<Employee> findAllEmployees() {
 		String query = "SELECT e FROM Employee e";
 		return em.createQuery(query, Employee.class).getResultList();
 	}
@@ -157,7 +157,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Status> findAllRequests(int employeeId) {
+	public List<Status> findAllRequests() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -199,7 +199,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Prize> findAllPrizes(int prizeId) {
+	public List<Prize> findAllPrizes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -229,7 +229,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<PointAwarded> findAllAwards(int awardId) {
+	public List<PointAwarded> findAllAwards() {
 		// TODO Auto-generated method stub
 		return null;
 	}

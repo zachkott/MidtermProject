@@ -1,14 +1,8 @@
 package com.skilldistillery.rewardforpay.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import javax.persistence.Column;
 import javax.persistence.EntityManager;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -19,7 +13,6 @@ import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
 import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
-import com.skilldistillery.rewardforpay.entities.Tier;
 import com.skilldistillery.rewardforpay.entities.User;
 
 
@@ -73,7 +66,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Employee> findAllEmployees(int employeeId) {
+	public List<Employee> findAllEmployees() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -127,7 +120,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Status> findAllRequests(int employeeId) {
+	public List<Status> findAllRequests() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -162,23 +155,17 @@ public class JamieDAOImpl implements UserDAO {
 		return null;
 	}
 	
+
 	
 	
-	
-	
-	
-	
-	
-	
-	
-/////Reward/Award actions
+	/////Reward/Award actions
 	@Override
 	public Prize findPrizeById(int prizeId) {
 		return em.find(Prize.class, prizeId);
 	}
 
 	@Override
-	public List<Prize> findAllPrizes(int prizeId) {
+	public List<Prize> findAllPrizes() {
 		String query = "SELECT p FROM Prize p ORDER BY p.name";
 		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
 		return prizes;
@@ -186,15 +173,21 @@ public class JamieDAOImpl implements UserDAO {
 
 	@Override
 	public List<Prize> findPrizesByTier(int tierId) {
-		String query = "SELECT p FROM Prize p ORDER BY p.tier, p.name";
-		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
-		List<Prize> prizeTier = new ArrayList<Prize>();
-		for (Prize p : prizes) {
-			if (p.getTier().getId() == tierId) {
-				prizeTier.add(p);
-			}
-		}
+		//select * from prize p join tier t on p.tier_id=t.id where t.id = 3 order by p.tier_id, p.name; //make this into JPQL
+		String query2 = "SELECT p FROM Prize p JOIN Tier t on p.tier_id = t.id WHERE t.id = :tier ORDER BY p.tier, p.name";
+		List<Prize> prizeTier = em.createQuery(query2, Prize.class).setParameter("tier", tierId).getResultList();
+
+		
+//		String query = "SELECT p FROM Prize p ORDER BY p.tier, p.name";
+//		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
+//		List<Prize> prizeTier = new ArrayList<Prize>();
+//		for (Prize p : prizes) {
+//			if (p.getTier().getId() == tierId) {
+//				prizeTier.add(p);
+//			}
+//		}
 		return prizeTier;
+
 	}
 
 	@Override
@@ -227,7 +220,7 @@ public class JamieDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<PointAwarded> findAllAwards(int awardId) {
+	public List<PointAwarded> findAllAwards() {
 		String query = "SELECT pa FROM PointAwarded pa ORDER BY pa.id";
 		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).getResultList();
 		return pointsAwarded;		
@@ -257,5 +250,4 @@ public class JamieDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

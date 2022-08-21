@@ -35,9 +35,10 @@ public class LoginController {
 			return "login";
 		}else {
 			session.setAttribute("loggedInUser", user);
-			Employee employee = user.getEmployeeId();
+			Employee employee = user.getEmployee();
 			session.setAttribute("userinfo", employee);
-			
+			session.setAttribute("prizes", userDao.findAllPrizes());
+			session.setAttribute("rewardBalance", 100); //modify this to show actual balance
 			return "account";
 		}
 	}

@@ -3,8 +3,6 @@ package com.skilldistillery.rewardforpay.entities;
 import java.util.List;
 import java.util.Objects;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -34,9 +33,10 @@ public class User {
 
 	@OneToOne
 	@JoinColumn(name = "employee_id")
-	private Employee employeeId;
+	private Employee employee;
 	
-	
+	@OneToMany(mappedBy="user")
+	private List<PointAwarded> pointsAwarded;
 	
 
 	public User() {
@@ -57,6 +57,16 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	
+
+	public List<PointAwarded> getPointsAwarded() {
+		return pointsAwarded;
+	}
+
+	public void setPointsAwarded(List<PointAwarded> pointsAwarded) {
+		this.pointsAwarded = pointsAwarded;
 	}
 
 	public String getPassword() {
@@ -83,12 +93,13 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Employee getEmployeeId() {
-		return employeeId;
+
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setEmployeeId(Employee employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override
@@ -120,7 +131,7 @@ public class User {
 		builder.append(", enabled=");
 		builder.append(enabled);
 		builder.append(", employeeId=");
-		builder.append(employeeId);
+		builder.append(employee);
 		builder.append("]");
 		return builder.toString();
 	}

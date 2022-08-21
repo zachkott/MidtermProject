@@ -20,10 +20,10 @@
 			<label for="password">Password:</label> 
 			<input type="text" name="password"required="true"> 
 			<br>
-			<!-- <label for="employeeId">Employee Id:</label> 
-			<input type="number" name="employeeId"required="true"> 
+			<label for="employee">Employee Id:</label> 
+			<input type="number" name="employee"required="true"> 
 			<br>
- -->
+
 
 			<input class="btn btn-success" type="submit" value="Submit">
 

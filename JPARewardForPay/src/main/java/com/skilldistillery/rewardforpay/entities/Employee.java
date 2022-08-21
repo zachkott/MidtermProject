@@ -59,33 +59,13 @@ public class Employee {
 	@OneToMany(mappedBy="employee")
 	private List<PointAwarded> pointsAwarded;
 	
+	@OneToOne(mappedBy="employee")
+	private User user;
+	
+	
+	
+	
 	public Employee() {}
-
-	
-	
-	public List<PointAwarded> getPointsAwarded() {
-		return pointsAwarded;
-	}
-
-
-
-	public void setPointsAwarded(List<PointAwarded> pointsAwarded) {
-		this.pointsAwarded = pointsAwarded;
-	}
-
-
-
-	public List<Prize> getPrizes() {
-		return prizes;
-	}
-
-
-
-	public void setPrizes(List<Prize> prizes) {
-		this.prizes = prizes;
-	}
-
-
 
 	public int getId() {
 		return id;
@@ -135,7 +115,7 @@ public class Employee {
 		this.department = department;
 	}
 
-	public int getSupervisorId() {
+	public Integer getSupervisorId() {
 		return supervisorId;
 	}
 
@@ -175,6 +155,29 @@ public class Employee {
 		this.requestStatus = requestStatus;
 	}
 
+	public List<Prize> getPrizes() {
+		return prizes;
+	}
+
+	public void setPrizes(List<Prize> prizes) {
+		this.prizes = prizes;
+	}
+
+	public List<PointAwarded> getPointsAwarded() {
+		return pointsAwarded;
+	}
+
+	public void setPointsAwarded(List<PointAwarded> pointsAwarded) {
+		this.pointsAwarded = pointsAwarded;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {

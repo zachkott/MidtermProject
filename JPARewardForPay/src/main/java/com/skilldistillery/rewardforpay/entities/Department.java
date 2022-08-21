@@ -1,5 +1,6 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Department {
@@ -30,6 +32,14 @@ public class Department {
 	
 	@Column(name="website_url")
 	private String websiteUrl;
+	
+	@OneToMany(mappedBy="department")
+	private List<Employee> employees;
+	
+	
+	
+	
+	
 	
 	public Department() {}
 
@@ -79,6 +89,24 @@ public class Department {
 
 	public void setWebsiteUrl(String websiteUrl) {
 		this.websiteUrl = websiteUrl;
+	}
+	
+	
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 	@Override

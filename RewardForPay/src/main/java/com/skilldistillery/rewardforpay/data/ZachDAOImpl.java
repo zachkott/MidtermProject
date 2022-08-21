@@ -81,7 +81,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Employee> findAllEmployees(int employeeId) {
+	public List<Employee> findAllEmployees() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -135,7 +135,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Status> findAllRequests(int employeeId) {
+	public List<Status> findAllRequests() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -177,7 +177,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Prize> findAllPrizes(int prizeId) {
+	public List<Prize> findAllPrizes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -201,7 +201,7 @@ public class ZachDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<PointAwarded> findAllAwards(int awardId) {
+	public List<PointAwarded> findAllAwards() {
 		// TODO Auto-generated method stub
 		return null;
 	}
