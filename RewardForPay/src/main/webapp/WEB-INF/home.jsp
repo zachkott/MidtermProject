@@ -9,7 +9,7 @@
 <body>
 <%@ include file="nav.jsp" %>
 <h1>Welcome to Reward For Pay</h1>
-${SMOKETEST}
+
 
 
 <!-- Test for create user-->
