@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
@@ -35,6 +36,7 @@ public interface UserDAO {
 		PointRedemption createRedemption(PointRedemption pointRedemption);
 		PointRedemption withdrawRedemption(int employeeId, int rewardId);
 		User findByUsername(String username, String password);
+		Address createAddress(Address address);
 		
 		//Admin actions -Swarm
 		List<Status> pendingRequests(Status requestedStatus);
