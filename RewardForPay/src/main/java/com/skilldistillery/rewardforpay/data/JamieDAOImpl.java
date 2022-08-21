@@ -44,8 +44,14 @@ public class JamieDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user, int empId) {
-		// TODO Auto-generated method stub
-		return null;
+		User newUser = user;
+		Employee employee = em.find(Employee.class, empId);
+		employee.getPrizes().size();
+		employee.getPointsAwarded().size();
+		newUser.setEmployee(employee);
+		em.persist(newUser);
+		
+		return newUser;
 	}
 
 	@Override

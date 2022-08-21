@@ -57,8 +57,14 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User createUser(User user, int empId) {
+		User newUser = user;
+		Employee employee = em.find(Employee.class, empId);
+		employee.getPrizes().size();
+		employee.getPointsAwarded().size();
+		newUser.setEmployee(employee);
+		em.persist(newUser);
 		
-		return user;
+		return newUser;
 	}
 
 	@Override
