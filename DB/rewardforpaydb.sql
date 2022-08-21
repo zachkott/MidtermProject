@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `enabled` TINYINT NULL,
-  `employee_id` INT NULL,
+  `employee_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_employee1_idx` (`employee_id` ASC),
   CONSTRAINT `fk_user_employee1`
@@ -455,9 +455,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (1, 'Mouse Pad', 50, 1, NULL, NULL, 1);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (2, 'Coffee Maker', 125, 2, NULL, NULL, 2);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (3, 'Trip to Mexico', 12000, 3, NULL, NULL, 3);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (1, 'Mouse Pad', 150, 1, NULL, NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (2, 'Coffee Maker', 560, 1, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (3, 'Trip to Mexico', 18000, 3, NULL, NULL, 3);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (4, 'PS4', 4700, 2, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (5, 'Company T-Shirt', 360, 1, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (6, '28in TV', 5700, 2, NULL, NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (7, 'Alaska Trip', 21000, 3, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (8, 'Air Fryer', 1700, 2, NULL, NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (9, 'Pots and Pans', 2500, 2, NULL, NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (10, 'Jabra Earbuds', 1500, 2, NULL, NULL, 2);
 
 COMMIT;
 
@@ -520,9 +527,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (1, 200, NULL, 1, 'Good Job', 1, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (1, 25, NULL, 1, 'Good Job', 1, 1, 1);
 INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (2, 75, NULL, 2, 'Took a shift', 2, 0, 2);
 INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (3, 10000, NULL, 2, 'Was nice to me', 3, 1, 2);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (4, 125, NULL, 4, 'Good Job', 2, 1, 2);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (5, 75, NULL, 4, 'Good Job', 2, 1, 3);
 
 COMMIT;
 
