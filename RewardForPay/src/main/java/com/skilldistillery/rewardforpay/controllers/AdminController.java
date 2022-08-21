@@ -17,21 +17,6 @@ public class AdminController {
 	@Autowired
 	private UserDAO userDao;
 
-	@RequestMapping(path="createEmployee.do", method= RequestMethod.GET)
-	public String createEmployee(Model model) {
-		return "createEmployee";
-	}
-	
-	@RequestMapping(path = "createEmployee.do", method = RequestMethod.POST)
-	public String employeeCreated(Employee employee, Model model, RedirectAttributes redir) {
-		redir.addFlashAttribute("prizeAdded", userDao.createEmployee(employee));
-		redir.addAttribute("id", employee.getId());
-		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
-		redir.addFlashAttribute("addFail", "There was a problem adding the employee.");
-		return "redirect:account.do"; 
-	}
-	
-	
 	@RequestMapping(path="createAddress.do", method= RequestMethod.GET)
 	public String createAddress(Model model) {
 		return "createAddress";
@@ -39,10 +24,26 @@ public class AdminController {
 	
 	@RequestMapping(path = "createAddress.do", method = RequestMethod.POST)
 	public String addressCreated(Address address, Model model, RedirectAttributes redir) {
-		redir.addFlashAttribute("prizeAdded", userDao.createAddress(address));
+		redir.addFlashAttribute("addressAdded", userDao.createAddress(address));
 		redir.addAttribute("id", address.getId());
+		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
+		redir.addFlashAttribute("addFail", "There was a problem adding the address.");
+		return "redirect:account.do"; 
+	}
+	
+	@RequestMapping(path="createEmployee.do", method= RequestMethod.GET)
+	public String createEmployee(Model model) {
+		return "createEmployee";
+	}
+	
+	@RequestMapping(path = "createEmployee.do", method = RequestMethod.POST)
+	public String employeeCreated(Employee employee, Model model, RedirectAttributes redir) {
+		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee));
+		redir.addAttribute("id", employee.getId());
 		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
 		redir.addFlashAttribute("addFail", "There was a problem adding the employee.");
 		return "redirect:account.do"; 
 	}
+	
+	
 }
