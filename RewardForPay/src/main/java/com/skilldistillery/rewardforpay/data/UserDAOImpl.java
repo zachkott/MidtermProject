@@ -59,9 +59,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Employee createEmployee(Employee employee) {
-		em.persist(employee);
-		return employee;
+	public Employee createEmployee(Employee employee, int addId) {
+		Employee emp = employee;
+		Address add = em.find(Address.class, addId);
+		emp.setAddress(add);
+		em.persist(emp);
+		return emp;
 	}
 
 	@Override
@@ -270,9 +273,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Status> pendingRequests(Status requestedStatus) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Status> pendingRequests() {
+		String query = "SELECT e, p FROM Employee e, Prize p WHERE e.request_status_id = 2";
+		return em.createQuery(query, Status.class).getResultList();
 	}
 
 	@Override

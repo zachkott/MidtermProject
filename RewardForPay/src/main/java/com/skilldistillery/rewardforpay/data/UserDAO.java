@@ -31,7 +31,7 @@ public interface UserDAO {
 		//Employee profile/actions -Daniel
 		Employee findEmployeeById(int employeeId);
 		List<Employee> findAllEmployees();
-		Employee createEmployee(Employee employee);
+		Employee createEmployee(Employee employee, int addId);
 		Employee updateEmployee(int id, Employee employee);
 		Employee deleteEmployee(int id); //Inactivate employee
 		int findPointBalance(int employeeId);
@@ -41,7 +41,7 @@ public interface UserDAO {
 		Address createAddress(Address address);
 		
 		//Admin actions -Swarm
-		List<Status> pendingRequests(Status requestedStatus);
+		List<Status> pendingRequests() ;
 		boolean updateStatus(int statusId);
 		List<Status> findAllRequests();
 		boolean rejectAward(int id);

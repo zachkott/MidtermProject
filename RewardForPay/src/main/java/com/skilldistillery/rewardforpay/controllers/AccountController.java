@@ -27,6 +27,12 @@ public class AccountController {
 		} else {
 			return "login";
 		}
+		
+	}
+	@RequestMapping(path = { "pendingList.do" })
+	public String allPending(HttpSession session, Model model) {
+		model.addAttribute("pending",userDao.pendingRequests());
+		return "TestMethods";
 
 	}
 }
