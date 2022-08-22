@@ -34,7 +34,7 @@ awards - all awards
 	
 	<form action="withdrawAward.do" method="get"> <!-- update with controller mapping -->
 		<input type="hidden" value="${award.id}" name="id" /> 
-		<input type="hidden" value="${sessionScope.loggedInUser.id}" name="userId" /> 
+		<input type="hidden" value="${sessionScope.userinfo.id}" name="empId" /> 
 		<input class="action_button" type="submit" value="Withdraw Award" />
 	</form>
 </c:when>
@@ -47,9 +47,12 @@ awards - all awards
 	<c:choose>
 		<c:when test="${! empty awards}">
 				<c:forEach var="award" items="${awards}">
-			      <a href="award.do?id=${award.id}">${award.employee.firstName} ${award.employee.lastName}, ${award.issued}</a>
+					<form action="award.do" method="get"> <!-- update with controller mapping -->
+						<input type="hidden" value="${award.id}" name="awardId" /> 
+						<input type="hidden" value="${sessionScope.userinfo.id}" name="empId" /> 
+						<input class="action_button" type="submit" value="${award.employee.firstName} ${award.employee.lastName}, ${award.issued}" />
+					</form>
 				</c:forEach>
-			</div>
 		</c:when>
 		<c:otherwise>
 			<h1>${continentFail}</h1>

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.rewardforpay.data.UserDAO;
-import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.Prize;
 
@@ -79,31 +78,31 @@ public class RewardController {
 		return "redirect:reward.do"; 
 	}
 	
-//	//Full history of awards will display under specific award on award.jsp
-//	@RequestMapping(path="awardHistory.do")
-//	public String allAwards(Model model) {
-//			model.addAttribute("awards", userDao.findAllAwards());
-//			model.addAttribute("Error", "Sorry, something went wrong. Please try again later.");
-//		return "award";
-//	}
-//	
-//	//When user looks for specific award req, takes them to award page w/ award info
-//	@RequestMapping(path= {"award.do"})
-//	public String awardDetails(Model model, int id) {
-//		model.addAttribute("award", userDao.findAwardByID(id));
-//		model.addAttribute("awards", userDao.findAllAwards());
-//		model.addAttribute("awardNotFound", "Sorry, that award no longer exists.");
-//		return "award";
-//	}
-//	
-//	//From award page, user can withdraw req
-//	@RequestMapping(path= {"withdrawAward.do"})
-//	public String withdrawAward(Model model, int id, int userId) {  //add extra verification that user submitted request?
-//		PointAwarded wdAward = userDao.withdrawAward(id);
-//		model.addAttribute("success", "The status of this award is now " + userDao.withdrawAward(id).getStatus().getName());
-//		model.addAttribute("awards", userDao.findAllAwards());
-//		return "award";
-//	}
+	//Full history of awards will display under specific award on award.jsp
+	@RequestMapping(path="awardHistory.do")
+	public String allAwards(Model model, int empId) {
+			model.addAttribute("awards", userDao.findAllAwards(empId));
+			model.addAttribute("Error", "Sorry, something went wrong. Please try again later.");
+		return "award";
+	}
+	
+	//When user looks for specific award req, takes them to award page w/ award info
+	@RequestMapping(path= {"award.do"})
+	public String awardDetails(Model model, int awardId, int empId) {
+		model.addAttribute("award", userDao.findAwardByID(awardId));
+		model.addAttribute("awards", userDao.findAllAwards(empId));
+		model.addAttribute("awardNotFound", "Sorry, that award no longer exists.");
+		return "award";
+	}
+	
+	//From award page, user can withdraw req
+	@RequestMapping(path= {"withdrawAward.do"})
+	public String withdrawAward(Model model, int id, int empId) {  //add extra verification that user submitted request?
+		PointAwarded wdAward = userDao.withdrawAward(id);
+		model.addAttribute("success", "The status of this award is now " + wdAward.getStatus().getName());
+		model.addAttribute("awards", userDao.findAllAwards(empId));
+		return "award";
+	}
 	
 	//From main homepage logged in, user can submit a new award
 	@RequestMapping(path="createAward.do", method= RequestMethod.GET)

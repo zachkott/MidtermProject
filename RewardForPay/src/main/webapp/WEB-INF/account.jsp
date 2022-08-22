@@ -65,7 +65,7 @@
 		<c:if test="${! empty sessionScope.prizes}"/>
 	        <h3 class="card-title" style="text-align:center">Search Prizes By Tier: </h3>
 	          <form action="allPrizes.do" method="get">
-				<select name="category" id="dropdown" required>
+				<select name="id" id="dropdown" required>
 						<option value="1">Tier 1 - Copper</option>
 						<option value="2">Tier 2 - Silver</option>
 						<option value="3">Tier 3 - Gold</option>
