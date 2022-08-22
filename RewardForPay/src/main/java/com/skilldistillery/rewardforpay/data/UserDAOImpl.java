@@ -191,11 +191,19 @@ public class UserDAOImpl implements UserDAO {
 		updated.setPoints(prize.getPoints());
 		updated.setDescription(prize.getDescription());
 		updated.setImage(prize.getImage());
-		updated.setTier(prize.getTier());
-		updated.setStatus(prize.getStatus());
+		if (prize.getPoints() < em.find(Tier.class, 1).getThreshold()) {
+			updated.setTier(em.find(Tier.class, 1));
+		}
+		else if (prize.getPoints() < em.find(Tier.class, 2).getThreshold()) {
+			updated.setTier(em.find(Tier.class, 2));
+		}
+		else { updated.setTier(em.find(Tier.class, 3));
+		}
+		Status status = em.find(Status.class, 2);
+		updated.setStatus(status);
 		updated.setEmployees(prize.getEmployees());
 		
-		return prize;
+		return updated;
 	}
 
 	@Override

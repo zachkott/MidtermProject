@@ -70,7 +70,7 @@ public class RewardController {
 	}
 	
 	@RequestMapping(path = "updatePrize.do", method = RequestMethod.POST)
-	public String prizeUpdated(Prize prize, @RequestParam("id") int id, Model model, RedirectAttributes redir) {
+	public String prizeUpdated(Prize prize, int id, Model model, RedirectAttributes redir) {
 		redir.addFlashAttribute("siteUpdated", userDao.updatePrize(id, prize));
 		redir.addAttribute("id", prize.getId());
 		redir.addFlashAttribute("editMessage", "Changes have been submitted for approval.");
