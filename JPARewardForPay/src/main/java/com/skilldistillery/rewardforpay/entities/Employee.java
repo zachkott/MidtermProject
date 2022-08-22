@@ -179,15 +179,6 @@ public class Employee {
 		this.user = user;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salary=" + salary
-				+ ", address=" + address + ", department=" + department + ", supervisorId=" + supervisorId
-				+ ", employeePhoto=" + employeePhoto + ", birthday=" + birthday + ", description=" + description
-				+ ", requestStatus=" + requestStatus + ", prizes=" + prizes + ", pointsAwarded=" + pointsAwarded + "]";
-	}
-
-
 
 	@Override
 	public int hashCode() {

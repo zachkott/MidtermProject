@@ -116,12 +116,6 @@ public class PointAwarded {
 		this.user = user;
 	}
 
-	@Override
-	public String toString() {
-		return "PointAwarded [id=" + id + ", amount=" + amount + ", issued=" + issued + ", employee=" + employee
-				+ ", description=" + description + ", status=" + status + ", judgement=" + judgement + ", user=" + user
-				+ "]";
-	}
 
 	@Override
 	public int hashCode() {
