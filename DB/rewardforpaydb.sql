@@ -434,6 +434,8 @@ INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`,
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (3, 'Ryan', 'Cosby', 110000, 3, 3, 1, NULL, NULL, 'Do you have those TPS reports?', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (4, 'Randy', 'Miller', 220000, 4, 2, NULL, NULL, NULL, 'Break time is over.', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (5, 'Zach', 'Knott', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (6, 'Jamie', 'Patt', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (7, 'Daniel', 'Schu', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
 
 COMMIT;
 
@@ -518,6 +520,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALU
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (2, 'bdobbs', 'bdobbs', 1, 2);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (3, 'rcosby', 'rcosby', 1, 3);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (4, 'rmiller', 'rmiller', 1, 4);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (5, 'zkott', 'zkott', 1, 5);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (6, 'jpatt', 'jpatt', 1, 6);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (7, 'dschu', 'dschu', 1, 7);
 
 COMMIT;
 
@@ -546,6 +551,9 @@ INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (2, 2);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (3, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (4, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (1, 2);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (5, 1);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (6, 1);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (7, 1);
 
 COMMIT;
 
