@@ -17,8 +17,8 @@
 
 <div class="form-row">
 		<form action="createUser.do" method="POST">
-			<label for="address">Street Address: </label> 
-			<input type="text" name="address" required> 
+			<label for="street">Street Address: </label> 
+			<input type="text" name="street" required> 
 			<br>
 			<label for="city">City: </label> 
 			<input type="text" name="city" required> 
@@ -37,7 +37,7 @@
 
 
 
-			<input type="hidden" name="addressId" value="${address.id}"> 
+			
 
 
 			<label for="firstName">Employee First Name: </label> 
@@ -50,7 +50,7 @@
 			<input type="number" name="salary" required> 
 			<br>
 		
-			<input type="hidden" name="status" value="2"/>
+			<!-- <input type="hidden" name="status" value="2"/> -->
 			<%-- <input type="hidden" name="user" value="${sessionScope.loggedInUser.id}"/> --%>
 			
 		
@@ -62,7 +62,7 @@
 			<input type="text" name="password"required="true"> 
 			<br>
 			
-			<input type="hidden" name="employeeId" value="${employee.id}"> 
+		
 			<br>
  
 

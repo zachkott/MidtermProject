@@ -45,7 +45,7 @@ public class UserController {
 //	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount( Model model, Employee  employee, Address address, User user, RedirectAttributes redir, int empId) {
+	public ModelAndView createUserAccount( Model model, Employee  employee, Address address, User user, RedirectAttributes redir) {
 		// Add address
 		redir.addFlashAttribute("addressAdded", userDao.createAddress(address));
 		redir.addAttribute("id", address.getId());
@@ -53,7 +53,7 @@ public class UserController {
 		redir.addFlashAttribute("addFail", "There was a problem adding the address.");
 		
 		// Add  employee
-		employee.setAddress(address);
+		
 		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee, address.getId()));
 		redir.addAttribute("id", employee.getId());
 		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
@@ -61,7 +61,7 @@ public class UserController {
 		
 		// Create User
 		ModelAndView mv = new ModelAndView();
-		User newUser = userDao.createUser(user, empId);
+		User newUser = userDao.createUser(user, employee.getId());
 //		newUser.setEnabled(true);
 		boolean createdUser = newUser.getId() > 0 ? true : false;
 		redir.addFlashAttribute("newUser", newUser);
