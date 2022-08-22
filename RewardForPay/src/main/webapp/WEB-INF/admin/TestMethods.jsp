@@ -9,7 +9,7 @@
 <title>Pending Request</title>
 </head>
 <body>
-<%@ include file="../nav.jsp" %>
+<%@ include file="nav.jsp" %>
 
 <h1>Pending Award Submissions</h1>
 <c:choose>
@@ -69,7 +69,7 @@
 				<c:forEach var="each" items="${pendingPE}">
 				<tr>
 				<td><a href="findEmployeeTest.do?paid=${each.id}">${each.id}</a></td>
-				
+				<td>${each.amount}</td>
 				<td>${each.issued}</td>
 				<td>${each.employee.firstName} ${each.employee.lastName}</td>
 				<td>${each.issued}</td>
