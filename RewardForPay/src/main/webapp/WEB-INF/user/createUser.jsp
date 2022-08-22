@@ -49,6 +49,10 @@
 			<label for="salary">Salary: </label> 
 			<input type="number" name="salary" required> 
 			<br>
+			
+     		<!--  <label for="birthday">Date of Birth</label>
+      		<input type="date" class="form-control" name="birthday" placeholder="MM/DD/YYYY">
+   			 <br> -->
 		
 			<!-- <input type="hidden" name="status" value="2"/> -->
 			<%-- <input type="hidden" name="user" value="${sessionScope.loggedInUser.id}"/> --%>

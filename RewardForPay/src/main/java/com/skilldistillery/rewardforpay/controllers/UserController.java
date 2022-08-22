@@ -1,11 +1,12 @@
 package com.skilldistillery.rewardforpay.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -45,7 +46,7 @@ public class UserController {
 //	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount( Model model, Employee  employee, Address address, User user, RedirectAttributes redir) {
+	public ModelAndView createUserAccount( Model model,  Employee  employee, Address address, User user, RedirectAttributes redir) {
 		// Add address
 		redir.addFlashAttribute("addressAdded", userDao.createAddress(address));
 		redir.addAttribute("id", address.getId());
@@ -54,6 +55,7 @@ public class UserController {
 		
 		// Add  employee
 		
+
 		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee, address.getId()));
 		redir.addAttribute("id", employee.getId());
 		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
@@ -90,7 +92,8 @@ public class UserController {
 
 	@RequestMapping(path = "showAllUsers.do", method = RequestMethod.GET)
 	public String showAllUsers(Model model) {
-		model.addAttribute(userDao.findAllUsers());
+		List<User> users = userDao.findAllUsers();
+		model.addAttribute("allUsers", users);
 		return "user/userResults";
 	}
 

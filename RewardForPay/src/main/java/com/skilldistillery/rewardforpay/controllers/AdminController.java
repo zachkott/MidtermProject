@@ -16,6 +16,12 @@ public class AdminController {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	@RequestMapping(path =  "adminHome.do" )
+	public String home(Model model) {
+		return "admin/adminHome";
+
+	}
 
 	@RequestMapping(path="createAddress.do", method= RequestMethod.GET)
 	public String createAddress(Model model) {
