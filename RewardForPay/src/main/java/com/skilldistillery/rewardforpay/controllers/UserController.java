@@ -19,11 +19,11 @@ public class UserController {
 	@Autowired
 	private UserDAO userDao;
 
-	@RequestMapping(path= {"/", "home.do"})
+	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
-		model.addAttribute("SMOKETEST", userDao.findById(1)); //DELETE
+		model.addAttribute("SMOKETEST", userDao.findById(1)); // DELETE
 		return "home";
-		
+
 	}
 
 	@RequestMapping(path = "createUserAccountForm.do")
@@ -32,7 +32,7 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir, int empId) {
+	public ModelAndView createUserAccount(Model model, User user, RedirectAttributes redir, int empId) {
 		ModelAndView mv = new ModelAndView();
 		User newUser = userDao.createUser(user, empId);
 //		newUser.setEnabled(true);
@@ -42,7 +42,7 @@ public class UserController {
 		mv.setViewName("redirect:userWasCreated.do");
 		return mv;
 	}
-	
+
 //	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
 //	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir) {
 //		ModelAndView mv = new ModelAndView();
@@ -92,7 +92,8 @@ public class UserController {
 		model.addAttribute("users", userDao.findUserByKeyword(keyword));
 		return "user/userResults";
 	}
-	
+
+	// Admin only
 	@RequestMapping(path = "deleteUser.do", method = RequestMethod.GET)
 	public String deleteUser(Integer id, Model model) {
 		if (id <= 0) {
@@ -109,4 +110,17 @@ public class UserController {
 
 	}
 
+	@RequestMapping(path = "activateUser.do", method = RequestMethod.GET)
+	public String activateUser(Model model, int userId) {
+		boolean activateUser = userDao.enableUser(userId);
+		model.addAttribute("activated", activateUser);
+		return "admin/adminHome";
+	}
+	
+	@RequestMapping(path = "deactivateUser.do", method = RequestMethod.GET)
+	public String deactivateUser(Model model, int userId) {
+		boolean deactivateUser = userDao.disableUser(userId);
+		model.addAttribute("deactivated", deactivateUser);
+		return "admin/adminHome";
+	}
 }

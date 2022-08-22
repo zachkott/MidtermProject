@@ -45,5 +45,17 @@ public class AdminController {
 		return "redirect:account.do"; 
 	}
 	
+	@RequestMapping(path = "activateUser.do", method = RequestMethod.GET)
+	public String activateUser(Model model, int userId) {
+		boolean activateUser = userDao.enableUser(userId);
+		model.addAttribute("activated", activateUser);
+		return "admin/adminHome";
+	}
 	
+	@RequestMapping(path = "deactivateUser.do", method = RequestMethod.GET)
+	public String deactivateUser(Model model, int userId) {
+		boolean deactivateUser = userDao.disableUser(userId);
+		model.addAttribute("deactivated", deactivateUser);
+		return "admin/adminHome";
+	}
 }

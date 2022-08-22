@@ -79,6 +79,21 @@ public class ZachDAOImpl implements UserDAO {
 		
 		return userToBeDeleted;
 	}
+	@Override
+	public boolean disableUser(int id) {
+		User inactiveUser = em.find(User.class, id);
+		inactiveUser.setEnabled(false);
+		boolean userDeactivated = inactiveUser.getEnabled();
+		return userDeactivated;
+	}
+	
+	@Override
+	public boolean enableUser(int id) {
+		User activeUser = em.find(User.class, id);
+		activeUser.setEnabled(true);
+		boolean userActivated = activeUser.getEnabled();
+		return userActivated;
+	}
 
 	@Override
 	public Employee findEmployeeById(int employeeId) {
@@ -241,5 +256,6 @@ public class ZachDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -25,6 +25,8 @@ public interface UserDAO {
 		User createUser(User user, int empId);
 		User updateUser(int id, User user);
 		User deleteUser(int id); //Inactivate user
+		boolean disableUser(int id);
+		boolean enableUser(int id);
 		
 		//Employee profile/actions -Daniel
 		Employee findEmployeeById(int employeeId);
