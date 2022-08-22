@@ -20,6 +20,9 @@
 				
 				
 				
+				
+				
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -28,10 +31,8 @@
 				<tr>
 					<td>${user.id}</td>
 					<td><a href="findUser.do?userId=${user.id}">${user.username}</a></td>
-					<td><a href="findUser.do?userId=${user.id}">${user.enabled}</a></td>
+					<td><c:choose><c:when test="${user.enabled == true}">Active</c:when><c:otherwise>Inactive</c:otherwise></c:choose></td>
 				
-					
-					
 					
 				</tr>
 				

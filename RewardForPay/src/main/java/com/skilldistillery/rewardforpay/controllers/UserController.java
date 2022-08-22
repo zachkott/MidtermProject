@@ -101,7 +101,7 @@ public class UserController {
 	public String findUser(int userId, Model model) {
 		User thisUser = userDao.findById(userId);
 		model.addAttribute("user", thisUser);
-		return "user/userResults";
+		return "user/showUser";
 	}
 
 	@RequestMapping(path = "userNameSearch.do", method = RequestMethod.GET)

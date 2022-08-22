@@ -1,5 +1,7 @@
 package com.skilldistillery.rewardforpay.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
+import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
 public class AdminController {
@@ -63,5 +66,12 @@ public class AdminController {
 		boolean deactivateUser = userDao.disableUser(userId);
 		model.addAttribute("deactivated", deactivateUser);
 		return "admin/adminHome";
+	}
+	
+	@RequestMapping(path = "adminAllUsers.do", method = RequestMethod.GET)
+	public String showAdminAllUsers(Model model) {
+		List<User> users = userDao.findAllUsers();
+		model.addAttribute("allUsers", users);
+		return "admin/adminAllUsers";
 	}
 }
