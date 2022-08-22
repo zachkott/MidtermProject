@@ -36,14 +36,14 @@ public class AdminController {
 		return "createEmployee";
 	}
 	
-	@RequestMapping(path = "createEmployee.do", method = RequestMethod.POST)
-	public String employeeCreated(Employee employee, Model model, RedirectAttributes redir) {
-		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee));
-		redir.addAttribute("id", employee.getId());
-		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
-		redir.addFlashAttribute("addFail", "There was a problem adding the employee.");
-		return "redirect:account.do"; 
-	}
+//	@RequestMapping(path = "createEmployee.do", method = RequestMethod.POST)
+//	public String employeeCreated(Employee employee, Model model, RedirectAttributes redir) {
+//		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee));
+//		redir.addAttribute("id", employee.getId());
+//		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
+//		redir.addFlashAttribute("addFail", "There was a problem adding the employee.");
+//		return "redirect:account.do"; 
+//	}
 	
 	@RequestMapping(path = "activateUser.do", method = RequestMethod.GET)
 	public String activateUser(Model model, int userId) {

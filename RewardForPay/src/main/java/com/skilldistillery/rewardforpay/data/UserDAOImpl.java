@@ -62,6 +62,8 @@ public class UserDAOImpl implements UserDAO {
 	public Employee createEmployee(Employee employee, int addId) {
 		Employee emp = employee;
 		Address add = em.find(Address.class, addId);
+		Status stat = em.find(Status.class, 2);
+		emp.setRequestStatus(stat);
 		emp.setAddress(add);
 		em.persist(emp);
 		return emp;
@@ -274,7 +276,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Status> pendingRequests() {
-		String query = "SELECT e, p FROM Employee e, Prize p WHERE e.request_status_id = 2";
+		String query = "SELECT e, p FROM Employee e, Prize p WHERE e.request_status_id = 2 AND p.request_status_id = 2";
 		return em.createQuery(query, Status.class).getResultList();
 	}
 

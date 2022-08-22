@@ -12,7 +12,7 @@
 
 <h1>Test Methods</h1>
 <c:choose>
-		<c:when test="${!empty historys}">
+		<c:when test="${!empty pending}">
 			<table class="table table-striped table-hover">
 				<thead class ="table-dark">
 					<tr>
@@ -32,7 +32,7 @@
 				</thead>
 				<tbody>
 				
-				<c:forEach var="history" items="${historys}">
+				<c:forEach var="each" items="${pending}">
 				<tr>
 				<td><a href="getHistory.do?mhid=${history.id}">${history.id}</a></td>
 				<td>${history.machineName}</td>
