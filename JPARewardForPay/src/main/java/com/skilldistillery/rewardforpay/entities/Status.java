@@ -98,10 +98,6 @@ public class Status {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Status [id=" + id + "]";
-	}
 	
 	
 }

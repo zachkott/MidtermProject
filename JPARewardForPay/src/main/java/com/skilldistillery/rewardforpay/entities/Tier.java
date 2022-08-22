@@ -77,9 +77,5 @@ public class Tier {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Tier [id=" + id + ", name=" + name + ", threshold=" + threshold + ", prize=" + prizes.get(0).getName() + "]";
-	}
 
 }

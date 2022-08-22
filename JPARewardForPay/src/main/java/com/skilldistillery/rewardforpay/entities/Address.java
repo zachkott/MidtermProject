@@ -124,12 +124,6 @@ public class Address {
 
 
 	@Override
-	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", postalCode="
-				+ postalCode + ", phone=" + phone + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}

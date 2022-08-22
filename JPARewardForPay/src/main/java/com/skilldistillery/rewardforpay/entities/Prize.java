@@ -128,12 +128,6 @@ public class Prize {
 		Prize other = (Prize) obj;
 		return id == other.id;
 	}
-
-	@Override
-	public String toString() {
-		return "Prize [id=" + id + ", name=" + name + ", points=" + points + ", description=" + description + ", image="
-				+ image + ", tier=" + tier + ", status=" + status + "]";
-	}
 	
 
 }

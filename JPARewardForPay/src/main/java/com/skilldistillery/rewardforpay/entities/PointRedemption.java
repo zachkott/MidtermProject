@@ -87,15 +87,6 @@ public class PointRedemption {
 	}
 
 
-
-	@Override
-	public String toString() {
-		return "PointRedemption [id=" + id + ", prize=" + prize + ", employee=" + employee + ", redeemedDate="
-				+ redeemedDate + "]";
-	}
-
-
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
