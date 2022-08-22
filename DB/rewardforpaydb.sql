@@ -384,6 +384,8 @@ INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`)
 INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (3, '1441 North Marine Drive', 'Portland', 'Oregon', '97217', '503-894-9279');
 INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (4, '20360 Sw Westside Dr', 'Portland', 'Oregon', '97078', '503-277-8642');
 INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (5, '5934 Se Duke St', 'Portland', 'Oregon', '97206', '503-771-4637');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (6, '5934 Se Duke St', 'Portland', 'Oregon', '97206', '503-771-4637');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (7, '5934 Se Duke St', 'Portland', 'Oregon', '97206', '503-771-4637');
 
 COMMIT;
 
@@ -433,9 +435,9 @@ INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`,
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (2, 'Bob', 'Dobbs', 65000, 2, 3, NULL, NULL, NULL, 'I\'m on break.', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (3, 'Ryan', 'Cosby', 110000, 3, 3, 1, NULL, NULL, 'Do you have those TPS reports?', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (4, 'Randy', 'Miller', 220000, 4, 2, NULL, NULL, NULL, 'Break time is over.', 1);
-INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (5, 'Zach', 'Knott', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (6, 'Jamie', 'Patt', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (7, 'Daniel', 'Schu', NULL, 3, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (5, 'Zach', 'Knott', NULL, 5, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (6, 'Jamie', 'Patt', NULL, 6, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (7, 'Daniel', 'Schu', NULL, 7, NULL, NULL, NULL, NULL, NULL, 1);
 
 COMMIT;
 
