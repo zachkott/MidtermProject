@@ -74,4 +74,18 @@ public class AdminController {
 		model.addAttribute("allUsers", users);
 		return "admin/adminAllUsers";
 	}
+	
+	@RequestMapping(path = "adminUpdateUserForm.do")
+	public String adminUpdateUserForm(Integer id, User user, Model model) {
+		model.addAttribute("user", userDao.findById(id));
+		return "admin/adminUpdateUser";
+	}
+	
+	@RequestMapping(path = "adminAllEmployees.do")
+	public String showAdminAllEmployees(Model model) {
+		List<Employee> emps = userDao.findAllEmployees();
+		model.addAttribute("allEmployees", emps);
+		return "admin/adminAllEmployees";
+	}
+	
 }

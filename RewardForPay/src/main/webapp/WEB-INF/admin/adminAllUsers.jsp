@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin User List</title>
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
@@ -20,7 +20,7 @@
 				<th>Password</th>
 				<th>Status</th>
 				<th>Update User</th>
-				<th>Delete User</th>
+				<th>Change User Status</th>
 				
 				
 				
@@ -36,7 +36,7 @@
 					<td><a href="findUser.do?userId=${user.id}">${user.username}</a></td>
 					<td><a href="findUser.do?userId=${user.id}">${user.password}</a></td>
 					<td><c:choose><c:when test="${user.enabled == true}">Active</c:when><c:otherwise>Inactive</c:otherwise></c:choose></td>
-					<td><form action="updateUserForm.do"><input type ="hidden" name="userId" value="${user.id}"><button type="submit" class="btn btn-primary btn-sm">Update this User</button></form>
+					<td><form action="adminUpdateUserForm.do"><input type ="hidden" name="id" value="${user.id}"><button type="submit" class="btn btn-primary btn-sm">Update this User</button></form>
 					<td><c:choose><c:when test="${user.enabled == true}">
 					<form action="deactivateUser.do"><input type="hidden" name="userId" value="${user.id}"><button type="submit" class="btn btn-dark btn-sm">Disable this User</button></form>
 							</c:when><c:otherwise>
