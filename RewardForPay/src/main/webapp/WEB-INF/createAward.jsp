@@ -17,8 +17,8 @@ test${empty award for coworker}
 <div class="form-row">
 		<form action="createAward.do" method="POST">
 		<!-- Might need to play with mapping for Employee -->
-			<label for="employee">Employee ID: </label> 
-			<input type="text" name="employee" required> 
+			<label for="empId">Employee ID: </label> 
+			<input type="text" name="empId" required> 
 			<br>
 			<label for="description">Award Justification: </label> 
 			<input type="text" name="description" required> 
@@ -26,17 +26,16 @@ test${empty award for coworker}
 			<label for="amount">Suggested Number of Points: </label> 
 			<input type="number" name="amount" required> 
 			<br>
-			<input type="hidden" name="status" value="2"/>
-			<input type="hidden" name="user" value="${sessionScope.loggedInUser.id}"/>
+			<input type="hidden" name="userId" value="${sessionScope.loggedInUser.id}"/>
 			<input class="btn btn-success" type="submit" value="Submit">
 		</form>
 </div>
-
+<!-- 
 test${redeem points }
 		<form action="createAward.do" method="POST">
-		<!-- Might need to play with mapping for Employee -->
-			<label for="employee">Employee ID: </label> 
-			<input type="text" name="employee" required> 
+		 Might need to play with mapping for Employee 
+			<label for="empId">Employee ID: </label> 
+			<input type="text" name="empId" required> 
 			<br>
 			<label for="description">Award Justification: </label> 
 			<input type="text" name="description" required> 
@@ -44,10 +43,9 @@ test${redeem points }
 			<label for="amount">Suggested Number of Points: </label> 
 			<input type="number" name="amount" required> 
 			<br>
-			<input type="hidden" name="status" value="2"/>
-			<input type="hidden" name="user" value="${sessionScope.loggedInUser.id}"/>
+			<input type="hidden" name="userId" value="${sessionScope.loggedInUser.id}"/>
 			<input class="btn btn-success" type="submit" value="Submit">
 		</form>
-
+-->
 </body>
 </html>

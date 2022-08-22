@@ -15,6 +15,7 @@ import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
 import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
+import com.skilldistillery.rewardforpay.entities.Tier;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Service
@@ -70,7 +71,6 @@ public class UserDAOImpl implements UserDAO {
 		emp.setRequestStatus(stat);
 		emp.setAddress(add);
 		em.persist(emp);
-		System.out.println(emp.getId());
 		emp.setPointsAwarded(findAllAwards(emp.getId()));
 		return emp;
 	}
@@ -169,6 +169,16 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public Prize createPrize(Prize prize) {
+		Status status = em.find(Status.class, 2);
+		prize.setStatus(status);
+		if (prize.getPoints() < em.find(Tier.class, 1).getThreshold()) {
+			prize.setTier(em.find(Tier.class, 1));
+		}
+		else if (prize.getPoints() < em.find(Tier.class, 2).getThreshold()) {
+			prize.setTier(em.find(Tier.class, 2));
+		}
+		else { prize.setTier(em.find(Tier.class, 3));
+		}
 		em.persist(prize);
 		return prize;
 	}
@@ -180,10 +190,7 @@ public class UserDAOImpl implements UserDAO {
 		updated.setName(prize.getName());
 		updated.setPoints(prize.getPoints());
 		updated.setDescription(prize.getDescription());
-		updated.setDescription(prize.getDescription());
 		updated.setImage(prize.getImage());
-		updated.setImage(prize.getImage());
-		updated.setTier(prize.getTier());
 		updated.setTier(prize.getTier());
 		updated.setStatus(prize.getStatus());
 		updated.setEmployees(prize.getEmployees());
@@ -205,7 +212,14 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public PointAwarded createAward(PointAwarded pointAward) {
+	public PointAwarded createAward(PointAwarded pointAward, int empId, int userId) {
+		Employee emp = em.find(Employee.class, empId);
+		pointAward.setEmployee(emp);
+		Status status = em.find(Status.class, 2);
+		pointAward.setStatus(status);
+		User user = em.find(User.class, userId);
+		pointAward.setUser(user);
+		
 		em.persist(pointAward);
 		return pointAward;
 	}

@@ -97,8 +97,8 @@ public class RewardController {
 	
 	//From award page, user can withdraw req
 	@RequestMapping(path= {"withdrawAward.do"})
-	public String withdrawAward(Model model, int id, int empId) {  //add extra verification that user submitted request?
-		PointAwarded wdAward = userDao.withdrawAward(id);
+	public String withdrawAward(Model model, int awardId, int empId) {  //add extra verification that user submitted request?
+		PointAwarded wdAward = userDao.withdrawAward(awardId);
 		model.addAttribute("success", "The status of this award is now " + wdAward.getStatus().getName());
 		model.addAttribute("awards", userDao.findAllAwards(empId));
 		return "award";
@@ -112,9 +112,11 @@ public class RewardController {
 	
 	//Processes award form and directs user to award details page
 	@RequestMapping(path = "createAward.do", method = RequestMethod.POST)
-	public String awardCreated(PointAwarded award, Model model, int empId, RedirectAttributes redir) {
-		redir.addFlashAttribute("award", userDao.createAward(award));
-		redir.addAttribute("id", award.getId());
+	public String awardCreated(PointAwarded award, Model model, int empId, int userId, RedirectAttributes redir) {
+		PointAwarded newAward = userDao.createAward(award, empId, userId);
+		redir.addFlashAttribute("award", newAward);
+		redir.addAttribute("empId", empId);
+		redir.addAttribute("awardId", newAward.getId());
 		redir.addFlashAttribute("addMessage", "Award request has been submitted for approval.");
 		redir.addFlashAttribute("addFail", "There was a problem adding the award.");
 		return "redirect:award.do"; 

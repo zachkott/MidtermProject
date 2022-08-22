@@ -31,7 +31,7 @@
 	</ul>
 	
 	<form action="withdrawAward.do" method="get"> <!-- update with controller mapping -->
-		<input type="hidden" value="${award.id}" name="id" /> 
+		<input type="hidden" value="${award.id}" name="awardId" /> 
 		<input type="hidden" value="${sessionScope.userinfo.id}" name="empId" /> 
 		<input class="action_button" type="submit" value="Withdraw Award" />
 	</form>
@@ -53,7 +53,7 @@
 				</c:forEach>
 		</c:when>
 		<c:otherwise>
-			<h1>${continentFail}</h1>
+			<h1>${awardNotFound}</h1>
 		</c:otherwise>
 	</c:choose>
 

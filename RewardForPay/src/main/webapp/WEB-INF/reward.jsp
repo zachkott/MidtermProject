@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
-<jsp:include page="nav.jsp"/>
 </head>
 <body>
 <%@ include file="nav.jsp" %>
