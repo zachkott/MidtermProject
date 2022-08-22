@@ -257,5 +257,17 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
+	@Override
+	public boolean disableUser(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean enableUser(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }
