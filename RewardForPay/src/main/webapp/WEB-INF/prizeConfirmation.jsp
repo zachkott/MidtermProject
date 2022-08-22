@@ -9,6 +9,7 @@
 <title>User Confirmation</title>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 
 <h1>User Created Test Page</h1>
 

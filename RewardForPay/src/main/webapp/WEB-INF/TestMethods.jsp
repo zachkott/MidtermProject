@@ -6,61 +6,40 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add Employee</title>
+<title>Pending Request</title>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 
-<h1>Test Methods</h1>
+<h1>Pending Award Submissions</h1>
 <c:choose>
-		<c:when test="${!empty pending}">
+		<c:when test="${!empty pendingPA}">
 			<table class="table table-striped table-hover">
 				<thead class ="table-dark">
 					<tr>
 						<th>Id</th>
-						<th>Machine Name</th>
-						<th>Employee Name</th>
-						<th>Failure Description</th>
-						<th>Repair Description</th>
-						<th>Component</th>
-						<th>Hours Worked</th>
-						<th>Repair Cost</th>
-						<th>Date Created</th>
-						<th>Machine Picture</th>
-						<th>Update</th>
-						<th>Delete</th>
+						<th>Amount</th>
+						<th>Issued</th>
+						<th>Awardee</th>
+						<th>Description</th>
+						<th>Award Submitted By</th>
+						<th>Update</th>						
 					</tr>
 				</thead>
-				<tbody>
-				
-				<c:forEach var="each" items="${pending}">
+				<tbody>				
+				<c:forEach var="each" items="${pendingPA}">
 				<tr>
-				<td><a href="getHistory.do?mhid=${history.id}">${history.id}</a></td>
-				<td>${history.machineName}</td>
-				<td>${history.employeeName}</td>
-				<td>${history.description}</td>
-				<td>${history.repair}</td>
-				<td>${history.component}</td>
-				<td>${history.hoursWorked}</td>
-				<td>${history.repairCost}</td>
-				<td>${history.dateCreated}</td>
-				<c:choose>
-				<c:when test="${!empty history.machineUrl}">
-				<td><img src="${history.machineUrl}"width="200" height="200"/></td>
-				</c:when>
-				<c:otherwise>
-				<td>${history.machineUrl}</td>
-				</c:otherwise>
-				</c:choose>
+				<td><a href="findAwardTest.do?paid=${each.id}">${each.id}</a></td>
+				<td>${each.amount}</td>
+				<td>${each.issued}</td>
+				<td>${each.employee.firstName} ${each.employee.lastName}</td>
+				<td>${each.issued}</td>
+				<td>${each.description}</td>
+				<td>${each.user.employee.firstName} ${each.user.employee.lastName}</td>
 				<td>
-				<form action="updateMaintenance.do" method="get">
-								<input type="hidden" value=${history.id } name="mhid" /> <input
+				<form action="updateAward.do" method="get">
+								<input type="hidden" value=${each.id } name="paid" /> <input
 									 type="submit" value="Update" />
-							</form>
-							</td>
-				<td>
-				<form action="deleteMaintenance.do" method="get">
-								<input type="hidden" value=${history.id } name="mhid" /> <input
-									 type="submit" value="Delete" />
 							</form>
 							</td>
 				</tr>
@@ -71,6 +50,44 @@
 		<c:otherwise>
 		</c:otherwise>
 		</c:choose>
-
+<h1>Pending Award Submissions</h1>
+<c:choose>
+		<c:when test="${!empty pendingPE}">
+			<table class="table table-striped table-hover">
+				<thead class ="table-dark">
+					<tr>
+						<th>Id</th>
+						<th>Amount</th>
+						<th>Issued</th>
+						<th>Awardee</th>
+						<th>Description</th>
+						<th>Award Submitted By</th>
+						<th>Update</th>						
+					</tr>
+				</thead>
+				<tbody>				
+				<c:forEach var="each" items="${pendingPE}">
+				<tr>
+				<td><a href="findEmployeeTest.do?paid=${each.id}">${each.id}</a></td>
+				<td>${each.amount}</td>
+				<td>${each.issued}</td>
+				<td>${each.employee.firstName} ${each.employee.lastName}</td>
+				<td>${each.issued}</td>
+				<td>${each.description}</td>
+				<td>${each.user.employee.firstName} ${each.user.employee.lastName}</td>
+				<td>
+				<form action="updateEmployee.do" method="get">
+								<input type="hidden" value=${each.id } name="eid" /> <input
+									 type="submit" value="Update" />
+							</form>
+							</td>
+				</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+		</c:choose>
 </body>
 </html>

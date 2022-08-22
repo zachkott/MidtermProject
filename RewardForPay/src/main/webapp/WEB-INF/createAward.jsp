@@ -9,6 +9,7 @@
 <title>Submit Award</title>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 
 <h1>Submit a Coworker for an Award</h1>
 

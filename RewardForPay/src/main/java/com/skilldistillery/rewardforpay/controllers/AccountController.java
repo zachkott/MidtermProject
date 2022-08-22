@@ -32,9 +32,21 @@ public class AccountController {
 	@RequestMapping(path = { "pendingList.do" })
 	public String allPending(HttpSession session, Model model) {
 		model.addAttribute("pendingPA",userDao.pendingPointAwarded());
-		model.addAttribute("pendingPA",userDao.pendingEmployees());
-		model.addAttribute("pendingPA",userDao.pendingPrize());
+		model.addAttribute("pendingPE",userDao.pendingEmployees());
+		model.addAttribute("pendingPP",userDao.pendingPrize());
 		return "TestMethods";
+		
+	}
+	@RequestMapping(path = { "findAwardTest.do" })
+	public String pendingAward(HttpSession session, Model model, int paid) {
+		model.addAttribute("award",userDao.findAwardByID(paid));
+		return "award";
+		
+	}
+	@RequestMapping(path = { "findEmployeeTest.do" })
+	public String pendingEmployee(HttpSession session, Model model, int paid) {
+		model.addAttribute("award",userDao.findAwardByID(paid));
+		return "employee";
 
 	}
 }
