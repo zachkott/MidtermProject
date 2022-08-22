@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `name` VARCHAR(45) NULL,
   `address_id` INT NOT NULL,
   `description` TEXT NULL,
-  `website_url` VARCHAR(2000) NULL,
+  `website_url` TEXT NULL,
   `logo_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_company_address1_idx` (`address_id` ASC),
@@ -71,12 +71,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `department` ;
 
 CREATE TABLE IF NOT EXISTS `department` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `manager_id` INT NULL,
   `company_id` INT NOT NULL,
   `description` TEXT NULL,
-  `website_url` VARCHAR(2000) NULL,
+  `website_url` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_department_company1_idx` (`company_id` ASC),
   CONSTRAINT `fk_department_company1`
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `address_id` INT NOT NULL,
   `department_id` INT NULL,
   `supervisor_id` INT NULL,
-  `employee_photo` VARCHAR(2000) NULL,
+  `employee_photo` TEXT NULL,
   `birthday` DATE NULL,
   `description` TEXT NULL,
   `request_status_id` INT NOT NULL,
@@ -163,11 +163,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `prize` ;
 
 CREATE TABLE IF NOT EXISTS `prize` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `points` INT NULL,
   `tier_id` INT NOT NULL,
-  `prize_url` VARCHAR(2000) NULL,
+  `prize_url` TEXT NULL,
   `description` TEXT NULL,
   `request_status_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -298,7 +298,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `point_award` ;
 
 CREATE TABLE IF NOT EXISTS `point_award` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `amount` INT NULL,
   `issued` DATE NULL,
   `employee_id` INT NOT NULL,
