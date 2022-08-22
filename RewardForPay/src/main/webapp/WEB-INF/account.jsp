@@ -110,38 +110,38 @@
     <div class="carousel-inner" role="listbox">
 
       <!--First slide-->
-
+<!-- 
 	<c:set var="count" value="3" scope="page" />
-
+	<div>
 	<c:forEach var="prize" items="${sessionScope.prizes}" >
 		<c:choose>
 			<c:when test="${count %3 == 0}">
-			      <div class="carousel-item active">
+				</div>			
+			    <div class="carousel-item active">
 			        <div class="row">
 			          <div class="col-md-4">
 			            <div class="card mb-2">
-			              <img class="card-img-top" src="${sessionScope.prize.image}"
+			              <img class="card-img-top" src="${prize.image}"
 			                   alt="Card image cap">
 			              <div class="card-body">
-			                <h4 class="card-title">${sessionScope.prize.name}</h4>
-			                <p class="card-text">${sessionScope.prize.points}</p>
-			                <a href="prizeInfo.do?id=${sessionScope.prize.id}" class="btn btn-primary">Details</a>
+			                <h4 class="card-title">${prize.name}</h4>
+			                <p class="card-text">${prize.points}</p>
+			                <a href="prizeInfo.do?id=${prize.id}" class="btn btn-primary">Details</a>
 							<c:set var="count" value="${count + 1}" scope="page"/>
 			              </div>
 			            </div>
 			          </div>
 					</div>
-				</div>
 			</c:when>
 			<c:otherwise>
 			          <div class="col-md-4 clearfix d-none d-md-block">
 			            <div class="card mb-2">
-			              <img class="card-img-top" src="${sessionScope.prize.image}"
+			              <img class="card-img-top" src="${prize.image}"
 			                   alt="Card image cap">
 			              <div class="card-body">
-			                <h4 class="card-title">${sessionScope.prize.name}</h4>
-			                <p class="card-text">${sessionScope.prize.points}</p>
-			                <a href="prizeInfo.do?id=${sessionScope.prize.id}" class="btn btn-primary">Details</a>
+			                <h4 class="card-title">${prize.name}</h4>
+			                <p class="card-text">${prize.points}</p>
+			                <a href="prizeInfo.do?id=${prize.id}" class="btn btn-primary">Details</a>
 			                <c:set var="count" value="${count + 1}" scope="page"/>
 			              </div>
 			            </div>
@@ -150,9 +150,9 @@
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-
+</div> -->
       <!--Second slide-->
-      <div class="carousel-item">
+      <div class="carousel-item active">
 
         <div class="row">
           <div class="col-md-4">

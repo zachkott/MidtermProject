@@ -198,7 +198,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<PointAwarded> findAllAwards(int employeeId) {
-		String query = "SELECT pa FROM PointAwarded pa JOIN Employee e ON e.id = pa.employee_id WHERE e.id = :employeeId ORDER BY pa.id";
+		String query = "SELECT pa FROM PointAwarded pa JOIN Employee e ON e.id = pa.employee.id WHERE e.id = :employeeId ORDER BY pa.id";
 		
 		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).setParameter("employeeId", employeeId).getResultList();
 		return pointsAwarded;		
