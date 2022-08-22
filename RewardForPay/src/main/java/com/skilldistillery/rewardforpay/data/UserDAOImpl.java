@@ -1,12 +1,12 @@
 package com.skilldistillery.rewardforpay.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.rewardforpay.entities.Address;
@@ -63,9 +63,15 @@ public class UserDAOImpl implements UserDAO {
 		Employee emp = employee;
 		Address add = em.find(Address.class, addId);
 		Status stat = em.find(Status.class, 2);
+		List<Prize> prizes = findPrizesByTier(1);
+		List<PointAwarded> points = new ArrayList<>() ;
+		emp.setPointsAwarded(points);
+		emp.setPrizes(prizes);
 		emp.setRequestStatus(stat);
 		emp.setAddress(add);
 		em.persist(emp);
+		System.out.println(emp.getId());
+		emp.setPointsAwarded(findAllAwards(emp.getId()));
 		return emp;
 	}
 
@@ -146,18 +152,17 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<Prize> findPrizesByTier(int tierId) {
 		//select * from prize p join tier t on p.tier_id=t.id where t.id = 3 order by p.tier_id, p.name; //make this into JPQL
-		String query2 = "SELECT p FROM Prize p JOIN Tier t on p.tier_id = t.id WHERE t.id = :tier ORDER BY p.tier, p.name";
-		List<Prize> prizeTier = em.createQuery(query2, Prize.class).setParameter("tier", tierId).getResultList();
-
-		
-//		String query = "SELECT p FROM Prize p ORDER BY p.tier, p.name";
-//		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
-//		List<Prize> prizeTier = new ArrayList<Prize>();
-//		for (Prize p : prizes) {
-//			if (p.getTier().getId() == tierId) {
-//				prizeTier.add(p);
-//			}
-//		}
+//		String query2 = "SELECT p FROM Prize p JOIN Tier t on p.tier_id = t.id WHERE t.id = :tier ORDER BY p.tier, p.name";
+//		List<Prize> prizeTier = em.createQuery(query2, Prize.class).setParameter("tier", tierId).getResultList();
+	
+		String query = "SELECT p FROM Prize p ORDER BY p.tier, p.name";
+		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
+		List<Prize> prizeTier = new ArrayList<Prize>();
+		for (Prize p : prizes) {
+			if (p.getTier().getId() == tierId) {
+				prizeTier.add(p);
+			}
+		}
 		return prizeTier;
 
 	}
@@ -192,9 +197,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<PointAwarded> findAllAwards() {
-		String query = "SELECT pa FROM PointAwarded pa ORDER BY pa.id";
-		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).getResultList();
+	public List<PointAwarded> findAllAwards(int employeeId) {
+		String query = "SELECT pa FROM PointAwarded pa JOIN Employee e ON e.id = pa.employee_id WHERE e.id = :employeeId ORDER BY pa.id";
+		
+		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).setParameter("employeeId", employeeId).getResultList();
 		return pointsAwarded;		
 	}
 

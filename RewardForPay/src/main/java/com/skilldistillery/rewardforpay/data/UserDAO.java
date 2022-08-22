@@ -60,7 +60,7 @@ public interface UserDAO {
 		
 		//Award submissions/points -Jamie
 		PointAwarded findAwardByID(int awardId);
-		List<PointAwarded> findAllAwards();
+		List<PointAwarded> findAllAwards(int employeeId);
 		PointAwarded createAward(PointAwarded pointAward);
 		PointAwarded withdrawAward(int awardId);
 		
