@@ -21,12 +21,9 @@ public class AccountController {
 	public String home(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 		Employee employee = (Employee) session.getAttribute("userinfo");
-		if (user != null) {
 			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
 			return "account";
-		} else {
-			return "login";
-		}
+
 
 	}
 }

@@ -38,7 +38,7 @@ public class LoginController {
 			Employee employee = user.getEmployee();
 			session.setAttribute("userinfo", employee);
 			session.setAttribute("prizes", userDao.findAllPrizes());
-			session.setAttribute("rewardBalance", 100); //modify this to show actual balance
+			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); //modify this to show actual balance
 			return "account";
 		}
 	}
