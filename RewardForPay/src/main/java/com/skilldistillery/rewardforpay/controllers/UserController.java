@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.rewardforpay.data.UserDAO;
+import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.User;
 
@@ -31,8 +32,34 @@ public class UserController {
 		return "user/createUser";
 	}
 
+//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
+//	public ModelAndView createUserAccount(Model model, User user, RedirectAttributes redir, int empId) {
+//		ModelAndView mv = new ModelAndView();
+//		User newUser = userDao.createUser(user, empId);
+////		newUser.setEnabled(true);
+//		boolean createdUser = newUser.getId() > 0 ? true : false;
+//		redir.addFlashAttribute("newUser", newUser);
+//		redir.addFlashAttribute("createdUser", createdUser);
+//		mv.setViewName("redirect:userWasCreated.do");
+//		return mv;
+//	}
+
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount(Model model, User user, RedirectAttributes redir, int empId) {
+	public ModelAndView createUserAccount( Model model, Employee  employee, Address address, User user, RedirectAttributes redir, int empId) {
+		// Add address
+		redir.addFlashAttribute("addressAdded", userDao.createAddress(address));
+		redir.addAttribute("id", address.getId());
+		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
+		redir.addFlashAttribute("addFail", "There was a problem adding the address.");
+		
+		// Add  employee
+		employee.setAddress(address);
+		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee, address.getId()));
+		redir.addAttribute("id", employee.getId());
+		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
+		redir.addFlashAttribute("addFail", "There was a problem adding the employee.");
+		
+		// Create User
 		ModelAndView mv = new ModelAndView();
 		User newUser = userDao.createUser(user, empId);
 //		newUser.setEnabled(true);
@@ -42,19 +69,6 @@ public class UserController {
 		mv.setViewName("redirect:userWasCreated.do");
 		return mv;
 	}
-
-//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-//	public ModelAndView createUserAccount( Model model, User user, RedirectAttributes redir) {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		User newUser = userDao.createUser(user);
-//		newUser.setEnabled(true);
-//		boolean createdUser = newUser.getId() > 0 ? true : false;
-//		redir.addFlashAttribute("user", newUser);
-//		redir.addFlashAttribute("createdUser", createdUser);
-//		mv.setViewName("redirect:userWasCreated.do");
-//		return mv;
-//	}
 
 	@RequestMapping(path = "userWasCreated.do", method = RequestMethod.GET)
 	public String userHasBeenCreated(Model model) {

@@ -12,18 +12,59 @@
 
 <h1>Create New Account</h1>
 
+
+<h1>Input Employee Details</h1>
+
 <div class="form-row">
 		<form action="createUser.do" method="POST">
+			<label for="address">Street Address: </label> 
+			<input type="text" name="address" required> 
+			<br>
+			<label for="city">City: </label> 
+			<input type="text" name="city" required> 
+			<br>
+			<label for="state">State: </label> 
+			<input type="text" name="state" required> 
+			<br>
+			<br>
+			<label for="postalCode">Postal code: </label> 
+			<input type="text" name="postalCode" required> 
+			<br>
+			<br>
+			<label for="phone">Phone: </label> 
+			<input type="text" name="phone" required> 
+			<br>
+
+
+
+			<input type="hidden" name="addressId" value="${address.id}"> 
+
+
+			<label for="firstName">Employee First Name: </label> 
+			<input type="text" name="firstName" required> 
+			<br>
+			<label for="lastName">Employee Last Name: </label> 
+			<input type="text" name="lastName" required> 
+			<br>
+			<label for="salary">Salary: </label> 
+			<input type="number" name="salary" required> 
+			<br>
+		
+			<input type="hidden" name="status" value="2"/>
+			<%-- <input type="hidden" name="user" value="${sessionScope.loggedInUser.id}"/> --%>
+			
+		
+
 			<label for="username">Username:</label> 
 			<input type="text" name="username"required="true"> 
 			<br>
 			<label for="password">Password:</label> 
 			<input type="text" name="password"required="true"> 
 			<br>
-			<label for="empId">Employee Id:</label> 
-			<input type="number" name="empId"required="true"> 
+			
+			<input type="hidden" name="employeeId" value="${employee.id}"> 
 			<br>
-
+ 
 
 			<input class="btn btn-success" type="submit" value="Submit">
 
