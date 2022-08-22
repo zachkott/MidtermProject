@@ -10,6 +10,8 @@
 <%@ include file="nav.jsp" %>
 <h1>I'm the Account Page</h1>
 
+<!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->
+
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
@@ -18,25 +20,6 @@
    		<h1>Welcome to Reward For Pay</h1>
    						<h5>What would you like to do?</h5>
 				<br>
-<!-- 	<ul>
-					<li><a href="machineSearch.do" class="title">Update information</a></li>
-					<br>
-					<li><a href="machineSearch.do" class="title"> Create an award</a></li>
-					<br>
-					<li><a href="addMaintenance.do" class="title"> Create an employee</a></li>
-					<br>
-					<li> <a href="updateMaintenance.do" class="title"> Update/Delete a Maintenance Project</a></li>
-</ul>
-   
-    -->
-   
-   
-   
-   		
-   		
-   		
-   		
-   		
 
 <!-- Main home page for a logged in user -->
 
@@ -110,13 +93,11 @@
     <div class="carousel-inner" role="listbox">
 
       <!--First slide-->
-<!-- 
+
 	<c:set var="count" value="3" scope="page" />
-	<div>
 	<c:forEach var="prize" items="${sessionScope.prizes}" >
-		<c:choose>
-			<c:when test="${count %3 == 0}">
-				</div>			
+	<c:choose>
+		<c:when test="${count %3 == 0}">
 			    <div class="carousel-item active">
 			        <div class="row">
 			          <div class="col-md-4">
@@ -132,8 +113,12 @@
 			            </div>
 			          </div>
 					</div>
-			</c:when>
-			<c:otherwise>
+		</c:when>
+					<c:otherwise></c:otherwise>
+					</c:choose>
+					<c:choose>
+	<c:when test="${count %3 == 1}">
+					
 			          <div class="col-md-4 clearfix d-none d-md-block">
 			            <div class="card mb-2">
 			              <img class="card-img-top" src="${prize.image}"
@@ -146,11 +131,28 @@
 			              </div>
 			            </div>
 			          </div>
-			
-			</c:otherwise>
-		</c:choose>
+					</c:when>
+					<c:otherwise></c:otherwise>
+					</c:choose>
+					<c:choose>
+			<c:when test="${count %3 == 2}">	        
+			          <div class="col-md-4 clearfix d-none d-md-block">
+			            <div class="card mb-2">
+			              <img class="card-img-top" src="${prize.image}"
+			                   alt="Card image cap">
+			              <div class="card-body">
+			                <h4 class="card-title">${prize.name}</h4>
+			                <p class="card-text">${prize.points}</p>
+			                <a href="prizeInfo.do?id=${prize.id}" class="btn btn-primary">Details</a>
+			                <c:set var="count" value="${count + 1}" scope="page"/>
+			              </div>
+			            </div>
+			          </div>
+			    </div>
+					</c:when>
+					<c:otherwise></c:otherwise>
+					</c:choose>
 	</c:forEach>
-</div> -->
       <!--Second slide-->
       <div class="carousel-item active">
 
@@ -210,57 +212,6 @@
 	
  <a href="createPrize.do" class="btn btn-primary">Suggest a New Prize</a>
  <a href="createAward.do" class="btn btn-primary">Submit a Coworker for an Award</a>
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
-   		
    		
    		
 
