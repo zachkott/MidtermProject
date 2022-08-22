@@ -5,14 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
-<jsp:include page="nav.jsp"/>
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 <h1>I'm the Award Page</h1>
 
 
-awards - all awards
 <!-- Main page to display both a history of awards and the details for a single award, with history below -->
 
 <h1>${success}</h1> <!-- Conditional messages based on Controller actions -->

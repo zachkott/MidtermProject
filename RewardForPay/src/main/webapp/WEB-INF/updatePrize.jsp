@@ -7,6 +7,8 @@
 <title>Update Prize Details</title>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
+
 	<table id="actions">
 		<tr>
 			<td rowspan=4><img class="form_img"

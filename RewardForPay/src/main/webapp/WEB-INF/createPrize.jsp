@@ -9,6 +9,7 @@
 <title>Create Prize</title>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 
 <h1>Create New Prize</h1>
 
