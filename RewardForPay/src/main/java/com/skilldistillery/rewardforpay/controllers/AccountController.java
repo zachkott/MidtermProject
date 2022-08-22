@@ -31,7 +31,9 @@ public class AccountController {
 	}
 	@RequestMapping(path = { "pendingList.do" })
 	public String allPending(HttpSession session, Model model) {
-		model.addAttribute("pending",userDao.pendingRequests());
+		model.addAttribute("pendingPA",userDao.pendingPointAwarded());
+		model.addAttribute("pendingPA",userDao.pendingEmployees());
+		model.addAttribute("pendingPA",userDao.pendingPrize());
 		return "TestMethods";
 
 	}

@@ -280,11 +280,7 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 	}
 
-	@Override
-	public List<Status> pendingRequests() {
-		String query = "SELECT e, p FROM Employee e, Prize p WHERE e.request_status_id = 2 AND p.request_status_id = 2";
-		return em.createQuery(query, Status.class).getResultList();
-	}
+
 
 	@Override
 	public boolean updateStatus(int statusId) {
@@ -326,5 +322,23 @@ public class UserDAOImpl implements UserDAO {
 	public PointRedemption deleteRedemption(int employeeId, int rewardId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<PointAwarded> pendingPointAwarded() {
+		Status status = em.find(Status.class, 2);
+		return status.getPointsAwarded();
+	}
+
+	@Override
+	public List<Employee> pendingEmployees() {
+		Status status = em.find(Status.class, 2);
+		return status.getEmployees();
+	}
+
+	@Override
+	public List<Prize> pendingPrize() {
+		Status status = em.find(Status.class, 2);
+		return status.getPrizes();
 	}
 }

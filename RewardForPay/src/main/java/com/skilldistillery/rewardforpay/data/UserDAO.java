@@ -41,7 +41,9 @@ public interface UserDAO {
 		Address createAddress(Address address);
 		
 		//Admin actions -Swarm
-		List<Status> pendingRequests() ;
+		List<PointAwarded> pendingPointAwarded() ;
+		List<Employee> pendingEmployees() ;
+		List<Prize> pendingPrize() ;
 		boolean updateStatus(int statusId);
 		List<Status> findAllRequests();
 		boolean rejectAward(int id);
