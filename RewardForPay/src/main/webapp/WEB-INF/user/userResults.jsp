@@ -8,6 +8,7 @@
 <title>User Results</title>
 </head>
 <body>
+<%@ include file="../nav.jsp" %>
 
 <h1>Inside User Results</h1>
 

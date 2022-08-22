@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../nav.jsp" %>
 
 <h1>Inside Admin Home</h1>
 

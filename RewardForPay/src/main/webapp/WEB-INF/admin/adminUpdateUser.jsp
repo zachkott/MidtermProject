@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../nav.jsp" %>
+
+
+<h1>Inside Admin Update User</h1>
 
 </body>
 </html>

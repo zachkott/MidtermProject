@@ -34,7 +34,7 @@ public class AccountController {
 		model.addAttribute("pendingPA",userDao.pendingPointAwarded());
 		model.addAttribute("pendingPE",userDao.pendingEmployees());
 		model.addAttribute("pendingPP",userDao.pendingPrize());
-		return "TestMethods";
+		return "admin/TestMethods";
 		
 	}
 	@RequestMapping(path = { "findAwardTest.do" })
