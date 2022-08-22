@@ -89,6 +89,7 @@ public class User {
 		return roles;
 	}
 
+
 	public void setRoles(List<UserRole> roles) {
 		this.roles = roles;
 	}
