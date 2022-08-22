@@ -35,6 +35,7 @@ public class LoginController {
 			return "login";
 		}else {
 			session.setAttribute("loggedInUser", user);
+			session.setAttribute("role", user.getRoles().get(0).getId());
 			Employee employee = user.getEmployee();
 			session.setAttribute("userinfo", employee);
 			session.setAttribute("prizes", userDao.findAllPrizes());
@@ -45,6 +46,7 @@ public class LoginController {
 	@RequestMapping (path ="logout.do") 
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedInUser");
+		session.removeAttribute("role");
 		return "logout";
 	}
 }

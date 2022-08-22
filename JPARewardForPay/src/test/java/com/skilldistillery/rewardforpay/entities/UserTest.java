@@ -53,6 +53,7 @@ class UserTest {
 	void test_User_UserRole_mapping() {
 		assertNotNull(user);
 		assertEquals(1,user.getRoles().get(0).getId());
-
+		
 	}
+	
 }
