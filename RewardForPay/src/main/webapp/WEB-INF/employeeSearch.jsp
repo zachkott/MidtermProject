@@ -34,14 +34,14 @@
 
 				<tr>
 					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.id}</a></td>
-					<td><img width="40%" class="detail_img" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
+					<td><img width="40%" class="detail_img" src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
 					<td>${employee.firstName}</td>
-					<td>${employee.id}">${employee.lastName}</td>
-					<td>${employee.id}">${employee.user.username}</td>
-					<td><${employee.id}">${employee.address.phone}</td>
-					<td>${employee.id}">${employee.description}</td>
-					<td>${employee.id}">${employee.department.name}</td>
-					<td>${employee.id}">${employee.department.description}</td>
+					<td>${employee.lastName}</td>
+					<td>${employee.user.username}</td>
+					<td>${employee.address.phone}</td>
+					<td>${employee.description}</td>
+					<td>${employee.department.name}</td>
+					<td>${employee.department.description}</td>
 					
 					
 					
