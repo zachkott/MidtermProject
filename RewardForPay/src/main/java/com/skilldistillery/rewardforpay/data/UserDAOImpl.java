@@ -429,4 +429,30 @@ public class UserDAOImpl implements UserDAO {
 		
 		return toDelete;
 	}
+
+	@Override
+	public List<Prize> showWishList() {
+		
+		
+	}
+
+	@Override
+	public List<Prize> addPrizeToWishlist(int employeeId, int prizeId) {
+		Employee emp = em.find(Employee.class, employeeId);
+		Prize prize = em.find(Prize.class, prizeId);
+		emp.addPrizeToWishlist(prize);
+		List<Prize> wishlist = emp.getFavorites();
+		emp.setFavorites(wishlist);
+		em.close();
+		return wishlist;
+	}
+
+	@Override
+	public boolean removePrizeFromWishlist(int employeeId, int prizeId) {
+		
+		Employee emp = em.find(Employee.class, employeeId);
+		emp.removePrizeFromWishlist(em.find(Prize.class, prizeId));
+
+		return emp.getFavorites().contains(em.find(Prize.class, prizeId));
+	}
 }

@@ -1,10 +1,7 @@
 package com.skilldistillery.rewardforpay.entities;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -66,7 +63,8 @@ public class Employee {
 	@OneToOne(mappedBy="employee")
 	private User user;
 	
-	
+	@ManyToMany(mappedBy="staff")
+	private List<Prize> favorites;
 	
 	
 	public Employee() {}
@@ -184,7 +182,69 @@ public class Employee {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public void addPrizeToWishlist(Prize prize) {
+		if (favorites == null) {
+			favorites = new ArrayList<>();
+		}
+		if (! favorites.contains(prize)) {
+			favorites.add(prize);
+			prize.addEmployee(this);
+		}
+	}
+	public void removePrizeFromWishlist(Prize prize) {
+		if (favorites != null && favorites.contains(prize)) {
+			favorites.remove(prize);
+			prize.removeEmployee(this);
+		}
+	}
+	
 
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Employee [id=");
+		builder.append(id);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", salary=");
+		builder.append(salary);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", department=");
+		builder.append(department);
+		builder.append(", supervisorId=");
+		builder.append(supervisorId);
+		builder.append(", employeePhoto=");
+		builder.append(employeePhoto);
+		builder.append(", birthday=");
+		builder.append(birthday);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", requestStatus=");
+		builder.append(requestStatus);
+		builder.append(", prizes=");
+		builder.append(prizes);
+		builder.append(", pointsAwarded=");
+		builder.append(pointsAwarded);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append(", favorites=");
+		builder.append(favorites);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	public List<Prize> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(List<Prize> favorites) {
+		this.favorites = favorites;
+	}
 
 	@Override
 	public int hashCode() {

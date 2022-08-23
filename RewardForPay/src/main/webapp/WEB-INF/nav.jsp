@@ -38,22 +38,32 @@
           <a class="nav-link" href="logout.do">Logout</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="adminHome.do">Admin Test</a>
+          <a class="nav-link" href="adminHome.do">Admin Dashboard</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin Controls
+          </a>
+           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="adminAllUsers.do">Show All Users</a></li>
+            <li><a class="dropdown-item" href="adminAllEmployees.do">Show All Employees</a></li>
+            <li><a class="dropdown-item" href="allPrizes.do?id=0">Show All Prizes</a></li>
+            <li><a class="dropdown-item" href="pendingList.do">Show All Requests</a></li>
+            
+          </ul>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             External Links
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://github.com/SkillDistillery/SD34/blob/main/sql1/images/ERDiagram.png"target="_blank">ER Diagram</a></li>
+            <li><a class="dropdown-item" href="https://github.com/zachkott/MidtermProject/blob/main/DB/rewardforpay.png"target="_blank">ER Diagram</a></li>
             <li><a class="dropdown-item" href="https://getbootstrap.com/docs/5.2/components/navbar/"target="_blank">BootStrap</a></li>
             <li><a class="dropdown-item" href="https://github.com/SkillDistillery/SD34/blob/main/SpringMVC/IntroSpringMVC/13_steps.md"target="_blank">13 Steps</a></li>
             <li><a class="dropdown-item" href="https://mvnrepository.com/"target="_blank">MVN Rep</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="https://us02web.zoom.us/j/89671861478?pwd=UkcyQ0VhYU0ycCtEbllYQm5veEhWUT09"target="_blank">GetSkilled</a></li>
             <li><a class="dropdown-item" href="https://us02web.zoom.us/j/81164088712?pwd=TWZ4SFdWeXppYmF2cUZ5MENoZzdDdz09"target="_blank">GetTAHelp</a></li>
-            <li><a class="dropdown-item" href="pendingList.do">Testing</a></li>
-            <li><a class="dropdown-item" href="DanielTest.do">DTesting</a></li>
+          
           </ul>
         </li>
 

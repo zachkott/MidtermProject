@@ -1,5 +1,6 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,11 @@ public class Prize {
 	//TODO add/remove methods
 	
 	
-	
+	@ManyToMany
+	@JoinTable(name="wishlist", 
+	joinColumns=@JoinColumn(name="prize_id"),
+	inverseJoinColumns=@JoinColumn(name="employee_id"))
+	private List<Employee> staff;
 	
 	
 	public Prize() {}
@@ -112,6 +117,59 @@ public class Prize {
 		this.employees = employees;
 	}
 	
+	
+	
+	public List<Employee> getStaff() {
+		return staff;
+	}
+	
+	public void setStaff(List<Employee> staff) {
+		this.staff = staff;
+	}
+	
+	
+	public void addEmployee(Employee employee) {
+		if (staff == null) {
+			staff = new ArrayList<>();
+		}
+		if (! staff.contains(employee)) {
+			staff.add(employee);
+			employee.addPrizeToWishlist(this);;
+		}
+	}
+	
+	public void removeEmployee(Employee employee) {
+		if (staff != null && staff.contains(employee)) {
+			staff.remove(employee);
+			employee.removePrizeFromWishlist(this);;
+		}
+	}
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Prize [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", points=");
+		builder.append(points);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", image=");
+		builder.append(image);
+		builder.append(", tier=");
+		builder.append(tier);
+		builder.append(", status=");
+		builder.append(status);
+		builder.append(", employees=");
+		builder.append(employees);
+		builder.append(", staff=");
+		builder.append(staff);
+		builder.append("]");
+		return builder.toString();
+	}
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
