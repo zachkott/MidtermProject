@@ -81,8 +81,15 @@
 				<td>${each.user.username}</td>
 				<td>${each.requestStatus.name}</td>
 				<td>
-				<form action="updateEmployee.do" method="get">
-								<input type="hidden" value=${each.id } name="eid" /> <input
+				<form action="updateEmployeeStatus.do" method="get">
+				        <label for="statusId">Status ID:</label>
+        <select name="statusId">
+          <option value="1">Approved</option>
+          <option value="2">Pending</option>
+          <option value="3">Declined</option>
+          <option value="4">Withdrawn</option>
+        </select>
+								<input type="hidden" value= "${each.id }" name="id" /> <input
 									 type="submit" value="Update Status" />
 							</form>
 							</td>
@@ -119,10 +126,17 @@
 				<td>${each.points}</td>
 				<td>${each.status.name}</td>
 				<td>
-				<form action="updatePrize.do" method="get">
-								<input type="hidden" value=${each.id } name="id" /> <input
+				<form action="updatePrizeStatus.do" method="get">
+				        <label for="statusId">Status ID:</label>
+        <select name="statusId">
+          <option value="1">Approved</option>
+          <option value="2">Pending</option>
+          <option value="3">Declined</option>
+          <option value="4">Withdrawn</option>
+        </select>
+        <input type="hidden" value= "${each.id }" name="id" /> <input
 									 type="submit" value="Update Status" />
-							</form>
+        </form>
 							</td>
 				</tr>
 				</c:forEach>

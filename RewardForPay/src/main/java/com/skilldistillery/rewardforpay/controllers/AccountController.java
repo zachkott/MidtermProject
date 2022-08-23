@@ -12,6 +12,7 @@ import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
+import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
@@ -55,10 +56,24 @@ public class AccountController {
 		
 	}
 	@RequestMapping(path = { "updateAwardStatus.do" }, method = RequestMethod.GET)
-	public String updateEmployeeStatus(HttpSession session, Model model, int statusId, int id) {
+	public String updateAwardStatus(HttpSession session, Model model, int statusId, int id) {
 		PointAwarded pa = userDao.findAwardByID(id);
 		adminDao.updateStatus(pa, statusId);
-		return "admin/TestMethods";
+		return "admin/home";
+		
+	}
+	@RequestMapping(path = { "updateEmployeeStatus.do" }, method = RequestMethod.GET)
+	public String updateEmployeeStatus(HttpSession session, Model model, int statusId, int id) {
+		Employee emp = userDao.findEmployeeById(id);
+		adminDao.updateStatus(emp, statusId);
+		return "admin/home";
+		
+	}
+	@RequestMapping(path = { "updatePrizeStatus.do" }, method = RequestMethod.GET)
+	public String updatePrizeStatus(HttpSession session, Model model, int statusId, int id) {
+		Prize p = userDao.findPrizeById(id);
+		adminDao.updateStatus(p, statusId);
+		return "home";
 		
 	}
 	

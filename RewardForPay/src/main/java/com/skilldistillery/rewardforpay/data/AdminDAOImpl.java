@@ -21,11 +21,11 @@ public class AdminDAOImpl implements AdminDAO {
 	public boolean updateStatus(Object obj,int statusId) {
 		boolean changed = false;
 		if(obj instanceof Prize) {
-			((Prize) obj).getStatus().setId(statusId);
+			((Prize) obj).setStatus(em.find(Status.class, statusId));
 			changed =true;
 		}
 		if(obj instanceof Employee) {
-			((Employee) obj).getRequestStatus().setId(statusId);
+			((Employee) obj).setRequestStatus(em.find(Status.class, statusId));
 			changed =true;
 		}
 		if(obj instanceof PointAwarded) {
