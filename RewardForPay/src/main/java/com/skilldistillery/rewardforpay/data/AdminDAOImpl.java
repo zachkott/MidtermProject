@@ -36,6 +36,11 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return changed;
 	}
+	@Override
+	public boolean deleteEmployeeTest(Employee emp) {
+			emp.setRequestStatus(em.find(Status.class, 4));
+		return true;
+	}
 
 //	@Override
 //	public PointRedemption createRedemption(PointRedemption redeemed) {

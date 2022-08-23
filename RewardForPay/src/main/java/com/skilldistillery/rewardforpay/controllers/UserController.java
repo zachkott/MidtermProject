@@ -97,7 +97,7 @@ public class UserController {
 
 	@RequestMapping(path = "showAllUsers.do", method = RequestMethod.GET)
 	public String showAllUsers(Model model) {
-		List<User> users = userDao.findAllUsers();
+		List<User> users = userDao.findAllActiveUsers();
 		model.addAttribute("allUsers", users);
 		return "user/userResults";
 	}

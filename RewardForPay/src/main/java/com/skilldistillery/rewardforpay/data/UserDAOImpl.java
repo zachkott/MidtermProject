@@ -78,7 +78,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> findUserByKeyword(String keyword) {
 		keyword = "%" + keyword + "%";
 		
-		String jpql = "SELECT u FROM User u WHERE u.enabled = 0 and u.userName LIKE :keyword";
+		String jpql = "SELECT u FROM User u WHERE u.userName LIKE :keyword";
 		
 		
 		return em.createQuery(jpql, User.class).setParameter("keyword", keyword).getResultList();
@@ -109,7 +109,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public List<User> findAllActiveUsers() {
-		String jpql =  "SELECT u FROM  User u WHERE u.enabled=true";
+		String jpql =  "SELECT u FROM  User u WHERE u.enabled=0";
 		return em.createQuery(jpql, User.class).getResultList();
 	}
 	
@@ -393,6 +393,14 @@ public class UserDAOImpl implements UserDAO {
 		String query = "SELECT pa FROM PointAwarded pa JOIN Employee e ON e.id = pa.employee.id WHERE e.id = :employeeId ORDER BY pa.id";
 		
 		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).setParameter("employeeId", employeeId).getResultList();
+		return pointsAwarded;		
+	}
+
+	@Override
+	public List<PointAwarded> findAllWithdrawnAwards() {
+		String query = "SELECT pa FROM PointAwarded pa JOIN Employee e ON e.id = pa.employee.id WHERE pa.employee.requestStatus.id=1 OR pa.employee.requestStatus.id=2 OR pa.employee.requestStatus.id=3 ORDER BY pa.id";
+		
+		List<PointAwarded> pointsAwarded = em.createQuery(query, PointAwarded.class).getResultList();
 		return pointsAwarded;		
 	}
 

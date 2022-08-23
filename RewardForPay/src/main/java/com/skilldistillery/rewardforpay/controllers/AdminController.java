@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
@@ -21,7 +22,9 @@ public class AdminController {
 
 	@Autowired
 	private UserDAO userDao;
-
+	@Autowired
+	private AdminDAO adminDao;
+	
 	@RequestMapping(path = "adminHome.do")
 	public String home(Model model) {
 		return "admin/adminHome";
@@ -102,7 +105,7 @@ public class AdminController {
 
 	@RequestMapping(path = "adminAllEmployees.do", method = RequestMethod.GET)
 	public String showAdminAllEmployees(Model model) {
-		List<Employee> emps = userDao.findAllEmployees();
+		List<Employee> emps = userDao.findAllActiveEmployees();
 		model.addAttribute("allEmployees", emps);
 		return "admin/adminAllEmployees";
 	}
@@ -126,9 +129,10 @@ public class AdminController {
 	}
 	
 	@RequestMapping(path = "adminDeleteEmployeeForm.do")
-	public String adminDeleteEmployeeForm(Integer id, Employee employee, Model model) {
-		model.addAttribute("employee", userDao.deleteEmployee(id));
-		return "admin/adminDeleteEmployee";
+	public String adminDeleteEmployeeForm(int id, Model model) {
+		Employee emp = userDao.findEmployeeById(id);
+		adminDao.deleteEmployeeTest(emp);
+		return "admin/adminHome";
 	}
 	
 	@RequestMapping(path = "findEmployee.do")
