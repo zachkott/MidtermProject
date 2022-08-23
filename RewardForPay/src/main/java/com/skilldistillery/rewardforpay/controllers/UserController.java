@@ -24,7 +24,7 @@ public class UserController {
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
-		model.addAttribute("SMOKETEST", userDao.findById(1)); // DELETE
+		
 		return "home";
 
 	}
@@ -82,7 +82,7 @@ public class UserController {
 
 	@RequestMapping(path = "updateUserForm.do")
 	public String updateUserForm(int id, User user, Model model) {
-		model.addAttribute("user", userDao.findById(id));
+		model.addAttribute("user", userDao.findUserById(id));
 		return "user/updateUserDetails";
 	}
 
@@ -102,7 +102,7 @@ public class UserController {
 
 	@RequestMapping(path = "findUser.do")
 	public String findUser(int userId, Model model) {
-		User thisUser = userDao.findById(userId);
+		User thisUser = userDao.findUserById(userId);
 		model.addAttribute("user", thisUser);
 		return "user/showUser";
 	}
@@ -120,7 +120,7 @@ public class UserController {
 			return "index";
 		}
 
-		User status = userDao.findById(id);
+		User status = userDao.findUserById(id);
 		if (userDao.deleteUser(id) != null) {
 			model.addAttribute("user", status);
 			return "user/deletedUser";

@@ -79,7 +79,7 @@ public class AdminController {
 
 	@RequestMapping(path = "adminUpdateUserForm.do")
 	public String adminUpdateUserForm(Integer id, User user, Model model) {
-		model.addAttribute("user", userDao.findById(id));
+		model.addAttribute("user", userDao.findUserById(id));
 		return "admin/adminUpdateUser";
 	}
 

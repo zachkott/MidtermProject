@@ -134,7 +134,20 @@ public class UserDAOImpl implements UserDAO {
 		return address;
 	}
 	
+	@Override
+	public Address updateAddress(Address address, int addressId) {
+		Address newAddress = em.find(Address.class, addressId);
+		
+		newAddress.setStreet(address.getStreet());
 	
+		newAddress.setCity(address.getCity());
+		newAddress.setState(address.getState());
+		newAddress.setPostalCode(address.getPostalCode());
+		newAddress.setPhone(address.getPhone());
+
+		
+		return newAddress;  
+	}
 	
 //Employee profile/actions	
 	@Override
@@ -156,17 +169,19 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Employee updateEmployee(int id, Employee employee) {
 		Employee updated = em.find(Employee.class, id);
+		Status stat = em.find(Status.class, 2);
+		updated.setRequestStatus(stat);
 		updated.setFirstName(employee.getFirstName());
 		updated.setLastName(employee.getLastName());
 		updated.setSalary(employee.getSalary());
-		updated.setAddress(employee.getAddress());
-		updated.setDepartment(employee.getDepartment());
-		updated.setSupervisorId(employee.getSupervisorId());
-		updated.setEmployeePhoto(employee.getEmployeePhoto());
+		
+//		updated.setDepartment(employee.getDepartment());
+//		updated.setSupervisorId(employee.getSupervisorId());
+//		updated.setEmployeePhoto(employee.getEmployeePhoto());
 		updated.setBirthday(employee.getBirthday());
-		updated.setDescription(employee.getDescription());
-		updated.setRequestStatus(employee.getRequestStatus());
-		updated.setPrizes(employee.getPrizes());
+//		updated.setDescription(employee.getDescription());
+		
+		
 		return employee;
 	}
 

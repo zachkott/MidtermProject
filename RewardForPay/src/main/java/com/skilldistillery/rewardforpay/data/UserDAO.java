@@ -30,7 +30,7 @@ public interface UserDAO {
 		boolean enableUser(int id);
 		boolean disableUser(int id);
 		Address createAddress(Address address);
-		
+		Address updateAddress(Address address, int addressId);
 		
 		//Employee profile/actions -Daniel
 		Employee createEmployee(Employee employee, int addId);
