@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.User;
@@ -17,6 +18,8 @@ public class LoginController {
 	
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private AdminDAO adminDao;
 
 	@RequestMapping (path ="login.do",method = RequestMethod.GET) 
 	public String goToLoginForm(HttpSession session) {
@@ -40,6 +43,8 @@ public class LoginController {
 			session.setAttribute("userinfo", employee);
 			session.setAttribute("prizes", userDao.findAllPrizes());
 			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); //modify this to show actual balance
+			session.setAttribute("claimed", adminDao.claimedInitial(employee.getId())); 
+			session.setAttribute("claimedT", adminDao.claimedInitialT(employee.getId())); 
 			return "account";
 		}
 	}

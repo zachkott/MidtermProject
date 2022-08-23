@@ -8,7 +8,7 @@
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-<h1>Listed Employees found by search word:<c:out value="{keyword}"></c:out></h1>
+<h1>Listed Employees found by search word:<c:out value="${keyword}"></c:out></h1>
 
 
 <h1>Employee Search</h1>
@@ -17,6 +17,7 @@
 		<thead class="table-light">
 			<tr>
 				<th>ID</th>
+				<th>Employee Photo</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Username</th>
@@ -32,14 +33,15 @@
 			<c:forEach var="employee" items="${allEmployees}">
 
 				<tr>
-					<td>${employee.id}</td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.firstName}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.lastName}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.user.username}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.address.phone}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.description}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.department.name}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.department.description}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.id}</a></td>
+					<td><img width="40%" class="detail_img" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
+					<td>${employee.firstName}</td>
+					<td>${employee.id}">${employee.lastName}</td>
+					<td>${employee.id}">${employee.user.username}</td>
+					<td><${employee.id}">${employee.address.phone}</td>
+					<td>${employee.id}">${employee.description}</td>
+					<td>${employee.id}">${employee.department.name}</td>
+					<td>${employee.id}">${employee.department.description}</td>
 					
 					
 					

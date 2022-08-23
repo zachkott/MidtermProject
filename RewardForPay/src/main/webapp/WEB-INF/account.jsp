@@ -99,7 +99,8 @@
 		<c:choose>
 	<c:when test="${empty claimedT }">
 	<td>
-			<form action="redeem.do?id=5" method="GET">
+			<form action="redeem.do?" method="GET">
+			<input type="hidden" name="id" value="5"/>
 				<input class="btn btn-success" type="submit" value="Claim a free company T-shirt!">
 		</form>
 	</td>

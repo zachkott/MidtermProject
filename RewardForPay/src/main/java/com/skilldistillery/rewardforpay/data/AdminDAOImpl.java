@@ -72,12 +72,12 @@ public class AdminDAOImpl implements AdminDAO {
 		return awarded;
 	}
 	@Override
-	public List<Prize> claimedInitialT(int employeeId){
-		String awaredquery = "SELECT w FROM Wishlist w WHERE employee_id = :employeeId";
-		List<Prize> awarded = em.createQuery(awaredquery, Prize.class)
+	public List<PointRedemption> claimedInitialT(int employeeId){
+
+		String awaredquery = "SELECT pr FROM PointRedemption pr WHERE employee_id = :employeeId AND reward_id=5";
+		List<PointRedemption> awarded = em.createQuery(awaredquery, PointRedemption.class)
 				.setParameter("employeeId", employeeId).getResultList();
-		
-		return awarded;	
+		return awarded;
 }
 	public List<Employee> searchAll(String keyword) {
 		keyword = "%" + keyword + "%";
