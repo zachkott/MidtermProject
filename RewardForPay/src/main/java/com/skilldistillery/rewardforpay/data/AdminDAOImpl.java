@@ -1,6 +1,7 @@
 package com.skilldistillery.rewardforpay.data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -60,23 +61,14 @@ public class AdminDAOImpl implements AdminDAO {
 		return redeemed;
 		}
 	}
-//	@Override
-//	public PointAwarded updateAward(int awardId, PointAwarded pointAward) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//	
-//	
-//	
-//	@Override
-//	public PointRedemption updateRedemption(int employeeId, int rewardId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public PointRedemption deleteRedemption(int employeeId, int rewardId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<PointAwarded> claimedInitial(int employeeId) {
+		String keyword = "Initial Point Award";
+		keyword = "%" + keyword + "%";
+		String awaredquery = "SELECT pa FROM PointAwarded pa WHERE employee_id = :employeeId AND pa.description LIKE :keyword";
+		List<PointAwarded> awarded = em.createQuery(awaredquery, PointAwarded.class)
+				.setParameter("employeeId", employeeId).setParameter("keyword", keyword).getResultList();
+		
+		return awarded;
+	}
 }

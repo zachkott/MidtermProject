@@ -43,7 +43,7 @@
 						<ul style="list-style-type: none">
 							<li><strong>Salary: </strong>${sessionScope.userinfo.salary}</li>
 							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.street}</li>
-							<li><strong>Department: </strong>${sessionScope.userinfo.department}</li>
+							<li><strong>Department: </strong>${sessionScope.userinfo.department.name}</li>
 							<li>Birthday: <h4>${sessionScope.userinfo.birthday}</h4></li>
 							<li>Reward Balance: <h4>${sessionScope.rewardBalance}</h4></li> <!-- do the logic in controller and pass the attribute value -->
 						</ul>
@@ -82,6 +82,8 @@
 	<td>
 			<a href="allPrizes.do?id=0">See all prizes</a>
 	</td>
+	<c:choose>
+	<c:when test="${empty claimed }">
 	<td>
 			<form action="createAward.do" method="POST">
 				<input type="hidden" name="description" value="Initial Point Award"/>
@@ -91,6 +93,10 @@
 				<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
 		</form>
 	</td>
+	</c:when>
+	<c:otherwise></c:otherwise>
+	</c:choose>
+	
 	</tr>
 	</table>
 	</div>

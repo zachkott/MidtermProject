@@ -20,4 +20,5 @@ public interface AdminDAO {
 	boolean updateStatus(Object obj,int statusId);	
 	boolean deleteEmployeeTest(Employee emp);
 	 boolean createRedemption(Prize p, Employee e,int remainder);
+	 List<PointAwarded>  claimedInitial(int id);
 }

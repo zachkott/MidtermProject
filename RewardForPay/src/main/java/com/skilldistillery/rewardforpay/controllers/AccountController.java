@@ -41,6 +41,7 @@ public class AccountController {
 			model.addAttribute("numOfPrizes", prizes.size());
 			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
 			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
+			session.setAttribute("claimed", adminDao.claimedInitial(employee.getId())); 
 			return "account";
 		} else {
 			
