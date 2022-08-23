@@ -51,29 +51,36 @@ public class AccountController {
 	}
 	@RequestMapping(path = { "findEmployeeTest.do" })
 	public String pendingEmployee(HttpSession session, Model model, int eid) {
-		model.addAttribute("employee",userDao.findAwardByID(eid));
-		return "employee";
+		model.addAttribute("employee",userDao.findEmployeeById(eid));
+		return "user/showEmployee";
+		
+	}
+	@RequestMapping(path = { "findRewardTest.do" })
+	public String pendingReward(HttpSession session, Model model, int rid) {
+		model.addAttribute("prize",userDao.findPrizeById(rid));
+		return "reward";
 		
 	}
 	@RequestMapping(path = { "updateAwardStatus.do" }, method = RequestMethod.GET)
 	public String updateAwardStatus(HttpSession session, Model model, int statusId, int id) {
 		PointAwarded pa = userDao.findAwardByID(id);
 		adminDao.updateStatus(pa, statusId);
-		return "admin/home";
+		return "admin/adminHome";
 		
 	}
 	@RequestMapping(path = { "updateEmployeeStatus.do" }, method = RequestMethod.GET)
 	public String updateEmployeeStatus(HttpSession session, Model model, int statusId, int id) {
 		Employee emp = userDao.findEmployeeById(id);
 		adminDao.updateStatus(emp, statusId);
-		return "admin/home";
+		return "admin/adminHome";
 		
 	}
 	@RequestMapping(path = { "updatePrizeStatus.do" }, method = RequestMethod.GET)
 	public String updatePrizeStatus(HttpSession session, Model model, int statusId, int id) {
 		Prize p = userDao.findPrizeById(id);
+		System.out.println(p.toString());
 		adminDao.updateStatus(p, statusId);
-		return "home";
+		return "admin/adminHome";
 		
 	}
 	

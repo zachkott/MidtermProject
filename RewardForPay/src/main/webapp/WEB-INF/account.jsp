@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
+<jsp:include page ="bootstrapHead.jsp" />
 </head>
 <body>
 <%@ include file="nav.jsp" %>
@@ -104,7 +105,15 @@
       <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
     </div>
     <!--/.Controls-->
-
+    
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+      <li data-target="#multi-item-example" data-slide-to="1"></li>
+      <li data-target="#multi-item-example" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    
     <!--Slides-->
     <div class="carousel-inner" role="listbox">
 
@@ -123,8 +132,8 @@
 			              <div class="card-body">
 			                <h4 class="card-title">${prize.name}</h4>
 			                <p class="card-text">${prize.points}</p>
-			                <a href="prizeInfo.do?id=${prize.id}" class="btn btn-primary">Details</a>
-							<c:set var="count" value="${count + 1}" scope="page"/>
+			                <a href="reward.do?id=${prize.id}" class="btn btn-primary">Details</a>
+							
 			              </div>
 			            </div>
 			          </div>
@@ -141,8 +150,7 @@
 			              <div class="card-body">
 			                <h4 class="card-title">${prize.name}</h4>
 			                <p class="card-text">${prize.points}</p>
-			                <a href="prizeInfo.do?id=${prize.id}" class="btn btn-primary">Details</a>
-			                <c:set var="count" value="${count + 1}" scope="page"/>
+			                <a href="reward.do?id=${prize.id}" class="btn btn-primary">Details</a>
 			              </div>
 			            </div>
 			          </div>
@@ -158,8 +166,7 @@
 			              <div class="card-body">
 			                <h4 class="card-title">${prize.name}</h4>
 			                <p class="card-text">${prize.points}</p>
-			                <a href="prizeInfo.do?id=${prize.id}" class="btn btn-primary">Details</a>
-			                <c:set var="count" value="${count + 1}" scope="page"/>
+			                <a href="reward.do?id=${prize.id}" class="btn btn-primary">Details</a>
 			              </div>
 			            </div>
 			          </div>
@@ -167,6 +174,7 @@
 					</c:when>
 					<c:otherwise></c:otherwise>
 					</c:choose>
+					<c:set var="count" value="${count + 1}" scope="page"/>
 	</c:forEach>
 			    </div>
 			    </div>

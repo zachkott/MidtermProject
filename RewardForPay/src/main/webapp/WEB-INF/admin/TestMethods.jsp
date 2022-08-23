@@ -119,7 +119,7 @@
 				<tbody>				
 				<c:forEach var="each" items="${pendingPP}">
 				<tr>
-				<td><a href="reward.do?id=${each.id}">${each.id}</a></td>
+				<td><a href="findRewardTest.do?rid=${each.id}">${each.id}</a></td>
 				<td>${each.name}</td>
 				<td>${each.description}</td>
 				<td>${each.tier.name}</td>
