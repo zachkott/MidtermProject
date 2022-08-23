@@ -26,17 +26,8 @@ public class UserDAOImpl implements UserDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	@Override
-	public User findByUsername(String username, String password) {
-		String exist = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
-		List<User> users = em.createQuery(exist, User.class).setParameter("username", username)
-				.setParameter("password", password).getResultList();
-		if (users.size() == 0) {
-			return null;
-		}
-		return users.get(0);
-	}
-
+	
+//LoggedIn User Actions
 	@Override
 	public User createUser(User user, int empId) {
 		User newUser = user;
@@ -49,21 +40,103 @@ public class UserDAOImpl implements UserDAO {
 		employee.getPointsAwarded().size();
 		newUser.setEmployee(employee);
 		em.persist(newUser);
-
+		
 		return newUser;
 	}
-
+	
 	@Override
-	public Employee findEmployeeById(int employeeId) {
-		return em.find(Employee.class, employeeId);
+	public User updateUser(int id, User user) {
+		User updatedUser =em.find(User.class, id);
+		
+		updatedUser.setUsername(user.getUsername());
+		updatedUser.setPassword(user.getPassword());
+		updatedUser.setEnabled(user.getEnabled());
+		updatedUser.setRoles(user.getRoles());
+		return updatedUser;
 	}
 
 	@Override
-	public List<Employee> findAllEmployees() {
-		String query = "SELECT e FROM Employee e";
-		return em.createQuery(query, Employee.class).getResultList();
+	public User deleteUser(int id) {
+		User userToBeDeleted =em.find(User.class, id);
+		
+		em.remove(userToBeDeleted);
+		
+		return userToBeDeleted;
 	}
-
+	
+	@Override
+	public User findUserById(int userId) {
+		User user = em.find(User.class, userId);
+		if (user.getEnabled()==true) {
+			return user;
+		}
+		return null;
+	}
+	
+	@Override
+	public List<User> findUserByKeyword(String keyword) {
+		keyword = "%" + keyword + "%";
+		
+		String jpql = "SELECT u FROM User u WHERE u.enabled = 0 and u.userName LIKE :keyword";
+		
+		
+		return em.createQuery(jpql, User.class).setParameter("keyword", keyword).getResultList();
+	}
+	
+	@Override
+	public User findByUsername(String username, String password) {
+		String exist = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
+		List<User> users = em.createQuery(exist, User.class).setParameter("username", username)
+				.setParameter("password", password).getResultList();
+		List<User> activeUsers = new ArrayList<User>();
+		if (users.size() == 0) {
+			return null;
+		}
+		for (User u : users) {
+			if (u.getEnabled()==true) {
+				activeUsers.add(u);
+			}
+		}
+		return activeUsers.get(0);
+	}
+	
+	@Override
+	public List<User> findAllUsers() {
+		String jpql =  "SELECT u FROM  User u";
+		return em.createQuery(jpql, User.class).getResultList();
+	}
+	
+	@Override
+	public List<User> findAllActiveUsers() {
+		String jpql =  "SELECT u FROM  User u WHERE u.enabled=true";
+		return em.createQuery(jpql, User.class).getResultList();
+	}
+	
+	@Override
+	public boolean enableUser(int id) {
+		User activeUser = em.find(User.class, id);
+		activeUser.setEnabled(true);
+		boolean userActivated = activeUser.getEnabled();
+		return userActivated;
+	}
+	
+	@Override
+	public boolean disableUser(int id) {
+		User inactiveUser = em.find(User.class, id);
+		inactiveUser.setEnabled(false);
+		boolean userDeactivated = inactiveUser.getEnabled();
+		return userDeactivated;
+	}
+	
+	@Override
+	public Address createAddress(Address address) {
+		em.persist(address);
+		return address;
+	}
+	
+	
+	
+//Employee profile/actions	
 	@Override
 	public Employee createEmployee(Employee employee, int addId) {
 		Employee emp = employee;
@@ -78,12 +151,6 @@ public class UserDAOImpl implements UserDAO {
 		em.persist(emp);
 		emp.setPointsAwarded(findAllAwards(emp.getId()));
 		return emp;
-	}
-
-	@Override
-	public Address createAddress(Address address) {
-		em.persist(address);
-		return address;
 	}
 
 	@Override
@@ -107,6 +174,27 @@ public class UserDAOImpl implements UserDAO {
 	public Employee deleteEmployee(int id) {
 		em.remove(em.find(Employee.class, id));
 		return null;
+	}
+	
+	@Override
+	public Employee findEmployeeById(int employeeId) {
+		Employee emp = em.find(Employee.class, employeeId);
+		if (emp.getRequestStatus().getId() != 1) {
+			return null;
+		}
+		return emp;
+	}
+
+	@Override
+	public List<Employee> findAllEmployees() {
+		String query = "SELECT e FROM Employee e";
+		return em.createQuery(query, Employee.class).getResultList();
+	}
+	
+	@Override
+	public List<Employee> findAllActiveEmployees() {
+		String query = "SELECT e FROM Employee e WHERE e.requestStatus.id=1";
+		return em.createQuery(query, Employee.class).getResultList();
 	}
 
 	@Override
@@ -135,16 +223,75 @@ public class UserDAOImpl implements UserDAO {
 		em.persist(redeemed);
 		return redeemed;
 	}
-	
+
 	@Override
-	public User findById(int userId) {
-		return em.find(User.class, userId);
+	public PointRedemption withdrawRedemption(int employeeId, int rewardId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
-/////Reward/Award actions
+	
+//Admin actions
+	@Override
+	public List<PointAwarded> pendingPointAwarded() {
+		Status status = em.find(Status.class, 2);
+		return status.getPointsAwarded();
+	}
+
+	@Override
+	public List<Employee> pendingEmployees() {
+		Status status = em.find(Status.class, 2);
+		return status.getEmployees();
+	}
+
+	@Override
+	public List<Prize> pendingPrize() {
+		Status status = em.find(Status.class, 2);
+		return status.getPrizes();
+	}
+	
+	@Override
+	public boolean deletePrize(int id) {
+		Status status = em.find(Status.class, 4);
+		Prize deleted = em.find(Prize.class, id);
+		deleted.setStatus(status);
+		boolean success = !em.contains(deleted);
+		return success;
+	}
+
+	@Override
+	public boolean updateStatus(int statusId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public PointAwarded updateAward(int awardId, PointAwarded pointAward) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PointRedemption updateRedemption(int employeeId, int rewardId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PointRedemption deleteRedemption(int employeeId, int rewardId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+//Reward items
 	@Override
 	public Prize findPrizeById(int prizeId) {
-		return em.find(Prize.class, prizeId);
+		Prize prize = em.find(Prize.class, prizeId);
+		if (prize.getStatus().getId()==1) {
+			return prize;
+		}
+		return null;
 	}
 
 	@Override
@@ -155,12 +302,19 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public List<Prize> findAllActivePrizes() {
+		String query = "SELECT p FROM Prize p WHERE p.status.id=1 ORDER BY p.name";
+		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
+		return prizes;
+	}
+
+	@Override
 	public List<Prize> findPrizesByTier(int tierId) {
 		//select * from prize p join tier t on p.tier_id=t.id where t.id = 3 order by p.tier_id, p.name; //make this into JPQL
 //		String query2 = "SELECT p FROM Prize p JOIN Tier t on p.tier_id = t.id WHERE t.id = :tier ORDER BY p.tier, p.name";
 //		List<Prize> prizeTier = em.createQuery(query2, Prize.class).setParameter("tier", tierId).getResultList();
 	
-		String query = "SELECT p FROM Prize p ORDER BY p.tier, p.name";
+		String query = "SELECT p FROM Prize p WHERE p.status.id = 1 ORDER BY p.tier, p.name";
 		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
 		List<Prize> prizeTier = new ArrayList<Prize>();
 		for (Prize p : prizes) {
@@ -210,7 +364,9 @@ public class UserDAOImpl implements UserDAO {
 		
 		return updated;
 	}
-
+	
+	
+//Award actions
 	@Override
 	public PointAwarded findAwardByID(int awardId) {
 		return em.find(PointAwarded.class, awardId);
@@ -248,115 +404,5 @@ public class UserDAOImpl implements UserDAO {
 		}
 		
 		return toDelete;
-	}
-	@Override
-	public List<User> findUserByKeyword(String keyword) {
-		keyword = "%" + keyword + "%";
-		
-		String jpql = "SELECT u FROM User u WHERE u.userName LIKE :keyword";
-		
-		
-		return em.createQuery(jpql, User.class).setParameter("keyword", keyword).getResultList();
-	}
-
-	@Override
-	public List<User> findAllUsers() {
-		String jpql =  "SELECT u FROM  User u";
-		return em.createQuery(jpql, User.class).getResultList();
-	}
-	@Override
-	public User updateUser(int id, User user) {
-		User updatedUser =em.find(User.class, id);
-		
-		updatedUser.setUsername(user.getUsername());
-		updatedUser.setPassword(user.getPassword());
-		updatedUser.setEnabled(user.getEnabled());
-		updatedUser.setRoles(user.getRoles());
-		
-		
-		return updatedUser;
-	}
-
-	@Override
-	public User deleteUser(int id) {
-		User userToBeDeleted =em.find(User.class, id);
-		
-		em.remove(userToBeDeleted);
-		
-		return userToBeDeleted;
-	}
-	@Override
-	public boolean disableUser(int id) {
-		User inactiveUser = em.find(User.class, id);
-		inactiveUser.setEnabled(false);
-		boolean userDeactivated = inactiveUser.getEnabled();
-		return userDeactivated;
-	}
-	
-	@Override
-	public boolean enableUser(int id) {
-		User activeUser = em.find(User.class, id);
-		activeUser.setEnabled(true);
-		boolean userActivated = activeUser.getEnabled();
-		return userActivated;
-	}
-
-	@Override
-	public PointRedemption withdrawRedemption(int employeeId, int rewardId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public boolean updateStatus(int statusId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public PointAwarded updateAward(int awardId, PointAwarded pointAward) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean deletePrize(int id) {
-		Status status = em.find(Status.class, 4);
-		Prize deleted = em.find(Prize.class, id);
-		deleted.setStatus(status);
-		boolean success = !em.contains(deleted);
-		return success;
-	}
-
-	@Override
-	public PointRedemption updateRedemption(int employeeId, int rewardId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PointRedemption deleteRedemption(int employeeId, int rewardId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<PointAwarded> pendingPointAwarded() {
-		Status status = em.find(Status.class, 2);
-		return status.getPointsAwarded();
-	}
-
-	@Override
-	public List<Employee> pendingEmployees() {
-		Status status = em.find(Status.class, 2);
-		return status.getEmployees();
-	}
-
-	@Override
-	public List<Prize> pendingPrize() {
-		Status status = em.find(Status.class, 2);
-		return status.getPrizes();
 	}
 }
