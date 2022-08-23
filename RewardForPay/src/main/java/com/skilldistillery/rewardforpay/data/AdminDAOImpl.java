@@ -50,7 +50,7 @@ public class AdminDAOImpl implements AdminDAO {
 	public boolean createRedemption(Prize p, Employee e, int remainder) {
 		boolean redeemed =false;
 		int pamount =p.getPoints();
-		if(pamount>remainder) {
+		if(pamount>=remainder) {
 			return redeemed;
 		}else {
 		PointRedemption pr = new PointRedemption();
@@ -70,5 +70,20 @@ public class AdminDAOImpl implements AdminDAO {
 				.setParameter("employeeId", employeeId).setParameter("keyword", keyword).getResultList();
 		
 		return awarded;
+	}
+	@Override
+	public List<Prize> claimedInitialT(int employeeId){
+		String awaredquery = "SELECT w FROM Wishlist w WHERE employee_id = :employeeId";
+		List<Prize> awarded = em.createQuery(awaredquery, Prize.class)
+				.setParameter("employeeId", employeeId).getResultList();
+		
+		return awarded;	
+}
+	public List<Employee> searchAll(String keyword) {
+		keyword = "%" + keyword + "%";
+
+		String sql = "SELECT e FROM Employee e WHERE e.firstName LIKE :keyword OR e.lastName LIKE :keyword OR e.user.username LIKE :keyword";
+
+		return em.createQuery(sql, Employee.class).setParameter("keyword", keyword).getResultList();
 	}
 }

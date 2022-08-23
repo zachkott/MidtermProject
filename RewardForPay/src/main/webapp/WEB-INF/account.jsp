@@ -17,7 +17,7 @@
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
    
-   <h2>Welcome, ${sessionScope.loggedInUser.username} ${sessionScope.loggedInUser.password}</h2>
+   <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>
    		<h1>Welcome to Reward For Pay</h1>
    						<h5>What would you like to do?</h5>
@@ -96,7 +96,16 @@
 	</c:when>
 	<c:otherwise></c:otherwise>
 	</c:choose>
-	
+		<c:choose>
+	<c:when test="${empty claimedT }">
+	<td>
+			<form action="redeem.do?id=5" method="GET">
+				<input class="btn btn-success" type="submit" value="Claim a free company T-shirt!">
+		</form>
+	</td>
+	</c:when>
+	<c:otherwise></c:otherwise>
+	</c:choose>
 	</tr>
 	</table>
 	</div>

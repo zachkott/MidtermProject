@@ -21,4 +21,6 @@ public interface AdminDAO {
 	boolean deleteEmployeeTest(Employee emp);
 	 boolean createRedemption(Prize p, Employee e,int remainder);
 	 List<PointAwarded>  claimedInitial(int id);
+	 List<Prize> claimedInitialT(int employeeId);
+	 List<Employee> searchAll(String keyword);
 }

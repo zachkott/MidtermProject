@@ -42,6 +42,7 @@ public class AccountController {
 			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
 			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
 			session.setAttribute("claimed", adminDao.claimedInitial(employee.getId())); 
+			session.setAttribute("claimedT", adminDao.claimedInitialT(employee.getId())); 
 			return "account";
 		} else {
 			
@@ -114,5 +115,11 @@ public class AccountController {
 		return "redeemConfirmation";
 		
 	}
-	
+	@RequestMapping(path = { "seachEmployee.do" },method = RequestMethod.GET)
+	public String searchEmployee(HttpSession session, Model model, String keyword) {
+		model.addAttribute("allEmployees",adminDao.searchAll(keyword));
+		model.addAttribute("keyword",keyword);
+		return "employeeSearch";
+		
+	}
 }
