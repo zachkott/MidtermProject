@@ -304,7 +304,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Prize findPrizeById(int prizeId) {
 		Prize prize = em.find(Prize.class, prizeId);
-		if (prize.getStatus().getId()>2) {
+		if (prize.getStatus().getId()<3) {
 			return prize;
 		}
 		return null;
