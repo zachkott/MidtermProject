@@ -24,7 +24,7 @@
 				<th>Phone</th>
 				<th>Birthday</th>
 				<th>Department</th>
-				<!-- <th>Delete Employee </th> -->
+				 <th>Update Employee </th> 
 				
 				
 				
