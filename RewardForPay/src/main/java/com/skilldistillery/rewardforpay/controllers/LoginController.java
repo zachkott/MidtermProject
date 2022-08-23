@@ -50,4 +50,9 @@ public class LoginController {
 		session.removeAttribute("userinfo");
 		return "logout";
 	}
+	@RequestMapping (path ="DanielTest.do") 
+	public String DanielTest(HttpSession session) {
+
+		return "DanielTest";
+	}
 }
