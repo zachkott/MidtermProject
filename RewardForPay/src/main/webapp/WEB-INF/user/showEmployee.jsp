@@ -20,9 +20,18 @@
 
 		<h2>Employee Details</h2>
 		<ul>
+			<li>Employee ID: ${employee.id}</li>
 			<li>First Name: ${employee.firstName}</li>
 			<li>Last Name: ${employee.lastName}</li>
-			<li> ID: ${employee.id}</li>
+			<li>Username: ${employee.user.username}</li>
+			<li>Street: ${employee.address.street}</li>
+			<li>State: ${employee.address.state}</li>
+			<li>City: ${employee.address.city}</li>
+			<li>Birthday: ${employee.birthday}</li>
+			<li>Department: ${employee.department.name}</li>
+			
+			
+			
 
 		</ul>
 
