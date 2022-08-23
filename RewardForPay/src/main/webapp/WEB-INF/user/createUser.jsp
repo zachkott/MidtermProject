@@ -34,6 +34,9 @@
 			<label for="phone">Phone: </label> 
 			<input type="text" name="phone" required> 
 			<br>
+			<label for="birthday">Birthday: </label> 
+			<input type="date" name="date" placeholder="YYYY-MM-DD" required> 
+			<br>
 
 
 

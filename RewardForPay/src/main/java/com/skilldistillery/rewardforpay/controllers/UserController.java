@@ -1,5 +1,6 @@
 package com.skilldistillery.rewardforpay.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,10 @@ public class UserController {
 //	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount( Model model,  Employee  employee, Address address, User user, RedirectAttributes redir) {
+	public ModelAndView createUserAccount( Model model, String date,  Employee  employee, Address address, User user, RedirectAttributes redir) {
+		LocalDate localDate = LocalDate.parse(date);
+		employee.setBirthday(localDate);
+		
 		// Add address
 		redir.addFlashAttribute("addressAdded", userDao.createAddress(address));
 		redir.addAttribute("id", address.getId());
@@ -55,7 +59,6 @@ public class UserController {
 		
 		// Add  employee
 		
-
 		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee, address.getId()));
 		redir.addAttribute("id", employee.getId());
 		redir.addFlashAttribute("addMessage", "Employee was successfully added.");

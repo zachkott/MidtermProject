@@ -12,5 +12,24 @@
 
 <h1>Inside Admin Update User</h1>
 
+<div class="form-row">
+		<form action="adminUpdateUser.do" method="POST">
+			<input type ="hidden" name ="id" value="${user.id}">
+			<label for="username">Username:</label> 
+			<input type="text" name="username" value="${user.username}"required="true"> 
+			<br>
+			<label for="password">Password:</label> 
+			<input type="text" name="password" value="${user.password}"required="true"> 
+			<br>
+		
+			<br>
+
+			<input class="btn btn-success" type="submit" value="Update User">
+
+
+
+		</form>
+</div>
+
 </body>
 </html>

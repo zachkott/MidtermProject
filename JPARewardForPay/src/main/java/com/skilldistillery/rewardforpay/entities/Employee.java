@@ -1,5 +1,9 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +24,7 @@ public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -45,7 +49,7 @@ public class Employee {
 	private String employeePhoto;
 
 	
-	private Date birthday;
+	private LocalDate birthday;
 
 	private String description;
 
@@ -71,7 +75,7 @@ public class Employee {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -131,14 +135,16 @@ public class Employee {
 		this.employeePhoto = employeePhoto;
 	}
 
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
+//		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//		Date parsed = format.parse(birthday);
+	
 		this.birthday = birthday;
 	}
-
 	public String getDescription() {
 		return description;
 	}
