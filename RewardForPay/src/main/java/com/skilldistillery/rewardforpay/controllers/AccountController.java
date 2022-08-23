@@ -29,8 +29,15 @@ public class AccountController {
 		Employee employee = (Employee) session.getAttribute("userinfo");
 		if (user != null) {
 			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
+			session.setAttribute("loggedInUser", user);
+			session.setAttribute("role", user.getRoles().get(0).getId());
+			employee = user.getEmployee();
+			session.setAttribute("userinfo", employee);
+			session.setAttribute("prizes", userDao.findAllPrizes());
+			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
 			return "account";
 		} else {
+			
 			return "login";
 		}
 		
@@ -65,22 +72,39 @@ public class AccountController {
 	public String updateAwardStatus(HttpSession session, Model model, int statusId, int id) {
 		PointAwarded pa = userDao.findAwardByID(id);
 		adminDao.updateStatus(pa, statusId);
-		return "admin/adminHome";
+		allPending(session,model);
+		return "admin/TestMethods";
 		
 	}
 	@RequestMapping(path = { "updateEmployeeStatus.do" }, method = RequestMethod.GET)
 	public String updateEmployeeStatus(HttpSession session, Model model, int statusId, int id) {
 		Employee emp = userDao.findEmployeeById(id);
 		adminDao.updateStatus(emp, statusId);
-		return "admin/adminHome";
+		allPending(session,model);
+		return "admin/TestMethods";
 		
 	}
 	@RequestMapping(path = { "updatePrizeStatus.do" }, method = RequestMethod.GET)
 	public String updatePrizeStatus(HttpSession session, Model model, int statusId, int id) {
 		Prize p = userDao.findPrizeById(id);
-		System.out.println(p.toString());
 		adminDao.updateStatus(p, statusId);
-		return "admin/adminHome";
+		allPending(session,model);
+		return "admin/TestMethods";
+		
+	}
+	@RequestMapping(path = { "redeem.do" }, method = RequestMethod.GET)
+	public String redeemPrize(HttpSession session, Model model, int id) {
+		Prize p = userDao.findPrizeById(id);
+		Employee employee = (Employee) session.getAttribute("userinfo");
+		int remainder = userDao.findPointBalance(employee.getId());
+		if(adminDao.createRedemption(p,employee,remainder)) {
+			model.addAttribute("redeemed","Congratulations! Please allow 5-10 business days to receive your item at.");		
+		}else {		
+			model.addAttribute("Failed","You do not have enough points to redeem this prize.");
+		}
+		model.addAttribute("prize",p);
+		session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
+		return "redeemConfirmation";
 		
 	}
 	

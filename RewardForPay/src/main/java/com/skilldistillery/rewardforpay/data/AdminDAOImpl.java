@@ -1,9 +1,12 @@
 package com.skilldistillery.rewardforpay.data;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.data.convert.JodaTimeConverters.LocalDateTimeToDateConverter;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.rewardforpay.entities.Employee;
@@ -42,11 +45,21 @@ public class AdminDAOImpl implements AdminDAO {
 		return true;
 	}
 
-//	@Override
-//	public PointRedemption createRedemption(PointRedemption redeemed) {
-//		em.persist(redeemed);
-//		return redeemed;
-//	}
+	@Override
+	public boolean createRedemption(Prize p, Employee e, int remainder) {
+		boolean redeemed =false;
+		int pamount =p.getPoints();
+		if(pamount>remainder) {
+			return redeemed;
+		}else {
+		PointRedemption pr = new PointRedemption();
+		pr.setEmployee(e);
+		pr.setPrize(p);
+		em.persist(pr);
+		redeemed = true;
+		return redeemed;
+		}
+	}
 //	@Override
 //	public PointAwarded updateAward(int awardId, PointAwarded pointAward) {
 //		// TODO Auto-generated method stub

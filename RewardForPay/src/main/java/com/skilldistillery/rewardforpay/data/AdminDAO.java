@@ -19,4 +19,5 @@ import com.skilldistillery.rewardforpay.entities.User;
 public interface AdminDAO {
 	boolean updateStatus(Object obj,int statusId);	
 	boolean deleteEmployeeTest(Employee emp);
+	 boolean createRedemption(Prize p, Employee e,int remainder);
 }

@@ -39,7 +39,7 @@
 <!-- Build out the redeem button and map it to controller -->
 					<td>	
 						<form action="redeem.do" method="get">
-							<input type="hidden" value="${site.id}" name="id" /> 
+							<input type="hidden" value="${prize.id}" name="id" /> 
 							<input class="action_button" type="submit" value="Redeem" />
 						</form>
 					</td>

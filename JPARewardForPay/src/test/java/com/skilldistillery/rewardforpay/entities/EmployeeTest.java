@@ -76,10 +76,12 @@ class EmployeeTest {
 		assertNotNull(employee.getPointsAwarded());
 		assertTrue(employee.getPointsAwarded().size() > 0);
 	}
-//	@Test
-//	void test_Employee_Prize_ManyToMany_mapping() {
-//		assertNotNull(employee);
-//		assertNotNull(employee.getPrizes());
-//		assertTrue(employee.getPrizes().size() > 0);
-//	}
+	@Test
+	void test_Employee_Prize_ManyToMany_mapping() {
+		employee= em.find(Employee.class, 1);
+		assertNotNull(employee);
+		assertNotNull(employee.getPrizes());
+		assertTrue(employee.getPrizes().size() > 0);
+		assertEquals("Mouse Pad", employee.getPrizes().get(0).getName());
+	}
 }
