@@ -36,7 +36,7 @@
 		<table>
 			<tbody>
 				<tr> <!-- Employee photo url move to database -->
-					<td  rowspan=2><img width="40%" class="detail_img" src="https://nextdayanimations.com/wp-content/uploads/photo-gallery/imported_from_media_libray/beny-realistic-marker-NDA-branded%20(1).png?bwg=1550011023" title="Illustrated headshot"/></td>
+					<td  rowspan=2><img width="40%" class="detail_img" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
 					<td class="buffer"></td>
 					<td class="text-wrap col-md-offset-1" id="employee_info">
 						<h1><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h1><br>
