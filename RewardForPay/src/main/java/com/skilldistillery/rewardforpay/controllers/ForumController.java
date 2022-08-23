@@ -15,7 +15,6 @@ public class ForumController {
 
 	@RequestMapping(path= {"forum.do"})
 	public String home(Model model) {
-		model.addAttribute("SMOKETEST", userDao.findById(1)); //DELETE
 		return "forum";
 		
 	}

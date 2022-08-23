@@ -410,7 +410,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public PointAwarded withdrawAward(int awardId) {
-		String query = "SELECT pa FROM PointAwarded pa WHERE pa.award_status_id = 2 ORDER BY pa.id";
+		String query = "SELECT pa FROM PointAwarded pa WHERE pa.status = 2 ORDER BY pa.id";
 		PointAwarded toDelete = em.find(PointAwarded.class, awardId);
 		List<PointAwarded> withdrawAllowed = em.createQuery(query, PointAwarded.class).getResultList();
 		if (withdrawAllowed.contains(toDelete)) {

@@ -14,8 +14,9 @@
 <!-- Main page to display both a history of awards and the details for a single award, with history below -->
 
 <h1>${success}</h1> <!-- Conditional messages based on Controller actions -->
-<h1>${addMessage}</h1>
-<h1>${addFail}</h1>
+	
+<c:if test="${newAwardId != 0 }">	<h1>${addMessage}</h1> </c:if>
+<c:if test="${newAwardId == 0}"><h1>${addFail}</h1></c:if>
 
 
 <c:choose>
@@ -44,13 +45,16 @@
 
 	<c:choose>
 		<c:when test="${! empty awards}">
-				<c:forEach var="award" items="${awards}">
-					<form action="award.do" method="get"> <!-- update with controller mapping -->
-						<input type="hidden" value="${award.id}" name="awardId" /> 
-						<input type="hidden" value="${sessionScope.userinfo.id}" name="empId" /> 
-						<input class="action_button" type="submit" value="${award.employee.firstName} ${award.employee.lastName}, ${award.issued}" />
-					</form>
+					<ol>
+				<c:forEach var="awarded" items="${awards}">
+						<li><form action="award.do" method="get"> <!-- update with controller mapping -->
+								<strong>${awarded.employee.firstName} ${awarded.employee.lastName},</strong> ${awarded.issued}, ${awarded.status.name}
+								<input type="hidden" value="${awarded.id}" name="awardId" /> 
+								<input type="hidden" value="${sessionScope.userinfo.id}" name="empId" /> 
+							<input class="action_button" type="submit" value="View Award Details" />
+						</form></li>
 				</c:forEach>
+					</ol>
 		</c:when>
 		<c:otherwise>
 			<h1>${awardNotFound}</h1>

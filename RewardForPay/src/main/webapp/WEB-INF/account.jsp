@@ -60,9 +60,12 @@
 				</table>
 
 	</div>
+		<c:if test="${! empty sessionScope.prizes}">
 	<div>
 	
-		<c:if test="${! empty sessionScope.prizes}"/>
+		<table>
+		<tr>
+			<td>
 	        <h3 class="card-title" style="text-align:center">Search Prizes By Tier: </h3>
 	          <form action="allPrizes.do" method="get">
 				<select name="id" id="dropdown" required>
@@ -73,9 +76,21 @@
 				<input type="submit" value="See Prizes" />
 			</form>
 			<br>
+	</td>
+	<td>
 			<a href="allPrizes.do?id=0">See all prizes</a>
-	
-	
+	</td>
+	<td>
+			<form action="createAward.do" method="POST">
+				<input type="hidden" name="description" value="Initial Point Award"/>
+				<input type="hidden" name="amount" value="100"/>
+				<input type="hidden" name="userId" value="${sessionScope.loggedInUser.id}"/>
+				<input type="hidden" name="empId" value="${sessionScope.userinfo.id}"/>
+				<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
+		</form>
+	</td>
+	</tr>
+	</table>
 <!-- If user doesn't have any points, display message on how to get involved -->	
 	
 	<hr class="my-5">
@@ -214,14 +229,13 @@
  <a href="createAward.do" class="btn btn-primary">Submit a Coworker for an Award</a>
    		
    		
-
+</c:if>
    </c:when>
    <c:otherwise>
      <h2>Not logged in.</h2>
      <a href="login.do">Please log in to access your account information.</a>
    </c:otherwise>
  </c:choose>
- 		
 
 </body>
 </html>

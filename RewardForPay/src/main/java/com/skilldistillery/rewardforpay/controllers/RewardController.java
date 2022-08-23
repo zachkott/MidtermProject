@@ -106,7 +106,7 @@ public class RewardController {
 	public String awardDetails(Model model, int awardId, int empId) {
 		model.addAttribute("award", userDao.findAwardByID(awardId));
 		model.addAttribute("awards", userDao.findAllAwards(empId));
-		model.addAttribute("awardNotFound", "Sorry, that award no longer exists.");
+		model.addAttribute("awardNotFound", "Sorry, we can't find that award.");
 		return "award";
 	}
 	
@@ -129,9 +129,9 @@ public class RewardController {
 	@RequestMapping(path = "createAward.do", method = RequestMethod.POST)
 	public String awardCreated(PointAwarded award, Model model, int empId, int userId, RedirectAttributes redir) {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);
-		redir.addFlashAttribute("award", newAward);
 		redir.addAttribute("empId", empId);
 		redir.addAttribute("awardId", newAward.getId());
+		redir.addFlashAttribute("newAwardID", newAward.getId());
 		redir.addFlashAttribute("addMessage", "Award request has been submitted for approval.");
 		redir.addFlashAttribute("addFail", "There was a problem adding the award.");
 		return "redirect:award.do"; 

@@ -57,6 +57,27 @@
 	<c:otherwise>
 		<c:choose>
 			<c:when test="${! empty prizes}">
+				<c:if test="${! empty sessionScope.prizes}">
+					<table>
+						<tr>
+							<td>
+					        <h3 class="card-title" style="text-align:center">Search Prizes By Tier: </h3>
+					          <form action="allPrizes.do" method="get">
+								<select name="id" id="dropdown" required>
+										<option value="1">Tier 1 - Copper</option>
+										<option value="2">Tier 2 - Silver</option>
+										<option value="3">Tier 3 - Gold</option>
+								</select>
+								<input type="submit" value="See Prizes" />
+							</form>
+							<br>
+						</td>
+						<td>
+							<a href="allPrizes.do?id=0">See all prizes</a>
+						</td>
+						</tr>
+						</table>
+						</c:if>
 				<h1>test</h1>
 				<div class="row row-cols-1 row-cols-md-3 g-${numOfPrizes}">
 					<c:forEach var="prize" items="${prizes}">
