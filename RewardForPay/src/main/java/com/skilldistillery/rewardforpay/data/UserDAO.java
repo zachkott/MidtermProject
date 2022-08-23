@@ -31,7 +31,7 @@ public interface UserDAO {
 		boolean disableUser(int id);
 		Address createAddress(Address address);
 		Address updateAddress(Address address, int addressId);
-		List<Prize> showWishList();
+		List<Prize> showWishList(int employeeId);
 		List<Prize> addPrizeToWishlist(int employeeId, int prizeId);
 		boolean removePrizeFromWishlist(int employeeId, int prizeId);
 		

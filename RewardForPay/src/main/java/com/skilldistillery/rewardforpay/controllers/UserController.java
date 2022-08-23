@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
+import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
@@ -165,4 +166,36 @@ public class UserController {
 		session.setAttribute("userinfo", employee);
 		return "user/showEmployee";
 	}
+
+	
+	@RequestMapping(path="wishlist.do")
+	public String viewWishlist(HttpSession session, Model model, int id) {
+		Employee emp = (Employee) session.getAttribute("employee");
+		List<Prize> wishlist = userDao.showWishList(emp.getId());
+		model.addAttribute("wishlist", wishlist);
+		return "wishlist";
+		
+	}
+	
+	@RequestMapping(path="addWishlist.do")
+	public String addToWishlist(HttpSession session, Model model, int employeeId, int prizeId) {
+		Employee emp = (Employee) session.getAttribute("employee");
+		List<Prize> wishlist = userDao.addPrizeToWishlist(emp.getId(), prizeId);
+		model.addAttribute("wishlist", wishlist);
+		return "wishlist";
+		
+	}
+	
+	@RequestMapping(path="removeFromWishlist.do")
+	public String removeFromWishlist(HttpSession session, Model model, int prizeId) {
+		Employee emp = (Employee) session.getAttribute("employee");
+		boolean removed = userDao.removePrizeFromWishlist(emp.getId(), prizeId);
+		List<Prize> wishlist = userDao.showWishList(emp.getId());
+		model.addAttribute("wishlist", wishlist);
+		model.addAttribute("removed", removed);
+		return "wishlist";
+		
+	}
+	
+	
 }

@@ -431,9 +431,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Prize> showWishList() {
-		
-		
+	public List<Prize> showWishList(int employeeId) {
+		Employee emp  = em.find(Employee.class, employeeId);
+		List<Prize> wishlist = emp.getFavorites();
+		return wishlist;
 	}
 
 	@Override
