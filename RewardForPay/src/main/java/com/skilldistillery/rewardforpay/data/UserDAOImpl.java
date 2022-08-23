@@ -35,6 +35,7 @@ public class UserDAOImpl implements UserDAO {
 		UserRole newRole = em.find(UserRole.class, 2);
 		List<UserRole> newRoles = new ArrayList<UserRole>();
 		newRoles.add(newRole);
+		newUser.setEnabled(true);
 		newUser.setRoles(newRoles);
 		employee.getPrizes().size();
 		employee.getPointsAwarded().size();
@@ -175,7 +176,7 @@ public class UserDAOImpl implements UserDAO {
 		updated.setLastName(employee.getLastName());
 		updated.setSalary(employee.getSalary());
 		
-//		updated.setDepartment(employee.getDepartment());
+		updated.setDepartment(employee.getDepartment());
 //		updated.setSupervisorId(employee.getSupervisorId());
 //		updated.setEmployeePhoto(employee.getEmployeePhoto());
 		updated.setBirthday(employee.getBirthday());

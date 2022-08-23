@@ -18,10 +18,13 @@
 				<th>ID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
+				<th>Username</th>
 				<th>Salary</th>
 				<th>Address</th>
 				<th>Phone</th>
 				<th>Birthday</th>
+				<th>Department</th>
+				<!-- <th>Delete Employee </th> -->
 				
 				
 				
@@ -35,13 +38,16 @@
 
 				<tr>
 					<td>${employee.id}</td>
-					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.firstName}</a></td>
-					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.lastName}</a></td>
-					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.salary}</a></td>
-					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.address.street}, ${employee.address.state}, ${employee.address.city}</a></td>
-					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.address.phone}</a></td>
-					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.birthday}</a></td>
-					
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.firstName}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.lastName}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.user.username}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.salary}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.address.street}, ${employee.address.state}, ${employee.address.city}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.address.phone}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.birthday}</a></td>
+					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.department.name}</a></td>
+<%-- 					<td><form action="adminDeleteEmployeeForm.do"><input type ="hidden" name="id" value="${employee.id}"><button type="submit" class="btn btn-danger btn-sm">Delete this Employee</button></form>
+ --%>					
 					<td><form action="adminUpdateEmployeeForm.do"><input type ="hidden" name="id" value="${employee.id}"><button type="submit" class="btn btn-primary btn-sm">Update this Employee</button></form>
 					
 					

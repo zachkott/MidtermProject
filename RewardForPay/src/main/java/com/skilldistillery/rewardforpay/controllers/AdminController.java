@@ -69,6 +69,23 @@ public class AdminController {
 		model.addAttribute("deactivated", deactivateUser);
 		return "admin/adminHome";
 	}
+	
+	
+	@RequestMapping(path = "deleteUser.do", method = RequestMethod.GET)
+	public String deleteUser(int id, Model model) {
+		if (id <= 0) {
+			return "home";
+		}
+
+		User status = userDao.findUserById(id);
+		if (userDao.deleteUser(id) != null) {
+			model.addAttribute("user", status);
+			return "user/deletedUser";
+		} else {
+			return "home";
+		}
+
+	}
 
 	@RequestMapping(path = "adminAllUsers.do", method = RequestMethod.GET)
 	public String showAdminAllUsers(Model model) {
@@ -106,5 +123,37 @@ public class AdminController {
 		userDao.updateEmployee(id, employee);
 		model.addAttribute("employee", employee);
 		return "user/showEmployee";
+	}
+	
+	@RequestMapping(path = "adminDeleteEmployeeForm.do")
+	public String adminDeleteEmployeeForm(Integer id, Employee employee, Model model) {
+		model.addAttribute("employee", userDao.deleteEmployee(id));
+		return "admin/adminDeleteEmployee";
+	}
+	
+	@RequestMapping(path = "findEmployee.do")
+	public String findUser(int employeeId, Model model) {
+		Employee emp = userDao.findEmployeeById(employeeId);
+		model.addAttribute("employee", emp);
+		return "user/showEmployee";
+	}
+
+	
+	@RequestMapping(path = "deleteEmployee.do", method = RequestMethod.GET)
+	public String deleteEmployee(HttpSession session,int id, Model model) {
+		Employee emp = (Employee) session.getAttribute("employee");
+
+		
+		if (userDao.deleteEmployee(emp.getId()) != null) {
+			model.addAttribute("actionResult", "Employee deleted");
+			session.removeAttribute("employee");
+			return "admin/adminAllEmployees";
+		} else {
+			model.addAttribute("actionResult", "Employee not found");
+			session.removeAttribute("employee");
+
+		}
+			return "admin/adminHome";
+
 	}
 }

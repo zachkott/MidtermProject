@@ -114,21 +114,21 @@ public class UserController {
 	}
 
 	// Admin only
-	@RequestMapping(path = "deleteUser.do", method = RequestMethod.GET)
-	public String deleteUser(Integer id, Model model) {
-		if (id <= 0) {
-			return "index";
-		}
-
-		User status = userDao.findUserById(id);
-		if (userDao.deleteUser(id) != null) {
-			model.addAttribute("user", status);
-			return "user/deletedUser";
-		} else {
-			return "index";
-		}
-
-	}
+//	@RequestMapping(path = "deleteUser.do", method = RequestMethod.GET)
+//	public String deleteUser(Integer id, Model model) {
+//		if (id <= 0) {
+//			return "index";
+//		}
+//
+//		User status = userDao.findUserById(id);
+//		if (userDao.deleteUser(id) != null) {
+//			model.addAttribute("user", status);
+//			return "user/deletedUser";
+//		} else {
+//			return "index";
+//		}
+//
+//	}
 
 //	@RequestMapping(path = "activateUser.do", method = RequestMethod.GET)
 //	public String activateUser(Model model, int userId) {

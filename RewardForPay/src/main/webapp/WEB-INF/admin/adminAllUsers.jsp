@@ -21,6 +21,7 @@
 				<th>Status</th>
 				<th>Update User</th>
 				<th>Change User Status</th>
+				<th>Delete User</th>
 				
 				
 				
@@ -42,6 +43,7 @@
 							</c:when><c:otherwise>
 					<form action="activateUser.do"><input type="hidden" name="userId" value="${user.id}"><button type="submit"class="btn btn-success btn-sm">Enable this User</button></form>
 								</c:otherwise></c:choose></td>
+					<td><form action="deleteUser.do"><input type ="hidden" name="id" value="${user.id}"><button type="submit" class="btn btn-danger btn-sm">Delete this User</button></form>
 					
 				</tr>
 				
