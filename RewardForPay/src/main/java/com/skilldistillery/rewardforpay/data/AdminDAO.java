@@ -18,5 +18,4 @@ import com.skilldistillery.rewardforpay.entities.User;
 @Transactional
 public interface AdminDAO {
 	boolean updateStatus(Object obj,int statusId);	
-		
 }

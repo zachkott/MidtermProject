@@ -19,7 +19,6 @@
 					<tr>
 						<th>Id</th>
 						<th>Amount</th>
-						<th>Issued</th>
 						<th>Awardee</th>
 						<th>Description</th>
 						<th>Award Submitted By</th>
@@ -32,16 +31,21 @@
 				<tr>
 				<td><a href="findAwardTest.do?paid=${each.id}">${each.id}</a></td>
 				<td>${each.amount}</td>
-				<td>${each.issued}</td>
 				<td>${each.employee.firstName} ${each.employee.lastName}</td>
-				<td>${each.issued}</td>
 				<td>${each.description}</td>
 				<td>${each.user.employee.firstName} ${each.user.employee.lastName}</td>
 				<td>${each.status.name}</td>
 				<td>
-				<form action="updateAward.do" method="get">
-								<input type="hidden" value=${each.id } name="paid" /> <input
-									 type="submit" value="Update" />
+				<form action="updateAwardStatus.do" method="get">
+				        <label for="statusId">Status ID:</label>
+        <select name="statusId">
+          <option value="1">Approved</option>
+          <option value="2">Pending</option>
+          <option value="3">Declined</option>
+          <option value="4">Withdrawn</option>
+        </select>
+								<input type="hidden" value= "${each.id }" name="id" /> <input
+									 type="submit" value="Update Status" />
 							</form>
 							</td>
 				</tr>
@@ -70,7 +74,7 @@
 				<tbody>				
 				<c:forEach var="each" items="${pendingPE}">
 				<tr>
-				<td><a href="findEmployeeTest.do?paid=${each.id}">${each.id}</a></td>
+				<td><a href="findEmployeeTest.do?eid=${each.id}">${each.id}</a></td>
 				<td>${each.firstName} ${each.lastName}</td>
 				<td>${each.address.street}, ${each.address.city}, ${each.address.state}</td>
 				<td>${each.department.name}</td>
@@ -79,7 +83,7 @@
 				<td>
 				<form action="updateEmployee.do" method="get">
 								<input type="hidden" value=${each.id } name="eid" /> <input
-									 type="submit" value="Update" />
+									 type="submit" value="Update Status" />
 							</form>
 							</td>
 				</tr>
@@ -117,7 +121,7 @@
 				<td>
 				<form action="updatePrize.do" method="get">
 								<input type="hidden" value=${each.id } name="id" /> <input
-									 type="submit" value="Update" />
+									 type="submit" value="Update Status" />
 							</form>
 							</td>
 				</tr>
