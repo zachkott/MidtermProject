@@ -31,18 +31,22 @@ public class AccountController {
 		User user = (User) session.getAttribute("loggedInUser");
 		Employee employee = (Employee) session.getAttribute("userinfo");
 		if (user != null) {
-			model.addAttribute("awardbalance", userDao.findPointBalance(employee.getId()));
-
+			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
+			session.setAttribute("loggedInUser", user);
+			session.setAttribute("role", user.getRoles().get(0).getId());
+			employee = user.getEmployee();
+			session.setAttribute("userinfo", employee);
 			List<Prize> prizes = userDao.findAllActivePrizes();
-			model.addAttribute("prizes", prizes);
+			session.setAttribute("prizes", userDao.findAllPrizes());
 			model.addAttribute("numOfPrizes", prizes.size());
 			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
-
+			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
 			return "account";
 		} else {
+			
 			return "login";
 		}
-
+		
 	}
 	@RequestMapping(path = { "pendingList.do" })
 	public String allPending(HttpSession session, Model model) {
