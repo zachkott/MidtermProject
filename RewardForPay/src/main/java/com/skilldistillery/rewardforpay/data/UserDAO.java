@@ -35,22 +35,20 @@ public interface UserDAO {
 		Employee updateEmployee(int id, Employee employee);
 		Employee deleteEmployee(int id); //Inactivate employee
 		int findPointBalance(int employeeId);
-		PointRedemption createRedemption(PointRedemption pointRedemption);
-		PointRedemption withdrawRedemption(int employeeId, int rewardId);
+		PointRedemption createRedemption(PointRedemption pointRedemption); //Jamie update
+		PointRedemption withdrawRedemption(int employeeId, int rewardId); //stretch function?
 		User findByUsername(String username, String password);
 		Address createAddress(Address address);
 		
 		//Admin actions -Swarm
-		List<PointAwarded> pendingPointAwarded() ;
-		List<Employee> pendingEmployees() ;
-		List<Prize> pendingPrize() ;
-		boolean updateStatus(int statusId);
-		List<Status> findAllRequests();
-		boolean rejectAward(int id);
-		PointAwarded updateAward(int awardId, PointAwarded pointAward);
-		Prize deletePrize(int id); //Inactivate prize
-		PointRedemption updateRedemption(int employeeId, int rewardId); //Update in case program throws error
-		PointRedemption deleteRedemption(int employeeId, int rewardId); //Inactivate redemption
+		List<PointAwarded> pendingPointAwarded() ;//DONE
+		List<Employee> pendingEmployees() ;//DONE
+		List<Prize> pendingPrize() ; //DONE
+		boolean updateStatus(int statusId); //-Daniel
+		PointAwarded updateAward(int awardId, PointAwarded pointAward);// -Jamie
+		boolean deletePrize(int id); //Inactivate prize - Jamie
+		PointRedemption updateRedemption(int employeeId, int rewardId); //Stretch function
+		PointRedemption deleteRedemption(int employeeId, int rewardId); //Stretch function
 		
 
 		//Reward items -Jamie

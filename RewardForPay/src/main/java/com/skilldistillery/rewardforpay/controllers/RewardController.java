@@ -38,13 +38,13 @@ public class RewardController {
 	//From loggedInHome, if See all Prizes, passes an id of 0 to show all prizes. If selects tier from dropdown, shows prizes per tier
 	@RequestMapping(path="allPrizes.do")
 	public String allPrizes(Model model, int id) {
-		if (id == 0) {
-			model.addAttribute("prizes", userDao.findAllPrizes()); //need to update method parameter in main DAO-waiting to check merge
-		} else {
+		if (id >=1 && id <= 3) {
 			List<Prize> prizes = userDao.findPrizesByTier(id);
 			model.addAttribute("prizes", prizes);
 			model.addAttribute("numOfPrizes", prizes.size());
 			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
+		} else {
+			model.addAttribute("prizes", userDao.findAllPrizes()); //need to update method parameter in main DAO-waiting to check merge
 		}
 		return "allRewards";
 	}
@@ -76,6 +76,21 @@ public class RewardController {
 		redir.addFlashAttribute("editMessage", "Changes have been submitted for approval.");
 		redir.addFlashAttribute("editFail", "There was a problem updating the prize.");
 		return "redirect:reward.do"; 
+	}
+	
+	@RequestMapping(path="deletePrize.do", method= RequestMethod.GET)
+	public String deletePrize(Model model, int id) {
+		model.addAttribute("prize", userDao.findPrizeById(id));
+		return "deleteConfirmation";
+	}
+	
+	@RequestMapping(path = "deletePrize.do", method = RequestMethod.POST)
+	public String prizeDeleted(Prize prize, int id, Model model, RedirectAttributes redir) {
+		redir.addFlashAttribute("prizeDeleted", userDao.deletePrize(id));
+		redir.addAttribute("id", 0);
+		redir.addFlashAttribute("deleteMessage", "Prize has been deleted.");
+		redir.addFlashAttribute("deleteFail", "There was a problem deleting the prize.");
+		return "redirect:allPrizes.do"; 
 	}
 	
 	//Full history of awards will display under specific award on award.jsp

@@ -311,27 +311,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Status> findAllRequests() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean rejectAward(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public PointAwarded updateAward(int awardId, PointAwarded pointAward) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Prize deletePrize(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deletePrize(int id) {
+		Status status = em.find(Status.class, 4);
+		Prize deleted = em.find(Prize.class, id);
+		deleted.setStatus(status);
+		boolean success = !em.contains(deleted);
+		return success;
 	}
 
 	@Override
