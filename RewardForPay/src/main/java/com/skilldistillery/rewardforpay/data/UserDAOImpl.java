@@ -304,7 +304,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Prize findPrizeById(int prizeId) {
 		Prize prize = em.find(Prize.class, prizeId);
-		if (prize.getStatus().getId()==1) {
+		if (prize.getStatus().getId()>2) {
 			return prize;
 		}
 		return null;
@@ -330,7 +330,7 @@ public class UserDAOImpl implements UserDAO {
 //		String query2 = "SELECT p FROM Prize p JOIN Tier t on p.tier_id = t.id WHERE t.id = :tier ORDER BY p.tier, p.name";
 //		List<Prize> prizeTier = em.createQuery(query2, Prize.class).setParameter("tier", tierId).getResultList();
 	
-		String query = "SELECT p FROM Prize p WHERE p.status.id = 1 ORDER BY p.tier, p.name";
+		String query = "SELECT p FROM Prize p WHERE p.status.id = 1 OR p.status.id=2 ORDER BY p.tier, p.name";
 		List<Prize> prizes = em.createQuery(query, Prize.class).getResultList();
 		List<Prize> prizeTier = new ArrayList<Prize>();
 		for (Prize p : prizes) {
