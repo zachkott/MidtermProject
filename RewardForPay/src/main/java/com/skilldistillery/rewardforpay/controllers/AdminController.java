@@ -132,7 +132,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(path = "findEmployee.do")
-	public String findUser(int employeeId, Model model) {
+	public String findEmployee(int employeeId, Model model) {
 		Employee emp = userDao.findEmployeeById(employeeId);
 		model.addAttribute("employee", emp);
 		return "user/showEmployee";

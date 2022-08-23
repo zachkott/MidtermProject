@@ -195,7 +195,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Employee findEmployeeById(int employeeId) {
 		Employee emp = em.find(Employee.class, employeeId);
-		if (emp.getRequestStatus().getId() != 1) {
+		if (emp.getRequestStatus().getId() > 2) {
 			return null;
 		}
 		return emp;
