@@ -91,6 +91,7 @@
 	</td>
 	</tr>
 	</table>
+	</div>
 <!-- If user doesn't have any points, display message on how to get involved -->	
 	
 	<hr class="my-5">
@@ -110,11 +111,11 @@
       <!--First slide-->
 
 	<c:set var="count" value="3" scope="page" />
+	<div class="carousel-item active">
+			 <div class="row">
 	<c:forEach var="prize" items="${sessionScope.prizes}" >
 	<c:choose>
 		<c:when test="${count %3 == 0}">
-			    <div class="carousel-item active">
-			        <div class="row">
 			          <div class="col-md-4">
 			            <div class="card mb-2">
 			              <img class="card-img-top" src="${prize.image}"
@@ -127,7 +128,6 @@
 			              </div>
 			            </div>
 			          </div>
-					</div>
 		</c:when>
 					<c:otherwise></c:otherwise>
 					</c:choose>
@@ -163,11 +163,13 @@
 			              </div>
 			            </div>
 			          </div>
-			    </div>
+			    
 					</c:when>
 					<c:otherwise></c:otherwise>
 					</c:choose>
 	</c:forEach>
+			    </div>
+			    </div>
       <!--Second slide-->
       <div class="carousel-item active">
 
@@ -212,7 +214,6 @@
           </div>
         </div>
 
-      </div>
       <!--/.Second slide-->
 
      </div>
