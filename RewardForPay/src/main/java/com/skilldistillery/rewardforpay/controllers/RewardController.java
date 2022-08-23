@@ -44,7 +44,7 @@ public class RewardController {
 			model.addAttribute("numOfPrizes", prizes.size());
 			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
 		} else {
-			model.addAttribute("prizes", userDao.findAllPrizes()); //need to update method parameter in main DAO-waiting to check merge
+			model.addAttribute("prizes", userDao.findAllActivePrizes()); //need to update method parameter in main DAO-waiting to check merge
 		}
 		return "allRewards";
 	}
