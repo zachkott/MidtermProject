@@ -30,12 +30,7 @@
 				</tr>
 				<tr class="action_items .justify-content-end">
 					<td class="buffer"></td>
-					<td>
-						<form action="updatePrize.do" method="get">
-							<input type="hidden" value="${prize.id}" name="id" /> 
-							<input class="action_button" type="submit" value="Update Prize" />
-						</form>
-					</td>
+
 					<td>
 						<form action="createPrize.do" method="get">
 							 <input class="action_button" type="submit" value="Add Prize" />

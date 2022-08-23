@@ -17,6 +17,7 @@ import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
 import com.skilldistillery.rewardforpay.entities.Tier;
 import com.skilldistillery.rewardforpay.entities.User;
+import com.skilldistillery.rewardforpay.entities.UserRole;
 
 @Service
 @Transactional
@@ -40,6 +41,10 @@ public class UserDAOImpl implements UserDAO {
 	public User createUser(User user, int empId) {
 		User newUser = user;
 		Employee employee = em.find(Employee.class, empId);
+		UserRole newRole = em.find(UserRole.class, 2);
+		List<UserRole> newRoles = new ArrayList<UserRole>();
+		newRoles.add(newRole);
+		newUser.setRoles(newRoles);
 		employee.getPrizes().size();
 		employee.getPointsAwarded().size();
 		newUser.setEmployee(employee);

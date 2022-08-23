@@ -23,6 +23,9 @@ public class UserRole {
 	@ManyToMany(mappedBy="roles")
 	private List<User> users;
 	
+	
+	
+	
 	public UserRole() {}
 
 	public int getId() {

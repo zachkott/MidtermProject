@@ -44,9 +44,9 @@ public interface UserDAO {
 		List<PointAwarded> pendingPointAwarded() ;//DONE
 		List<Employee> pendingEmployees() ;//DONE
 		List<Prize> pendingPrize() ; //DONE
-		boolean updateStatus(int statusId); //-Daniel
+		boolean updateStatus(int statusId); //DONE
 		PointAwarded updateAward(int awardId, PointAwarded pointAward);// -Jamie
-		boolean deletePrize(int id); //Inactivate prize - Jamie
+		boolean deletePrize(int id); //DONE
 		PointRedemption updateRedemption(int employeeId, int rewardId); //Stretch function
 		PointRedemption deleteRedemption(int employeeId, int rewardId); //Stretch function
 		
