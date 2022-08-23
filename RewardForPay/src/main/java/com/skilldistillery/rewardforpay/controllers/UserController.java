@@ -188,7 +188,7 @@ public class UserController {
 	
 	@RequestMapping(path="removeFromWishlist.do")
 	public String removeFromWishlist(HttpSession session, Model model, int prizeId) {
-		Employee emp = (Employee) session.getAttribute("employee");
+		Employee emp = (Employee) session.getAttribute("userinfo");
 		boolean removed = userDao.removePrizeFromWishlist(emp.getId(), prizeId);
 		List<Prize> wishlist = userDao.showWishList(emp.getId());
 		model.addAttribute("wishlist", wishlist);
