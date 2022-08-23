@@ -213,65 +213,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `deduction_type`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `deduction_type` ;
-
-CREATE TABLE IF NOT EXISTS `deduction_type` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `paystub`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `paystub` ;
-
-CREATE TABLE IF NOT EXISTS `paystub` (
-  `id` INT NOT NULL,
-  `issued` DATE NULL,
-  `amount` DOUBLE NULL,
-  `employee_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_paystub_employee1_idx` (`employee_id` ASC),
-  CONSTRAINT `fk_paystub_employee1`
-    FOREIGN KEY (`employee_id`)
-    REFERENCES `employee` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `deduction`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `deduction` ;
-
-CREATE TABLE IF NOT EXISTS `deduction` (
-  `id` INT NOT NULL,
-  `deduction_type_id` INT NOT NULL,
-  `percent` DECIMAL(3,3) NULL,
-  `paystub_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_deductions_deduction_type1_idx` (`deduction_type_id` ASC),
-  INDEX `fk_deductions_paystub1_idx` (`paystub_id` ASC),
-  CONSTRAINT `fk_deductions_deduction_type1`
-    FOREIGN KEY (`deduction_type_id`)
-    REFERENCES `deduction_type` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_deductions_paystub1`
-    FOREIGN KEY (`paystub_id`)
-    REFERENCES `paystub` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user` ;
@@ -347,6 +288,30 @@ CREATE TABLE IF NOT EXISTS `user_has_role` (
   CONSTRAINT `fk_user_has_user_role_user_role1`
     FOREIGN KEY (`user_role_id`)
     REFERENCES `user_role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `wishlist`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `wishlist` ;
+
+CREATE TABLE IF NOT EXISTS `wishlist` (
+  `prize_id` INT NOT NULL,
+  `employee_id` INT NOT NULL,
+  PRIMARY KEY (`prize_id`, `employee_id`),
+  INDEX `fk_prize_has_employee_employee1_idx` (`employee_id` ASC),
+  INDEX `fk_prize_has_employee_prize1_idx` (`prize_id` ASC),
+  CONSTRAINT `fk_prize_has_employee_prize1`
+    FOREIGN KEY (`prize_id`)
+    REFERENCES `prize` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prize_has_employee_employee1`
+    FOREIGN KEY (`employee_id`)
+    REFERENCES `employee` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -459,16 +424,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `rewardforpaydb`;
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (1, 'Mouse Pad', 150, 1, NULL, NULL, 1);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (2, 'Coffee Maker', 560, 1, NULL, NULL, 2);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (3, 'Trip to Mexico', 18000, 3, NULL, NULL, 3);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (4, 'PS4', 4700, 2, NULL, NULL, 2);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (5, 'Company T-Shirt', 360, 1, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (1, 'Mouse Pad', 150, 1, 'data:image/jpeg;base64,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', NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (2, 'Coffee Maker', 560, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCh5X6_1DVh9nCZtmUI7VZOSPyi-xM1sE8jg&usqp=CAU', NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (3, 'Trip to Mexico', 18000, 3, 'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9EEQ2PmgRmI/v1/600x-1.jpg', NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (4, 'PS4', 4700, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhfSrEDL2SoRRubOaUf5Wkl4IvaISbuaHlMA&usqp=CAU', NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (5, 'Company T-Shirt', 360, 1, 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F1829%2F4817%2Fproducts%2Fkcg-thisisfine-shirt-black_1024x1024.jpg%3Fv%3D1571448921&imgrefurl=https%3A%2F%2Ftopatoco.com%2Fproducts%2Fkcg-thisisfine-army&tbnid=frHcrDQy7DZ7GM&vet=12ahUKEwjcxsCokt35AhUbHTQIHdy-AoMQMygAegUIARDgAg..i&docid=S7llUEHTbHwCRM&w=800&h=800&q=This%20is%20fine%20shirt&ved=2ahUKEwjcxsCokt35AhUbHTQIHdy-AoMQMygAegUIARDgAg', NULL, 1);
 INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (6, '28in TV', 5700, 2, NULL, NULL, 1);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (7, 'Alaska Trip', 21000, 3, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (7, 'Alaska Trip', 21000, 3, NULL, NULL, 1);
 INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (8, 'Air Fryer', 1700, 2, NULL, NULL, 1);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (9, 'Pots and Pans', 2500, 2, NULL, NULL, 1);
-INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (10, 'Jabra Earbuds', 1500, 2, NULL, NULL, 2);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (9, 'Pots and Pans', 2500, 2, 'https://food.fnr.sndimg.com/content/dam/images/food/products/2021/1/26/rx_rachael-ray-create-delicious-nonstick-cookware-pots-and-pans-set-13-piece.jpeg.rend.hgtvcom.616.616.suffix/1611697745590.jpeg', NULL, 1);
+INSERT INTO `prize` (`id`, `name`, `points`, `tier_id`, `prize_url`, `description`, `request_status_id`) VALUES (10, 'Jabra Earbuds', 1500, 2, NULL, NULL, 1);
 
 COMMIT;
 
@@ -479,36 +444,6 @@ COMMIT;
 START TRANSACTION;
 USE `rewardforpaydb`;
 INSERT INTO `point_redemption` (`id`, `reward_id`, `employee_id`, `redeemed_date`) VALUES (1, 1, 1, NULL);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `deduction_type`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `rewardforpaydb`;
-INSERT INTO `deduction_type` (`id`, `name`, `description`) VALUES (1, 'retirement', '%15 retirement fund');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `paystub`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `rewardforpaydb`;
-INSERT INTO `paystub` (`id`, `issued`, `amount`, `employee_id`) VALUES (1, NULL, 2434, 1);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `deduction`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `rewardforpaydb`;
-INSERT INTO `deduction` (`id`, `deduction_type_id`, `percent`, `paystub_id`) VALUES (1, 1, .15, 1);
 
 COMMIT;
 
@@ -556,6 +491,16 @@ INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (1, 2);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (5, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (6, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (7, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `wishlist`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `rewardforpaydb`;
+INSERT INTO `wishlist` (`prize_id`, `employee_id`) VALUES (6, 1);
 
 COMMIT;
 
