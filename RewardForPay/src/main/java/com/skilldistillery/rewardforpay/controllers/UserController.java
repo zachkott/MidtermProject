@@ -3,6 +3,8 @@ package com.skilldistillery.rewardforpay.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -143,4 +145,24 @@ public class UserController {
 //		model.addAttribute("deactivated", deactivateUser);
 //		return "admin/adminHome";
 //	}
+	
+	
+	@RequestMapping(path = "updateEmployeeForm.do")
+	public String updateEmployeeForm(int id, Employee employee, Model model) {
+		model.addAttribute("employee", userDao.findEmployeeById(id));
+		return "user/updateEmployeeDetails";
+	}
+
+	@RequestMapping(path = "editEmployee.do", method = RequestMethod.POST)
+	public String updateUserDetails(int id,Address address,int addressId, String date, HttpSession session, Employee employee, Model model) {
+		Address add = userDao.updateAddress(address, addressId);
+		employee.setAddress(add);
+		LocalDate localDate = LocalDate.parse(date);
+		employee.setBirthday(localDate);
+		employee = userDao.updateEmployee(id, employee);
+		
+		model.addAttribute("employee", employee);
+		session.setAttribute("userinfo", employee);
+		return "user/showEmployee";
+	}
 }

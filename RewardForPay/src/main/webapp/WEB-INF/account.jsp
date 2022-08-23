@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
+   
    <h2>Welcome, ${sessionScope.loggedInUser.username} ${sessionScope.loggedInUser.password}</h2>
    		<br>
    		<h1>Welcome to Reward For Pay</h1>
@@ -51,7 +52,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<form action="editEmployee.do" method="get"> <!-- update with controller mapping -->
+						<form action="updateEmployeeForm.do"> <!-- update with controller mapping -->
 							<input type="hidden" value="${sessionScope.userinfo.id}" name="id" /> 
 							<input class="action_button" type="submit" value="Edit Profile" />
 						</form>
@@ -95,144 +96,23 @@
 	</div>
 <!-- If user doesn't have any points, display message on how to get involved -->	
 	
-	<hr class="my-5">
-
-  <!--Carousel Wrapper-->
-  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-    <!--Controls-->
-    <div class="controls-top">
-      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-    </div>
-    <!--/.Controls-->
-    
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-      <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-      <li data-target="#multi-item-example" data-slide-to="1"></li>
-      <li data-target="#multi-item-example" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-    
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-
-      <!--First slide-->
-
-	<c:set var="count" value="3" scope="page" />
-	<div class="carousel-item active">
-			 <div class="row">
-	<c:forEach var="prize" items="${sessionScope.prizes}" >
-	<c:choose>
-		<c:when test="${count %3 == 0}">
-			          <div class="col-md-4">
-			            <div class="card mb-2">
-			              <img class="card-img-top" src="${prize.image}"
-			                   alt="Card image cap">
-			              <div class="card-body">
-			                <h4 class="card-title">${prize.name}</h4>
-			                <p class="card-text">${prize.points}</p>
-			                <a href="reward.do?id=${prize.id}" class="btn btn-primary">Details</a>
-							
-			              </div>
-			            </div>
-			          </div>
-		</c:when>
-					<c:otherwise></c:otherwise>
-					</c:choose>
-					<c:choose>
-	<c:when test="${count %3 == 1}">
-					
-			          <div class="col-md-4 clearfix d-none d-md-block">
-			            <div class="card mb-2">
-			              <img class="card-img-top" src="${prize.image}"
-			                   alt="Card image cap">
-			              <div class="card-body">
-			                <h4 class="card-title">${prize.name}</h4>
-			                <p class="card-text">${prize.points}</p>
-			                <a href="reward.do?id=${prize.id}" class="btn btn-primary">Details</a>
-			              </div>
-			            </div>
-			          </div>
-					</c:when>
-					<c:otherwise></c:otherwise>
-					</c:choose>
-					<c:choose>
-			<c:when test="${count %3 == 2}">	        
-			          <div class="col-md-4 clearfix d-none d-md-block">
-			            <div class="card mb-2">
-			              <img class="card-img-top" src="${prize.image}"
-			                   alt="Card image cap">
-			              <div class="card-body">
-			                <h4 class="card-title">${prize.name}</h4>
-			                <p class="card-text">${prize.points}</p>
-			                <a href="reward.do?id=${prize.id}" class="btn btn-primary">Details</a>
-			              </div>
-			            </div>
-			          </div>
-			    
-					</c:when>
-					<c:otherwise></c:otherwise>
-					</c:choose>
-					<c:set var="count" value="${count + 1}" scope="page"/>
-	</c:forEach>
-			    </div>
-			    </div>
-      <!--Second slide-->
-      <div class="carousel-item active">
-
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                   alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 clearfix d-none d-md-block">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                   alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 clearfix d-none d-md-block">
-            <div class="card mb-2">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                   alt="Card image cap">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <a class="btn btn-primary">Button</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <!--/.Second slide-->
-
-     </div>
-    <!--/.Slides-->
-
-  </div>
-  <!--/.Carousel Wrapper-->
-
-
-</div>
 	
+    
+   
+
+    <div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
+					<c:forEach var="item" items="${prizes}">
+					  <div class="col">
+					    <div class="card h-100">
+					      <a href="reward.do?id=${item.id}"><img class="card-img-top " src="${item.image}" alt="${item.name}"/></a>
+					      <div class="card-body">
+					        <h5 class="card-title">${item.name}</h5>
+					        <p class="card-text">${item.points}, Tier ${item.tier.id}</p>
+					      </div>
+					    </div>
+					  </div>
+					</c:forEach>
+				</div>
 	
  <a href="createPrize.do" class="btn btn-primary">Suggest a New Prize</a>
  <a href="createAward.do" class="btn btn-primary">Submit a Coworker for an Award</a>
