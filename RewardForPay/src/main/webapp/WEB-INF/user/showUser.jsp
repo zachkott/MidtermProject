@@ -9,7 +9,7 @@
 <title>User Profile</title>
 </head>
 <body>
-
+<%@ include file="../nav.jsp" %>
 
 
 </head>

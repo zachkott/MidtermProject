@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Employee;
+import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
@@ -16,6 +19,8 @@ public class AccountController {
 
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private AdminDAO adminDao;
 
 	@RequestMapping(path = { "account.do" })
 	public String home(HttpSession session, Model model) {
@@ -44,9 +49,16 @@ public class AccountController {
 		
 	}
 	@RequestMapping(path = { "findEmployeeTest.do" })
-	public String pendingEmployee(HttpSession session, Model model, int paid) {
-		model.addAttribute("award",userDao.findAwardByID(paid));
+	public String pendingEmployee(HttpSession session, Model model, int eid) {
+		model.addAttribute("employee",userDao.findAwardByID(eid));
 		return "employee";
+		
+	}
+	@RequestMapping(path = { "updateAwardStatus.do" }, method = RequestMethod.GET)
+	public String updateEmployeeStatus(HttpSession session, Model model, int statusId, int id) {
+		PointAwarded pa = userDao.findAwardByID(id);
+		adminDao.updateStatus(pa, statusId);
+		return "admin/TestMethods";
 		
 	}
 	

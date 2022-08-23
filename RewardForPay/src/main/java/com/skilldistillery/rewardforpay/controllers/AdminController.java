@@ -81,11 +81,23 @@ public class AdminController {
 		return "admin/adminUpdateUser";
 	}
 	
-	@RequestMapping(path = "adminAllEmployees.do")
+	@RequestMapping(path = "adminAllEmployees.do", method = RequestMethod.GET)
 	public String showAdminAllEmployees(Model model) {
 		List<Employee> emps = userDao.findAllEmployees();
 		model.addAttribute("allEmployees", emps);
 		return "admin/adminAllEmployees";
 	}
 	
+	@RequestMapping(path = "adminUpdateEmployeeForm.do")
+	public String adminUpdateEmployeeForm(Integer id, Employee employee, Model model) {
+		model.addAttribute("employee", userDao.findEmployeeById(id));
+		return "admin/adminUpdateEmployee";
+	}
+	
+	@RequestMapping(path = "adminUpdateEmployee.do", method = RequestMethod.POST)
+	public String updateEmployeeDetails(int id, Employee employee, Model model) {
+		userDao.updateEmployee(id, employee);
+		model.addAttribute("employee", employee);
+		return "user/showEmployee";
+	}
 }
