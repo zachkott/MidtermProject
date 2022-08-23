@@ -125,7 +125,7 @@ public class AdminController {
 		session.setAttribute("address", addressUpdate.getId());
 		userDao.updateEmployee(id, employee);
 		model.addAttribute("employee", employee);
-		return "user/showEmployee";
+		return "admin/adminShowEmployee";
 	}
 	
 	@RequestMapping(path = "adminDeleteEmployeeForm.do")
@@ -139,7 +139,7 @@ public class AdminController {
 	public String findEmployee(int employeeId, Model model) {
 		Employee emp = userDao.findEmployeeById(employeeId);
 		model.addAttribute("employee", emp);
-		return "user/showEmployee";
+		return "admin/adminShowEmployee";
 	}
 
 	

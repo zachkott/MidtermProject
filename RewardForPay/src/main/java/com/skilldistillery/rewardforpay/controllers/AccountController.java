@@ -1,5 +1,7 @@
 package com.skilldistillery.rewardforpay.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,24 +25,24 @@ public class AccountController {
 	@Autowired
 	private AdminDAO adminDao;
 
+
 	@RequestMapping(path = { "account.do" })
 	public String home(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 		Employee employee = (Employee) session.getAttribute("userinfo");
 		if (user != null) {
-			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
-			session.setAttribute("loggedInUser", user);
-			session.setAttribute("role", user.getRoles().get(0).getId());
-			employee = user.getEmployee();
-			session.setAttribute("userinfo", employee);
-			session.setAttribute("prizes", userDao.findAllPrizes());
-			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
+			model.addAttribute("awardbalance", userDao.findPointBalance(employee.getId()));
+
+			List<Prize> prizes = userDao.findAllActivePrizes();
+			model.addAttribute("prizes", prizes);
+			model.addAttribute("numOfPrizes", prizes.size());
+			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
+
 			return "account";
 		} else {
-			
 			return "login";
 		}
-		
+
 	}
 	@RequestMapping(path = { "pendingList.do" })
 	public String allPending(HttpSession session, Model model) {

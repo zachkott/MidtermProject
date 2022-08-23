@@ -14,8 +14,10 @@
 <form action="login.do" method="POST">
 	<%-- Error messages --%>
 	<input type="text" name="username">
-	// Add ability to show password
+	<br>
+	<!-- Add ability to show password -->
 	<input type="password" name="password"  id ="myPassword"/>
+	<br>
 	<input type="submit" value="Log In" > 
 </form>
 

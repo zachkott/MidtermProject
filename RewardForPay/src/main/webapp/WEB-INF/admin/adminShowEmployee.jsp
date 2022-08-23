@@ -23,7 +23,7 @@
 			<li>Employee ID: ${employee.id}</li>
 			<li>First Name: ${employee.firstName}</li>
 			<li>Last Name: ${employee.lastName}</li>
-			<li>Username: ${sessionScope.loggedInUser.username}</li>
+			<li>Username: ${employee.user.username}</li>
 			<li>Street: ${employee.address.street}</li>
 			<li>State: ${employee.address.state}</li>
 			<li>City: ${employee.address.city}</li>
@@ -35,9 +35,14 @@
 
 		</ul>
 
+			<form action="deleteEmployee.do" method="GET" name="id">
+		<label for="deleteEmployee">ID: </label> <input type="text" name="id"
+			value="${employee.id}" placeholder="Delete by ID"> <input
+			class="btn btn-danger" type="submit" value="Delete This Employee">
+			<br>
+		</form>
 		
-		
-		<form action="updateEmployeeForm.do" method="GET"name="id">
+		<form action="adminUpdateEmployeeForm.do" method="GET"name="id">
 		<label for="updateEmployee"> ID:</label> <input type="text" name="id"
 			value="${employee.id}" placeholder="Update by ID"> <input
 			class="btn btn-warning" type="submit" value="Update Employee Info">
