@@ -19,35 +19,39 @@ import com.skilldistillery.rewardforpay.entities.User;
 public interface UserDAO {
 
 		//Login/credentialed user actions -Zach
-		User findById(int userId);
+	User createUser(User user, int empId);
+	User updateUser(int id, User user);
+	User deleteUser(int id); //Inactivate user
+		User findUserById(int userId);
 		List<User> findUserByKeyword(String keyword);
+		User findByUsername(String username, String password);
 		List<User> findAllUsers();
-		User createUser(User user, int empId);
-		User updateUser(int id, User user);
-		User deleteUser(int id); //Inactivate user
-		boolean disableUser(int id);
+		List<User> findAllActiveUsers();
 		boolean enableUser(int id);
+		boolean disableUser(int id);
+		Address createAddress(Address address);
+		
 		
 		//Employee profile/actions -Daniel
-		Employee findEmployeeById(int employeeId);
-		List<Employee> findAllEmployees();
 		Employee createEmployee(Employee employee, int addId);
 		Employee updateEmployee(int id, Employee employee);
 		Employee deleteEmployee(int id); //Inactivate employee
+		Employee findEmployeeById(int employeeId);
+		List<Employee> findAllEmployees();
+		List<Employee> findAllActiveEmployees();
 		int findPointBalance(int employeeId);
 		PointRedemption createRedemption(PointRedemption pointRedemption); //Jamie update
 		PointRedemption withdrawRedemption(int employeeId, int rewardId); //stretch function?
-		User findByUsername(String username, String password);
-		Address createAddress(Address address);
+		
 		
 		
 		//Admin actions -Swarm
 		List<PointAwarded> pendingPointAwarded() ;//DONE
 		List<Employee> pendingEmployees() ;//DONE
 		List<Prize> pendingPrize() ; //DONE
+		boolean deletePrize(int id); //DONE
 		boolean updateStatus(int statusId); //DONE
 		PointAwarded updateAward(int awardId, PointAwarded pointAward);// -Jamie
-		boolean deletePrize(int id); //DONE
 		PointRedemption updateRedemption(int employeeId, int rewardId); //Stretch function
 		PointRedemption deleteRedemption(int employeeId, int rewardId); //Stretch function
 		
@@ -55,9 +59,11 @@ public interface UserDAO {
 		//Reward items -Jamie
 		Prize findPrizeById(int prizeId);
 		List<Prize> findAllPrizes();
+		List<Prize> findAllActivePrizes();
 		List<Prize> findPrizesByTier(int tierId);
 		Prize createPrize(Prize prize);
 		Prize updatePrize(int id, Prize prize);
+		
 		
 		//Award submissions/points -Jamie
 		PointAwarded findAwardByID(int awardId);
