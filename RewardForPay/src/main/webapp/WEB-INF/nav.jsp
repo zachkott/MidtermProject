@@ -49,6 +49,10 @@
             <li><a class="dropdown-item" href="adminAllEmployees.do">Show All Employees</a></li>
             <li><a class="dropdown-item" href="allPrizes.do?id=0">Show All Prizes</a></li>
             <li><a class="dropdown-item" href="pendingList.do">Show All Requests</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="wishlist.do">Wishlist</a></li>
+            <li><a class="dropdown-item" href="forum.do">Forum</a></li>
+            
             
           </ul>
         <li class="nav-item dropdown">
@@ -68,7 +72,7 @@
         </li>
 
       </ul>
-            <form class="d-flex" action="searchAll.do" method="get">
+            <form class="d-flex" action="searchEmployee.do" method="get">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" type="text" name="keyword">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -105,6 +109,20 @@
         <li class="nav-item">
           <a class="nav-link" href="logout.do">Logout</a>
         </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Employee Controls
+          </a>
+           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="forum.do">Forum</a></li>
+            <li><a class="dropdown-item" href="wishlist.do">Wishlist</a></li>
+            <li><a class="dropdown-item" href="events.do">Events</a></li>
+            <li><a class="dropdown-item" href="reward.do">Rewards</a></li>
+            
+            
+            
+            
+          </ul>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             External Links
@@ -121,7 +139,7 @@
         </li>
 
       </ul>
-            <form class="d-flex" action="searchAll.do" method="get">
+            <form class="d-flex" action="searchEmployee.do" method="get">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" type="text" name="keyword">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>

@@ -43,6 +43,12 @@
 							<input class="action_button" type="submit" value="Redeem" />
 						</form>
 					</td>
+					<td>	
+						<form action="addWishlist.do" method="get">
+							<input type="hidden" value="${prize.id}" name="prizeId" /> 
+							<input class="action_button" type="submit" value="Add To Wishlist" />
+						</form>
+					</td>
 					<td class="buffer"></td>
 					<td class="buffer"></td>
 					<td class="buffer"></td>

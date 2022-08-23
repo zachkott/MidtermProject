@@ -169,8 +169,8 @@ public class UserController {
 
 	
 	@RequestMapping(path="wishlist.do")
-	public String viewWishlist(HttpSession session, Model model, int id) {
-		Employee emp = (Employee) session.getAttribute("employee");
+	public String viewWishlist(HttpSession session, Model model) {
+		Employee emp = (Employee) session.getAttribute("userinfo");
 		List<Prize> wishlist = userDao.showWishList(emp.getId());
 		model.addAttribute("wishlist", wishlist);
 		return "wishlist";
@@ -178,8 +178,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="addWishlist.do")
-	public String addToWishlist(HttpSession session, Model model, int employeeId, int prizeId) {
-		Employee emp = (Employee) session.getAttribute("employee");
+	public String addToWishlist(HttpSession session, Model model, int prizeId) {
+		Employee emp = (Employee) session.getAttribute("userinfo");
 		List<Prize> wishlist = userDao.addPrizeToWishlist(emp.getId(), prizeId);
 		model.addAttribute("wishlist", wishlist);
 		return "wishlist";

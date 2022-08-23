@@ -145,29 +145,7 @@ public class Prize {
 		}
 	}
 	
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Prize [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", points=");
-		builder.append(points);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", image=");
-		builder.append(image);
-		builder.append(", tier=");
-		builder.append(tier);
-		builder.append(", status=");
-		builder.append(status);
-		builder.append(", employees=");
-		builder.append(employees);
-		builder.append(", staff=");
-		builder.append(staff);
-		builder.append("]");
-		return builder.toString();
-	}
+	
 
 
 	@Override

@@ -201,42 +201,7 @@ public class Employee {
 	
 
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Employee [id=");
-		builder.append(id);
-		builder.append(", firstName=");
-		builder.append(firstName);
-		builder.append(", lastName=");
-		builder.append(lastName);
-		builder.append(", salary=");
-		builder.append(salary);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append(", department=");
-		builder.append(department);
-		builder.append(", supervisorId=");
-		builder.append(supervisorId);
-		builder.append(", employeePhoto=");
-		builder.append(employeePhoto);
-		builder.append(", birthday=");
-		builder.append(birthday);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", requestStatus=");
-		builder.append(requestStatus);
-		builder.append(", prizes=");
-		builder.append(prizes);
-		builder.append(", pointsAwarded=");
-		builder.append(pointsAwarded);
-		builder.append(", user=");
-		builder.append(user);
-		builder.append(", favorites=");
-		builder.append(favorites);
-		builder.append("]");
-		return builder.toString();
-	}
+	
 
 	public List<Prize> getFavorites() {
 		return favorites;
