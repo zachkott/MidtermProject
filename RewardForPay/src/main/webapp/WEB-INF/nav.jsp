@@ -117,7 +117,7 @@
             <li><a class="dropdown-item" href="forum.do">Forum</a></li>
             <li><a class="dropdown-item" href="wishlist.do">Wishlist</a></li>
             <li><a class="dropdown-item" href="events.do">Events</a></li>
-            <li><a class="dropdown-item" href="reward.do">Rewards</a></li>
+            <li><a class="dropdown-item" href="allPrizes.do?id=0">Prizes</a></li>
             
             
             

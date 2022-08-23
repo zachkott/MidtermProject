@@ -24,8 +24,7 @@
 							<td><a href="reward.do?id=${prize.id}">${prize.name}</a></td>
 							<td><a href="reward.do?id=${prize.id}">${prize.points}</a></td>
 							<td><img class="card-img-top " src="${prize.image}"></td>
-<%-- 							<td><a href="getPrize.do?id=${prize.id}">${prize.image}</a></td>
- --%>							<td><a href="reward.do?id=${prize.id}">${prize.description}</a></td>
+							<td><a href="reward.do?id=${prize.id}">${prize.description}</a></td>
 
 
 
@@ -36,9 +35,11 @@
 								</form></td>
 					</c:forEach>
 				</c:when>
-
+				<c:otherwise>
+					<h1>Your wishlist is empty :(</h1>
+				</c:otherwise>
 			</c:choose>
-			</tr>
+			<!-- </tr> -->
 		</table>
 	</div>
 
