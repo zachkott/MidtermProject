@@ -20,6 +20,8 @@
 				<th>Last Name</th>
 				<th>Salary</th>
 				<th>Address</th>
+				<th>Phone</th>
+				<th>Birthday</th>
 				
 				
 				
@@ -37,6 +39,8 @@
 					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.lastName}</a></td>
 					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.salary}</a></td>
 					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.address.street}, ${employee.address.state}, ${employee.address.city}</a></td>
+					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.address.phone}</a></td>
+					<td><a href="findEmployeeById?employeeId=${employee.id}">${employee.birthday}</a></td>
 					
 					<td><form action="adminUpdateEmployeeForm.do"><input type ="hidden" name="id" value="${employee.id}"><button type="submit" class="btn btn-primary btn-sm">Update this Employee</button></form>
 					

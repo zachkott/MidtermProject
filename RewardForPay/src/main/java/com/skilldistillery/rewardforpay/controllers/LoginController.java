@@ -47,6 +47,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedInUser");
 		session.removeAttribute("role");
+		session.removeAttribute("userinfo");
 		return "logout";
 	}
 }

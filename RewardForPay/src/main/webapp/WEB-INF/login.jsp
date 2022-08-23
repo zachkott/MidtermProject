@@ -17,7 +17,7 @@
 	// Add ability to show password
 	<input type="password" name="password"  id ="myPassword"/>
 	<input type="submit" value="Log In" > 
-
+</form>
 
 </body>
 </html>

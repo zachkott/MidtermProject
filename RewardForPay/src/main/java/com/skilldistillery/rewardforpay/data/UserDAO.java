@@ -40,6 +40,7 @@ public interface UserDAO {
 		User findByUsername(String username, String password);
 		Address createAddress(Address address);
 		
+		
 		//Admin actions -Swarm
 		List<PointAwarded> pendingPointAwarded() ;//DONE
 		List<Employee> pendingEmployees() ;//DONE
