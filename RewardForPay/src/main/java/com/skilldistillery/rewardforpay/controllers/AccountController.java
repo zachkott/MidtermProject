@@ -139,4 +139,11 @@ public class AccountController {
 		}
 		
 	}
+	@RequestMapping(path = { "eventsList.do" })
+	public String eventsList(HttpSession session, Model model) {
+		Employee employee = (Employee) session.getAttribute("userinfo");
+		model.addAttribute("events",adminDao.showEvents(employee.getId()));
+		return "eventsPage";
+		
+	}
 }

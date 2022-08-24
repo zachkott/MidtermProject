@@ -1,21 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<script type="text/javascript">
+function validateForm() {
+        let username = document.getElementById("username").value;
+        let userId = document.getElementById("userId").value;
+        let userImage = document.getElementById("userImage").src;
+        
+        localStorage.setItem("username", username);
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userImage", userImage);
+        
+        window.location.href = "chat-app.jsp";
+}
+</script>
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
+
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+
 <h1>I'm the Account Page</h1>
 
 <!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
+   <a href="../chat/chat-app.jsp" onclick="validateForm()" >CHAT!!!</a>
    
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>
@@ -36,7 +53,7 @@
 		<table>
 			<tbody>
 				<tr> <!-- Employee photo url move to database -->
-					<td  rowspan=2><img width="40%" class="detail_img" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
+					<td  rowspan=2><img width="40%" class="detail_img" id="userImage" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
 					<td class="buffer"></td>
 					<td class="text-wrap col-md-offset-1" id="employee_info">
 						<h1><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h1><br>
@@ -90,7 +107,8 @@
 			<form action="createAward.do" method="POST">
 				<input type="hidden" name="description" value="Initial Point Award"/>
 				<input type="hidden" name="amount" value="100"/>
-				<input type="hidden" name="userId" value="${sessionScope.loggedInUser.id}"/>
+				<input type="hidden" id="username" value="${sessionScope.loggedInUser.id}">
+				<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
 				<input type="hidden" name="empId" value="${sessionScope.userinfo.id}"/>
 				<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
 		</form>

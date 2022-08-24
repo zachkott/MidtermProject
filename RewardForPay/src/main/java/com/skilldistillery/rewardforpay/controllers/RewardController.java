@@ -129,6 +129,9 @@ public class RewardController {
 	@RequestMapping(path = "createAward.do", method = RequestMethod.POST)
 	public String awardCreated(PointAwarded award, Model model, int empId, int userId, RedirectAttributes redir) {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);
+		if(newAward.getDescription().startsWith("EVENT:")) {
+			return "redirect:eventsList.do";
+		}
 		redir.addAttribute("empId", empId);
 		redir.addAttribute("awardId", newAward.getId());
 		redir.addFlashAttribute("newAwardID", newAward.getId());

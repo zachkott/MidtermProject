@@ -26,7 +26,7 @@
           <a class="nav-link" href="account.do">Account</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="forum.do">Forum</a>
+          <a class="nav-link" href="eventsList.do">Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
@@ -96,7 +96,7 @@
           <a class="nav-link" href="account.do">Account</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="forum.do">Forum</a>
+          <a class="nav-link" href="eventsList.do">Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
