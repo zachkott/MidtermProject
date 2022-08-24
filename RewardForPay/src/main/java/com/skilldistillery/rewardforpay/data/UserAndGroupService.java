@@ -21,8 +21,8 @@ public class UserAndGroupService {
 	
 	
 	public List<Map<String, Object>> fetchAllGroup(String groupId) {
-		List<Map<String, Object>> getAllUser = jdbcTemplate.queryForList("SELECT gr.* FROM rewardforpaydb.group gr JOIN group_member gm " +
-											"ON gm.group_id = gr.id AND gm.user_id = ?", groupId);
+		List<Map<String, Object>> getAllUser = jdbcTemplate.queryForList("SELECT gr.* FROM squad gr JOIN group_member gm " +
+											"ON gm.squad_id = gr.id AND gm.user_id = ?", groupId);
 		return getAllUser;
 	}
 }

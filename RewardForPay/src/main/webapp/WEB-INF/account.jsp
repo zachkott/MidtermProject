@@ -5,7 +5,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<script type="text/javascript">
+function validateForm() {
+ //    window.location.href = "google.com";
+
+  
+    // console.log(baseurl)
+
+        let username = document.getElementById("username").value;
+        let userId = document.getElementById("userId").value;
+        
+        localStore.setItem("username", username);
+        localStore.setItem("userId", userId);
+        
+        window.location.href = "chat-app.jsp";
+
+ //       return false;
+
+}
+</script>
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
 
@@ -20,7 +38,7 @@
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <a href="../chat/index.html">CHAT!!!</a>
+   <a href="../chat/chat-app.jsp" onclick="validateForm()">CHAT!!!</a>
    
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>

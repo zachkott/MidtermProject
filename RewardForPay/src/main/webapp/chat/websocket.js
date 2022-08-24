@@ -4,10 +4,9 @@ let selectedUserOrGrup="10000000000000000";
 let newMessages = new Map();
 
 
-let username = document.getElementById("${sessionScope.loggedInUser.username}");
-let userId = document.getElementById("${sessionScope.loggedInUser.id}");
-localStorage.setItem("username", document.getElementById("${sessionScope.loggedInUser.username}"));
-localStorage.setItem("userId", document.getElementById("${sessionScope.loggedInUser.id}"));
+let username = localStorage.getItem("username");
+let userId = localStorage.getItem("userId");
+
 
 function connectToChat(userName) {
     console.log("connecting to chat...")
@@ -292,7 +291,7 @@ function formMessageLauch(id,name,type){
 function logout(userName){
     stompClient.disconnect();
     localStorage.removeItem("userId");
-    window.location.href = "index.html";    
+    window.location.href = "../WEB-INF/account.jsp";    
 
     return false;
 

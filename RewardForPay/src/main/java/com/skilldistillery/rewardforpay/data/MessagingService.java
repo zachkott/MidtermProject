@@ -38,12 +38,12 @@ public class MessagingService {
 	
 	public List<Map<String, Object>> getListMessageGroups(@PathVariable("groupid") Integer groupid) {
 			return jdbcTemplate.queryForList("SELECT gm.*, us.name AS name FROM group_message gm JOIN user us ON" +
-						" us.id = gm.user_id WHERE gm.group_id =? ORDER BY created ASC", groupid);
+						" us.id = gm.user_id WHERE gm.squad_id =? ORDER BY created ASC", groupid);
 	}
 	
 	
 	public void sendMessageGroup(Integer to, MessageGroup message) {
-		jdbcTemplate.update("INSERT INTO 'group_message'('group_id', 'user_id', 'message', 'created') " +
+		jdbcTemplate.update("INSERT INTO 'group_message'('squad_id', 'user_id', 'message', 'created') " +
 				"VALUES(?, ?, ?, current_timestamp)", to, message.getFromLogin(), message.getMessage());
 		message.setGroupId(to);
 		simpMessagingTemplate.convertAndSend("/topic/messages/group/" + to, message);

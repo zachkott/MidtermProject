@@ -32,8 +32,8 @@ function validateForm() {
  //       }
 
 
-        window.location.href = "chat-app.html";
+        window.location.href = "chat-app.jsp";
 
-        return false;
+ //       return false;
 
 }

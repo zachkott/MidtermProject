@@ -20,8 +20,8 @@
             <div class="avatar"></div>
             <div class="form-box">
                 <form name="myForm" action=""  onsubmit="validateForm()">
-                    <input type="text" placeholder="${sessionScope.loggedInUser.username}" id="username">
-                    <input type="text" value="${sessionScope.loggedInUser.id}" id="userId">
+                    <h3 id="username">${sessionScope.loggedInUser.username}"</h3>
+                    <h3 id="userId">${sessionScope.loggedInUser.id}"</h3>
                     <button class="btn btn-info btn-block login" type="submit">Login
                 </form>
             </div>
