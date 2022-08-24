@@ -200,7 +200,7 @@
           <a class="nav-link" href="login.do">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.do">Logout</a>
+          <a class="nav-link" href="createUserAccountForm.do">Register</a>
         </li>
       </ul>
 
