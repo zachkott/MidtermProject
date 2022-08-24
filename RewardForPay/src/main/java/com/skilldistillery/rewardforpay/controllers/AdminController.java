@@ -103,6 +103,12 @@ public class AdminController {
 		model.addAttribute("user", userDao.findUserById(id));
 		return "admin/adminUpdateUser";
 	}
+	@RequestMapping(path = "adminUpdateUser.do", method = RequestMethod.POST)
+	public String adminpdateUserDetails(int id, User user, Model model) {
+		userDao.updateUser(id, user);
+		model.addAttribute("user", user);
+		return "user/showUser";
+	}
 
 	@RequestMapping(path = "adminAllEmployees.do", method = RequestMethod.GET)
 	public String showAdminAllEmployees(Model model) {

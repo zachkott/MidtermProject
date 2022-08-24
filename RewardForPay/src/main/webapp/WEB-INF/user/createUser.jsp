@@ -37,7 +37,19 @@
 			<label for="birthday">Birthday: </label> 
 			<input type="date" name="date" placeholder="YYYY-MM-DD" required> 
 			<br>
-
+			<label
+				for="department">Department:</label> 
+				<select name="departmentId">
+				<option value=3>Engineering</option>
+				<option value=4>Human Resources</option>
+				<option value=5>Operations</option>
+				<option value=6>Marketing</option>
+				<option value=7>Maintenance</option>
+				<option value=8>Technology</option>
+				<option value=9>Guest</option>
+				<option value=10>Customer Service</option>
+				
+				</select><br>
 
 
 			
