@@ -1,21 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
+
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+
 <h1>I'm the Account Page</h1>
 
 <!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
+   <a href="../chat/index.html">CHAT!!!</a>
    
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>

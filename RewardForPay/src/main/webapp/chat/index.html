@@ -19,9 +19,9 @@
             <div id="output"></div>
             <div class="avatar"></div>
             <div class="form-box">
-                <form name="myForm" action="" method="post" onsubmit="validateForm()">
-                    <input name="user" type="text" placeholder="username" id="username">
-                    <input type="password" placeholder="password" id="password">
+                <form name="myForm" action=""  onsubmit="validateForm()">
+                    <input type="text" placeholder="${sessionScope.loggedInUser.username}" id="username">
+                    <input type="text" value="${sessionScope.loggedInUser.id}" id="userId">
                     <button class="btn btn-info btn-block login" type="submit">Login
                 </form>
             </div>
