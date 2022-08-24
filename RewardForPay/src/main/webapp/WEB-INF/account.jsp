@@ -38,7 +38,7 @@ function validateForm() {
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <a href="../chat/chat-app.jsp" target="_blank" onclick="validateForm()" >CHAT!!!</a>
+   <a href="../chat/chat-app.jsp" onclick="validateForm()" >CHAT!!!</a>
    
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>
