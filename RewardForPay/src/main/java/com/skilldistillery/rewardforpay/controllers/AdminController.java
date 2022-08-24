@@ -15,6 +15,7 @@ import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
+import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.User;
 
 @Controller
@@ -160,4 +161,24 @@ public class AdminController {
 			return "admin/adminHome";
 
 	}
+	
+	
+	
+	// ADMIN DASHBOARD TEST
+	
+	@RequestMapping(path = "adminDashboardAllUsers.do", method = RequestMethod.GET)
+	public String dashboardAdminAllUsers(Model model) {
+		List<User> users = userDao.findAllUsers();
+		model.addAttribute("allUsers", users);
+		return "admin/adminHome";
+	}
+	
+
+	@RequestMapping(path = "adminDashboardAllEmployees.do", method = RequestMethod.GET)
+	public String dashboardAdminAllEmployees(Model model) {
+		List<Employee> emps = userDao.findAllActiveEmployees();
+		model.addAttribute("allEmployees", emps);
+		return "admin/adminHome";
+	}
+	
 }
