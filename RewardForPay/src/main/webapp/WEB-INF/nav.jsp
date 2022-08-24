@@ -31,9 +31,9 @@
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
         </li>
-        <li class="nav-item">
+      <!--   <li class="nav-item">
           <a class="nav-link" href="login.do">Login</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="logout.do">Logout</a>
         </li>
@@ -101,9 +101,9 @@
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
         </li>
-        <li class="nav-item">
+       <!--  <li class="nav-item">
           <a class="nav-link" href="login.do">Login</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="logout.do">Logout</a>
         </li>
@@ -168,9 +168,9 @@
         <li class="nav-item">
           <a class="nav-link" href="account.do">Account</a>
         </li>
-        <li class="nav-item">
+      <!--   <li class="nav-item">
           <a class="nav-link" href="login.do">Login</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="logout.do">Logout</a>
         </li>
