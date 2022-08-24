@@ -77,8 +77,8 @@
   </div>
 
 </c:if>
-<c:choose>
-		<c:when test="${role==1}">
+
+		<c:if test="${role==1}">
 <div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -150,8 +150,8 @@
     </div>
   </div>
 
-		</c:when>
-		<c:otherwise>
+		</c:if>
+	<c:if test="${role==3}">
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -178,10 +178,35 @@
 
     </div>
   </div>
+  </c:if>
+<c:if test="${empty role}">
+				<div class="container-fluid">
+    <a class="navbar-brand" href="home.do">
+          <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+		Reward For Pay
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home.do">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="account.do">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.do">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.do">Logout</a>
+        </li>
+      </ul>
 
-		
-		</c:otherwise>
-		</c:choose>
+    </div>
+  </div>
+		</c:if>
 		<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
