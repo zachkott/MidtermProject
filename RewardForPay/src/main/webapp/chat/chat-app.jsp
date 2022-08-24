@@ -57,7 +57,7 @@
 						<div class="card-header msg_head" id="formMessageHeader">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
-									<img src="https://media.istockphoto.com/photos/funny-raccoon-in-green-sunglasses-showing-a-rock-gesture-isolated-on-picture-id1154370446?k=20&m=1154370446&s=612x612&w=0&h=2AWvof66ovB87P3b7C_cu0pCZlZhDDFYUFr2KQ2UnwQ=" class="rounded-circle user_img">
+									<img src="${userinfo.employeePhoto}" class="rounded-circle user_img">
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">

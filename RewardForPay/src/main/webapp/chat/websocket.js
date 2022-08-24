@@ -6,6 +6,8 @@ let newMessages = new Map();
 
 let username = localStorage.getItem("username");
 let userId = localStorage.getItem("userId");
+let userImage = localStorage.getItem("userImage");
+
 
 
 function connectToChat(username) {
@@ -118,7 +120,7 @@ function fetchAll() {
                 usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+users[i]['id']+',\''+users[i]['username']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
                 '<div class="d-flex bd-highlight">'+
                 '<div class="img_cont">'+
-                '<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">'+
+                '<img src="'+users[i].parent().attr("data-employee_photo")+'" class="rounded-circle user_img">'+
                 '<span class="online_icon"></span>'+
                 '</div>'+
                 '<div class="user_info" id="usernameAppender_' + users[i]['id'] + '">'+

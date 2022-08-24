@@ -7,21 +7,15 @@
 <head>
 <script type="text/javascript">
 function validateForm() {
- //    window.location.href = "google.com";
-
-  
-    // console.log(baseurl)
-
         let username = document.getElementById("username").value;
         let userId = document.getElementById("userId").value;
+        let userImage = document.getElementById("userImage").src;
         
         localStorage.setItem("username", username);
         localStorage.setItem("userId", userId);
+        localStorage.setItem("userImage", userImage);
         
         window.location.href = "chat-app.jsp";
-
- //       return false;
-
 }
 </script>
 <title>Reward For Pay</title>
@@ -59,7 +53,7 @@ function validateForm() {
 		<table>
 			<tbody>
 				<tr> <!-- Employee photo url move to database -->
-					<td  rowspan=2><img width="40%" class="detail_img" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
+					<td  rowspan=2><img width="40%" class="detail_img" id="userImage" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
 					<td class="buffer"></td>
 					<td class="text-wrap col-md-offset-1" id="employee_info">
 						<h1><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h1><br>
