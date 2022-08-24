@@ -140,9 +140,9 @@ public class AccountController {
 		
 	}
 	@RequestMapping(path = { "eventsList.do" })
-	public String eventsList(HttpSession session, Model model) {
-		Employee employee = (Employee) session.getAttribute("userinfo");
-		model.addAttribute("events",adminDao.showEvents(employee.getId()));
+	public String eventsList(HttpSession session, Model model,int empId) {
+		System.out.println(empId);
+		model.addAttribute("events",adminDao.showEvents(empId));
 		return "eventsPage";
 		
 	}

@@ -130,6 +130,7 @@ public class RewardController {
 	public String awardCreated(PointAwarded award, Model model, int empId, int userId, RedirectAttributes redir) {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);
 		if(newAward.getDescription().startsWith("EVENT:")) {
+			redir.addAttribute("empId", empId);
 			return "redirect:eventsList.do";
 		}
 		redir.addAttribute("empId", empId);

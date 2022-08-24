@@ -1,13 +1,12 @@
 package com.skilldistillery.rewardforpay.data;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.springframework.data.convert.JodaTimeConverters.LocalDateTimeToDateConverter;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.rewardforpay.entities.Employee;
@@ -15,7 +14,7 @@ import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
 import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
-import com.skilldistillery.rewardforpay.entities.UserRole;
+
 @Service
 @Transactional
 public class AdminDAOImpl implements AdminDAO {
@@ -24,43 +23,45 @@ public class AdminDAOImpl implements AdminDAO {
 	private EntityManager em;
 
 	@Override
-	public boolean updateStatus(Object obj,int statusId) {
+	public boolean updateStatus(Object obj, int statusId) {
 		boolean changed = false;
-		if(obj instanceof Prize) {
+		if (obj instanceof Prize) {
 			((Prize) obj).setStatus(em.find(Status.class, statusId));
-			changed =true;
+			changed = true;
 		}
-		if(obj instanceof Employee) {
+		if (obj instanceof Employee) {
 			((Employee) obj).setRequestStatus(em.find(Status.class, statusId));
-			changed =true;
+			changed = true;
 		}
-		if(obj instanceof PointAwarded) {
+		if (obj instanceof PointAwarded) {
 			((PointAwarded) obj).setStatus(em.find(Status.class, statusId));
-			changed =true;
+			changed = true;
 		}
 		return changed;
 	}
+
 	@Override
 	public boolean deleteEmployeeTest(Employee emp) {
-			emp.setRequestStatus(em.find(Status.class, 4));
+		emp.setRequestStatus(em.find(Status.class, 4));
 		return true;
 	}
 
 	@Override
 	public boolean createRedemption(Prize p, Employee e, int remainder) {
-		boolean redeemed =false;
-		int pamount =p.getPoints();
-		if(pamount>=remainder) {
+		boolean redeemed = false;
+		int pamount = p.getPoints();
+		if (pamount >= remainder) {
 			return redeemed;
-		}else {
-		PointRedemption pr = new PointRedemption();
-		pr.setEmployee(e);
-		pr.setPrize(p);
-		em.persist(pr);
-		redeemed = true;
-		return redeemed;
+		} else {
+			PointRedemption pr = new PointRedemption();
+			pr.setEmployee(e);
+			pr.setPrize(p);
+			em.persist(pr);
+			redeemed = true;
+			return redeemed;
 		}
 	}
+
 	@Override
 	public List<PointAwarded> claimedInitial(int employeeId) {
 		String keyword = "Initial Point Award";
@@ -68,17 +69,19 @@ public class AdminDAOImpl implements AdminDAO {
 		String awaredquery = "SELECT pa FROM PointAwarded pa WHERE employee_id = :employeeId AND pa.description LIKE :keyword";
 		List<PointAwarded> awarded = em.createQuery(awaredquery, PointAwarded.class)
 				.setParameter("employeeId", employeeId).setParameter("keyword", keyword).getResultList();
-		
+
 		return awarded;
 	}
+
 	@Override
-	public List<PointRedemption> claimedInitialT(int employeeId){
+	public List<PointRedemption> claimedInitialT(int employeeId) {
 
 		String awaredquery = "SELECT pr FROM PointRedemption pr WHERE employee_id = :employeeId AND reward_id=5";
 		List<PointRedemption> awarded = em.createQuery(awaredquery, PointRedemption.class)
 				.setParameter("employeeId", employeeId).getResultList();
 		return awarded;
-}
+	}
+
 	public List<Employee> searchAll(String keyword) {
 		keyword = "%" + keyword + "%";
 
@@ -86,22 +89,26 @@ public class AdminDAOImpl implements AdminDAO {
 
 		return em.createQuery(sql, Employee.class).setParameter("keyword", keyword).getResultList();
 	}
-	public List<PointAwarded> showEvents(int id){
+
+	public List<PointAwarded> showEvents(int id) {
 		String keyword = "EVENT:";
 		keyword = "%" + keyword + "%";
 		String eventquery = "SELECT pa FROM PointAwarded pa WHERE pa.description LIKE :keyword";
-		List<PointAwarded> events = em.createQuery(eventquery, PointAwarded.class)
-				.setParameter("keyword", keyword).getResultList();
-		
+		List<PointAwarded> events = em.createQuery(eventquery, PointAwarded.class).setParameter("keyword", keyword)
+				.getResultList();
+		System.out.println(id);
 		String joinedquery = "SELECT pa FROM PointAwarded pa WHERE employee_id = :id";
 		List<PointAwarded> joined = em.createQuery(joinedquery, PointAwarded.class)
 				.setParameter("id", id).getResultList();
-		for(PointAwarded event : events) {
-			if(joined.contains(event.getDescription())) {
-				events.remove(event.getId());
+		List<PointAwarded> eventsShow = new ArrayList<>();
+		for (PointAwarded each : events) {
+			for(PointAwarded join : joined) {
+			if (each.getEmployee().getId()==1 && each.getDescription()==join.getDescription()) {
+				eventsShow.add(each);
+			} else {
+			}
 			}
 		}
-		
-		return events;
+		return eventsShow;
 	}
 }

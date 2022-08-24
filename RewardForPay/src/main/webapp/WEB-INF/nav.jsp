@@ -26,7 +26,7 @@
           <a class="nav-link" href="account.do">Account</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="eventsList.do">Events</a>
+          <a class="nav-link" href="eventsList.do?empId=${sessionScope.userinfo.id}">Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
