@@ -52,6 +52,8 @@
 				<tr>
 					<td></td>
 					<td>
+						<form action="updateUserForm.do"><input type ="hidden" name="id" value="${sessionScope.userinfo.user.id}"><button type="submit" class="btn btn-primary btn-sm">Update login info</button></form>
+					
 						<form action="updateEmployeeForm.do"> <!-- update with controller mapping -->
 							<input type="hidden" value="${sessionScope.userinfo.id}" name="id" /> 
 							<input class="action_button" type="submit" value="Edit Profile" />

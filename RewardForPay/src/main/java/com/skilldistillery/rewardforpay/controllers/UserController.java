@@ -50,7 +50,7 @@ public class UserController {
 //	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUserAccount( Model model, String date,  Employee  employee, Address address, User user, RedirectAttributes redir) {
+	public ModelAndView createUserAccount( Model model, int departmentId, String date,  Employee  employee, Address address, User user, RedirectAttributes redir) {
 		LocalDate localDate = LocalDate.parse(date);
 		employee.setBirthday(localDate);
 		
@@ -62,14 +62,14 @@ public class UserController {
 		
 		// Add  employee
 		
-		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee, address.getId()));
+		redir.addFlashAttribute("employeeAdded", userDao.createEmployee(employee, address.getId(),departmentId));
 		redir.addAttribute("id", employee.getId());
 		redir.addFlashAttribute("addMessage", "Employee was successfully added.");
 		redir.addFlashAttribute("addFail", "There was a problem adding the employee.");
 		
 		// Create User
 		ModelAndView mv = new ModelAndView();
-		User newUser = userDao.createUser(user, employee.getId());
+		User newUser = userDao.createUser(user, employee.getId(), departmentId);
 //		newUser.setEnabled(true);
 		boolean createdUser = newUser.getId() > 0 ? true : false;
 		redir.addFlashAttribute("newUser", newUser);
@@ -80,7 +80,7 @@ public class UserController {
 
 	@RequestMapping(path = "userWasCreated.do", method = RequestMethod.GET)
 	public String userHasBeenCreated(Model model) {
-		return "user/userConfirmation";
+		return "login";
 	}
 
 	@RequestMapping(path = "updateUserForm.do")

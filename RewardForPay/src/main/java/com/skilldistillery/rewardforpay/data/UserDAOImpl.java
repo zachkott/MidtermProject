@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.rewardforpay.entities.Address;
+import com.skilldistillery.rewardforpay.entities.Department;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
@@ -29,17 +30,20 @@ public class UserDAOImpl implements UserDAO {
 	
 //LoggedIn User Actions
 	@Override
-	public User createUser(User user, int empId) {
+	public User createUser(User user, int empId, int  departmentId) {
 		User newUser = user;
 		Employee employee = em.find(Employee.class, empId);
 		UserRole newRole = em.find(UserRole.class, 2);
+		Department department = em.find(Department.class, departmentId );
 		List<UserRole> newRoles = new ArrayList<UserRole>();
 		newRoles.add(newRole);
 		newUser.setEnabled(true);
 		newUser.setRoles(newRoles);
 		employee.getPrizes().size();
 		employee.getPointsAwarded().size();
+		employee.setDepartment(department);
 		newUser.setEmployee(employee);
+		
 		em.persist(newUser);
 		
 		return newUser;
@@ -51,8 +55,8 @@ public class UserDAOImpl implements UserDAO {
 		
 		updatedUser.setUsername(user.getUsername());
 		updatedUser.setPassword(user.getPassword());
-		updatedUser.setEnabled(user.getEnabled());
-		updatedUser.setRoles(user.getRoles());
+//		updatedUser.setEnabled(user.getEnabled());
+//		updatedUser.setRoles(user.getRoles());
 		return updatedUser;
 	}
 
@@ -152,12 +156,14 @@ public class UserDAOImpl implements UserDAO {
 	
 //Employee profile/actions	
 	@Override
-	public Employee createEmployee(Employee employee, int addId) {
+	public Employee createEmployee(Employee employee, int addId, int depId) {
 		Employee emp = employee;
+		Department department = em.find(Department.class,depId);
 		Address add = em.find(Address.class, addId);
 		Status stat = em.find(Status.class, 2);
 		List<Prize> prizes = findPrizesByTier(1);
 		List<PointAwarded> points = new ArrayList<>() ;
+		emp.setDepartment(department);
 		emp.setPointsAwarded(points);
 		emp.setPrizes(prizes);
 		emp.setRequestStatus(stat);

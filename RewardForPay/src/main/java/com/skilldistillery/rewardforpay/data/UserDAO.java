@@ -19,7 +19,7 @@ import com.skilldistillery.rewardforpay.entities.User;
 public interface UserDAO {
 
 		//Login/credentialed user actions -Zach
-	User createUser(User user, int empId);
+	User createUser(User user, int empId, int departmentId);
 	User updateUser(int id, User user);
 	User deleteUser(int id); //Inactivate user
 		User findUserById(int userId);
@@ -37,7 +37,7 @@ public interface UserDAO {
 		
 		
 		//Employee profile/actions -Daniel
-		Employee createEmployee(Employee employee, int addId);
+		Employee createEmployee(Employee employee, int addId, int depId);
 		Employee updateEmployee(int id, Employee employee);
 		Employee deleteEmployee(int id); //Inactivate employee
 		Employee findEmployeeById(int employeeId);

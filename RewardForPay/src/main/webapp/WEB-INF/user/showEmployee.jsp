@@ -38,13 +38,13 @@
 		
 		
 		<form action="updateEmployeeForm.do" method="GET"name="id">
-		<label for="updateEmployee"> ID:</label> <input type="text" name="id"
+		 <input type="hidden" name="id"
 			value="${employee.id}" placeholder="Update by ID"> <input
 			class="btn btn-warning" type="submit" value="Update Employee Info">
 	</form>
 	
-	<form action="home.do">
-				<input class="btn btn-success" type="submit" value="Home">
+	<form action="account.do">
+				<input class="btn btn-success" type="submit" value="Account">
 			</form>
 	
 	</c:when>

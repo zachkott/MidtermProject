@@ -7,7 +7,7 @@
 <title>Update User Details</title>
 </head>
 <body>
-
+<%@ include file="../nav.jsp" %>
 
 <div class="form-row">
 		<form action="updateUser.do" method="POST">
