@@ -6,13 +6,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.rewardforpay.entities.Address;
 import com.skilldistillery.rewardforpay.entities.Employee;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
 import com.skilldistillery.rewardforpay.entities.Prize;
-import com.skilldistillery.rewardforpay.entities.Status;
-import com.skilldistillery.rewardforpay.entities.User;
+import com.skilldistillery.rewardforpay.entities.UserRole;
 
 @Service
 @Transactional

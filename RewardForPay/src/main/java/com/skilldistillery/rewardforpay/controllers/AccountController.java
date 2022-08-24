@@ -33,7 +33,6 @@ public class AccountController {
 		if (user != null) {
 			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
 			session.setAttribute("loggedInUser", user);
-			session.setAttribute("role", user.getRoles().get(0).getId());
 			employee = user.getEmployee();
 			session.setAttribute("userinfo", employee);
 			List<Prize> prizes = userDao.findAllActivePrizes();
@@ -120,6 +119,24 @@ public class AccountController {
 		model.addAttribute("allEmployees",adminDao.searchAll(keyword));
 		model.addAttribute("keyword",keyword);
 		return "employeeSearch";
+		
+	}
+	@RequestMapping(path = { "changeToEmployee.do" },method = RequestMethod.GET)
+	public String changeToEmployee(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+		session.setAttribute("role", user.getRoles().get(1).getId());
+		return "account";
+		
+	}
+	@RequestMapping(path = { "changeToAdmin.do" },method = RequestMethod.GET)
+	public String changeToAdmin(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if(user.getRoles().size()==1) {
+			return "failedAdmin";
+		}else {
+		session.setAttribute("role", user.getRoles().get(0).getId());
+		return "account";
+		}
 		
 	}
 }

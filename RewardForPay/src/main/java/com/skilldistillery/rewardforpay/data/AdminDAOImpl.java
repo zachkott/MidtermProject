@@ -15,6 +15,7 @@ import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.PointRedemption;
 import com.skilldistillery.rewardforpay.entities.Prize;
 import com.skilldistillery.rewardforpay.entities.Status;
+import com.skilldistillery.rewardforpay.entities.UserRole;
 @Service
 @Transactional
 public class AdminDAOImpl implements AdminDAO {
@@ -86,4 +87,5 @@ public class AdminDAOImpl implements AdminDAO {
 
 		return em.createQuery(sql, Employee.class).setParameter("keyword", keyword).getResultList();
 	}
+
 }

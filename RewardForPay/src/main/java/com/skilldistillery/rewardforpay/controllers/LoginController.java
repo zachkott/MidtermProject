@@ -53,7 +53,7 @@ public class LoginController {
 		session.removeAttribute("loggedInUser");
 		session.removeAttribute("role");
 		session.removeAttribute("userinfo");
-		return "logout";
+		return "home";
 	}
 	@RequestMapping (path ="DanielTest.do") 
 	public String DanielTest(HttpSession session) {

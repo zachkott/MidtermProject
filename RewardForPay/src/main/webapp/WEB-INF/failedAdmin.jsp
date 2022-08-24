@@ -8,8 +8,8 @@
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-<h1>This is the Logout Page</h1>
-
+<h1>You do not have permission to access the admin controls</h1>
+${userinfo.firstName}
 
 
 </body>
