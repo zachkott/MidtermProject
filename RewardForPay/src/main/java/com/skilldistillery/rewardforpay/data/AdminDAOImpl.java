@@ -28,7 +28,6 @@ public class AdminDAOImpl implements AdminDAO {
 		boolean changed = false;
 		if(obj instanceof Prize) {
 			((Prize) obj).setStatus(em.find(Status.class, statusId));
-			System.out.println("I made it here");
 			changed =true;
 		}
 		if(obj instanceof Employee) {
@@ -83,9 +82,16 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<Employee> searchAll(String keyword) {
 		keyword = "%" + keyword + "%";
 
-		String sql = "SELECT e FROM Employee e WHERE e.firstName LIKE :keyword OR e.lastName LIKE :keyword OR e.user.username LIKE :keyword";
+		String sql = "SELECT e FROM Employee e WHERE e.firstName LIKE :keyword OR e.lastName LIKE :keyword OR e.user.username LIKE :keyword OR e.department.name LIKE :keyword";
 
 		return em.createQuery(sql, Employee.class).setParameter("keyword", keyword).getResultList();
 	}
-
+	public List<PointAwarded> showEvents(){
+		String keyword = "EVENT:";
+		keyword = "%" + keyword + "%";
+		String awaredquery = "SELECT pa FROM PointAwarded pa WHERE pa.description LIKE :keyword";
+		List<PointAwarded> awarded = em.createQuery(awaredquery, PointAwarded.class)
+				.setParameter("keyword", keyword).getResultList();
+		return awarded;
+	}
 }
