@@ -7,7 +7,6 @@
 <head>
 <script type="text/javascript">
 function validateForm() {
-<<<<<<< HEAD
         let username = document.getElementById("username").value;
         let userId = document.getElementById("userId").value;
         let userImage = document.getElementById("userImage").src;
@@ -17,23 +16,17 @@ function validateForm() {
         localStorage.setItem("userImage", userImage);
         
         window.location.href = "chat-app.jsp";
-=======
- //    window.location.href = "google.com";
-
-  
-    // console.log(baseurl)
 
         let username = document.getElementById("username").value;
         let userId = document.getElementById("userId").value;
+        let userImage = document.getElementById("userImage").src;
         
         localStorage.setItem("username", username);
         localStorage.setItem("userId", userId);
+        localStorage.setItem("userImage", userImage);
         
         window.location.href = "chat-app.jsp";
 
- //       return false;
-
->>>>>>> 0870e88b7dc4dd47083b44a20d4ea5dd35c22d94
 }
 </script>
 <title>Reward For Pay</title>
