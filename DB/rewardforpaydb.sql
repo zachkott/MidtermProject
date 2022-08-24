@@ -442,6 +442,7 @@ INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`)
 INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (5, '5934 Se Duke St', 'Portland', 'Oregon', '97206', '503-771-4637');
 INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (6, '5934 Se Duke St', 'Portland', 'Oregon', '97206', '503-771-4637');
 INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (7, '5934 Se Duke St', 'Portland', 'Oregon', '97206', '503-771-4637');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `postal_code`, `phone`) VALUES (8, 'Guest address', 'Guest city', 'Guest state', '97206', '111-111-1111');
 
 COMMIT;
 
@@ -469,6 +470,7 @@ INSERT INTO `department` (`id`, `name`, `manager_id`, `company_id`, `description
 INSERT INTO `department` (`id`, `name`, `manager_id`, `company_id`, `description`, `website_url`) VALUES (6, 'Marketing', NULL, 1, 'Boy! We can sure sell!', NULL);
 INSERT INTO `department` (`id`, `name`, `manager_id`, `company_id`, `description`, `website_url`) VALUES (7, 'Maintenance', NULL, 1, 'Someone has to actually work around here.', NULL);
 INSERT INTO `department` (`id`, `name`, `manager_id`, `company_id`, `description`, `website_url`) VALUES (8, 'Technology', NULL, 1, 'Smartest Programmer ever!', NULL);
+INSERT INTO `department` (`id`, `name`, `manager_id`, `company_id`, `description`, `website_url`) VALUES (9, 'Guest', NULL, 1, 'Just visiting. ', NULL);
 
 COMMIT;
 
@@ -498,6 +500,7 @@ INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`,
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (5, 'Zach', 'Kotterer', 100000, 5, 8, NULL, 'https://marketplace.canva.com/Foblk/MAEItxFoblk/1/tl/canva-happy-man-icon-MAEItxFoblk.png', '2000/01/3', 'One smart cookie.', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (6, 'Jamie', 'Patterson', 100000, 6, 8, NULL, 'https://marketplace.canva.com/5sWIg/MAEIt45sWIg/1/tl/canva-flat-style-round-people-avatar-icon-set%2C-yellow-purple-human-face-circle-icon-for-person-in-web-page%2C-flyer%2C-digital-game%2C-presentation-video%2C-account-forum%2C-user-vector-cartoon-illustration-isolated-on-white-background-MAEIt45sWIg.png', '2000/01/3', 'One smart cookie.', 1);
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (7, 'Daniel', 'Schulenberg', 100000, 7, 8, NULL, 'https://marketplace.canva.com/Foblk/MAEItxFoblk/1/tl/canva-happy-man-icon-MAEItxFoblk.png', '2000/01/3', 'One smart cookie.', 1);
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `salary`, `address_id`, `department_id`, `supervisor_id`, `employee_photo`, `birthday`, `description`, `request_status_id`) VALUES (8, 'Guest', 'Guest', 1, 8, 9, NULL, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSeTZh5JQUaK4oKl-rnqbpgp0wDOiafD8FiA&usqp=CAU', NULL, 'Welcome to the site! Create a user to view more!', 1);
 
 COMMIT;
 
@@ -555,6 +558,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALU
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (5, 'zkott', 'zkott', 1, 5);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (6, 'jpatt', 'jpatt', 1, 6);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (7, 'dschu', 'dschu', 1, 7);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `employee_id`) VALUES (8, 'guest', 'guest', 1, 8);
 
 COMMIT;
 
@@ -586,6 +590,12 @@ INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (1, 2);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (5, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (6, 1);
 INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (7, 1);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (3, 2);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (4, 2);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (5, 2);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (6, 2);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (7, 2);
+INSERT INTO `user_has_role` (`user_id`, `user_role_id`) VALUES (8, 3);
 
 COMMIT;
 
