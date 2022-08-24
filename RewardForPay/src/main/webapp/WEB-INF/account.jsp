@@ -15,8 +15,8 @@ function validateForm() {
         let username = document.getElementById("username").value;
         let userId = document.getElementById("userId").value;
         
-        localStore.setItem("username", username);
-        localStore.setItem("userId", userId);
+        localStorage.setItem("username", username);
+        localStorage.setItem("userId", userId);
         
         window.location.href = "chat-app.jsp";
 
@@ -38,7 +38,7 @@ function validateForm() {
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <a href="../chat/chat-app.jsp" onclick="validateForm()">CHAT!!!</a>
+   <a href="../chat/chat-app.jsp" target="_blank" onclick="validateForm()" >CHAT!!!</a>
    
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>
@@ -111,7 +111,8 @@ function validateForm() {
 			<form action="createAward.do" method="POST">
 				<input type="hidden" name="description" value="Initial Point Award"/>
 				<input type="hidden" name="amount" value="100"/>
-				<input type="hidden" name="userId" value="${sessionScope.loggedInUser.id}"/>
+				<input type="hidden" id="username" value="${sessionScope.loggedInUser.id}">
+				<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
 				<input type="hidden" name="empId" value="${sessionScope.userinfo.id}"/>
 				<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
 		</form>

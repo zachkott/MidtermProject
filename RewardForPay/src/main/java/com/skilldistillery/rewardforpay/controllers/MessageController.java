@@ -59,8 +59,8 @@ public class MessageController {
 	
 	
 	@GetMapping("/fetchAllGroups/{groupid}")
-	public List<Map<String, Object>> fetchAllGroup(@PathVariable("groupid") String groupId) {
-		return uagService.fetchAllGroup(groupId);
+	public List<Map<String, Object>> fetchAllGroup(@PathVariable("groupid") String groupid) {
+		return uagService.fetchAllGroup(groupid);
 	}
 	
 	

@@ -1,6 +1,6 @@
 const url = "http://localhost:8084";
 let stompClient;
-let selectedUserOrGrup="10000000000000000";
+let selectedUserOrGroup="10000000000000000";
 let newMessages = new Map();
 
 
@@ -8,7 +8,7 @@ let username = localStorage.getItem("username");
 let userId = localStorage.getItem("userId");
 
 
-function connectToChat(userName) {
+function connectToChat(username) {
     console.log("connecting to chat...")
     let socket = new SockJS(url + '/rfpchat');
     // let socket=new WebSocket("wss://localhost:8080/ws")
@@ -17,12 +17,12 @@ function connectToChat(userName) {
         console.log("connected to: " + frame);
 
 
-        stompClient.subscribe("/topic/messages/"+userName, function (response) {
+        stompClient.subscribe("/topic/messages/"+username, function (response) {
             let data = JSON.parse(response.body);
-            // console.log("selectedUserOrGrup = "+selectedUserOrGrup)
+            // console.log("selectedUserOrGroup = "+selectedUserOrGroup)
             // console.log("data.fromLogin = "+data.fromLogin)
-            if (selectedUserOrGrup == data.fromLogin) {
-                console.log("selectedUserOrGrup === data.fromLogin")
+            if (selectedUserOrGroup == data.fromLogin) {
+                console.log("selectedUserOrGroup === data.fromLogin")
                
                 let messageTemplateHTML = "";
                 messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
@@ -34,7 +34,7 @@ function connectToChat(userName) {
             } else {
                 // console.log("data.group_id "+data.group_id)
                 newMessages.set(data.fromLogin, data.message);
-                $('#userNameAppender_' + data.fromLogin).append('<span id="newMessage_' + data.fromLogin + '" style="color: red">+1</span>');
+                $('#usernameAppender_' + data.fromLogin).append('<span id="newMessage_' + data.fromLogin + '" style="color: red">+1</span>');
                 
                 console.log("kebuat")
                 let messageTemplateHTML = "";
@@ -47,17 +47,17 @@ function connectToChat(userName) {
         },{});
 
 
-        $.get(url + "/fetchAllGroups/"+userName, function (response) {
+        $.get(url + "/fetchAllGroups/"+username, function (response) {
             let groups = response;
             for (let i = 0; i < groups.length; i++) {
-                // console.log(groups[i]['name'])
+                // console.log(groups[i]['group_name'])
                 stompClient.subscribe("/topic/messages/group/" + groups[i]["id"], function (response) {
                     let data = JSON.parse(response.body);
-                    console.log("selectedUserOrGrup = "+selectedUserOrGrup)
+                    console.log("selectedUserOrGroup = "+selectedUserOrGroup)
                     console.log("data.group_id = "+data.groupId)
                     console.log("------------------------------------ : masuk get message group")
-                    if (selectedUserOrGrup == data.groupId) {
-                        console.log("selectedUserOrGrup === data.fromLogin")
+                    if (selectedUserOrGroup == data.groupId) {
+                        console.log("selectedUserOrGroup === data.fromLogin")
                        
                         let messageTemplateHTML = "";
                         messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
@@ -95,12 +95,12 @@ function onError() {
 window.onload = function() {
 
     if (localStorage.getItem("userId") === null) {
-        window.location.href = "index.html";
+        window.location.href = "../WEB-INF/account.jsp";
         return false;
     }
 
     fetchAll();
-    connectToChat(localStorage.getItem("userId"));
+    connectToChat(localStorage.getItem("username"));
 
   };
 
@@ -115,15 +115,15 @@ function fetchAll() {
         for (let i = 0; i < users.length; i++) {
             console.log(users[i]['name'])
 
-                usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLauch('+users[i]['id']+',\''+users[i]['name']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
+                usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+users[i]['id']+',\''+users[i]['username']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
                 '<div class="d-flex bd-highlight">'+
                 '<div class="img_cont">'+
                 '<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">'+
                 '<span class="online_icon"></span>'+
                 '</div>'+
-                '<div class="user_info" id="userNameAppender_' + users[i]['id'] + '">'+
-                '<span>'+users[i]['name']+'</span>'+
-                '<p>'+users[i]['name']+' is online</p>'+
+                '<div class="user_info" id="usernameAppender_' + users[i]['id'] + '">'+
+                '<span>'+users[i]['username']+'</span>'+
+                '<p>'+users[i]['username']+' is online</p>'+
                 '</div>'+
                 '</div>'+
                 '</li>';
@@ -136,16 +136,16 @@ function fetchAll() {
         let groups = response;
         let groupsTemplateHTML = "";
         for (let i = 0; i < groups.length; i++) {
-            console.log(groups[i]['group_name'])
-            groupsTemplateHTML = groupsTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLauch('+groups[i]['id']+',\''+groups[i]['group_name']+'\',\'group\')" data-groupid="'+groups[i]['id']+'" data-type="group">'+
+            console.log(groups[i]['name'])
+            groupsTemplateHTML = groupsTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+groups[i]['id']+',\''+groups[i]['name']+'\',\'group\')" data-groupid="'+groups[i]['id']+'" data-type="group">'+
                 '<div class="d-flex bd-highlight">'+
                 '<div class="img_cont">'+
                 '<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">'+
                 '<span class="online_icon"></span>'+
                 '</div>'+
                 '<div class="user_info" id="userGroupAppender_' + groups[i]['id'] + '">'+
-                '<span>'+groups[i]['group_name']+'</span>'+
-                '<p>'+groups[i]['group_name']+' is active</p>'+
+                '<span>'+groups[i]['name']+'</span>'+
+                '<p>'+groups[i]['name']+' is active</p>'+
                 '</div>'+
                 '</div>'+
                 '</li>';
@@ -158,7 +158,7 @@ function fetchAll() {
 
 
 function sendMsgUser(from, text) {
-    stompClient.send("/app/chat/" + selectedUserOrGrup, {}, JSON.stringify({
+    stompClient.send("/app/chat/" + selectedUserOrGroup, {}, JSON.stringify({
         fromLogin: from,
         message: text
     }));
@@ -167,7 +167,7 @@ function sendMsgUser(from, text) {
 }
 
 function sendMsgGroup(from, text) {
-    stompClient.send("/app/chat/group/" + selectedUserOrGrup, {}, JSON.stringify({
+    stompClient.send("/app/chat/group/" + selectedUserOrGroup, {}, JSON.stringify({
         fromLogin: from,
         message: text
     }));
@@ -176,10 +176,10 @@ function sendMsgGroup(from, text) {
 }
 
 function sendMessage(type) {
-    let username = $('#userName').attr("data-id");
+    let username = $('#username').attr("data-id");
     let message=$('#message-to-send').val();
     var userId = localStorage.getItem("userId");
-    selectedUserOrGrup=username;
+    selectedUserOrGroup=username;
     console.log("type :"+type)
     if(type==="user"){
         sendMsgUser(userId, message);
@@ -200,7 +200,7 @@ function sendMessage(type) {
 
 }
 
-function formMessageLauch(id,name,type){
+function formMessageLaunch(id,username,type){
     
     let buttonSend= document.getElementById("buttonSend");
     if(buttonSend!==null){
@@ -209,7 +209,7 @@ function formMessageLauch(id,name,type){
 
     let nama=$('#formMessageHeader .user_info').find('span')
     
-    nama.html("Chat With "+name);
+    nama.html("Chat With "+username);
     nama.attr("data-id",id);
     let isNew = document.getElementById("newMessage_" + id) !== null;
     if (isNew) {
@@ -218,8 +218,8 @@ function formMessageLauch(id,name,type){
         
     
     }
-    let username = $('#userName').attr("data-id");
-    selectedUserOrGrup=username;
+    let userName = $('#username').attr("data-id");
+    selectedUserOrGroup=userName;
 
     let isHistoryMessage = document.getElementById("formMessageBody");
     if(isHistoryMessage!== null && isHistoryMessage.hasChildNodes()){
@@ -237,12 +237,12 @@ function formMessageLauch(id,name,type){
             for (let i = 0; i < messages.length; i++) {
                 if(messages[i]['message_from']==userId){
                     messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-start mb-4">'+
-                    '<div id="child_message" class="msg_cotainer">'+messages[i]['message_text']+
+                    '<div id="child_message" class="msg_cotainer">'+messages[i]['message_content']+
                     '</div>'+
                     '</div>';
                 }else{
                     messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
-                    '<div id="child_message" class="msg_cotainer_send">'+messages[i]['message_text']+
+                    '<div id="child_message" class="msg_cotainer_send">'+messages[i]['message_content']+
                     '</div>'+
                     '</div>';
                 }
@@ -259,12 +259,12 @@ function formMessageLauch(id,name,type){
                 // console.log(messagesGroup[i]['messages'])
                 if(messagesGroup[i]['user_id']==userId){
                     messageGroupTemplateHTML = messageGroupTemplateHTML + '<div id="child_message" class="d-flex justify-content-start mb-4">'+
-                    '<div id="child_message" class="msg_cotainer">'+messagesGroup[i]['messages']+
+                    '<div id="child_message" class="msg_cotainer">'+messagesGroup[i]['message']+
                     '</div>'+
                     '</div>';
                 }else{
                     messageGroupTemplateHTML = messageGroupTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
-                    '<div id="child_message" class="msg_cotainer_send">'+messagesGroup[i]['messages']+
+                    '<div id="child_message" class="msg_cotainer_send">'+messagesGroup[i]['message']+
         
                     '</div>'+
                     '<p>'+messagesGroup[i]['name']+'</>'+
@@ -288,10 +288,10 @@ function formMessageLauch(id,name,type){
 }
 
 
-function logout(userName){
+function logout(username){
     stompClient.disconnect();
     localStorage.removeItem("userId");
-    window.location.href = "../WEB-INF/account.jsp";    
+    window.location.href = "account.do";    
 
     return false;
 

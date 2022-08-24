@@ -61,7 +61,7 @@
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">
-									<span id="userName"></span>
+									<span id="username"></span>
 									<p></p>
 								</div>
 							</div>
