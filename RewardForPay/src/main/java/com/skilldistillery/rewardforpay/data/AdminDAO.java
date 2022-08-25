@@ -22,4 +22,5 @@ public interface AdminDAO {
 	 List<PointRedemption> claimedInitialT(int employeeId);
 	 List<Employee> searchAll(String keyword);
 	 List<PointAwarded> showEvents(int id);
+	 List<PointAwarded> showRegistered(int id);
 }

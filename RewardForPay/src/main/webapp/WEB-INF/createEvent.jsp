@@ -6,34 +6,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Submit Award</title>
-<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
-
+<title>Create Event</title>
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 
-
-<div class="container-fluid">
-<div class="space">
-<h1>Submit a Coworker for an Award</h1>
+<h1>Create an event:</h1>
 		<div class="form-row">
-			<form action="createAward.do" method="POST">
+			<form action="createEvent.do" method="POST">
 			<!-- Might need to play with mapping for Employee -->
-				<label for="empId">Employee ID: </label> 
-				<input type="text" name="empId" required> 
+				<input type="hidden" name="empId" value="6"/>
 				<br>
-				<label for="description">Award Justification: </label> 
-				<input type="text" name="description" required> 
+				<label for="description">Event Description </label> 
+				<input type="text" name="description" value="EVENT:" required> 
 				<br>
 				<label for="amount">Suggested Number of Points: </label> 
 				<input type="number" name="amount" required> 
 				<br>
-				<input type="hidden" name="userId" value="${sessionScope.loggedInUser.id}"/>
+				<br>
+				<label for="amount">Date of event: </label> 
+				<input type="date" name="date" placeholder="YYYY-MM-DD" required> 
+				<br>
+				<input type="hidden" name="userId" value="6"/>
 				<input class="btn btn-success" type="submit" value="Submit">
 			</form>
 		</div>
-</div>
-</div>
+
 </body>
 </html>
