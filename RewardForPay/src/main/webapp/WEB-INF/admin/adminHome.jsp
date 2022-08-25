@@ -78,7 +78,8 @@
 			<li class="list">
 				<b></b>
 				<b></b>
-				<a href="chat/chat-app.jsp" onclick="validateForm()">
+				<a href="account.do" onclick="validateForm()">
+
 			 	  <span class="icon"><ion-icon 
 			 	  name="chatbubbles-outline"></ion-icon></span> 
 			 	  <span class="title">Chat</span>
