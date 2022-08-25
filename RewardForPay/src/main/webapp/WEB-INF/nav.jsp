@@ -233,6 +233,9 @@
 <body>
 <c:if test="${ role == 1}">
 <%@ include file="admin/adminHome.jsp"%>
+<input type="hidden" id="username" value="${sessionScope.loggedInUser.username}">
+<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
+
 
 </c:if>
 

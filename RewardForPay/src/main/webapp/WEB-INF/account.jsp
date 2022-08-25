@@ -25,6 +25,8 @@ function validateForm() {
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+<input type="hidden" id="username" value="${sessionScope.loggedInUser.username}">
+<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
 
 <div class="container-fluid">
 <div class="account">
@@ -58,7 +60,7 @@ function validateForm() {
 								<form action="createAward.do" method="POST">
 									<input type="hidden" name="description" value="Initial Point Award"/>
 									<input type="hidden" name="amount" value="100"/>
-									<input type="hidden" id="username" value="${sessionScope.loggedInUser.id}">
+									<input type="hidden" id="username" value="${sessionScope.loggedInUser.username}">
 									<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
 									<input type="hidden" name="empId" value="${sessionScope.userinfo.id}"/>
 									<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
