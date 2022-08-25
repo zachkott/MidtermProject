@@ -25,9 +25,14 @@
         <li class="nav-item">
           <a class="nav-link" href="account.do">Account</a>
         </li>
-          <li class="nav-item">
-          <a class="nav-link" href="eventsList.do?empId=${sessionScope.userinfo.id}">Events</a>
-        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Events
+          </a>
+           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="eventsList.do?empId=${sessionScope.userinfo.id}">Join an Event</a></li>
+            <li><a class="dropdown-item" href="joinedEvents.do?empId=${sessionScope.userinfo.id}">Registered Events</a></li>
+          </ul>
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
         </li>
@@ -47,11 +52,7 @@
             <li><a class="dropdown-item" href="events.do">Events</a></li>
             <li><a class="dropdown-item" href="allPrizes.do?id=0">Prizes</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="changeToAdmin.do">Switch to Admin Profile</a></li>
-            
-            
-            
-            
+            <li><a class="dropdown-item" href="changeToAdmin.do">Switch to Admin Profile</a></li>          
           </ul>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -95,18 +96,21 @@
       <!--   <li class="nav-item">
           <a class="nav-link" href="account.do">Account</a>
         </li> -->
-         <li class="nav-item">
-          <a class="nav-link" href="eventsList.do?empId=${sessionScope.userinfo.id}">Events</a>
-        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Events
+          </a>
+           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="eventsList.do?empId=${sessionScope.userinfo.id}">Join an Event</a></li>
+            <li><a class="dropdown-item" href="joinedEvents.do?empId=${sessionScope.userinfo.id}">Registered Events</a></li>
+            <li><a class="dropdown-item" href="createEvent.do">Create Events</a></li>
+          </ul>
         <!-- <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
         </li> -->
        <!--  <li class="nav-item">
           <a class="nav-link" href="login.do">Login</a>
         </li> -->
-        <li class="nav-item">
-          <a class="nav-link" href="logout.do">Logout</a>
-        </li>
 <!--         <li class="nav-item">
           <a class="nav-link" href="adminHome.do">Admin Dashboard</a>
         </li> -->
@@ -140,6 +144,9 @@
             <li><a class="dropdown-item" href="https://us02web.zoom.us/j/81164088712?pwd=TWZ4SFdWeXppYmF2cUZ5MENoZzdDdz09"target="_blank">GetTAHelp</a></li>
           
           </ul>
+                  <li class="nav-item">
+          <a class="nav-link" href="logout.do">Logout</a>
+        </li>
         </li>
 
       </ul>

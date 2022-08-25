@@ -1,7 +1,7 @@
 package com.skilldistillery.rewardforpay.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class PointAwarded {
 	private int amount;
 	
 	@CreationTimestamp
-	private LocalDateTime issued;
+	private LocalDate issued;
 	
 	@ManyToOne
 	@JoinColumn(name="employee_id")
@@ -68,13 +68,18 @@ public class PointAwarded {
 		this.amount = amount;
 	}
 
-	public LocalDateTime getIssued() {
+
+	public LocalDate getIssued() {
 		return issued;
 	}
 
-	public void setIssued(LocalDateTime issued) {
+
+
+	public void setIssued(LocalDate issued) {
 		this.issued = issued;
 	}
+
+
 
 	public Employee getEmployee() {
 		return employee;
