@@ -5,9 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 
+<div class ="container-fluid">
+<div class ="space">
 <h1>Inside Admin Delete Employee</h1>
 
 
@@ -40,6 +44,7 @@
 			class="btn btn-danger" type="submit" value="Delete This Employee">
 			<br>
 		</form>
-
+</div>
+</div>
 </body>
 </html>

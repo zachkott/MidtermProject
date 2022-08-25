@@ -5,11 +5,15 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family: 'Poppins', sans-serif;
+	
+
 }
+
+
 
 body{
 	min-height:100vh;
-	background: #fff;
+	background: OldLace;
 	
 }
 
@@ -17,19 +21,21 @@ body{
 
 .navigation{
 	position:fixed;
-	top: 70px;
-	left:20px;
+	top: 25px;
+	left:25px;
 	bottom:20px;
 	width:70px;
 	border-radius:  10px;
 	box-sizing:initial;
-	border-left: 5px solid black;
-	background: slateGray;
+	border-left: 2px solid white;
+	background: MediumSeaGreen;
 	transition:width 0.5s;
 	overflow-x:hidden;
 }
 .navigation.active{
-	width:300px;
+	width:187px;
+		
+	
 }
 
 .navigation ul{
@@ -37,7 +43,7 @@ body{
 	top:0;
 	left: 0;
 	width:100%;
-	padding-left: 5px;
+	padding-left: 7px;
 	padding-top: 40px;
 	
 }
@@ -52,7 +58,7 @@ body{
 	
 }
 .navigation ul li.active{
-	background: white;
+	background: OldLace;
 }
 
 .navigation ul li b:nth-child(1){
@@ -60,7 +66,7 @@ body{
 	top: -20px;
 	height: 20px;
 	width: 100%;
-	background: white;
+	background: OldLace;
 	display:none;
 }
 
@@ -71,7 +77,7 @@ body{
 	left: 0;
 	width:100%;
 	height: 100%;
-	background: slateGray;
+	background: MediumSeaGreen;
 	border-bottom-right-radius: 20px;
  
 }
@@ -81,7 +87,7 @@ body{
 	bottom: -20px;
 	height: 20px;
 	width: 100%;
-	background: white;
+	background: OldLace;
 	display:none;
 }
 
@@ -92,7 +98,7 @@ body{
 	left: 0;
 	width:100%;
 	height: 100%;
-	background: slateGray;
+	background: MediumSeaGreen;
 	border-top-right-radius: 20px;
  
 }
@@ -109,7 +115,7 @@ body{
 	width: 100%;
 	display: flex;
 	text-decoration: none;
-	color: white;
+	color: Gold;
 }
 
 .navigation ul li.active a{
@@ -143,11 +149,11 @@ body{
 
 .toggle{
 	position:fixed;
-	top: 70px;
+	top: 20px;
 	right: 20px;
 	width: 50px;
 	height:  50px;
-	background: slateGray;
+	background: MediumSeaGreen;
 	border-radius: 10px;
 	cursor: pointer;
 	display:flex;
@@ -157,12 +163,12 @@ body{
 }
 
 .toggle.active{
-	background: pink;
+	background: black;
 }
 
 .toggle ion-icon{
 	position:absolute;
-	color:white;
+	color:Gold;
 	font-size: 34px;
 	display: none;
 }
@@ -175,6 +181,17 @@ body{
 .toggle ion-icon.close,
 .toggle.active ion-icon.open{
 	display:none;
+}
+
+
+.space{
+		
+	padding-left:140px;
+	padding-right:20px;
+	
+}
+h1{
+	text-align:center;
 }
 
 

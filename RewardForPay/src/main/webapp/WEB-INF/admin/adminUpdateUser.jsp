@@ -5,11 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
 
-
+<div class ="container-fluid">
+<div class ="space">
 <h1>Inside Admin Update User</h1>
 
 <div class="form-row">
@@ -30,6 +33,7 @@
 
 		</form>
 </div>
-
+</div>
+</div>
 </body>
 </html>

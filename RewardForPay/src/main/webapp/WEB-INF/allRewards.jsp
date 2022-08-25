@@ -5,9 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+
+
+
+<div class="container-fluid">
+<div class="space">
 <h1>Browse the full list of prizes below:</h1>
 
 <!-- Lists all prizes by tier or a full list of all prizes -->
@@ -99,6 +106,7 @@
 		</c:choose>
 	</c:otherwise>
 </c:choose>
-
+</div>
+</div>
 </body>
 </html>

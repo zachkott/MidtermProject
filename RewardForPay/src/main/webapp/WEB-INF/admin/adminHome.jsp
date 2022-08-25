@@ -15,17 +15,17 @@
 
 <div style="display:inline-block; height:30px">
 </div>
-
+<div class ="filter-me">
 	<div class="navigation">
 
 		<ul>
 		<li class="list active">
 				<b></b>
 				<b></b>
-				<a href="#">
+				<a href="adminHome.do">
 				<span class="icon"><ion-icon
 				 name="speedometer-outline"></ion-icon></span>
-			 	  <span class="title">Admin Dashboard</span>
+			 	  <span class="title">Dashboard</span>
 				</a>
 			</li>
 			<li class="list">
@@ -85,7 +85,7 @@
 			<li class="list">
 				<b></b>
 				<b></b>
-				<a href="#">
+				<a href="../chat/chat-app.jsp" onclick="validateForm()">
 			 	  <span class="icon"><ion-icon 
 			 	  name="chatbubbles-outline"></ion-icon></span> 
 			 	  <span class="title">Chat</span>
@@ -109,6 +109,16 @@
 <ion-icon name="close-outline" class="close"></ion-icon>
 
 </div>
+</div>
+<!-- <div class="container-fluid">
+<h1>Test for spacing</h1>
+<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
+</div> -->
 
 
 
@@ -133,7 +143,7 @@ menuToggle.onclick = function(){
 <script>
 let list = document.querySelectorAll('.list');
 for (let i=0; i<list.length; i++){
-	list[i].onclick = function(){
+	list[i].onmouseover = function(){
 		let j = 0;
 		while(j < list.length){
 			list[j++].className= 'list';

@@ -6,12 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Employee List</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
 
 <h1>Inside Admin All Employees</h1>
 
+<div class ="container-fluid">
+<div class ="space">
  <table class="table table-striped table-hover">
 		<thead class="table-light">
 			<tr>
@@ -57,7 +61,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+	</div>
+	</div>
 
 </body>
 </html>

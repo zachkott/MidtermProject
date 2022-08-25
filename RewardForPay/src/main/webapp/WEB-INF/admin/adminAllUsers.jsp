@@ -6,11 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin User List</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
 
+<div class="container-fluid">
+<div class="space">
 <h1>Inside Admin User Results</h1>
+
 
 <table class="table table-striped table-hover">
 		<thead class="table-light">
@@ -50,8 +55,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
-
+</div>
+</div>
 
 </body>
 </html>
