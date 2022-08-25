@@ -114,7 +114,7 @@ function validateForm() {
 	</td>
 	<td>
 			<a href="allPrizes.do?id=0">See all prizes</a>
-	</td>
+	</td> 
 	<c:choose>
 	<c:when test="${empty claimed }">
 	<td>
@@ -150,7 +150,7 @@ function validateForm() {
     
    
 
-    <div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
+  <%--   <div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
 					<c:forEach var="item" items="${prizes}">
 					  <div class="col">
 					    <div class="card h-100">
@@ -162,7 +162,7 @@ function validateForm() {
 					    </div>
 					  </div>
 					</c:forEach>
-				</div>
+				</div> --%>
 	
  <a href="createPrize.do" class="btn btn-primary">Suggest a New Prize</a>
  <a href="createAward.do" class="btn btn-primary">Submit a Coworker for an Award</a>

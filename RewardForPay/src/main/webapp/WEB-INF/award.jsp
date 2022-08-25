@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
@@ -12,7 +14,8 @@
 
 
 <!-- Main page to display both a history of awards and the details for a single award, with history below -->
-
+<div class="container-fluid">
+<div class="space">
 <h1>${success}</h1> <!-- Conditional messages based on Controller actions -->
 	
 <c:if test="${newAwardId != 0 }">	<h1>${addMessage}</h1> </c:if>
@@ -60,6 +63,7 @@
 			<h1>${awardNotFound}</h1>
 		</c:otherwise>
 	</c:choose>
-
+</div>
+</div>
 </body>
 </html>
