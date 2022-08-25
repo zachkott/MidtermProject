@@ -1,18 +1,79 @@
 
+.spacing{
+	padding-top:70px;
+}
+
+.logo{
+
+	height:80px;
+}
+
 .login{
 	
-	border: 2px solid black;
+	border: 1px solid black;
 	width:50%;
 	padding-left:90px;
 	padding-right:90px;
-	padding-top:75px;
+	padding-top:65px;
 	padding-bottom:75px;
 	position:center;
 	width:200px;
-	border-radius:  150px;
+	border-radius: 80px;
 	box-sizing:initial;
 	background: white;
 	text-align:center;
 	margin: auto;
 	
 }
+
+#registerBtn{
+	width: 150px;
+
+/* margin-right:200; */
+	
+	position:absolute;
+	right:690;
+}
+
+.center{
+border: 1px solid black;
+
+	padding-left:100px;
+	padding-right:100px;
+	padding-top:65px;
+	padding-bottom:75px;
+	width:900px;
+	border-radius: 20px;
+	box-sizing:initial;
+	background: white;
+	text-align:center;
+	margin:auto;
+	
+}
+.form-control {
+	top: -5px;
+	left: -90px;
+	width: 100px;
+	
+}
+
+
+
+
+.form-group {
+	display: flex;
+	justify-content: center;
+	width:900px;
+}
+
+h2{
+	font-family: "copperplate";
+}
+h3{
+	font-family: "copperplate";
+}
+h4{
+	font-family: "copperplate";
+}
+
+#success_message{ display: none;}
