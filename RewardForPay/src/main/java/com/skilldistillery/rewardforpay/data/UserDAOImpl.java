@@ -225,7 +225,7 @@ public class UserDAOImpl implements UserDAO {
 		String redeemedquery = "SELECT pr FROM PointRedemption pr WHERE employee_id = :employeeId";
 		List<PointRedemption> redeemed = em.createQuery(redeemedquery, PointRedemption.class)
 				.setParameter("employeeId", employeeId).getResultList();
-		String awaredquery = "SELECT pa FROM PointAwarded pa WHERE employee_id = :employeeId";
+		String awaredquery = "SELECT pa FROM PointAwarded pa WHERE employee_id = :employeeId AND award_status_id=1";
 		List<PointAwarded> awarded = em.createQuery(awaredquery, PointAwarded.class)
 				.setParameter("employeeId", employeeId).getResultList();
 

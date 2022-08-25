@@ -120,20 +120,20 @@ public class AccountController {
 		
 	}
 	@RequestMapping(path = { "changeToEmployee.do" },method = RequestMethod.GET)
-	public String changeToEmployee(HttpSession session, Model model) {
+	public String changeToEmployee(HttpSession session, Model model,RedirectAttributes redir) {
 		User user = (User) session.getAttribute("loggedInUser");
 		session.setAttribute("role", user.getRoles().get(1).getId());
-		return "account";
+		return "redirect:account.do";
 		
 	}
 	@RequestMapping(path = { "changeToAdmin.do" },method = RequestMethod.GET)
-	public String changeToAdmin(HttpSession session, Model model) {
+	public String changeToAdmin(HttpSession session, Model model,RedirectAttributes redir) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if(user.getRoles().size()==1) {
 			return "failedAdmin";
 		}else {
 		session.setAttribute("role", user.getRoles().get(0).getId());
-		return "account";
+		return "redirect:account.do";
 		}
 		
 	}
@@ -151,19 +151,19 @@ public class AccountController {
 		return "joinedEvents";
 		
 	}
-	@RequestMapping(path="createEvent.do", method= RequestMethod.GET)
+	@RequestMapping(path="createEvent.do")
 	public String createEvent(Model model) {
 		return "createEvent";
 	}
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String createdEvent(PointAwarded award, Model model, int empId,String date, int userId, RedirectAttributes redir) {
+	public String createdEvent(HttpSession session, PointAwarded award, Model model, int empId,String date, int userId, RedirectAttributes redir) {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);
-
+		
 		LocalDate localDate = LocalDate.parse(date);
 		newAward.setIssued(localDate);
-		redir.addAttribute("empId", empId);
+		Employee emp = (Employee) session.getAttribute("userinfo");
+		redir.addAttribute("empId", emp.getId());
 		return "redirect:eventsList.do";
-		//Redirect is not working
 	}
 	@RequestMapping(path = "viewEmployee.do")
 	public String viewEmployee(int id, Model model) {

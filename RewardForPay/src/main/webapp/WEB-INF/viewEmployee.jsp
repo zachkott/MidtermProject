@@ -24,7 +24,7 @@
 					<td  rowspan=2><img width="40%" class="detail_img" id="userImage" src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
 					<td class="buffer"></td>
 					<td class="text-wrap col-md-offset-1" id="employee_info">
-						<h1><strong>${employeefirstName} ${sessionScope.userinfo.lastName}</strong></h1><br>
+						<h1><strong>${employee.firstName} ${employee.lastName}</strong></h1><br>
 						<h1><strong>${employee.description}</strong></h1><br>
 						<ul style="list-style-type: none">
 							<li><strong>Department: </strong>${employee.department.name}</li>

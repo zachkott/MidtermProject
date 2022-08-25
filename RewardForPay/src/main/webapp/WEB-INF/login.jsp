@@ -12,6 +12,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<link rel ="stylesheet" type ="text/css" href="CSS/working.css">
 
 
 <style>
@@ -26,6 +27,8 @@ form i {
 <body>
 	<%@ include file="nav.jsp"%>
 	<h1>This is the Login Page</h1>
+	<div class = "login">
+	<div class="row justify-content-center">
 	<h2>Log In</h2>
 	<h1>${NotFound}</h1>
 	<form action="login.do" method="POST">
@@ -34,11 +37,16 @@ form i {
 		<!-- Add ability to show password -->
 		<!-- 	<input type="password" name="password"  id ="myPassword"/>
  -->
+ <br>
+ 
 		<input type="password" name="password" id="password" /> <i
-			class="bi bi-eye-slash" id="togglePassword"></i> <br> <input
-			type="submit" value="Log In">
+			class="bi bi-eye-slash" id="togglePassword"></i> <br> 
+			<br>
+			<input type="submit" value="Log In">
 	</form>
 	
+    </div>
+</div>
 	<script>
         const togglePassword = document
             .querySelector('#togglePassword');
@@ -59,6 +67,5 @@ form i {
             this.classList.toggle('bi-eye');
         });
     </script>
-
 </body>
 </html>
