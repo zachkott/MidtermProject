@@ -91,21 +91,23 @@ function connectToChat(username) {
     },onError);
 }
 function onError() {
-    console.log("Disconed from console")
+    console.log("Disconnected from console")
 }
 
 window.onload = function() {
 
     if (localStorage.getItem("userId") === null) {
-        window.location.href = "../WEB-INF/account.jsp";
+        window.location.href = "account.do";
         return false;
     }
-
+	
     fetchAll();
     connectToChat(localStorage.getItem("username"));
 
   };
 
+	
+	
 function fetchAll() {
 
     var userId = localStorage.getItem("userId");
@@ -114,18 +116,19 @@ function fetchAll() {
     $.get(url + "/fetchAllUsers/"+userId, function (response) {
         let users = response;
         let usersTemplateHTML = "";
+        
         for (let i = 0; i < users.length; i++) {
             console.log(users[i]['name'])
 
-                usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+users[i]['id']+',\''+users[i]['username']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
+                usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+users[i]['id']+',\''+users[i]['eName']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
                 '<div class="d-flex bd-highlight">'+
                 '<div class="img_cont">'+
-                '<img src="'+users[i].parent().attr("data-employee_photo")+'" class="rounded-circle user_img">'+
+                '<img src="'+users[i]['image']+'" class="rounded-circle user_img">'+
                 '<span class="online_icon"></span>'+
                 '</div>'+
                 '<div class="user_info" id="usernameAppender_' + users[i]['id'] + '">'+
-                '<span>'+users[i]['username']+'</span>'+
-                '<p>'+users[i]['username']+' is online</p>'+
+                '<span>'+users[i]['eName']+'</span>'+
+                '<p>'+users[i]['eName']+' is online</p>'+
                 '</div>'+
                 '</div>'+
                 '</li>';
@@ -202,17 +205,17 @@ function sendMessage(type) {
 
 }
 
-function formMessageLaunch(id,username,type){
+function formMessageLaunch(id,eName,type){
     
     let buttonSend= document.getElementById("buttonSend");
     if(buttonSend!==null){
         buttonSend.parentNode.removeChild(buttonSend);
     }
 
-    let nama=$('#formMessageHeader .user_info').find('span')
+    let chatHeader=$('#formMessageHeader .user_info').find('span')
     
-    nama.html("Chat With "+username);
-    nama.attr("data-id",id);
+    chatHeader.html("Chat With "+eName);
+    chatHeader.attr("data-id",id);
     let isNew = document.getElementById("newMessage_" + id) !== null;
     if (isNew) {
         let element = document.getElementById("newMessage_" + id);

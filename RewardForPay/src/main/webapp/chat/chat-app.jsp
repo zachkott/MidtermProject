@@ -31,18 +31,20 @@
 			<div class="row justify-content-center h-100">
 	
 				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
-					<div class="card-header">
-						<div class="input-group">
+ 					<div class="card-header">
+<!--						<div class="input-group">
 							<input type="text" placeholder="Search..." name="" class="form-control search">
 							<div class="input-group-prepend">
 								<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
 							</div>
-						</div>
-					</div>
+						</div>-->
+					</div>  
 					<div class="card-body contacts_body">
 						<ui class="contacts"  id="usersList">
 
 						</ui>
+					</div>
+					<div>
 						<hr>
 						<h6>My Group</h6>
 						<ui class="contacts"  id="groupList">
@@ -50,8 +52,9 @@
 						</ui>
 				
 					</div>
-					<button class="input-group-text send_btn" id="logoutBtn" onclick="logout()">Logout</button>
-				</div></div>
+<!-- 					<button class="input-group-text send_btn" id="logoutBtn" onclick="logout()">Logout</button>   -->
+				</div>
+				</div>
 				<div class="col-md-8 col-xl-6 chat">
 					<div class="card">
 						<div class="card-header msg_head" id="formMessageHeader">
@@ -68,18 +71,6 @@
 						
 						</div>
 						<div class="card-body msg_card_body" id="formMessageBody">
-							<!-- <div class="d-flex justify-content-start mb-4">
-								<div class="msg_cotainer">
-									Hi, how are you samim?
-									<span class="msg_time">8:40 AM, Today</span>
-								</div>
-							</div>
-							<div class="d-flex justify-content-end mb-4">
-								<div class="msg_cotainer_send">
-									Hi Khalid i am good tnx how about you?
-									<span class="msg_time_send">8:55 AM, Today</span>
-								</div>
-							</div> -->
 							
 						</div>
 						<div class="card-footer">

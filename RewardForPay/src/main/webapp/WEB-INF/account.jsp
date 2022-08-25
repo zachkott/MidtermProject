@@ -17,16 +17,6 @@ function validateForm() {
         
         window.location.href = "chat-app.jsp";
 
-        let username = document.getElementById("username").value;
-        let userId = document.getElementById("userId").value;
-        let userImage = document.getElementById("userImage").src;
-        
-        localStorage.setItem("username", username);
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("userImage", userImage);
-        
-        window.location.href = "chat-app.jsp";
-
 }
 </script>
 <title>Reward For Pay</title>

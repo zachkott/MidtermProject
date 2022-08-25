@@ -56,7 +56,7 @@ public class MessageController {
 	public List<Map<String, Object>> fetchAll(@PathVariable("myId") String myId) {
 		return uagService.fetchAll(myId);
 	}
-	
+
 	
 	@GetMapping("/fetchAllGroups/{groupid}")
 	public List<Map<String, Object>> fetchAllGroup(@PathVariable("groupid") String groupid) {
