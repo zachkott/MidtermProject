@@ -5,9 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+
+<div class="container-fluid">
+<div class="space">
 <h1>Listed Employees found by search word:<c:out value="${keyword}"></c:out></h1>
 
 
@@ -50,7 +55,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+</div>
+</div>
 
 </body>
 </html>

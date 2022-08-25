@@ -155,6 +155,10 @@ public class AccountController {
 	public String createEvent(Model model) {
 		return "createEvent";
 	}
+	@RequestMapping(path="contact.do")
+	public String contact(Model model) {
+		return "contact";
+	}
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
 	public String createdEvent(HttpSession session, PointAwarded award, Model model, int empId,String date, int userId, RedirectAttributes redir) {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);

@@ -32,10 +32,12 @@
       <span class="glyphicon glyphicon-globe logo slideanim"></span>
     </div>
     <div class="col-sm-8">
-      <h2>Our Features</h2><br>
-      <h4><strong>Features:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h2>What we offer</h2><br>
+      <h4><strong>Features:</strong></h4>
+      <p><strong>Live Chat:</strong> Live chat with fellow employees and start networking.</p>
+      <p><strong>Reward System:</strong> Gain points and claim prizes.</p>
+      <p><strong>Company Events:</strong> Join a company event to earn even more points.</p>
+      <p><strong>Administrative Functions:</strong> Administrative controls made easy.</p>
     </div>
   </div>
 </div>
