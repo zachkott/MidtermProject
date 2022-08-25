@@ -156,7 +156,7 @@ public class AccountController {
 		return "createEvent";
 	}
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
-	public String awardCreated(PointAwarded award, Model model, int empId,String date, int userId, RedirectAttributes redir) {
+	public String createdEvent(PointAwarded award, Model model, int empId,String date, int userId, RedirectAttributes redir) {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);
 
 		LocalDate localDate = LocalDate.parse(date);
@@ -164,5 +164,12 @@ public class AccountController {
 		redir.addAttribute("empId", empId);
 		return "redirect:eventsList.do";
 		//Redirect is not working
+	}
+	@RequestMapping(path = "viewEmployee.do")
+	public String viewEmployee(int id, Model model) {
+		model.addAttribute("employee", userDao.findEmployeeById(id));
+		model.addAttribute("joined",adminDao.showRegistered(id));
+		model.addAttribute("wishlist", userDao.showWishList(id));
+		return "viewEmployee";
 	}
 }

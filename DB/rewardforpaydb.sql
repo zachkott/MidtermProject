@@ -698,7 +698,7 @@ COMMIT;
 START TRANSACTION;
 USE `rewardforpaydb`;
 INSERT INTO `group_member` (`id`, `user_id`, `squad_id`) VALUES (1, 6, 3);
-INSERT INTO `group_member` (`id`, `user_id`, `squad_id`) VALUES (2, 5, 2);
+INSERT INTO `group_member` (`id`, `user_id`, `squad_id`) VALUES (2, 5, 1);
 INSERT INTO `group_member` (`id`, `user_id`, `squad_id`) VALUES (3, 7, 1);
 INSERT INTO `group_member` (`id`, `user_id`, `squad_id`) VALUES (4, 1, 3);
 

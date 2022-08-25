@@ -20,7 +20,7 @@
 		<div class="form-row">
 			<form action="createEvent.do" method="POST">
 			<!-- Might need to play with mapping for Employee -->
-				<input type="hidden" name="empId" value="6"/>
+				<input type="hidden" name="empId" value="8"/>
 				<br>
 				<label for="description">Event Description </label> 
 				<input type="text" name="description" value="EVENT:" required> 
@@ -32,7 +32,7 @@
 				<label for="amount">Date of event: </label> 
 				<input type="date" name="date" placeholder="YYYY-MM-DD" required> 
 				<br>
-				<input type="hidden" name="userId" value="6"/>
+				<input type="hidden" name="userId" value="8"/>
 				<input class="btn btn-success" type="submit" value="Submit">
 			</form>
 		</div>
