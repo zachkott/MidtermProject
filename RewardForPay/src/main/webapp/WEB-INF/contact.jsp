@@ -61,7 +61,7 @@
         </div>
         <div class="col-md-3">
             <div class="contact-box center-version">
-                <a href="#profile.html">
+                
                     <img alt="image" class="img-circle" src="https://marketplace.canva.com/Foblk/MAEItxFoblk/1/tl/canva-happy-man-icon-MAEItxFoblk.png">
                     <h3 class="m-b-xs"><strong>Daniel Schulenberg</strong></h3>
         
@@ -70,7 +70,7 @@
                         I understand the hesitation of changing a database.<br>
                     </address>
         
-                </a>
+               
                 <div class="contact-box-footer">
                     <div class="m-t-xs btn-group">
                         <a class="btn btn-xs btn-white" href="https://github.com/dschulenberg" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"width="40" height="40"/> GitHub </a>
