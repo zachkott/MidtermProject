@@ -126,22 +126,9 @@ function validateForm() {
 	<td>
 			<a href="allPrizes.do?id=0">See all prizes</a>
 	</td> 
-	<c:choose>
-	<c:when test="${empty claimed }">
-	<td>
-			<form action="createAward.do" method="POST">
-				<input type="hidden" name="description" value="Initial Point Award"/>
-				<input type="hidden" name="amount" value="100"/>
-				<input type="hidden" id="username" value="${sessionScope.loggedInUser.id}">
-				<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
-				<input type="hidden" name="empId" value="${sessionScope.userinfo.id}"/>
-				<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
-		</form>
-	</td>
-	</c:when>
-	<c:otherwise></c:otherwise>
-	</c:choose>
-		<c:choose>
+	
+<c:if test="${role != 1}">
+<c:choose>
 	<c:when test="${empty claimedT }">
 	<td>
 			<form action="redeem.do?" method="GET">
@@ -152,33 +139,11 @@ function validateForm() {
 	</c:when>
 	<c:otherwise></c:otherwise>
 	</c:choose>
+</c:if>
 	</tr>
 	</table>
 	</div>
-<!-- If user doesn't have any points, display message on how to get involved -->	
-	
-	
-    
-   
-
-  <%--   <div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
-					<c:forEach var="item" items="${prizes}">
-					  <div class="col">
-					    <div class="card h-100">
-					      <a href="reward.do?id=${item.id}"><img class="card-img-top " src="${item.image}" alt="${item.name}"/></a>
-					      <div class="card-body">
-					        <h5 class="card-title">${item.name}</h5>
-					        <p class="card-text">${item.points}, Tier ${item.tier.id}</p>
-					      </div>
-					    </div>
-					  </div>
-					</c:forEach>
-				</div> --%>
-	
-
-   		
-   		
-</c:if>
+ </c:if>  		
    </c:when>
    <c:otherwise>
      <h2>Not logged in.</h2>
