@@ -15,7 +15,7 @@ function validateForm() {
         localStorage.setItem("userId", userId);
         localStorage.setItem("userImage", userImage);
         
-        window.open("/chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
+        window.open("chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
 }
 </script>
 <title>Reward For Pay</title>

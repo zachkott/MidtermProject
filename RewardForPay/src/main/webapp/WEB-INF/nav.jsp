@@ -43,6 +43,7 @@
             <li><a class="dropdown-item" href="wishlist.do">Wishlist</a></li>
             <li><a class="dropdown-item" href="events.do">Events</a></li>
             <li><a class="dropdown-item" href="allPrizes.do?id=0">Prizes</a></li>
+            <li><a class="dropdown-item" href="claimedPrizes.do">Claimed Prizes</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="changeToAdmin.do">Switch to Admin Profile</a></li>          
           </ul>
@@ -67,7 +68,7 @@
           <ul class="dropdown-menu">
          	<li><a class="dropdown-item" href="updateUserForm.do?id=${sessionScope.userinfo.user.id}">Update User Info</a></li>
          	<li><a class="dropdown-item" href="updateEmployeeForm.do?id=${sessionScope.userinfo.id}">Update Employee Info</a></li>
-         	<li><a class="nav-link" href="logout.do">Logout</a></li>
+         	<li><a class="dropdown-item" href="logout.do">Logout</a></li>
           </ul>
         </li>
                 <li class="nav-item">
@@ -127,7 +128,7 @@
 	          <ul class="dropdown-menu">
 	         	<li><a class="dropdown-item" href="updateUserForm.do?id=${sessionScope.userinfo.user.id}">Update User Info</a></li>
 	         	<li><a class="dropdown-item" href="updateEmployeeForm.do?id=${sessionScope.userinfo.id}">Update Employee Info</a></li>
-	         	<li><a class="nav-link" href="logout.do">Logout</a></li>
+	         	<li><a class="dropdown-item"href="logout.do">Logout</a></li>
 	          </ul>
 	        </li>
           

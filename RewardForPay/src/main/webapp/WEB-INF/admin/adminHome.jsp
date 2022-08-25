@@ -78,13 +78,17 @@
 			<li class="list">
 				<b></b>
 				<b></b>
+
 				<a href="account.do" onclick="validateForm()">
+
+				<a href="chat/chat-app.jsp" onclick="validateForm()">
+
 			 	  <span class="icon"><ion-icon 
 			 	  name="chatbubbles-outline"></ion-icon></span> 
 			 	  <span class="title">Chat</span>
 				</a>
 			</li>
-			<li class="list">
+			<!-- <li class="list">
 				<b></b>
 				<b></b>
 				<a href="settings.do">
@@ -92,7 +96,7 @@
 			 	  name="settings-outline"></ion-icon></span> 
 			 	  <span class="title">Settings</span>
 				</a>
-			</li>
+			</li> -->
 				<li class="list">
 				<b></b>
 				<b></b>
