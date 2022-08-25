@@ -78,7 +78,7 @@
 
 </c:if>
 
-		<c:if test="${role==1}">
+		<%-- <c:if test="${role==1}">
 <div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -95,8 +95,8 @@
         <li class="nav-item">
           <a class="nav-link" href="account.do">Account</a>
         </li>
-          <li class="nav-item">
-          <a class="nav-link" href="eventsList.do">Events</a>
+         <li class="nav-item">
+          <a class="nav-link" href="eventsList.do?empId=${sessionScope.userinfo.id}">Events</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
@@ -150,7 +150,7 @@
     </div>
   </div>
 
-		</c:if>
+		</c:if> --%>
 	<c:if test="${role==3}">
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
@@ -167,6 +167,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="account.do">Account</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="eventsList.do?empId=${sessionScope.userinfo.id}">Events</a>
         </li>
       <!--   <li class="nav-item">
           <a class="nav-link" href="login.do">Login</a>
@@ -213,3 +216,10 @@
 		crossorigin="anonymous"></script>
 </nav>
 
+<body>
+<c:if test="${ role == 1}">
+<%@ include file="admin/adminHome.jsp"%>
+
+</c:if>
+
+</body>

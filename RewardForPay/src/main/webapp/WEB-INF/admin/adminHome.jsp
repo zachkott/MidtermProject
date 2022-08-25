@@ -5,155 +5,144 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
 </head>
 <body>
-	<%@ include file="../nav.jsp"%>
+	<%--  <%@ include file="../nav.jsp"%>  --%>
 
-	<h1>Inside Admin Home</h1>
-
-
+	
 
 
-	<%-- <div class="row">
-  <div class="col-4">
-    <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
-      <nav class="nav nav-pills flex-column">
-        <a class="nav-link" href="adminDashboardAllUsers.do">See All Users</a>
-        
-        <a class="nav-link" href="adminDashboardAllEmployees.do">See All Employees</a>
-        <a class="nav-link" href="#">See All Prizes</a>
-         <a class="nav-link" href="pendingList.do">See All Requests</a>
-        
-      </nav>
-    </nav>
-  </div>
+<div style="display:inline-block; height:30px">
+</div>
 
-  <div class="col-8">
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
-      <div id="item-1">
-        <h4>See All Users</h4>
-        <p><table class="table table-striped table-hover">
-		<thead class="table-light">
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th>Password</th>
-				<th>Status</th>
-				
-					
-				
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="user" items="${allUsers}">
+	<div class="navigation">
 
-				<tr>
-					<td>${user.id}</td>
-					<td><a href="findUser.do?userId=${user.id}">${user.username}</a></td>
-					<td><a href="findUser.do?userId=${user.id}">${user.password}</a></td>
-					<td><c:choose><c:when test="${user.enabled == true}">Active</c:when><c:otherwise>Inactive</c:otherwise></c:choose></td>
-					
-				</tr>
-				
-			</c:forEach>
-		</tbody>
-	</table></p>
-      </div>
-    
-      <div id="item-2">
-        <h4>See All Employees</h4>
-        <table class="table table-striped table-hover">
-		<thead class="table-light">
-			<tr>
-				<th>ID</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Username</th>
-				<th>Address</th>
-				<th>Phone</th>
-				<th>Birthday</th>
-				<th>Department</th>
-				
-				
-				
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="employee" items="${allEmployees}">
+		<ul>
+		<li class="list active">
+				<b></b>
+				<b></b>
+				<a href="#">
+				<span class="icon"><ion-icon
+				 name="speedometer-outline"></ion-icon></span>
+			 	  <span class="title">Admin Dashboard</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="home.do">
+			 	  <span class="icon"><ion-icon 
+			 	  name="home-outline"></ion-icon></span> 
+			 	  <span class="title">Home</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="account.do">
+			 	  <span class="icon"><ion-icon 
+			 	  name="person-circle-outline"></ion-icon></span> 
+			 	  <span class="title">Account</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="adminAllUsers.do">
+			 	  <span class="icon"><ion-icon 
+			 	  name="people-circle-outline"></ion-icon></span> 
+			 	  <span class="title">Users</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="adminAllEmployees.do">
+			 	  <span class="icon"><ion-icon 
+			 	  name="people-outline"></ion-icon></span> 
+			 	  <span class="title">Employees</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="allPrizes.do?id=0">
+			 	  <span class="icon"><ion-icon
+			 	   name="gift-outline"></ion-icon></span> 
+			 	  <span class="title">Prizes</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="pendingList.do">
+			 	  <span class="icon"><ion-icon 
+			 	  name="albums-outline"></ion-icon></span> 
+			 	  <span class="title">Requests</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+			 	  <span class="icon"><ion-icon 
+			 	  name="chatbubbles-outline"></ion-icon></span> 
+			 	  <span class="title">Chat</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+			 	  <span class="icon"><ion-icon 
+			 	  name="settings-outline"></ion-icon></span> 
+			 	  <span class="title">Settings</span>
+				</a>
+			</li>
+		</ul>
+	</div>
 
-				<tr>
-					<td>${employee.id}</td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.firstName}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.lastName}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.user.username}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.address.street}, ${employee.address.state}, ${employee.address.city}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.address.phone}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.birthday}</a></td>
-					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.department.name}</a></td>
-					
-					
-				</tr>
-				
-			</c:forEach>
-		</tbody>
-	</table>
 
-      </div>
-      <div id="item-3">
-        <h4>See All Prizes</h4>
-        <p><div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
-					<c:forEach var="prize" items="${prizes}">
-					  <div class="col">
-					    <div class="card h-100">
-					      <a href="reward.do?id=${prize.id}"><img class="card-img-top " src="${prize.image}" alt="${prize.name}"/></a>
-					      <div class="card-body">
-					        <h5 class="card-title">${prize.name}</h5>
-					        <p class="card-text">${prize.points}, Tier ${prize.tier.id}</p>
-					      </div>
-					    </div>
-					  </div>
-					</c:forEach>
-				</div></p>
-      </div>
-     <div id="item-4">
-        <h4>See All Requests</h4>
-        <p>...</p>
-      </div>
-    </div>
-  </div>
-</div> 
- --%>
+<div class="toggle">
+<ion-icon name="menu-outline" class="open"></ion-icon>
+<ion-icon name="close-outline" class="close"></ion-icon>
 
+</div>
 
 
 
 
 
 	
+	
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
-			<ul>
-				<li><form action="adminAllUsers.do">
-						<button type="submit" class="btn btn-danger btn-lg">See
-							all Users</button>
-					</form></li>
-				<br>
-				<li><form action="adminAllEmployees.do">
-						<button type="submit" class="btn btn-danger btn-lg">See
-							all Employees</button>
-					</form></li>
-				<br>
-				<li><form action="allPrizes.do">
-						<input type="hidden" value="0" name="id">
-						<button type="submit" class="btn btn-danger btn-lg">See
-							all Prizes</button>
-					</form></li>
-				<br>
-				<li><form action="pendingList.do">
-						<button type="submit" class="btn btn-danger btn-lg">See
-							all Requests</button>
-					</form></li>
-				<br>
-			</ul>
+<script>
+let menuToggle = document.querySelector('.toggle');
+let navigation = document.querySelector('.navigation')
+menuToggle.onclick = function(){
+	menuToggle.classList.toggle('active');
+	navigation.classList.toggle('active');
+}
+
+</script>
+
+<script>
+let list = document.querySelectorAll('.list');
+for (let i=0; i<list.length; i++){
+	list[i].onclick = function(){
+		let j = 0;
+		while(j < list.length){
+			list[j++].className= 'list';
+		}
+		list[i].className = 'list active';
+	}
+}
+
+</script>
+
 </body>
 </html>
