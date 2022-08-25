@@ -50,7 +50,7 @@ public class AdminDAOImpl implements AdminDAO {
 	public boolean createRedemption(Prize p, Employee e, int remainder) {
 		boolean redeemed = false;
 		int pamount = p.getPoints();
-		if (pamount >= remainder) {
+		if (pamount > remainder) {
 			return redeemed;
 		} else {
 			PointRedemption pr = new PointRedemption();
@@ -75,11 +75,24 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public List<PointRedemption> claimedInitialT(int employeeId) {
-
+		
 		String awaredquery = "SELECT pr FROM PointRedemption pr WHERE employee_id = :employeeId AND reward_id=5";
 		List<PointRedemption> awarded = em.createQuery(awaredquery, PointRedemption.class)
 				.setParameter("employeeId", employeeId).getResultList();
 		return awarded;
+	}
+	
+	@Override
+	public List<Prize> claimedPrizes(int employeeId) {
+
+		String awaredquery = "SELECT pr FROM PointRedemption pr WHERE employee_id = :employeeId";
+		List<PointRedemption> record = em.createQuery(awaredquery, PointRedemption.class)
+				.setParameter("employeeId", employeeId).getResultList();
+		List<Prize> claimedprizes = new ArrayList<>();
+		for(PointRedemption each:record) {
+			claimedprizes.add(each.getPrize());
+		}
+		return claimedprizes;
 	}
 
 	public List<Employee> searchAll(String keyword) {

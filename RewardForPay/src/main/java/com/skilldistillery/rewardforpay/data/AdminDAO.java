@@ -23,4 +23,5 @@ public interface AdminDAO {
 	 List<Employee> searchAll(String keyword);
 	 List<PointAwarded> showEvents(int id);
 	 List<PointAwarded> showRegistered(int id);
+	 List<Prize> claimedPrizes(int employeeId);
 }

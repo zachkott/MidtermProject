@@ -61,6 +61,15 @@ public class AccountController {
 		return "award";
 		
 	}
+	@RequestMapping(path = { "claimedPrizes.do" })
+	public String claimedPrizes(HttpSession session, Model model) {
+		Employee emp = (Employee) session.getAttribute("userinfo");
+		List<Prize> claimedPrizes = adminDao.claimedPrizes(emp.getId());
+		model.addAttribute("record",claimedPrizes);
+		model.addAttribute("numOfPrizes", claimedPrizes.size());
+		return "award";
+		
+	}
 	@RequestMapping(path = { "findEmployeeTest.do" })
 	public String pendingEmployee(HttpSession session, Model model, int eid) {
 		model.addAttribute("employee",userDao.findEmployeeById(eid));
