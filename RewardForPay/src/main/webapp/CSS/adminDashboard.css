@@ -29,7 +29,7 @@ body{
 	border-radius:  10px;
 	box-sizing:initial;
 	border-left: 2px solid black;
-	background: black;
+    background: linear-gradient(to left, #858985, #ffffff, #010101)!important;
 	transition:width 0.5s;
 	overflow-x:hidden;
 }
@@ -59,7 +59,7 @@ body{
 	
 }
 .navigation ul li.active{
-	background: white;
+	background: #bcd5b0;
 }
 
 .navigation ul li b:nth-child(1){
@@ -67,7 +67,7 @@ body{
 	top: -20px;
 	height: 20px;
 	width: 100%;
-	background: white;
+	background: #bcd5b0;
 	display:none;
 }
 
@@ -88,7 +88,7 @@ body{
 	bottom: -20px;
 	height: 20px;
 	width: 100%;
-	background: white;
+	background: #bcd5b0;
 	display:none;
 }
 

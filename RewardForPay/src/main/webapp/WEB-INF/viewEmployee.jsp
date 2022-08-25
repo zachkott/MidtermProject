@@ -8,6 +8,7 @@
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
 <link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+<link rel ="stylesheet" type ="text/css" href="CSS/homepage.css">
 </head>
 <body>
 <%@ include file="nav.jsp" %>

@@ -21,34 +21,56 @@ function validateForm() {
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
 <link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+<link rel ="stylesheet" type ="text/css" href="CSS/homepage.css">
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 
 <div class="container-fluid">
 <div class="account">
-<h1>I'm the Account Page</h1>
-
-<!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <a href="account.do" onclick="validateForm()" >CHAT!!!</a>
-   
-   <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
-   		<br>
-   		<h1>Welcome to Reward For Pay</h1>
-   						<h5>What would you like to do?</h5>
-				<br>
 
 	<div class="table-responsive">
 		<table>
+			<thead>
+				<tr>
+					<th class="col-4" colspan="2"></th>
+					<th class="col-8" colspan="2"></th>
+				</tr>
+			</thead>
 			<tbody>
-				<tr> <!-- Employee photo url move to database -->
-					<td  rowspan=2><img width="40%" class="detail_img" id="userImage" src="${sessionScope.userinfo.employeePhoto}" title="Illustrated headshot"/></td>
-					<td class="buffer"></td>
-					<td class="text-wrap col-md-offset-1" id="employee_info">
-						<h1><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h1><br>
+			<tr>
+				<td colspan="3"><h1>Welcome to Reward For Pay</h1></td>
+			</tr>
+				<tr> 
+					<td rowspan="2" colspan="2"><img class="detail_img col-md-4" id="userImage" src="${sessionScope.userinfo.employeePhoto}" title="${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}"/></td>
+					<td class="text-wrap col-md-offset-1 col-md-8" id="employee_info">
+						<h2><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h2><br>
+					</td>
+					
+					
+				<c:if test="${role != 1}">
+					<c:choose>
+						<c:when test="${empty claimed }">
+						<td>
+								<form action="createAward.do" method="POST">
+									<input type="hidden" name="description" value="Initial Point Award"/>
+									<input type="hidden" name="amount" value="100"/>
+									<input type="hidden" id="username" value="${sessionScope.loggedInUser.id}">
+									<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
+									<input type="hidden" name="empId" value="${sessionScope.userinfo.id}"/>
+									<input class="btn btn-success" type="submit" value="Get My First 100 Pts!">
+							</form>
+						</td>
+						</c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:if>
+				</tr>
+				<tr>
+					<td colspan="2">
 						<ul style="list-style-type: none">
 							<li><strong>Salary: </strong>${sessionScope.userinfo.salary}</li>
 							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.street}</li>
@@ -59,15 +81,26 @@ function validateForm() {
 					</td>
 				</tr>
 				<tr>
-					<td></td>
 					<td>
-						<form action="updateUserForm.do"><input type ="hidden" name="id" value="${sessionScope.userinfo.user.id}"><button type="submit" class="btn btn-primary btn-sm">Update login info</button></form>
 					
-						<form action="updateEmployeeForm.do"> <!-- update with controller mapping -->
+						<form action="updateEmployeeForm.do"> 
 							<input type="hidden" value="${sessionScope.userinfo.id}" name="id" /> 
 							<input class="action_button" type="submit" value="Edit Profile" />
 						</form>
 					</td>
+					<td>
+						<form action="account.do"><button type="submit" onclick="validateForm()" class="action_button">Chat with Friends</button></form>
+						
+					</td>
+	<c:if test="${role != 1}">
+					<td>
+						<form action="createPrize.do"><button class="action_button" type="submit" >Suggest a New Prize</button></form>
+					 </td>
+					 <td>
+					 	<form action="createAward.do"><button class="action_button" type="submit">Submit a Coworker for an Award</button></form>
+					</td>
+	</c:if>
+				
 				</tr>
 				</tbody>
 				</table>
@@ -142,8 +175,7 @@ function validateForm() {
 					</c:forEach>
 				</div> --%>
 	
- <a href="createPrize.do" class="btn btn-primary">Suggest a New Prize</a>
- <a href="createAward.do" class="btn btn-primary">Submit a Coworker for an Award</a>
+
    		
    		
 </c:if>

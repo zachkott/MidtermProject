@@ -4,9 +4,11 @@
 
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link rel ="stylesheet" type ="text/css" href="CSS/homepage.css">
 
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light" id="navbarBG">
+>
 <!-- role is coming from LoginController -->
 <c:if test="${role==2}">
 		<div class="container-fluid">
@@ -74,7 +76,7 @@
       </ul>
             <form class="d-flex" action="searchEmployee.do" method="get">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" type="text" name="keyword">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-warning" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -113,9 +115,19 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="wishlist.do">Wishlist</a></li>
             <li><a class="dropdown-item" href="changeToEmployee.do">Switch to Employee Profile</a></li>
-            
-            
           </ul>
+          
+          	<li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            Settings
+	          </a>
+	          <ul class="dropdown-menu">
+	         	<li><a class="dropdown-item" href="updateUserForm.do?id=${sessionScope.userinfo.user.id}">Update User Info</a></li>
+	         	<li><a class="dropdown-item" href="updateEmployeeForm.do?id=${sessionScope.userinfo.id}">Update Employee Info</a></li>
+	         	<li><a class="nav-link" href="logout.do">Logout</a></li>
+	          </ul>
+	        </li>
+          
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             External Links
@@ -137,7 +149,7 @@
       </ul>
             <form class="d-flex" action="searchEmployee.do" method="get">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" type="text" name="keyword">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-warning" type="submit">Search</button>
       </form>
     </div>
   </div>

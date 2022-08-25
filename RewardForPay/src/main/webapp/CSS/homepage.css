@@ -1,14 +1,38 @@
- body {
+ body, html{
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
-    color: #818181;
+    background: #ffffff !important;
+    background: -webkit-linear-gradient(to right, #bcd5b0, #ffffff, #bcd5b0)!important;
+    background: linear-gradient(to right, #bcd5b0, #ffffff, #bcd5b0)!important;
   }
-  h2 {
-    font-size: 24px;
-    text-transform: uppercase;
+  
+  #navbarBG {
+  	background-color: #E0E6B4 !important;
+    background: linear-gradient(to right, #858985, #ffffff, #010101)!important;
+  }
+  
+  .action_button {
+  	background-color: #454f45 !important;
+  	color: white;
+  	border-radius: 50px;
+  	width: 150px;
+  }
+  h1 {
+    font-size: 50px;
+    font-family: corsiva;
     color: #303030;
     font-weight: 600;
     margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: left;
+  }
+  h2 {
+    font-size: 35px;
+    font-family: corsiva;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: left;
   }
   h4 {
     font-size: 19px;
@@ -103,6 +127,11 @@
     background-color: #f4511e;
     color: #fff;
   }
+  
+  #userImage {
+  	width: 300px;
+  	height: 300px;
+  }
 
   footer .glyphicon {
     font-size: 20px;
@@ -152,3 +181,9 @@
       font-size: 150px;
     }
   }
+  
+  
+  .card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
+}
