@@ -1,5 +1,6 @@
 package com.skilldistillery.rewardforpay.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
@@ -141,5 +143,33 @@ public class AccountController {
 		model.addAttribute("events",adminDao.showEvents(empId));
 		return "eventsPage";
 		
+	}
+	@RequestMapping(path = { "joinedEvents.do" })
+	public String joinedEvents(HttpSession session, Model model,int empId) {
+		System.out.println(empId);
+		model.addAttribute("joined",adminDao.showRegistered(empId));
+		return "joinedEvents";
+		
+	}
+	@RequestMapping(path="createEvent.do", method= RequestMethod.GET)
+	public String createEvent(Model model) {
+		return "createEvent";
+	}
+	@RequestMapping(path = "createEvent.do", method = RequestMethod.POST)
+	public String createdEvent(PointAwarded award, Model model, int empId,String date, int userId, RedirectAttributes redir) {
+		PointAwarded newAward = userDao.createAward(award, empId, userId);
+
+		LocalDate localDate = LocalDate.parse(date);
+		newAward.setIssued(localDate);
+		redir.addAttribute("empId", empId);
+		return "redirect:eventsList.do";
+		//Redirect is not working
+	}
+	@RequestMapping(path = "viewEmployee.do")
+	public String viewEmployee(int id, Model model) {
+		model.addAttribute("employee", userDao.findEmployeeById(id));
+		model.addAttribute("joined",adminDao.showRegistered(id));
+		model.addAttribute("wishlist", userDao.showWishList(id));
+		return "viewEmployee";
 	}
 }
