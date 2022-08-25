@@ -15,7 +15,8 @@ public class UserAndGroupService {
 	
 	
 	public List<Map<String, Object>> fetchAll(String myId) {
-		List<Map<String, Object>> getAllUser = jdbcTemplate.queryForList("SELECT u.*, CONCAT(e.first_name, \" \",e.last_name) AS eName, e.employee_photo AS image FROM user u join employee e on u.employee_id=e.id WHERE u.id != ?", myId);
+		List<Map<String, Object>> getAllUser = jdbcTemplate.queryForList("SELECT u.*, CONCAT(e.first_name, \" \",e.last_name)" +
+					" AS eName, e.employee_photo AS image FROM user u join employee e on u.employee_id=e.id WHERE u.id != ?", myId);
 		return getAllUser;
 	}
 	//https://cdn-icons-png.flaticon.com/128/1177/1177568.png
