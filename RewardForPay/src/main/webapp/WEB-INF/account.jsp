@@ -15,15 +15,12 @@ function validateForm() {
         localStorage.setItem("userId", userId);
         localStorage.setItem("userImage", userImage);
         
-        window.location.href = "chat-app.jsp";
-
+        window.open("/chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
 }
 </script>
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
 <link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
-
-
 </head>
 <body>
 <%@ include file="nav.jsp" %>
@@ -36,7 +33,7 @@ function validateForm() {
 
  <c:choose>
    <c:when test="${! empty sessionScope.loggedInUser}">
-   <a href="../chat/chat-app.jsp" onclick="validateForm()" >CHAT!!!</a>
+   <a href="account.do" onclick="validateForm()" >CHAT!!!</a>
    
    <h2>Welcome, ${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</h2>
    		<br>
@@ -44,15 +41,6 @@ function validateForm() {
    						<h5>What would you like to do?</h5>
 				<br>
 
-<!-- Main home page for a logged in user -->
-
-<!-- Payroll dashboard, employee photo, and reward tier carousel: navbar has notifications for chat/requests
-	reward carousel goes to rewards in their current tier
-	page will diplay how to get reward points if user doesn't have any
-	dropdown menu to view all tiers
-	suggest a new reward
-	submit coworker for award
--->
 	<div class="table-responsive">
 		<table>
 			<tbody>
