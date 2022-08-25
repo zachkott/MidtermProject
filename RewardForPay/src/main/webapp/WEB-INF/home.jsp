@@ -167,7 +167,7 @@
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-<div class="space">
+<div class="account">
 <h1>Welcome to Reward For Pay</h1>
 <div id="about" class="container-fluid">
   <div class="row">

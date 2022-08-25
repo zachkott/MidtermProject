@@ -29,7 +29,7 @@ function validateForm() {
 <%@ include file="nav.jsp" %>
 
 <div class="container-fluid">
-<div class="space">
+<div class="account">
 <h1>I'm the Account Page</h1>
 
 <!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->

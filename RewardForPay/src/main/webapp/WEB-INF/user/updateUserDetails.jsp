@@ -5,10 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Update User Details</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
 
+<div class="container-fluid">
+<div class="space">
 <div class="form-row">
 		<form action="updateUser.do" method="POST">
 			<input type ="hidden" name ="id" value="${user.id}">
@@ -21,12 +25,13 @@
 		
 			<br>
 
-			<input class="btn btn-success" type="submit" value="Update User">
+			<input class="btn btn-success" type="submit" value="Update Login">
 
 
 
 		</form>
 </div>
-
+</div>
+</div>
 </body>
 </html>
