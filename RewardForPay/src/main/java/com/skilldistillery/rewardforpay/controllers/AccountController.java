@@ -31,10 +31,6 @@ public class AccountController {
 		User user = (User) session.getAttribute("loggedInUser");
 		Employee employee = (Employee) session.getAttribute("userinfo");
 		if (user != null) {
-			model.addAttribute("awardbalance",userDao.findPointBalance(employee.getId()));
-			session.setAttribute("loggedInUser", user);
-			employee = user.getEmployee();
-			session.setAttribute("userinfo", employee);
 			List<Prize> prizes = userDao.findAllActivePrizes();
 			session.setAttribute("prizes", userDao.findAllPrizes());
 			model.addAttribute("numOfPrizes", prizes.size());

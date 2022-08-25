@@ -613,15 +613,15 @@ INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description
 INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (8, 160, '2007-02-19', 2, 'Showed up to work early.', 1, 1, 10);
 INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (9, 75, '2004-11-10', 2, 'Took an extra shift.', 1, 1, 9);
 INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (10, 65, '2014-08-29', 2, 'Project idea for company.', 1, 1, 16);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (11, 200, NULL, 1, 'EVENT: Ice Cream Social in the Park', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (12, 500, NULL, 1, 'EVENT: Quarterly Company Picnic', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (13, 100, NULL, 1, 'EVENT: Volunteer Day at the HighWay', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (14, 1000, NULL, 1, 'EVENT: Happy Hour Drinks', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (15, 200, NULL, 1, 'EVENT: Coffee with the CEO', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (16, 150, NULL, 1, 'EVENT: Engineering Department Social', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (17, 250, NULL, 1, 'EVENT: Bring your dog to work day', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (18, 600, NULL, 1, 'EVENT: Bring your cat to work day!', 2, 1, 1);
-INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (19, 350, NULL, 1, 'EVENT: All Hands Lunch in', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (11, 200, NULL, 6, 'EVENT: Ice Cream Social in the Park', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (12, 500, NULL, 6, 'EVENT: Quarterly Company Picnic', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (13, 100, NULL, 6, 'EVENT: Volunteer Day at the HighWay', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (14, 1000, NULL, 6, 'EVENT: Happy Hour Drinks', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (15, 200, NULL, 6, 'EVENT: Coffee with the CEO', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (16, 150, NULL, 6, 'EVENT: Engineering Department Social', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (17, 250, NULL, 6, 'EVENT: Bring your dog to work day', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (18, 600, NULL, 6, 'EVENT: Bring your cat to work day!', 2, 1, 1);
+INSERT INTO `point_award` (`id`, `amount`, `issued`, `employee_id`, `description`, `award_status_id`, `judgement`, `requested_id`) VALUES (19, 350, NULL, 6, 'EVENT: All Hands Lunch in', 2, 1, 1);
 
 COMMIT;
 
