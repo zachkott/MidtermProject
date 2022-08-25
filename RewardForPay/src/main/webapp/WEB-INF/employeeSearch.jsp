@@ -39,7 +39,7 @@
 
 				<tr>
 					<td><a href="viewEmployee.do?id=${employee.id}">${employee.id}</a></td>
-					<td><img width="40%" class="detail_img" src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
+					<td><img width="40%" class="detail_img"  src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
 					<td>${employee.firstName}</td>
 					<td>${employee.lastName}</td>
 					<td>${employee.user.username}</td>
