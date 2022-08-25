@@ -93,22 +93,19 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<PointAwarded> showEvents(int id) {
 		String keyword = "EVENT:";
 		keyword = "%" + keyword + "%";
-		String eventquery = "SELECT pa FROM PointAwarded pa WHERE pa.description LIKE :keyword";
-		List<PointAwarded> events = em.createQuery(eventquery, PointAwarded.class).setParameter("keyword", keyword)
+		String eventquery = "SELECT pa FROM PointAwarded pa WHERE pa.description LIKE :keyword AND pa.description NOT IN (select description from PointAwarded pa where employee_id = :id)";
+		List<PointAwarded> events = em.createQuery(eventquery, PointAwarded.class).setParameter("keyword", keyword).setParameter("id", id)
 				.getResultList();
-		System.out.println(id);
-		String joinedquery = "SELECT pa FROM PointAwarded pa WHERE employee_id = :id";
-		List<PointAwarded> joined = em.createQuery(joinedquery, PointAwarded.class)
-				.setParameter("id", id).getResultList();
-		List<PointAwarded> eventsShow = new ArrayList<>();
-		for (PointAwarded each : events) {
-			for(PointAwarded join : joined) {
-			if (each.getEmployee().getId()==1 && each.getDescription()==join.getDescription()) {
-				eventsShow.add(each);
-			} else {
-			}
-			}
-		}
-		return eventsShow;
+		
+		return events;
+	}
+	public List<PointAwarded> showRegistered(int id) {
+		String keyword = "EVENT:";
+		keyword = "%" + keyword + "%";
+		String eventquery = "SELECT pa FROM PointAwarded pa WHERE pa.description LIKE :keyword AND employee_id = :id AND award_status_id =2)";
+		List<PointAwarded> events = em.createQuery(eventquery, PointAwarded.class).setParameter("keyword", keyword).setParameter("id", id)
+				.getResultList();
+
+		return events;
 	}
 }
