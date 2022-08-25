@@ -66,9 +66,6 @@
 									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 								</div>
 								<textarea id="message-to-send" name="message-to-send" class="form-control type_msg" placeholder="Type your message..."></textarea>
-								 <div class="input-group-append">
-									<button class="input-group-text send_btn" id="sendBtn" onclick="sendMessage()"><i class="fas fa-location-arrow"></i></button>
-								</div>
 							</div>
 						</div>
 					</div>
