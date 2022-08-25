@@ -7,10 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Pending Request</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 
+
+<div class="container-fluid">
+<div class="space">
 <h1>Current Available Events</h1>
 <c:choose>
 		<c:when test="${!empty events}">
@@ -47,7 +52,8 @@
 		<h1>There are no more events available.</h1>
 		</c:otherwise>
 		</c:choose>
-
+</div>
+</div>
 </body>
 </html>
 

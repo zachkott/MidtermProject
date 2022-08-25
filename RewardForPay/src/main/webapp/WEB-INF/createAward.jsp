@@ -7,10 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Submit Award</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 
+
+<div class="container-fluid">
+<div class="space">
 <h1>Submit a Coworker for an Award</h1>
 		<div class="form-row">
 			<form action="createAward.do" method="POST">
@@ -28,6 +33,7 @@
 				<input class="btn btn-success" type="submit" value="Submit">
 			</form>
 		</div>
-
+</div>
+</div>
 </body>
 </html>

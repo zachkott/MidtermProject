@@ -29,15 +29,7 @@
 			 	  <span class="title">Home</span>
 				</a>
 			</li>
-			<li class="list">
-				<b></b>
-				<b></b>
-				<a href="adminHome.do">
-				<span class="icon"><ion-icon
-				 name="speedometer-outline"></ion-icon></span>
-			 	  <span class="title">Dashboard</span>
-				</a>
-			</li>
+		
 			<li class="list">
 				<b></b>
 				<b></b>

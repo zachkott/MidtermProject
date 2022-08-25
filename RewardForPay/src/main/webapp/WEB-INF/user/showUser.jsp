@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>User Profile</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
@@ -14,6 +16,9 @@
 
 </head>
 <body>
+
+<div class="container-fluid">
+<div class="space">
 
 	<h1>User Profile</h1>
 
@@ -49,6 +54,9 @@
 	<h2>User Not Found</h2>
 	</c:otherwise>
 	</c:choose>
+	</div>
+	
+	</div>
 	</div>
 </body>
 </html>
