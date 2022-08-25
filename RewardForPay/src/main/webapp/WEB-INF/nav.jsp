@@ -78,7 +78,7 @@
 
 </c:if>
 
-		<%-- <c:if test="${role==1}">
+		 <c:if test="${role==1}">
 <div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -89,27 +89,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="home.do">Home</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+      <!--   <li class="nav-item">
           <a class="nav-link" href="account.do">Account</a>
-        </li>
+        </li> -->
          <li class="nav-item">
           <a class="nav-link" href="eventsList.do?empId=${sessionScope.userinfo.id}">Events</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="reward.do">Rewards</a>
-        </li>
+        </li> -->
        <!--  <li class="nav-item">
           <a class="nav-link" href="login.do">Login</a>
         </li> -->
         <li class="nav-item">
           <a class="nav-link" href="logout.do">Logout</a>
         </li>
-        <li class="nav-item">
+<!--         <li class="nav-item">
           <a class="nav-link" href="adminHome.do">Admin Dashboard</a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Admin Controls
@@ -150,7 +150,7 @@
     </div>
   </div>
 
-		</c:if> --%>
+		</c:if> 
 	<c:if test="${role==3}">
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">

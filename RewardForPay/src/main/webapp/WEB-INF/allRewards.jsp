@@ -14,7 +14,7 @@
 
 
 <div class="container-fluid">
-<div class="space">
+<div class="account">
 <h1>Browse the full list of prizes below:</h1>
 
 <!-- Lists all prizes by tier or a full list of all prizes -->

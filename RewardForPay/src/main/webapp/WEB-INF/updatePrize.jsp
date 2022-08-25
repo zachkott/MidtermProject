@@ -8,7 +8,8 @@
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-
+<div class="container-fluid">
+<div class="space">
 	<table id="actions">
 		<tr>
 			<td rowspan=4><img class="form_img"
@@ -37,6 +38,7 @@
 			<td class="form_buffer"></td>
 	      </tr>
     </table>
-
+</div>
+</div>
 </body>
 </html>

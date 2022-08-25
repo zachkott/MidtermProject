@@ -31,6 +31,11 @@ public class UserController {
 		return "home";
 
 	}
+	
+	@RequestMapping(path="settings.do")
+	public String settings(Model model) {
+		return"user/settings";
+	}
 
 	@RequestMapping(path = "createUserAccountForm.do")
 	public String createUserForm(Model model) {

@@ -21,19 +21,19 @@ body{
 
 .navigation{
 	position:fixed;
-	top: 25px;
+	top: 65px;
 	left:25px;
 	bottom:20px;
 	width:70px;
 	border-radius:  10px;
 	box-sizing:initial;
-	border-left: 2px solid white;
+	border-left: 2px solid MediumSeaGreen;
 	background: MediumSeaGreen;
 	transition:width 0.5s;
 	overflow-x:hidden;
 }
 .navigation.active{
-	width:187px;
+	width:183px;
 		
 	
 }
@@ -149,7 +149,7 @@ body{
 
 .toggle{
 	position:fixed;
-	top: 20px;
+	top: 65px;
 	right: 20px;
 	width: 50px;
 	height:  50px;
@@ -186,9 +186,14 @@ body{
 
 .space{
 		
-	padding-left:140px;
-	padding-right:20px;
+	padding-left:192px;
+	padding-right:192px;
 	
+}
+
+.account{
+	padding-left:199px;
+	padding-right:199px;
 }
 h1{
 	text-align:center;

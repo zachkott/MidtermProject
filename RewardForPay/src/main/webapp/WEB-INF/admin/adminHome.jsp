@@ -15,26 +15,27 @@
 
 <div style="display:inline-block; height:30px">
 </div>
-<div class ="filter-me">
+
 	<div class="navigation">
 
 		<ul>
-		<li class="list active">
-				<b></b>
-				<b></b>
-				<a href="adminHome.do">
-				<span class="icon"><ion-icon
-				 name="speedometer-outline"></ion-icon></span>
-			 	  <span class="title">Dashboard</span>
-				</a>
-			</li>
-			<li class="list">
+		
+			<li class="list active">
 				<b></b>
 				<b></b>
 				<a href="home.do">
 			 	  <span class="icon"><ion-icon 
 			 	  name="home-outline"></ion-icon></span> 
 			 	  <span class="title">Home</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="adminHome.do">
+				<span class="icon"><ion-icon
+				 name="speedometer-outline"></ion-icon></span>
+			 	  <span class="title">Dashboard</span>
 				</a>
 			</li>
 			<li class="list">
@@ -94,10 +95,27 @@
 			<li class="list">
 				<b></b>
 				<b></b>
-				<a href="#">
+				<a href="settings.do">
 			 	  <span class="icon"><ion-icon 
 			 	  name="settings-outline"></ion-icon></span> 
 			 	  <span class="title">Settings</span>
+				</a>
+			</li>
+				<li class="list">
+				<b></b>
+				<b></b>
+				<a href="changeToEmployee.do">
+				<span class="icon"><ion-icon
+				 name="finger-print-outline"></ion-icon></span>
+			 	  <span class="title">Switch</span>
+				</a>
+			</li>
+				<li class="list">
+				<b></b>
+				<b></b>
+				<a href="logout.do">
+				<span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+			 	  <span class="title">Logout</span>
 				</a>
 			</li>
 		</ul>
