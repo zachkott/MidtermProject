@@ -67,7 +67,7 @@ public class AccountController {
 		List<Prize> claimedPrizes = adminDao.claimedPrizes(emp.getId());
 		model.addAttribute("record",claimedPrizes);
 		model.addAttribute("numOfPrizes", claimedPrizes.size());
-		return "award";
+		return "claimedPrizes";
 		
 	}
 	@RequestMapping(path = { "findEmployeeTest.do" })

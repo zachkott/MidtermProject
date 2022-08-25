@@ -18,15 +18,6 @@
 <h1>Browse the full list of prizes below:</h1>
 
 <!-- Lists all prizes by tier or a full list of all prizes -->
-<c:choose>
-	<c:when test="${prizeDeleted==true}">
-		<h1>${deleteMessage}</h1>
-	</c:when>
-	<c:otherwise>
-		<h1>${deleteFail}</h1>
-	</c:otherwise>
-</c:choose>
-
 		<c:choose>
 			<c:when test="${! empty record}">
 				<h1>test</h1>
@@ -38,8 +29,6 @@
 					      <div class="card-body">
 					        <h5 class="card-title">${prize.name}</h5>
 					        <p class="card-text">${prize.points}, Tier ${prize.tier.id}</p>
-					        <p class="card-text"><a class="btn btn-xs btn-white" href="updatePrize.do?id=${prize.id}"> Update </a>
-					        <p class="card-text"><a class="btn btn-xs btn-white" href="deletePrize.do?id=${prize.id}"> Delete </a>
 					      </div>
 					    </div>
 					  </div>
