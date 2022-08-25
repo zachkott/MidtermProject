@@ -118,8 +118,9 @@
 <ion-icon name="menu-outline" class="open"></ion-icon>
 <ion-icon name="close-outline" class="close"></ion-icon>
 
+
 </div>
-</div>
+<!-- </div> -->
 <!-- <div class="container-fluid">
 <h1>Test for spacing</h1>
 <p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb

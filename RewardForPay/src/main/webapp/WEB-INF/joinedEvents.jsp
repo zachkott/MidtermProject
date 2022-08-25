@@ -7,9 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Pending Request</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+
+
+<div class="container-fluid">
+<div class="space">
 
 <c:choose>
 		<c:when test="${!empty joined}">
@@ -39,6 +45,8 @@
 		<h1>You haven't joined any events. <a href="eventsList.do?empId=${sessionScope.userinfo.id}">Get involved!</a></h1>
 		</c:otherwise>
 		</c:choose>
+		</div>
+		</div>
 </body>
 </html>
 
