@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
@@ -31,21 +32,17 @@ public class LoginController {
 		}
 	}
 	@RequestMapping (path ="login.do",method = RequestMethod.POST) 
-	public String login(User user, HttpSession session, Model model) {
+	public String login(User user, HttpSession session, Model model, RedirectAttributes redir) {
 		user=userDao.findByUsername(user.getUsername(), user.getPassword());
 		if(user == null) {
 			model.addAttribute("NotFound", "User not found. Please check username or password");
 			return "login";
 		}else {
 			session.setAttribute("loggedInUser", user);
-			session.setAttribute("role", user.getRoles().get(0).getId());
 			Employee employee = user.getEmployee();
 			session.setAttribute("userinfo", employee);
-			session.setAttribute("prizes", userDao.findAllPrizes());
-			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); //modify this to show actual balance
-			session.setAttribute("claimed", adminDao.claimedInitial(employee.getId())); 
-			session.setAttribute("claimedT", adminDao.claimedInitialT(employee.getId())); 
-			return "account";
+			session.setAttribute("role", user.getRoles().get(0).getId());
+			return "redirect:account.do";
 		}
 	}
 	@RequestMapping (path ="logout.do") 
