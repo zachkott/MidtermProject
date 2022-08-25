@@ -6,10 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
 
+<div class ="container-fluid">
+<div class ="space">
 <h1>Inside Employee Details</h1>
 
 
@@ -60,6 +64,7 @@
 	</c:otherwise>
 	</c:choose>
 	</div>
-
+</div>
+</div>
 </body>
 </html>

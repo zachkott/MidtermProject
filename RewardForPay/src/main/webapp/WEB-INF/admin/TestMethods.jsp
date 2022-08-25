@@ -7,10 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Pending Request</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="../nav.jsp" %>
 
+
+
+<div class ="container-fluid">
+<div class ="space">
 <h1>Pending Award Submissions</h1>
 <c:choose>
 		<c:when test="${!empty pendingPA}">
@@ -146,6 +152,9 @@
 		<c:otherwise>
 		</c:otherwise>
 		</c:choose>
+		
+		</div>
+		</div>
 </body>
 </html>
 

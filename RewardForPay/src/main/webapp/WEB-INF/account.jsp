@@ -21,12 +21,15 @@ function validateForm() {
 </script>
 <title>Reward For Pay</title>
 <jsp:include page ="bootstrapHead.jsp" />
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
 
 
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 
+<div class="container-fluid">
+<div class="space">
 <h1>I'm the Account Page</h1>
 
 <!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->
@@ -162,6 +165,7 @@ function validateForm() {
      <a href="login.do">Please log in to access your account information.</a>
    </c:otherwise>
  </c:choose>
-
+</div>
+</div>
 </body>
 </html>
