@@ -13,7 +13,7 @@
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-		Reward For Pay
+		Schrute Bucks
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -89,7 +89,7 @@
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-		Reward For Pay
+		Schrute Bucks
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -165,7 +165,7 @@
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-		Reward For Pay
+		Schrute Bucks
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -197,7 +197,7 @@
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-		Reward For Pay
+		Schrute Bucks
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

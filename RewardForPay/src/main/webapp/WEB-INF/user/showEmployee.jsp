@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Show Employee</title>
 <link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
 
 </head>
@@ -14,7 +14,6 @@
 
 <div class="container-fluid">
 <div class="space">
-<h1>Inside Employee Details</h1>
 
 
 
@@ -22,7 +21,7 @@
 <c:choose>
 <c:when test="${! empty employee}">
 
-		<h2>Employee Details</h2>
+		<h2>Employee Profile</h2>
 		<ul>
 			<li>Employee ID: ${employee.id}</li>
 			<li>First Name: ${employee.firstName}</li>

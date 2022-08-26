@@ -14,7 +14,7 @@
 
 <div class="container-fluid">
 <div class="space">
-<h1>Inside Admin User Results</h1>
+<h1>User Results</h1>
 
 
 <table class="table table-striped table-hover">
