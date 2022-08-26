@@ -17,25 +17,42 @@
 <div class="account">
 <h1>Employee Information</h1>
 
-<!-- CREATE A REDIRECT TO ADMIN DASHBOARD PAGE -->
 	<div class="table-responsive">
-		<table>
+			<table>
+			<thead>
+				<tr>
+					<th class="col-7" colspan="2"></th>
+					<th class="col-5" colspan="2"></th>
+				</tr>
+			</thead>
 			<tbody>
-				<tr> <!-- Employee photo url move to database -->
-					<td  rowspan=2><img width="40%" class="detail_img" id="userImage" src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
-					<td class="buffer"></td>
-					<td class="text-wrap col-md-offset-1" id="employee_info">
-						<h1><strong>${employee.firstName} ${employee.lastName}</strong></h1><br>
-						<h1><strong>${employee.description}</strong></h1><br>
+				<tr> 
+					<td rowspan="2" colspan="2"><img class="detail_img col-md-4" id="userImage" src="${employee.employeePhoto}" title="${employee.firstName} ${employee.lastName}"/></td>
+					<td class="text-wrap col-md-offset-1 col-md-8" id="employee_info">
+						<h2 id="name-head" class="left"><strong>${employee.firstName} ${employee.lastName}</strong></h2><br>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" id="empDetails">
 						<ul style="list-style-type: none">
+						    <li id="userId" value="${employee.id}"><strong>Employee Id: </strong>${employee.id}</li>
+							<li class="text-wrap"><strong>About ${employee.firstName}: </strong>${employee.description}</li>
 							<li><strong>Department: </strong>${employee.department.name}</li>
 							<li><strong>Department Description: </strong>${employee.department.description}</li>
+							<li><strong>Birthday: </strong>${employee.birthday}</li>
 						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					 <td>
+					 	<form action="createAward.do"><button class="action_button" type="submit">Submit Coworker for Award</button></form>
 					</td>
 				</tr>
 				</tbody>
 				</table>
-
 	</div>
 	<c:choose>
 		<c:when test="${!empty joined}">
@@ -69,14 +86,20 @@
 
 			<c:choose>
 				<c:when test="${! empty wishlist }">
-					<c:forEach items="${wishlist}" var="prize">
-						<tr>
-							<td><a href="reward.do?id=${prize.id}">${prize.name}</a></td>
-							<td><a href="reward.do?id=${prize.id}">${prize.points}</a></td>
-							<td><img class="card-img-top " src="${prize.image}"></td>
-							<td><a href="reward.do?id=${prize.id}">${prize.description}</a></td>
-
+					   <div class="row row-cols-1 row-cols-md-4 g-${numOfPrizes}">
+					<c:forEach var="item" items="${wishlist}">
+					  <div class="col">
+					    <div class="card h-100">
+					      <a href="reward.do?id=${item.id}"><img class="card-img-top " src="${item.image}" alt="${item.name}"/></a>
+					      <div class="card-body">
+					        <h3 class="card-title2">${item.name}</h3>
+					        <p class="card-text">Schrute Bucks: ${item.points}</p>
+					        <p class="card-text">Prize Tier: ${item.tier.id}</p>
+					      </div>
+					    </div>
+					  </div>
 					</c:forEach>
+				</div> 
 				</c:when>
 				<c:otherwise>
 					<h1>Their wishlist is empty :(</h1>

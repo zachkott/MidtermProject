@@ -42,7 +42,8 @@
 					      <a href="reward.do?id=${prize.id}"><img class="card-img-top " src="${prize.image}" alt="${prize.name}"/></a>
 					      <div class="card-body">
 					        <h5 class="card-title">${prize.name}</h5>
-					        <p class="card-text">${prize.points}, Tier ${prize.tier.id}</p>
+					        <p class="card-text">Schrute Bucks: ${prize.points}</p>
+					        <p class="card-text">Prize Tier ${prize.tier.id}</p>
 					        <p class="card-text"><a class="btn btn-xs btn-warning" href="updatePrize.do?id=${prize.id}"> Update </a>
 					        <p class="card-text"><a class="btn btn-xs btn-warning" href="deletePrize.do?id=${prize.id}"> Delete </a>
 					      </div>

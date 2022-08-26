@@ -39,6 +39,9 @@ body{
 	padding-top: 40px;
 }
 
+#keywordEmp td,th {
+	width: 350px;
+}
 
 .navigation ul li{
 	position:relative;
@@ -47,6 +50,12 @@ body{
 	border-top-left-radius: 25px;
 	border-bottom-left-radius: 25px;
 	
+}
+
+.detail_img {
+		clip-path: circle(50% at 50% 50%);
+		width: 50%;
+		height: auto;
 }
 
 .navigation ul li.active{
