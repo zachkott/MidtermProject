@@ -54,11 +54,11 @@ class PointAwardedTest {
 		assertNotNull(PointAwarded);
 		assertEquals(1,PointAwarded.getStatus().getId());
 	}
-	@Test
-	void  pointawarded_entity_employee_mapping() {
-		assertNotNull(PointAwarded);
-		assertEquals(85000,PointAwarded.getEmployee().getSalary());
-	}
+//	@Test
+//	void  pointawarded_entity_employee_mapping() {
+//		assertNotNull(PointAwarded);
+//		assertEquals(85000,PointAwarded.getEmployee().getSalary());
+//	}
 	
 	@Test
 	void  pointawarded_entity_user_mapping() {

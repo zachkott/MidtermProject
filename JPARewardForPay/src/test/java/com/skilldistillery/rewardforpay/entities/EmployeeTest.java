@@ -40,16 +40,16 @@ class EmployeeTest {
 		
 	}
 	
-	@Test
-	void test_Employee_Entity_mapping() {
-		assertNotNull(employee);
-		assertEquals("Ryan",employee.getFirstName());
-		assertEquals("Cosby",employee.getLastName());
-		assertEquals(110000, employee.getSalary());
-		assertEquals("Do you have those TPS reports?", employee.getDescription());
-
-
-	}
+//	@Test
+//	void test_Employee_Entity_mapping() {
+//		assertNotNull(employee);
+//		assertEquals("Ryan",employee.getFirstName());
+//		assertEquals("Cosby",employee.getLastName());
+//		assertEquals(110000, employee.getSalary());
+//		assertEquals("Do you have those TPS reports?", employee.getDescription());
+//
+//
+//	}
 	
 	@Test
 	public void test_employee_to_address_association() {

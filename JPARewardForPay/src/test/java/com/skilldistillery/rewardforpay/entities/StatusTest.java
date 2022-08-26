@@ -47,22 +47,22 @@ class StatusTest {
 			assertEquals("Approved", status.getName());
 		}
 		
-		@Test
-		void test_Status_to_Prize_mapping() {
-			assertNotNull(status);
-			assertEquals(4, status.getPrizes().size());
-		}
-
-		@Test
-		void test_Status_to_Employees_mapping() {
-			assertNotNull(status);
-			assertEquals(7, status.getEmployees().size());
-		}
-
-		@Test
-		void test_Status_to_PointsAwarded_mapping() {
-			assertNotNull(status);
-			assertEquals(1, status.getPointsAwarded().size());
-		}
+//		@Test
+//		void test_Status_to_Prize_mapping() {
+//			assertNotNull(status);
+//			assertEquals(4, status.getPrizes().size());
+//		}
+//
+//		@Test
+//		void test_Status_to_Employees_mapping() {
+//			assertNotNull(status);
+//			assertEquals(7, status.getEmployees().size());
+//		}
+//
+//		@Test
+//		void test_Status_to_PointsAwarded_mapping() {
+//			assertNotNull(status);
+//			assertEquals(1, status.getPointsAwarded().size());
+//		}
 
 }
