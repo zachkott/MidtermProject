@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-lg bg-light" id="navbarBG">
 >
 <!-- role is coming from LoginController -->
-<c:if test="${role==2}">
+	<c:if test="${role==2}">
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -85,10 +85,10 @@
     </div>
   </div>
 
-</c:if>
+	</c:if>
 
-		 <c:if test="${role==1}">
-<div class="container-fluid">
+	<c:if test="${role==1}">
+		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
 		Reward For Pay
@@ -161,7 +161,8 @@
     </div>
   </div>
 
-		</c:if> 
+	</c:if> 
+	
 	<c:if test="${role==3}">
 		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
@@ -192,9 +193,10 @@
 
     </div>
   </div>
-  </c:if>
-<c:if test="${empty role}">
-				<div class="container-fluid">
+    </c:if>
+    
+	<c:if test="${empty role}">
+		<div class="container-fluid">
     <a class="navbar-brand" href="home.do">
           <img src="https://cdn.pixabay.com/photo/2014/12/21/23/57/money-576443__340.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
 		Reward For Pay
@@ -223,7 +225,8 @@
 
     </div>
   </div>
-		</c:if>
+  
+	</c:if>
 		<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
@@ -233,7 +236,8 @@
 <body>
 <c:if test="${ role == 1}">
 <%@ include file="admin/adminHome.jsp"%>
-
+<input type="hidden" id="username" value="${sessionScope.loggedInUser.username}">
+<input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
 </c:if>
 
 </body>
