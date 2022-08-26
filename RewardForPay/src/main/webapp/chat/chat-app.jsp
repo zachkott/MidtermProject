@@ -10,9 +10,6 @@
 		<link rel="stylesheet" href="chat.css" crossorigin="anonymous">
 		<script type="text/javascript" src="websocket.js"></script>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
@@ -29,12 +26,6 @@
 	
 				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
  					<div class="card-header">
- 						<div class="input-group">
-							<input type="text" placeholder="Search..." name="" class="form-control search">
-							<div class="input-group-prepend">
-								<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
-							</div>
-						</div>
 					</div>  
 					<div class="card-body contacts_body">
 						<ui class="contacts"  id="usersList">
@@ -49,8 +40,6 @@
 						</ui>
 				
 					</div>
-						<button class="input-group-text send_btn" id="logoutBtn" onclick="logout()">Logout</button>
-					
 				</div>
 				</div>
 				<div class="col-md-8 col-xl-6 chat">
