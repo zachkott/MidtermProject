@@ -47,7 +47,7 @@ function validateForm() {
 			<tbody>
 			<tr>
 				<td colspan="3"><h1 class="left">Welcome to Reward For Pay</h1></td>
-				<hr>
+				<br>
 			</tr>
 				<tr> 
 					<td rowspan="2" colspan="2"><img class="detail_img col-md-4" id="userImage" src="${sessionScope.userinfo.employeePhoto}" title="${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}"/></td>
@@ -77,7 +77,7 @@ function validateForm() {
 				<tr>
 					<td colspan="2" id="empDetails">
 						<ul style="list-style-type: none">
-						    <li id="userId" value="${sessionScope.loggedInUser.id}"><strong>UserId: </strong>${sessionScope.loggedInUser.id}</li>
+						    <li id="userId" value="${sessionScope.loggedInUser.id}"><strong>Employee Id: </strong>${sessionScope.loggedInUser.id}</li>
 							<li><strong>Salary: </strong>${sessionScope.userinfo.salary}</li>
 							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.street}</li>
 							<li><strong>Department: </strong>${sessionScope.userinfo.department.name}</li>
