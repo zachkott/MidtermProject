@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Reward For Pay</title>
+<title>Schrute Bucks</title>
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 <h1>You do not have permission to access the admin controls</h1>
-${userinfo.firstName}
 
 
 </body>
