@@ -38,6 +38,7 @@
 
 <!-- Text input-->
  <input type ="hidden" name ="id" value="${employee.id}">
+ 
 <div class ="center">
 <div class="form-group">
   <label class="col-md-4 control-label">First Name:</label>  
@@ -66,8 +67,8 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="departmentId" class="form-control selectpicker" required>
-      <option value="${sessionScope.userinfo.department.name}">Select your Department</option>
+    <select name="depId" class="form-control selectpicker" required>
+      <option value="${sessionScope.userinfo.department.id}">${sessionScope.userinfo.department.name}</option>
 				<option value=3>Engineering</option>
 				<option value=4>Human Resources</option>
 				<option value=5>Operations</option>

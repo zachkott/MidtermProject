@@ -161,12 +161,12 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "editEmployee.do", method = RequestMethod.POST)
-	public String updateUserDetails(int id,Address address,int addressId, String date, HttpSession session, Employee employee, Model model) {
+	public String updateUserDetails(int id,Address address,int depId, int addressId, String date, HttpSession session, Employee employee, Model model) {
 		Address add = userDao.updateAddress(address, addressId);
 		employee.setAddress(add);
 		LocalDate localDate = LocalDate.parse(date);
 		employee.setBirthday(localDate);
-		employee = userDao.updateEmployee(id, employee);
+		employee = userDao.updateEmployee(id, employee, depId);
 		
 		model.addAttribute("employee", employee);
 		session.setAttribute("userinfo", employee);

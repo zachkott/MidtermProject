@@ -175,22 +175,23 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Employee updateEmployee(int id, Employee employee) {
+	public Employee updateEmployee(int id, Employee employee, int depId) {
 		Employee updated = em.find(Employee.class, id);
+		Department dep= em.find(Department.class, depId);
 		Status stat = em.find(Status.class, 2);
 		updated.setRequestStatus(stat);
 		updated.setFirstName(employee.getFirstName());
 		updated.setLastName(employee.getLastName());
 		updated.setSalary(employee.getSalary());
-		
-		updated.setDepartment(employee.getDepartment());
+		updated.setEmployeePhoto(employee.getEmployeePhoto());
+		updated.setDepartment(dep);
 //		updated.setSupervisorId(employee.getSupervisorId());
 //		updated.setEmployeePhoto(employee.getEmployeePhoto());
 		updated.setBirthday(employee.getBirthday());
 //		updated.setDescription(employee.getDescription());
 		
 		
-		return employee;
+		return updated;
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public interface UserDAO {
 		
 		//Employee profile/actions -Daniel
 		Employee createEmployee(Employee employee, int addId, int depId);
-		Employee updateEmployee(int id, Employee employee);
+		Employee updateEmployee(int id, Employee employee, int depId);
 		Employee deleteEmployee(int id); //Inactivate employee
 		Employee findEmployeeById(int employeeId);
 		List<Employee> findAllEmployees();

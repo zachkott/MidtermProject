@@ -63,7 +63,7 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="departmentId" class="form-control selectpicker" required>
+    <select name="depId" class="form-control selectpicker" required>
       <option value="${employee.department.name}">Select your Department</option>
 				<option value=3>Engineering</option>
 				<option value=4>Human Resources</option>

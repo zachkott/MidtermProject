@@ -80,7 +80,7 @@ function validateForm() {
 						    <li id="userId" value="${sessionScope.loggedInUser.id}"><strong>Employee Id: </strong>${sessionScope.loggedInUser.id}</li>
 							<li><strong>Salary: </strong>${sessionScope.userinfo.salary}</li>
 							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.street}</li>
-							<li><strong>Department: </strong>${sessionScope.userinfo.department.name}</li>
+							<li><strong>Department: </strong>${userinfo.department.name}</li>
 							<li><strong>Birthday: </strong>${sessionScope.userinfo.birthday}</li>
 							<li><strong>Reward Balance: </strong>${sessionScope.rewardBalance}</li> <!-- do the logic in controller and pass the attribute value -->
 						</ul>
