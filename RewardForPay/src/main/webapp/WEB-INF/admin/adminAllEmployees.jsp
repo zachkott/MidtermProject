@@ -15,7 +15,7 @@
 
 <div class ="container-fluid">
 <div class ="space">
-<h1>Inside Admin All Employees</h1>
+<h1>Employees</h1>
  <table class="table table-striped table-hover">
 		<thead class="table-light">
 			<tr>
