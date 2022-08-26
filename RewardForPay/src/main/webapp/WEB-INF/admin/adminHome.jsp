@@ -8,7 +8,7 @@
 <link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
 </head>
 <body>
-	<%--  <%@ include file="../nav.jsp"%>  --%>
+	
 
 	
 
@@ -85,15 +85,7 @@
 			 	  <span class="title">Chat</span>
 				</a>
 			</li>
-			<!-- <li class="list">
-				<b></b>
-				<b></b>
-				<a href="settings.do">
-			 	  <span class="icon"><ion-icon 
-			 	  name="settings-outline"></ion-icon></span> 
-			 	  <span class="title">Settings</span>
-				</a>
-			</li> -->
+		
 				<li class="list">
 				<b></b>
 				<b></b>
@@ -121,23 +113,9 @@
 
 
 </div>
-<!-- </div> -->
-<!-- <div class="container-fluid">
-<h1>Test for spacing</h1>
-<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-</div> -->
 
 
 
-
-
-	
-	
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

@@ -28,8 +28,13 @@
   <div class="row">
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-globe logo slideanim"></span>
-       <iframe width="420" height="315" src="https://www.youtube.com/embed/vPeRElll3Hw"></iframe>
-    </div>
+<!--        <iframe width="420" height="315" src="https://www.youtube.com/embed/vPeRElll3Hw"></iframe>
+ -->  
+<!--  <iframe width="480" height="315" src="https://www.youtube.com/embed/vPeRElll3Hw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ --> 
+ <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"> <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" src="https://www.dailymotion.com/embed/video/x2rlg76" width="100%" height="100%" allowfullscreen > </iframe> </div>
+ 
+   </div>
     <div class="col-sm-8">
       <h2>What we offer</h2><br>
       <h4><strong>Features:</strong></h4>

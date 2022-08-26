@@ -50,7 +50,7 @@ public class LoginController {
 		session.removeAttribute("loggedInUser");
 		session.removeAttribute("role");
 		session.removeAttribute("userinfo");
-		return "home";
+		return "redirect:home.do";
 	}
 	@RequestMapping (path ="DanielTest.do") 
 	public String DanielTest(HttpSession session) {
