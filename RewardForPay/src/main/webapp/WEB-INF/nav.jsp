@@ -33,6 +33,7 @@
            <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="eventsList.do?empId=${sessionScope.userinfo.id}">Join an Event</a></li>
             <li><a class="dropdown-item" href="joinedEvents.do?empId=${sessionScope.userinfo.id}">Registered Events</a></li>
+            <li><a class="dropdown-item" href="createEvent.do">Create Event</a></li>
           </ul>
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

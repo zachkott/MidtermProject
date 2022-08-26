@@ -18,7 +18,7 @@
 
 <h1>Employee Search</h1>
 
- <table class="table table-striped table-hover">
+ <table id="keywordEmp" class="table table-striped table-hover">
 		<thead class="table-light">
 			<tr>
 				<th>ID</th>
@@ -38,15 +38,15 @@
 			<c:forEach var="employee" items="${allEmployees}">
 
 				<tr>
-					<td><a href="viewEmployee.do?id=${employee.id}">${employee.id}</a></td>
-					<td><img width="40%" class="detail_img"  src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
-					<td>${employee.firstName}</td>
-					<td>${employee.lastName}</td>
-					<td>${employee.user.username}</td>
-					<td>${employee.address.phone}</td>
-					<td>${employee.description}</td>
-					<td>${employee.department.name}</td>
-					<td>${employee.department.description}</td>
+					<td><a href="viewEmployee.do?id=${employee.id}"><h3>${employee.id}</h3></a></td>
+					<td><img class="detail_img"  src="${employee.employeePhoto}" title="Illustrated headshot"/></td>
+					<td><h4>${employee.firstName}</h4></td>
+					<td><h4>${employee.lastName}</h4></td>
+					<td><h4>${employee.user.username}</h4></td>
+					<td><h4>${employee.address.phone}</h4></td>
+					<td><h4>${employee.description}</h4></td>
+					<td><h4>${employee.department.name}</h4></td>
+					<td><h4>${employee.department.description}</h4></td>
 					
 					
 					

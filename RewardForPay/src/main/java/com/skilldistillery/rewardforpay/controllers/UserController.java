@@ -43,17 +43,6 @@ public class UserController {
 		return "user/createUser";
 	}
 
-//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-//	public ModelAndView createUserAccount(Model model, User user, RedirectAttributes redir, int empId) {
-//		ModelAndView mv = new ModelAndView();
-//		User newUser = userDao.createUser(user, empId);
-////		newUser.setEnabled(true);
-//		boolean createdUser = newUser.getId() > 0 ? true : false;
-//		redir.addFlashAttribute("newUser", newUser);
-//		redir.addFlashAttribute("createdUser", createdUser);
-//		mv.setViewName("redirect:userWasCreated.do");
-//		return mv;
-//	}
 
 	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
 	public ModelAndView createUserAccount( Model model, int departmentId, String date,  Employee  employee, Address address, User user, RedirectAttributes redir) {
@@ -76,7 +65,6 @@ public class UserController {
 		// Create User
 		ModelAndView mv = new ModelAndView();
 		User newUser = userDao.createUser(user, employee.getId(), departmentId);
-//		newUser.setEnabled(true);
 		boolean createdUser = newUser.getId() > 0 ? true : false;
 		redir.addFlashAttribute("newUser", newUser);
 		redir.addFlashAttribute("createdUser", createdUser);
@@ -121,37 +109,6 @@ public class UserController {
 		model.addAttribute("users", userDao.findUserByKeyword(keyword));
 		return "user/userResults";
 	}
-
-	// Admin only
-//	@RequestMapping(path = "deleteUser.do", method = RequestMethod.GET)
-//	public String deleteUser(Integer id, Model model) {
-//		if (id <= 0) {
-//			return "index";
-//		}
-//
-//		User status = userDao.findUserById(id);
-//		if (userDao.deleteUser(id) != null) {
-//			model.addAttribute("user", status);
-//			return "user/deletedUser";
-//		} else {
-//			return "index";
-//		}
-//
-//	}
-
-//	@RequestMapping(path = "activateUser.do", method = RequestMethod.GET)
-//	public String activateUser(Model model, int userId) {
-//		boolean activateUser = userDao.enableUser(userId);
-//		model.addAttribute("activated", activateUser);
-//		return "admin/adminHome";
-//	}
-//	
-//	@RequestMapping(path = "deactivateUser.do", method = RequestMethod.GET)
-//	public String deactivateUser(Model model, int userId) {
-//		boolean deactivateUser = userDao.disableUser(userId);
-//		model.addAttribute("deactivated", deactivateUser);
-//		return "admin/adminHome";
-//	}
 	
 	
 	@RequestMapping(path = "updateEmployeeForm.do")
@@ -179,6 +136,7 @@ public class UserController {
 		Employee emp = (Employee) session.getAttribute("userinfo");
 		List<Prize> wishlist = userDao.showWishList(emp.getId());
 		model.addAttribute("wishlist", wishlist);
+		model.addAttribute("numOfPrizes", wishlist.size());
 		return "wishlist";
 		
 	}
@@ -188,6 +146,7 @@ public class UserController {
 		Employee emp = (Employee) session.getAttribute("userinfo");
 		List<Prize> wishlist = userDao.addPrizeToWishlist(emp.getId(), prizeId);
 		model.addAttribute("wishlist", wishlist);
+		model.addAttribute("numOfPrizes", wishlist.size());
 		return "wishlist";
 		
 	}

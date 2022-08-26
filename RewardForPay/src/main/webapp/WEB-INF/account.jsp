@@ -18,8 +18,6 @@ function validateForm() {
         localStorage.setItem("userImage", userImage);
 
         window.open("chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
-
-       // window.location.href = "chat-app.jsp";
 }
 </script>
 <title>Reward For Pay</title>
@@ -82,7 +80,7 @@ function validateForm() {
 							<li class="text-wrap"><strong>Address: </strong>${sessionScope.userinfo.address.street}</li>
 							<li><strong>Department: </strong>${userinfo.department.name}</li>
 							<li><strong>Birthday: </strong>${sessionScope.userinfo.birthday}</li>
-							<li><strong>Reward Balance: </strong>${sessionScope.rewardBalance}</li> <!-- do the logic in controller and pass the attribute value -->
+							<li><strong>Reward Balance: </strong>${sessionScope.userinfo.rewardBalance}</li> <!-- do the logic in controller and pass the attribute value -->
 						</ul>
 					</td>
 				</tr>
@@ -123,7 +121,6 @@ function validateForm() {
 			</thead>
 			<tbody>
 			<br>
-			<hr>
 			<tr>
 			<td>
 	        <h3 class="card-title" id="tier" style="text-align:center">Search Prizes By Tier: </h3>
@@ -138,7 +135,7 @@ function validateForm() {
 			<br>
 			</td>
 			<td>
-			<a href="allPrizes.do?id=0"><h3 id="shadow">See all prizes</h3></a>
+			<a href="allPrizes.do?id=0"><h3>See all prizes</h3></a>
 			</td> 
 	
 			<c:if test="${role != 1}">
@@ -158,7 +155,8 @@ function validateForm() {
 				</tbody>
 			</table>
 	</div>
-			<c:if test="${! empty sessionScope.wishlist}">
+	<c:choose>
+	<c:when test="${! empty sessionScope.wishlist}">
 	
 	   <div class="row row-cols-1 row-cols-md-4 g-${numOfPrizes}">
 					<c:forEach var="item" items="${wishlist}">
@@ -167,13 +165,18 @@ function validateForm() {
 					      <a href="reward.do?id=${item.id}"><img class="card-img-top " src="${item.image}" alt="${item.name}"/></a>
 					      <div class="card-body">
 					        <h3 class="card-title2">${item.name}</h3>
-					        <p class="card-text">${item.points}, Tier ${item.tier.id}</p>
+					        <p class="card-text">Schrute Bucks: ${item.points}</p>
+					        <p class="card-text">Prize Tier: ${item.tier.id}</p>
 					      </div>
 					    </div>
 					  </div>
 					</c:forEach>
 				</div> 
- 			</c:if>  		
+ 			</c:when>
+ 			<c:otherwise>
+ 				<form action="wishlist.do"><button class="action_button" type="submit" >See Wishlist</button></form>
+ 			</c:otherwise>
+ 			</c:choose>  		
 					<br><br>
    </c:when>
    <c:otherwise>
