@@ -47,8 +47,7 @@
                     <h3 class="m-b-xs"><strong>Jamie Patterson</strong></h3>
                     <address class="m-t-md">
                      <strong>SCRUM Master</strong><br>
-                        Live Chat Queen<br>
-                        I liked the challenge<br>
+                       <br> Who says workplace harassment has to stop at the office?<br>
                     </address>
         
                 </a>
