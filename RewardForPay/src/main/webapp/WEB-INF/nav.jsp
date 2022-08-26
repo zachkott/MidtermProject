@@ -238,6 +238,11 @@
 <%@ include file="admin/adminHome.jsp"%>
 <input type="hidden" id="username" value="${sessionScope.loggedInUser.username}">
 <input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1194c390eb503206b78c501107b4416a5d80e80c
 </c:if>
 
 </body>

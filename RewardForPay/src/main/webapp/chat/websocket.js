@@ -1,6 +1,6 @@
-//const url = "http://localhost:8084/"; // Dev 
+const url = "http://localhost:8084/"; // Dev 
 //const url = "";
-const url = "/RewardForPay/"; // Production
+//const url = "/RewardForPay/"; // Production
 
 let stompClient;
 let selectedUserOrGroup="10000000000000000";
