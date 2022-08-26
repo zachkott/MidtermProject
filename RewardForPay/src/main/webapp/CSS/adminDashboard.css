@@ -9,16 +9,9 @@ font-family: 'Poppins', sans-serif;
 
 }
 
-
-
-
 body{
 	min-height:100vh;
-	background: white;
-	
 }
-
-
 
 .navigation{
 	position:fixed;
@@ -35,8 +28,6 @@ body{
 }
 .navigation.active{
 	width:183px;
-		
-	
 }
 
 .navigation ul{
@@ -46,7 +37,6 @@ body{
 	width:100%;
 	padding-left: 7px;
 	padding-top: 40px;
-	
 }
 
 
@@ -58,6 +48,7 @@ body{
 	border-bottom-left-radius: 20px;
 	
 }
+
 .navigation ul li.active{
 	background: #bcd5b0;
 }
@@ -80,7 +71,6 @@ body{
 	height: 100%;
 	background: black;
 	border-bottom-right-radius: 20px;
- 
 }
 
 .navigation ul li b:nth-child(2){
@@ -122,8 +112,6 @@ body{
 .navigation ul li.active a{
 	color:black;
 }
-
-
 
 .navigation ul li a .icon{
 	position: relative;
@@ -200,5 +188,6 @@ h1{
 	text-align:center;
 }
 
-
-
+h3 {
+	text-align:center;
+}

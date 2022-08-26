@@ -1,5 +1,5 @@
  body, html{
-    font: 400 15px Lato, sans-serif;
+    font: 400 15px Lato, copperplate;
     line-height: 1.8;
     background: #ffffff !important;
     background: -webkit-linear-gradient(to right, #bcd5b0, #ffffff, #bcd5b0)!important;
@@ -14,33 +14,119 @@
   .action_button {
   	background-color: #454f45 !important;
   	color: white;
+  	font-size: 20px;
+  	font-weight: 400;
   	border-radius: 50px;
-  	width: 150px;
+  	width: 310px;
   }
+  
+  .action_button2 {
+  	background-color: #87f031 !important;
+  	color: black;
+  	font-size: 20px;
+  	font-weight: bold;
+  	border-radius: 35px;
+  	 border: 5px solid #010101;
+  	width: 340px;
+  	height: 60px;
+  	margin-right: 0;
+  }
+  
+  .card-img-top {
+	height: 200px;
+	width:auto;
+	padding: 10px;
+	margin: auto;
+	
+}
+
+.col {
+	background-color: #EBF7E3 !important;
+	font-family: copperplate;
+	font-size:20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.card-title2 {
+	  	font-size: 40px !important;
+  	font-weight: bold;
+  	text-align: center;
+  	font-family: copperplate !important;
+}
+
+  
+  #dropdown {
+  	width: 200px;
+  	background-color: #EBF7E3;
+  	color: black;
+  	font-size: 20px;
+  	font-weight: bold;
+  }
+  
   h1 {
-    font-size: 50px;
-    font-family: corsiva;
+    font-size: 60px;
+    font-family: copperplate;
     color: #303030;
     font-weight: 600;
     margin-bottom: 30px;
     margin-top: 30px;
-    text-align: left;
+    text-align: left !important;
   }
   h2 {
-    font-size: 35px;
-    font-family: corsiva;
+    font-size: 45px;
+    font-family: copperplate !important;
     color: #303030;
     font-weight: 600;
     margin-bottom: 30px;
     text-align: left;
   }
+  
+  h3 {
+  	font-size: 30px;
+  	font-weight: bold;
+  	text-align: center;
+  	font-family: copperplate !important;
+  }
+  
   h4 {
     font-size: 19px;
     line-height: 1.375em;
     color: #303030;
     font-weight: 400;
     margin-bottom: 30px;
+    font-family: copperplate !important;
+    
   }  
+  
+  .table-responsive {
+  	margin-left: 20px;
+  }
+  
+  #tier {
+  	text-align: left;
+  	margin-right: 400px;
+  }
+  
+  #name-head {
+  	font-family: copperplate;
+  	margin-right:0;
+  }
+  
+  #shadow {
+    font-size: 30px;
+  	font-weight: bold;
+  	text-align: center !important;
+  	font-family: copperplate !important;
+  	text-decoration: none !important;
+  	margin-right:200px;
+  }
+  
+  #empDetails {
+  	font-size:25px;
+  	font-family: copperplate !important;
+  }
+  
   .jumbotron {
     background-color: #f4511e;
     color: #fff;
@@ -128,9 +214,15 @@
     color: #fff;
   }
   
+  .left {
+  	text-align: left !important;
+  }
+  
   #userImage {
-  	width: 300px;
-  	height: 300px;
+  	width: 450px;
+  	height: 450px;
+  	text-align: center;
+	clip-path: circle(50% at 50% 50%);
   }
 
   footer .glyphicon {
@@ -138,51 +230,7 @@
     margin-bottom: 20px;
     color: #f4511e;
   }
-  .slideanim {visibility:hidden;}
-  .slide {
-    animation-name: slide;
-    -webkit-animation-name: slide;
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
-    visibility: visible;
-  }
-  @keyframes slide {
-    0% {
-      opacity: 0;
-      transform: translateY(70%);
-    } 
-    100% {
-      opacity: 1;
-      transform: translateY(0%);
-    }
-  }
-  @-webkit-keyframes slide {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateY(70%);
-    } 
-    100% {
-      opacity: 1;
-      -webkit-transform: translateY(0%);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
-      margin: 25px 0;
-    }
-    .btn-lg {
-      width: 100%;
-      margin-bottom: 35px;
-    }
-  }
-  @media screen and (max-width: 480px) {
-    .logo {
-      font-size: 150px;
-    }
-  }
-  
-  
+
   .card-header {
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;

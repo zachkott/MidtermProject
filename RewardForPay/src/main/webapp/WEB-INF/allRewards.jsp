@@ -35,7 +35,7 @@
 	<c:when test="${role==1}">
 		<c:choose>
 			<c:when test="${! empty prizes}">
-				<div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
+				<div class="row row-cols-1 row-cols-md-4 g-${numOfPrizes}">
 					<c:forEach var="prize" items="${prizes}">
 					  <div class="col">
 					    <div class="card h-100">

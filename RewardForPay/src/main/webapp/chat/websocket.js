@@ -1,6 +1,5 @@
-const url = "http://localhost:8084/"; // Dev 
-//const url = "";
-//const url = "/RewardForPay/"; // Production
+const url = "http://localhost:8084/";
+//const url = /RewardForPay/
 let stompClient;
 let selectedUserOrGroup="10000000000000000";
 let newMessages = new Map();
@@ -38,7 +37,7 @@ function connectToChat(username) {
             } else {
                 // console.log("data.group_id "+data.group_id)
                 newMessages.set(data.fromLogin, data.message);
-                $('#usernameAppender_' + data.fromLogin).append('<span id="newMessage_' + data.fromLogin + '" style="color: red">+1</span>');
+                $('#usernameAppender_' + data.fromLogin).append('<span id="newMessage_' + data.fromLogin + '" style="color: yellow; font-weight: bold">*New</span>');
 
                 console.log("kebuat")
                 let messageTemplateHTML = "";
@@ -72,7 +71,7 @@ function connectToChat(username) {
                         console.log("append success")
                     } else {
                         newMessages.set(data.groupId, data.message);
-                        $('#userGroupAppender_' + data.groupId).append('<span id="newMessage_' + data.groupId + '" style="color: red">+1</span>');
+                        $('#userGroupAppender_' + data.groupId).append('<span id="newMessage_' + data.groupId + '" style="color: yellow; font-weight: bold">*New</span>');
 
                         console.log("kebuat")
                         let messageTemplateHTML = "";

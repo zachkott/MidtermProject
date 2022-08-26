@@ -33,10 +33,9 @@ public class AccountController {
 		User user = (User) session.getAttribute("loggedInUser");
 		Employee employee = (Employee) session.getAttribute("userinfo");
 		if (user != null) {
-			List<Prize> prizes = userDao.findAllActivePrizes();
-			session.setAttribute("prizes", userDao.findAllPrizes());
-			model.addAttribute("numOfPrizes", prizes.size());
-			model.addAttribute("prizeError", "Sorry, something went wrong. Please try again later.");
+			List<Prize> wishlist = userDao.showWishList(employee.getId());
+			session.setAttribute("wishlist", wishlist);
+			model.addAttribute("numOfPrizes", wishlist.size());
 			session.setAttribute("rewardBalance", userDao.findPointBalance(employee.getId())); 
 			session.setAttribute("claimed", adminDao.claimedInitial(employee.getId())); 
 			session.setAttribute("claimedT", adminDao.claimedInitialT(employee.getId())); 
