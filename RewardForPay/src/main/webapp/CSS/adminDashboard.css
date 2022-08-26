@@ -161,6 +161,7 @@ border-top-right-radius: 20px;
 	display:flex;
 	justify-content: center;
 	align-items: center;
+	text-align:center;
 	
 }
 
@@ -200,6 +201,7 @@ border-top-right-radius: 20px;
 h1{
 	text-align:center;
 }
+
 
 
 
