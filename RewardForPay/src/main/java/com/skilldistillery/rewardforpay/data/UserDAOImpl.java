@@ -279,7 +279,7 @@ public class UserDAOImpl implements UserDAO {
 		Status status = em.find(Status.class, 4);
 		Prize deleted = em.find(Prize.class, id);
 		deleted.setStatus(status);
-		boolean success = !em.contains(deleted);
+		boolean success = em.contains(deleted);
 		return success;
 	}
 

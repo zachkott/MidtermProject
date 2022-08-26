@@ -18,6 +18,17 @@
 <div class="account">
 <h1>Browse the full list of prizes below:</h1>
 
+  <h3 class="card-title" id="tier" style="text-align:center">Search Prizes By Tier: </h3>
+	          <form action="allPrizes.do" method="get">
+				<select name="id" id="dropdown" required>
+						<option value="1">Tier 1 - Copper</option>
+						<option value="2">Tier 2 - Silver</option>
+						<option value="3">Tier 3 - Gold</option>
+				</select>
+				<input type="submit" class="action_button" value="See Prizes" />
+			</form>
+			<br>
+
 <!-- Lists all prizes by tier or a full list of all prizes -->
 <c:choose>
 	<c:when test="${prizeDeleted==true}">

@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 
-
+<div class="container-fluid">
+<div class="space">
 	<table id="actions">
 		<tr>
 			<td rowspan=4><img class="form_img" src="${prize.image}"
@@ -56,5 +59,7 @@
 			<td class="buffer"></td>
 		</tr>
 	</table>
+	</div>
+	</div>
 </body>
 </html>
