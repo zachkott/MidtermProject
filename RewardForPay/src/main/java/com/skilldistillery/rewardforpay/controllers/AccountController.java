@@ -111,7 +111,7 @@ public class AccountController {
 		Employee employee = (Employee) session.getAttribute("userinfo");
 		int remainder = userDao.findPointBalance(employee.getId());
 		if(adminDao.createRedemption(p,employee,remainder)) {
-			model.addAttribute("redeemed","Congratulations! Please allow 5-10 business days to receive your item at.");		
+			model.addAttribute("redeemed","Congratulations! Please allow 5-10 business days to receive your item at:");		
 		}else {		
 			model.addAttribute("Failed","You do not have enough points to redeem this prize.");
 		}

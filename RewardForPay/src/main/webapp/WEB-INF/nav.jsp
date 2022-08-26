@@ -40,7 +40,6 @@
           </a>
            <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="wishlist.do">Wishlist</a></li>
-            <li><a class="dropdown-item" href="events.do">Events</a></li>
             <li><a class="dropdown-item" href="allPrizes.do?id=0">Prizes</a></li>
             <li><a class="dropdown-item" href="claimedPrizes.do">Claimed Prizes</a></li>
             <li><hr class="dropdown-divider"></li>
