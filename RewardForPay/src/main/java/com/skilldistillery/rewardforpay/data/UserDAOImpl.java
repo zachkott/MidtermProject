@@ -168,6 +168,7 @@ public class UserDAOImpl implements UserDAO {
 		emp.setPrizes(prizes);
 		emp.setRequestStatus(stat);
 		emp.setAddress(add);
+		emp.setEmployeePhoto(employee.getEmployeePhoto());
 		em.persist(emp);
 		emp.setPointsAwarded(findAllAwards(emp.getId()));
 		return emp;

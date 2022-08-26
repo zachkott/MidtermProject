@@ -3,6 +3,7 @@ package com.skilldistillery.rewardforpay.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class UserController {
 	private UserDAO userDao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home(Model model) {
-		
+	public String home(Model model, HttpServletResponse resp) {
+		resp.addHeader("Referrer-Policy", "origin-when-cross-origin");
 		return "home";
 
 	}
