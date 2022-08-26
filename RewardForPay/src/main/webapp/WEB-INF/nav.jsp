@@ -8,7 +8,6 @@
 
 
 <nav class="navbar navbar-expand-lg bg-light" id="navbarBG">
->
 <!-- role is coming from LoginController -->
 	<c:if test="${role==2}">
 		<div class="container-fluid">
