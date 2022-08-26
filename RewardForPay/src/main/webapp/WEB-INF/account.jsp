@@ -15,7 +15,8 @@ function validateForm() {
         localStorage.setItem("userId", userId);
         localStorage.setItem("userImage", userImage);
         
-        window.open("chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
+        //window.open("chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
+        window.location.href("chat/chat-app.jsp");
 }
 </script>
 <title>Reward For Pay</title>
@@ -91,7 +92,7 @@ function validateForm() {
 						</form>
 					</td>
 					<td>
-						<form action="account.do"><button type="submit" onclick="validateForm()" class="action_button">Chat with Friends</button></form>
+						<form action="/chat/chat-app.jsp"><button type="submit" onclick="validateForm()" class="action_button">Chat with Friends</button></form>
 						
 					</td>
 	<c:if test="${role != 1}">
