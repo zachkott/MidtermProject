@@ -5,7 +5,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Reward For Pay</title>
+<title>Schrute Bucks</title>
 <link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
 <link rel ="stylesheet" type ="text/css" href="CSS/homepage.css">
 

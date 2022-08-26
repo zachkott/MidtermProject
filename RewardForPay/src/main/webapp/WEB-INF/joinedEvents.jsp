@@ -32,7 +32,7 @@
 				<tbody>				
 				<c:forEach var="each" items="${joined}">
 				<tr>
-				<td><a href="findAwardTest.do?paid=${each.id}">Details</a></td>
+				<td><a class="btn btn-xs btn-warning" href="findAwardTest.do?paid=${each.id}">Details</a></td>
 				<td>${each.amount}</td>
 				<td>${each.description}</td>
 				<td>${each.issued}</td>
