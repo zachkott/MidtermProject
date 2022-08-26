@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,11 +10,11 @@ function validateForm() {
         let username = document.getElementById("username").value;
         let userId = document.getElementById("userId").value;
         let userImage = document.getElementById("userImage").src;
-        
+
         localStorage.setItem("username", username);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userImage", userImage);
-        
+
         window.open("chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
 }
 </script>
@@ -46,13 +46,13 @@ function validateForm() {
 			<tr>
 				<td colspan="3"><h1>Welcome to Reward For Pay</h1></td>
 			</tr>
-				<tr> 
+				<tr>
 					<td rowspan="2" colspan="2"><img class="detail_img col-md-4" id="userImage" src="${sessionScope.userinfo.employeePhoto}" title="${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}"/></td>
 					<td class="text-wrap col-md-offset-1 col-md-8" id="employee_info">
 						<h2><strong>${sessionScope.userinfo.firstName} ${sessionScope.userinfo.lastName}</strong></h2><br>
 					</td>
-					
-					
+
+
 				<c:if test="${role != 1}">
 					<c:choose>
 						<c:when test="${empty claimed }">
@@ -84,15 +84,15 @@ function validateForm() {
 				</tr>
 				<tr>
 					<td>
-					
-						<form action="updateEmployeeForm.do"> 
-							<input type="hidden" value="${sessionScope.userinfo.id}" name="id" /> 
+
+						<form action="updateEmployeeForm.do">
+							<input type="hidden" value="${sessionScope.userinfo.id}" name="id" />
 							<input class="action_button" type="submit" value="Edit Profile" />
 						</form>
 					</td>
 					<td>
 						<form action="account.do"><button type="submit" onclick="validateForm()" class="action_button">Chat with Friends</button></form>
-						
+
 					</td>
 	<c:if test="${role != 1}">
 					<td>
@@ -102,7 +102,7 @@ function validateForm() {
 					 	<form action="createAward.do"><button class="action_button" type="submit">Submit a Coworker for an Award</button></form>
 					</td>
 	</c:if>
-				
+
 				</tr>
 				</tbody>
 				</table>
@@ -110,7 +110,7 @@ function validateForm() {
 	</div>
 		<c:if test="${! empty sessionScope.prizes}">
 	<div>
-	
+
 		<table>
 		<tr>
 			<td>
@@ -127,8 +127,8 @@ function validateForm() {
 	</td>
 	<td>
 			<a href="allPrizes.do?id=0">See all prizes</a>
-	</td> 
-	
+	</td>
+
 <c:if test="${role != 1}">
 <c:choose>
 	<c:when test="${empty claimedT }">
@@ -145,7 +145,7 @@ function validateForm() {
 	</tr>
 	</table>
 	</div>
- </c:if>  		
+ </c:if>
    </c:when>
    <c:otherwise>
      <h2>Not logged in.</h2>
