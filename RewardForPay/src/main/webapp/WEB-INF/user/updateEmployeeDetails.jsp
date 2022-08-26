@@ -155,6 +155,16 @@
   </div>
 </div>
 <br>
+<div class="form-group">
+  <label class="col-md-4 control-label">Profile Picture:</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="employeePhoto" value="${sessionScope.userinfo.employeePhoto}" class="form-control" type="text" >
+    </div>
+  </div>
+</div>
+<br>
 		<input type = "hidden" name = "addressId" value ="${sessionScope.userinfo.address.id}">
 			<br>
 			<input type = "hidden" name = "username" value ="${sessionScope.userinfo.user.username}">
