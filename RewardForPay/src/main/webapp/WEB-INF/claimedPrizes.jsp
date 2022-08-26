@@ -20,7 +20,7 @@
 <!-- Lists all prizes by tier or a full list of all prizes -->
 		<c:choose>
 			<c:when test="${! empty record}">
-				<h1>test</h1>
+				
 				<div class="row row-cols-1 row-cols-md-5 g-${numOfPrizes}">
 					<c:forEach var="prize" items="${record}">
 					  <div class="col">

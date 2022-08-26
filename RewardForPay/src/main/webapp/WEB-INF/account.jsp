@@ -46,7 +46,7 @@ function validateForm() {
 			</thead>
 			<tbody>
 			<tr>
-				<td colspan="3"><h1 class="left">Welcome to Reward For Pay</h1></td>
+				<td colspan="3"><h1 class="left">Welcome to Schrute Bucks</h1></td>
 				<br>
 			</tr>
 				<tr> 
