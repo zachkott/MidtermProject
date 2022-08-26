@@ -25,7 +25,7 @@ function validateForm() {
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-<input type="hidden" id="username" value="${sessionScope.loggedInUser.username}">
+<input type="hidden" id="username" value="${sessionScope.loggedInUser.id}">
 <input type="hidden" name="userId" id="userId" value="${sessionScope.loggedInUser.id}"/>
 
 <div class="container-fluid">
@@ -91,7 +91,7 @@ function validateForm() {
 						</form>
 					</td>
 					<td>
-						<form action="account.do"><button type="submit" onclick="validateForm()" class="action_button">Chat with Friends</button></form>
+						<form action="chat/chat-app.jsp"><button type="submit" onclick="validateForm()" class="action_button">Chat with Friends</button></form>
 
 					</td>
 	<c:if test="${role != 1}">
