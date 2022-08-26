@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.skilldistillery.rewardforpay.data.AdminDAO;
 import com.skilldistillery.rewardforpay.data.UserDAO;
 import com.skilldistillery.rewardforpay.entities.PointAwarded;
 import com.skilldistillery.rewardforpay.entities.Prize;
@@ -26,6 +26,8 @@ public class RewardController {
 	
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private AdminDAO adminDao;
 
 	//Receives id from button on carousel / prize list page and takes user to prize details page
 	@RequestMapping(path= {"reward.do"})
@@ -132,6 +134,11 @@ public class RewardController {
 		if(newAward.getDescription().startsWith("EVENT:")) {
 			redir.addAttribute("empId", empId);
 			return "redirect:eventsList.do";
+		}
+		if(newAward.getDescription().startsWith("Initial")) {
+			redir.addAttribute("empId", empId);
+			adminDao.updateStatus(newAward, 1);
+			return "redirect:account.do";
 		}
 		redir.addAttribute("empId", empId);
 		redir.addAttribute("awardId", newAward.getId());
