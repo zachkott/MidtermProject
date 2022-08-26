@@ -6,6 +6,8 @@ let newMessages = new Map();
 
 let username = localStorage.getItem("username");
 let userId = localStorage.getItem("userId");
+let userImage = localStorage.getItem("userImage");
+
 
 
 function connectToChat(username) {
@@ -23,7 +25,7 @@ function connectToChat(username) {
             // console.log("data.fromLogin = "+data.fromLogin)
             if (selectedUserOrGroup == data.fromLogin) {
                 console.log("selectedUserOrGroup === data.fromLogin")
-               
+
                 let messageTemplateHTML = "";
                 messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
                 '<div id="child_message" class="msg_cotainer_send">'+data.message+
@@ -35,7 +37,7 @@ function connectToChat(username) {
                 // console.log("data.group_id "+data.group_id)
                 newMessages.set(data.fromLogin, data.message);
                 $('#usernameAppender_' + data.fromLogin).append('<span id="newMessage_' + data.fromLogin + '" style="color: red">+1</span>');
-                
+
                 console.log("kebuat")
                 let messageTemplateHTML = "";
                 messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
@@ -58,7 +60,7 @@ function connectToChat(username) {
                     console.log("------------------------------------ : masuk get message group")
                     if (selectedUserOrGroup == data.groupId) {
                         console.log("selectedUserOrGroup === data.fromLogin")
-                       
+
                         let messageTemplateHTML = "";
                         messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
                         '<div id="child_message" class="msg_cotainer_send">'+data.message+
@@ -69,7 +71,7 @@ function connectToChat(username) {
                     } else {
                         newMessages.set(data.groupId, data.message);
                         $('#userGroupAppender_' + data.groupId).append('<span id="newMessage_' + data.groupId + '" style="color: red">+1</span>');
-                        
+
                         console.log("kebuat")
                         let messageTemplateHTML = "";
                         messageTemplateHTML = messageTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
@@ -80,22 +82,22 @@ function connectToChat(username) {
                     }
                 })
             }
-     
-    
+
+
         });
 
 
-     
+
     },onError);
 }
 function onError() {
-    console.log("Disconed from console")
+    console.log("Disconnected from console")
 }
 
 window.onload = function() {
 
     if (localStorage.getItem("userId") === null) {
-        window.location.href = "../WEB-INF/account.jsp";
+        window.location.href = "account.do";
         return false;
     }
 
@@ -103,6 +105,8 @@ window.onload = function() {
     connectToChat(localStorage.getItem("username"));
 
   };
+
+
 
 function fetchAll() {
 
@@ -112,18 +116,19 @@ function fetchAll() {
     $.get(url + "/fetchAllUsers/"+userId, function (response) {
         let users = response;
         let usersTemplateHTML = "";
+
         for (let i = 0; i < users.length; i++) {
             console.log(users[i]['name'])
 
-                usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+users[i]['id']+',\''+users[i]['username']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
+                usersTemplateHTML = usersTemplateHTML + '<li class="active" id="child_message" onclick="formMessageLaunch('+users[i]['id']+',\''+users[i]['eName']+'\',\'user\')" data-userid="'+users[i]['id']+'" data-type="user">'+
                 '<div class="d-flex bd-highlight">'+
                 '<div class="img_cont">'+
-                '<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">'+
+                '<img src="'+users[i]['image']+'" class="rounded-circle user_img">'+
                 '<span class="online_icon"></span>'+
                 '</div>'+
                 '<div class="user_info" id="usernameAppender_' + users[i]['id'] + '">'+
-                '<span>'+users[i]['username']+'</span>'+
-                '<p>'+users[i]['username']+' is online</p>'+
+                '<span>'+users[i]['eName']+'</span>'+
+                '<p>'+users[i]['eName']+' is online</p>'+
                 '</div>'+
                 '</div>'+
                 '</li>';
@@ -200,33 +205,33 @@ function sendMessage(type) {
 
 }
 
-function formMessageLaunch(id,username,type){
-    
+function formMessageLaunch(id,eName,type){
+
     let buttonSend= document.getElementById("buttonSend");
     if(buttonSend!==null){
         buttonSend.parentNode.removeChild(buttonSend);
     }
 
-    let nama=$('#formMessageHeader .user_info').find('span')
-    
-    nama.html("Chat With "+username);
-    nama.attr("data-id",id);
+    let chatHeader=$('#formMessageHeader .user_info').find('span')
+
+    chatHeader.html("Chat With "+eName);
+    chatHeader.attr("data-id",id);
     let isNew = document.getElementById("newMessage_" + id) !== null;
     if (isNew) {
         let element = document.getElementById("newMessage_" + id);
         element.parentNode.removeChild(element);
-        
-    
+
+
     }
     let userName = $('#username').attr("data-id");
     selectedUserOrGroup=userName;
 
     let isHistoryMessage = document.getElementById("formMessageBody");
     if(isHistoryMessage!== null && isHistoryMessage.hasChildNodes()){
-        isHistoryMessage.innerHTML=""; 
+        isHistoryMessage.innerHTML="";
 
     }
- 
+
 
 
     var userId = localStorage.getItem("userId");
@@ -246,11 +251,11 @@ function formMessageLaunch(id,username,type){
                     '</div>'+
                     '</div>';
                 }
-          
+
             }
             $('#formMessageBody').append(messageTemplateHTML);
         });
-      
+
     }else if(type==="group"){
         $.get(url + "/listmessage/group/"+id, function (response) {
             let messagesGroup = response;
@@ -265,16 +270,16 @@ function formMessageLaunch(id,username,type){
                 }else{
                     messageGroupTemplateHTML = messageGroupTemplateHTML + '<div id="child_message" class="d-flex justify-content-end mb-4">'+
                     '<div id="child_message" class="msg_cotainer_send">'+messagesGroup[i]['message']+
-        
+
                     '</div>'+
                     '<p>'+messagesGroup[i]['name']+'</>'+
                     '</div>';
                 }
-          
+
             }
             $('#formMessageBody').append(messageGroupTemplateHTML);
         });
-      
+
     }
 
 
@@ -291,7 +296,7 @@ function formMessageLaunch(id,username,type){
 function logout(username){
     stompClient.disconnect();
     localStorage.removeItem("userId");
-    window.location.href = "account.do";    
+    window.location.href = "account.do";
 
     return false;
 
