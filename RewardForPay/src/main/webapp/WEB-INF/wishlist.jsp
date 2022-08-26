@@ -29,17 +29,14 @@
 					        <h5 class="card-title">${prize.name}</h5>
 					        <p class="card-text">Schrute Bucks: ${prize.points}</p>
 					        <p class="card-text">Prize Tier ${prize.tier.id}</p>
+					        <p class="card-text"><a class="btn btn-xs btn-warning" href="removeFromWishlist.do?prizeId=${prize.id}"> Remove </a>
 					      </div>
 					    </div>
 					  </div>
 					</c:forEach>
 				</div>
 					
-						<tr>
-							<td><form action="removeFromWishlist.do">
-									<input type="hidden" name="prizeId" value="${prize.id}" />
-									<button type="submit" class="action_button">Remove From Wishlist</button>
-								</form></td>
+	
 				</c:when>
 				<c:otherwise>
 					<h1>Your wishlist is empty :(</h1>
