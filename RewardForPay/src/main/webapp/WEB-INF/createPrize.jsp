@@ -16,7 +16,71 @@
 
 <div class="container-fluid">
 <div class="space">
-<h1>Create New Prize</h1>
+
+
+  <form action="createPrize.do" method="POST" class="well form-horizontal">
+<fieldset>
+<!-- Form Name -->
+<legend><center><h2><b>Suggest Schrute Reward</b></h2></center></legend><br>
+
+<!-- Text input-->
+ 
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Reward Name:</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="name"   class="form-control"  type="text" required>
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Description:</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input type="text" name="description"  class="form-control"   required>
+ 
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Schrute Bucks:</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input type="number" name="points"  class="form-control"   required>
+ 
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Image URL:</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input type="text" name="image"  class="form-control"   required>
+ 
+    </div>
+  </div>
+</div>
+<br>
+
+<input class="btn btn-warning" type="submit" value="Submit Suggestion">
+</fieldset>
+</form>
+
+
+
+
+<!-- <h1>Create New Prize</h1>
 
 <div class="form-row">
 		<form action="createPrize.do" method="POST">
@@ -35,7 +99,7 @@
 
 			<input class="btn btn-success" type="submit" value="Submit">
 		</form>
-</div>
+</div> -->
 
 </div>
 </div>

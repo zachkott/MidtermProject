@@ -36,10 +36,10 @@
 }
 
 .center{
-border: 1px solid black;
-
-	padding-left:100px;
-	padding-right:100px;
+	
+	border: 1px solid black;
+	padding-left:1px;
+	padding-right:1px;
 	padding-top:65px;
 	padding-bottom:75px;
 	width:900px;
@@ -50,9 +50,10 @@ border: 1px solid black;
 	margin:auto;
 	
 }
+
 .form-control {
 	top: -5px;
-	left: -90px;
+	left: -62px;
 	width: 100px;
 	
 }
@@ -68,6 +69,7 @@ border: 1px solid black;
 
 h2{
 	font-family: "copperplate";
+	
 }
 h3{
 	font-family: "copperplate";

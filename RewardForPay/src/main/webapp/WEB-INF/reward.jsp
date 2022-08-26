@@ -6,10 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Reward For Pay</title>
+<link rel ="stylesheet" type ="text/css" href="CSS/adminDashboard.css">
+
 </head>
 <body>
 <%@ include file="nav.jsp" %>
-<h1>I'm the Reward Page</h1>
+
+<div class ="container-fluid">
+<div class ="space">
+<h1>SCHRUTE REWARDS</h1>
 
 <c:choose>
 	<c:when test="${! empty prize}">
@@ -64,6 +69,7 @@
 		<h2>${error}</h2>
 	</c:otherwise>
 	</c:choose>
-
+</div>
+</div>
 </body>
 </html>

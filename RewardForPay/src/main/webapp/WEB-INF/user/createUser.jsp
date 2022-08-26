@@ -23,10 +23,10 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend><center><h2><b>Registration Form</b></h2></center></legend><br>
 
 <!-- Text input-->
  
+<legend><center><h2><b>Registration Form</b></h2></center></legend><br>
 <div class ="center">
 <div class="form-group">
   <label class="col-md-4 control-label">First Name:</label>  
