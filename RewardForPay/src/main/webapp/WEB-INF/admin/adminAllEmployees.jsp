@@ -51,7 +51,7 @@
 					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.address.phone}</a></td>
 					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.birthday}</a></td>
 					<td><a href="findEmployee.do?employeeId=${employee.id}">${employee.department.name}</a></td>
-					<td><form action="adminUpdateEmployeeForm.do"><input type ="hidden" name="id" value="${employee.id}"><button type="submit" class="btn btn-primary btn-sm">Update this Employee</button></form>
+					<td><form action="adminUpdateEmployeeForm.do"><input type ="hidden" name="id" value="${employee.id}"><button type="submit" class="btn btn-warning btn-sm">Update this Employee</button></form>
 					<td><form action="adminDeleteEmployeeForm.do"><input type ="hidden" name="id" value="${employee.id}"><button type="submit" class="btn btn-danger btn-sm">Delete this Employee</button></form>
 					
 					

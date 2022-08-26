@@ -42,7 +42,7 @@
 					<td><a href="findUser.do?userId=${user.id}">${user.username}</a></td>
 					<td><a href="findUser.do?userId=${user.id}">${user.password}</a></td>
 					<td><c:choose><c:when test="${user.enabled == true}">Active</c:when><c:otherwise>Inactive</c:otherwise></c:choose></td>
-					<td><form action="adminUpdateUserForm.do"><input type ="hidden" name="id" value="${user.id}"><button type="submit" class="btn btn-primary btn-sm">Update this User</button></form>
+					<td><form action="adminUpdateUserForm.do"><input type ="hidden" name="id" value="${user.id}"><button type="submit" class="btn btn-warning btn-sm">Update this User</button></form>
 					<td><c:choose><c:when test="${user.enabled == true}">
 					<form action="deactivateUser.do"><input type="hidden" name="userId" value="${user.id}"><button type="submit" class="btn btn-dark btn-sm">Disable this User</button></form>
 							</c:when><c:otherwise>
