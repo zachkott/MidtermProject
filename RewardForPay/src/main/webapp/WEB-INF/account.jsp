@@ -18,8 +18,6 @@ function validateForm() {
         localStorage.setItem("userImage", userImage);
 
         window.open("chat/chat-app.jsp", 'window', 'width=800, height=500, location=0, menubar=0');
-
-       // window.location.href = "chat-app.jsp";
 }
 </script>
 <title>Reward For Pay</title>
