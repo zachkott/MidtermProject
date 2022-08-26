@@ -23,7 +23,7 @@
 			<table class="table table-striped table-hover">
 				<thead class ="table-dark">
 					<tr>
-						<th>Id</th>
+						<th>Details</th>
 						<th>Amount</th>
 						<th>Description</th>
 						<th>Event Date </th>
@@ -32,7 +32,7 @@
 				<tbody>				
 				<c:forEach var="each" items="${joined}">
 				<tr>
-				<td><a href="findAwardTest.do?paid=${each.id}">${each.id}</a></td>
+				<td><a href="findAwardTest.do?paid=${each.id}">Details</a></td>
 				<td>${each.amount}</td>
 				<td>${each.description}</td>
 				<td>${each.issued}</td>

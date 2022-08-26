@@ -133,7 +133,7 @@ public class RewardController {
 		PointAwarded newAward = userDao.createAward(award, empId, userId);
 		if(newAward.getDescription().startsWith("EVENT:")) {
 			redir.addAttribute("empId", empId);
-			return "redirect:eventsList.do";
+			return "redirect:joinedEvents.do";
 		}
 		if(newAward.getDescription().startsWith("Initial")) {
 			redir.addAttribute("empId", empId);
